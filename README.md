@@ -9,13 +9,14 @@
 ## Nome do grupo
 
 ## Integrantes: 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 1</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 2</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 3</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 4</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 5</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 6</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 7</a>
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><a href="https://www.linkedin.com/in/victor-marques-profile/"><img style="border-radius: 50%;" src="./imagens/equipe/victor_marques.jpg" alt="" width="100px;"/><br><sub><b>Victor M.</b></sub></a> <br></td>
+      <td align="center"><a href="https://www.linkedin.com/in/davi-arantes-308949264/"><img style="border-radius: 50%;" src="./imagens/equipe/davi_arantes.jpg" alt="" width="100px;"><br><sub><b>Davi A.</b></sub></a></td>
+    </tr>
+  </table>
+</div>
 
 ## 📝 Descrição
 
