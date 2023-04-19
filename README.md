@@ -24,7 +24,7 @@
   <table>
     <tr>
       <td align="center"><a href="https://www.linkedin.com/in/pedro-auler-a3b23021a/"><img src="./imagens/equipe/pedro.jpg" alt="" width="100px;"/><br><sub><b>Pedro A.</b></sub></a> <br></td>
-      <td align="center"><a href="https://www.linkedin.com/in/marcelomiguelassis/"><img src="./imagens/equipe/marcelo.jpg" alt="" width="100px;"><br><sub><b>Marcelo Assis</b></sub></a></td>
+      <td align="center"><a href="https://www.linkedin.com/in/marcelomiguelassis/"><img src="./imagens/equipe/marcelo.jpg" alt="" width="100px;"><br><sub><b>Marcelo A.</b></sub></a></td>
     </tr>
   </table>
 </div>
