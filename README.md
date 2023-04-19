@@ -12,8 +12,19 @@
 <div align="center">
   <table>
     <tr>
-      <td align="center"><a href="https://www.linkedin.com/in/victor-marques-profile/"><img style="border-radius: 50%;" src="./imagens/equipe/victor_marques.jpg" alt="" width="100px;"/><br><sub><b>Victor M.</b></sub></a> <br></td>
-      <td align="center"><a href="https://www.linkedin.com/in/davi-arantes-308949264/"><img style="border-radius: 50%;" src="./imagens/equipe/davi_arantes.jpg" alt="" width="100px;"><br><sub><b>Davi A.</b></sub></a></td>
+      <td align="center"><a href="https://www.linkedin.com/in/victor-marques-profile/"><img src="./imagens/equipe/victor.jpg" alt="" width="100px;"/><br><sub><b>Victor M.</b></sub></a> <br></td>
+      <td align="center"><a href="https://www.linkedin.com/in/davi-arantes-308949264/"><img src="./imagens/equipe/davi.jpg" alt="" width="100px;"><br><sub><b>Davi A.</b></sub></a></td>
+      <td align="center"><a href="https://www.linkedin.com/in/marcela-issa-838674268/"><img src="./imagens/equipe/marcela.jpg" alt="" width="100px;"><br><sub><b>Marcela I.</b></sub></a></td>
+      <td align="center"><a href="https://www.linkedin.com/in/raissa-moraes-a89179264/"><img src="./imagens/equipe/raissa.jpg" alt="" width="100px;"><br><sub><b>Raissa C.</b></sub></a></td>
+    </tr>
+  </table>
+</div>
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><a href="https://www.linkedin.com/in/pedro-auler-a3b23021a/"><img src="./imagens/equipe/pedro.jpg" alt="" width="100px;"/><br><sub><b>Pedro A.</b></sub></a> <br></td>
+      <td align="center"><a href="https://www.linkedin.com/in/marcelomiguelassis/"><img src="./imagens/equipe/marcelo.jpg" alt="" width="100px;"><br><sub><b>Marcelo P.</b></sub></a></td>
     </tr>
   </table>
 </div>
