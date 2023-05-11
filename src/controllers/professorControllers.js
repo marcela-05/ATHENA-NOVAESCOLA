@@ -7,4 +7,12 @@ exports.listaProfessores = function(application, req, res) {
         res.json(result);
     });
 }
-  
+
+module.exports.cadastra = function(application, req, res) {
+    // cria conexão com o modelo /src/models/professorModels.js
+    var professores = new application.src.models.professorModels() 
+    // Esse controlador é responsável por chamar o modelo que cadastra o professor.
+    professores.postProfessor((result) => {
+      res.json(result);
+    }, req.body.nomeProfessor, req.body.emailProfessor, req.body.senhaProfessor);
+  }
