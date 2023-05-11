@@ -86,6 +86,20 @@ turmas.prototype.postTurma = function(callback, idProfessor, idDisciplina, nomeT
     };
 }
 
+// modelo responsável por deletar a turma. O id é informado via url, ex.: /turma/deletar?idTurma=1
+turmas.prototype.deleteTurma = function(callback, idTurma) {
+    var sql = 'DELETE FROM turma WHERE id_turma = ' + idTurma;
+
+    // executa a consulta sql e retorna os dados na função callback, a qual será usada
+    // no controlador para mostrar os dados na página.
+    database.appDB.all(sql, [], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            }
+        callback('Turma e vínculos entre aluno-turma e turma-disciplina excluídos.')
+    });
+}
+
 module.exports = function(){
     return turmas;
 }
