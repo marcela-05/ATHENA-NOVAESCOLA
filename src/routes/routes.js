@@ -33,4 +33,11 @@ module.exports = function(application){
         application, req, res
       );
     });
+
+    // retorna controlador para listar professores
+    application.get('/professores', function(req, res){
+      application.src.controllers.professorControllers.listaProfessores(
+        application, req, res
+      );
+    });
   }
