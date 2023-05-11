@@ -40,4 +40,11 @@ module.exports = function(application){
         application, req, res
       );
     });
+
+    // retorna controlador para cadastrar professores
+    application.get('/professor/cadastrar', function(req, res){
+      application.src.controllers.professorControllers.cadastra(
+        application, req, res
+      );
+    });
   }
