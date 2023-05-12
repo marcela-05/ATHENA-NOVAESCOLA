@@ -22,7 +22,7 @@ module.exports.atualiza = function(application, req, res) {
     // Esse controlador é responsável por chamar o modelo que atualiza o aluno.
     alunos.updateAluno((result) => {
       res.json(result);
-    }, req.body.nomeAluno, req.body.serieAluno, req.body.idAluno);
+    }, req.body.nomeAluno, req.body.serieAluno, req.query.idAluno);
 }
 
 module.exports.deleta = function(application, req, res) {
