@@ -40,7 +40,7 @@ professores.prototype.postProfessor = function(callback, nomeProfessor, emailPro
             if (err) {
                 console.error(err.message);
             }
-            callback("professor criado e vinculado à disciplina")
+            callback({message: "professor criado e vinculado à disciplina"})
         });
     };
 }
@@ -56,7 +56,7 @@ professores.prototype.updateProfessor = function(callback, idProfessor, nomeProf
         if (err) {
             console.error(err.message);
         }
-        callback('Turma atualizada')
+        callback({message:'professor atualizado'})
     });
 }
 

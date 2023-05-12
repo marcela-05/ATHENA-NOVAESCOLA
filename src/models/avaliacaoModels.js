@@ -3,7 +3,7 @@ const database = require('../data/data')
 
 function avaliacoes() {}
 
-avaliacoes.prototype.getAvaliacoes = function(callback, idProf) {
+avaliacoes.prototype.getAvaliacoes = function(callback, idProfessor) {
     var sql = 'SELECT * FROM avaliacao WHERE id_professor = ' + idProfessor;
 
     // executa a consulta sql e retorna os dados na função callback, a qual será usada
@@ -29,6 +29,7 @@ avaliacoes.prototype.postAvaliacao = function(callback, nomeAvaliacao, dataAvali
             console.error(err.message);
             erro = err; // caso haja erro na inserção, ele é inserido na variável erro
         }
+        callback({message: 'avaliacao criada e vinculada ao professor'})
     });
 
     // se o tamanho da variável for menor que 1, significa que a variável está vazia
@@ -56,7 +57,7 @@ avaliacoes.prototype.updateAvaliacao = function(callback, nomeAvaliacao, dataAva
         if (err) {
             console.error(err.message);
         }
-        callback('avaliacao atualizada')
+        callback({message:'avaliacao atualizada'})
     });
 }
 
