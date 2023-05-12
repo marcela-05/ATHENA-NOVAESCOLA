@@ -31,6 +31,23 @@ alunos.prototype.postAluno = function(callback, nomeAluno, serieAluno, idProfess
     });
 }
 
+// modelo responsável por fazer a atualização do aluno
+alunos.prototype.updateAluno = function(callback, nomeAluno, serieAluno, idAluno) {
+    var sql = 'UPDATE aluno set nome = "' + nomeAluno + '", serie = ' + serieAluno +
+    ' WHERE id_aluno = ' + idAluno;
+
+    console.log(sql)
+    // executa a atualização e verifica se houve algum erro
+    database.appDB.all(sql, [], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            callback(err)
+        } else {
+            callback({message: 'Aluno atualizado'})
+        }
+    });
+}
+
 module.exports = function(){
     return alunos;
 }
