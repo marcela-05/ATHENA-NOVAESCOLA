@@ -45,6 +45,35 @@ professores.prototype.postProfessor = function(callback, nomeProfessor, emailPro
     };
 }
 
+professores.prototype.updateProfessor = function(callback, idProfessor, nomeProfessor, emailProfessor, senhaProfessor) {
+    console.log("aqui")
+    var sql = 'UPDATE professor set nome = "' + nomeProfessor + '", email = "' + emailProfessor + '", senha = "' + senhaProfessor + '"' +
+    'WHERE id_professor = ' + idProfessor;
+
+    console.log(sql)
+    // executa a atualização e verifica se houve algum erro
+    database.appDB.all(sql, [], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+        }
+        callback('Turma atualizada')
+    });
+}
+
+professores.prototype.deleteProfessor = function(callback, idProfessor) {
+    var sql = 'DELETE FROM professor WHERE id_professor = ' + idProfessor;
+
+    // executa a consulta sql e retorna os dados na função callback, a qual será usada
+    // no controlador para mostrar os dados na página.
+    database.appDB.all(sql, [], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            }
+        callback({message: 'Professor Excluído'})
+    });
+}
+
 module.exports = function(){
     return professores;
 }
+
