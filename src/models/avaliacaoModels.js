@@ -3,8 +3,13 @@ const database = require('../data/data')
 
 function avaliacoes() {}
 
+<<<<<<< HEAD
 avaliacoes.prototype.getAvaliacoes = function(callback, idProf) {
     var sql = 'SELECT * FROM avaliacao WHERE id_professor = ' + idProf;
+=======
+avaliacoes.prototype.getAvaliacoes = function(callback, idProfessor) {
+    var sql = 'SELECT * FROM avaliacao WHERE id_professor = ' + idProfessor;
+>>>>>>> 1e3d3403192ace8ad0728506fcdeb0628ae57103
 
     // executa a consulta sql e retorna os dados na função callback, a qual será usada
     // no controlador para mostrar os dados na página.
@@ -28,6 +33,7 @@ avaliacoes.prototype.postAvaliacao = function(callback, nomeAvaliacao, dataAvali
         if (err) {
             console.error(err.message);
         }
+        callback({message: 'avaliacao criada e vinculada ao professor'})
     });
 }
 
@@ -42,7 +48,11 @@ avaliacoes.prototype.updateAvaliacao = function(callback, nomeAvaliacao, dataAva
         if (err) {
             console.error(err.message);
         }
+<<<<<<< HEAD
         callback({message: 'avaliacao atualizada'})
+=======
+        callback({message:'avaliacao atualizada'})
+>>>>>>> 1e3d3403192ace8ad0728506fcdeb0628ae57103
     });
 }
 
