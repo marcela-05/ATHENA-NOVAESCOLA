@@ -114,6 +114,62 @@ module.exports = function(application){
         application, req, res
       );
     });
+
+    // retorna controlador para listar professores
+    application.get('/avaliacoes', function(req, res){
+      application.src.controllers.avaliacaoControllers.listaAvaliacoes(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para cadastrar professores
+    application.post('/avaliacao/cadastrar', urlencodedParser, function(req, res){
+      application.src.controllers.avaliacaoControllers.cadastra(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para a atualização do professor
+    application.post('/avaliacao/atualizar', urlencodedParser, function(req, res){
+      application.src.controllers.avaliacaoControllers.atualiza(
+        application, req, res
+      );
+    });
+
+    application.delete('/avaliacao/deletar', urlencodedParser, function(req, res){
+      application.src.controllers.avaliacaoControllers.deleta(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para listar professores
+    application.get('/disciplinas', function(req, res){
+      application.src.controllers.disciplinaControllers.listaDisciplinas(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para cadastrar professores
+    application.post('/disciplina/cadastrar', urlencodedParser, function(req, res){
+      application.src.controllers.disciplinaControllers.cadastra(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para a atualização do professor
+    application.post('/disciplina/atualizar', urlencodedParser, function(req, res){
+      application.src.controllers.disciplinaControllers.atualiza(
+        application, req, res
+      );
+    });
+
+    application.delete('/disciplina/deletar', urlencodedParser, function(req, res){
+      application.src.controllers.disciplinaControllers.deleta(
+        application, req, res
+      );
+    });
+
+
     
     
 
