@@ -29,29 +29,15 @@ areaConhecimento.prototype.postAreaConhecimento = function(callback, nomeArea, i
             console.error(err.message);
             erro = err; // caso haja erro na inserção, ele é inserido na variável erro
         } 
-        console.log({message: "area do conhecimento criada"});
+        callback({message: "area do conhecimento criada"});
     });
 
-    // se o tamanho da variável for menor que 1, significa que a variável está vazia
-    // logo, não houve erro na inserção e, por isso, pode criar o relacionamento
-    /*if(erro.length < 1){
-        sql = 'INSERT INTO nota VALUES ((SELECT id_professor FROM professor WHERE email = "' + emailProfessor +
-        '" AND senha = "' + senhaProfessor + '"), ' + idDisciplina + ');';
-        database.appDB.all(sql, [], (err, rows) => {
-            if (err) {
-                console.error(err.message);
-            }
-            callback("professor criado e vinculado à disciplina")
-        });
-    };*/
 }
 
 areaConhecimento.prototype.updateAreaConhecimento = function(callback, idArea, nomeArea, idDisciplina) {
-    console.log("aqui")
     var sql = 'UPDATE area_conhecimento set nome = "' + nomeArea + '", id_disciplina = "' + idDisciplina + '"' +
     'WHERE id_area = ' + idArea;
 
-    console.log(sql)
     // executa a atualização e verifica se houve algum erro
     database.appDB.all(sql, [], (err, rows) => {
         if (err) {

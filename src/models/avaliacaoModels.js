@@ -3,8 +3,8 @@ const database = require('../data/data')
 
 function avaliacoes() {}
 
-avaliacoes.prototype.getAvaliacoes = function(callback, idProfessor) {
-    var sql = 'SELECT * FROM avaliacao WHERE id_professor = ' + idProfessor;
+avaliacoes.prototype.getAvaliacoes = function(callback, idProf) {
+    var sql = 'SELECT * FROM avaliacao WHERE id_professor = ' + idProf;
 
     // executa a consulta sql e retorna os dados na função callback, a qual será usada
     // no controlador para mostrar os dados na página.
@@ -27,23 +27,9 @@ avaliacoes.prototype.postAvaliacao = function(callback, nomeAvaliacao, dataAvali
     database.appDB.all(sql, [], (err, rows) => {
         if (err) {
             console.error(err.message);
-            erro = err; // caso haja erro na inserção, ele é inserido na variável erro
         }
         callback({message: 'avaliacao criada e vinculada ao professor'})
     });
-
-    // se o tamanho da variável for menor que 1, significa que a variável está vazia
-    // logo, não houve erro na inserção e, por isso, pode criar o relacionamento
-    /*if(erro.length < 1){
-        sql = 'INSERT INTO prof_disciplina VALUES ((SELECT id_professor FROM professor WHERE email = "' + emailProfessor +
-        '" AND senha = "' + senhaProfessor + '"), ' + idDisciplina + ');';
-        database.appDB.all(sql, [], (err, rows) => {
-            if (err) {
-                console.error(err.message);
-            }
-            callback("professor criado e vinculado à disciplina")
-        });
-    };*/
 }
 
 avaliacoes.prototype.updateAvaliacao = function(callback, nomeAvaliacao, dataAvaliacao, serieAvaliacao, idAvaliacao) {
@@ -57,7 +43,7 @@ avaliacoes.prototype.updateAvaliacao = function(callback, nomeAvaliacao, dataAva
         if (err) {
             console.error(err.message);
         }
-        callback({message:'avaliacao atualizada'})
+        callback({message: 'avaliacao atualizada'})
     });
 }
 

@@ -46,11 +46,9 @@ disciplinas.prototype.postDisciplina = function(callback, nomeDisciplina, idProf
 }
 
 disciplinas.prototype.updateDisciplina = function(callback, idDisciplina, nomeDisciplina) {
-    console.log("aqui")
     var sql = 'UPDATE disciplina set nome = "' + nomeDisciplina + '"' +
     'WHERE id_disciplina = ' + idDisciplina;
 
-    console.log(sql)
     // executa a atualização e verifica se houve algum erro
     database.appDB.all(sql, [], (err, rows) => {
         if (err) {
