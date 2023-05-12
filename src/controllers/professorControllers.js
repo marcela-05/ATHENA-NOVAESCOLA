@@ -9,6 +9,7 @@ exports.listaProfessores = function(application, req, res) {
 }
 
 module.exports.cadastra = function(application, req, res) {
+  console.log(req.body.nomeProfesso)
     // cria conexão com o modelo /src/models/professorModels.js
     var professores = new application.src.models.professorModels() 
     // Esse controlador é responsável por chamar o modelo que cadastra o professor.
