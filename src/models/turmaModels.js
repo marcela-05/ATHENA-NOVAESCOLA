@@ -62,10 +62,11 @@ turmas.prototype.postTurma = function(callback, idProfessor, idDisciplina, nomeT
     // passados via corpo da requisição
     var sql = 'INSERT INTO turma (nome, serie, id_professor, id_disciplina) VALUES ( "' + 
     nomeTurma + '",' + serieTurma + ',' + idProfessor + ',' + idDisciplina + ');';
-    database.appDB.run(sql, [], (err) => {
+    database.appDB.all(sql, [], (err, rows) => {
         if (err) {
             console.error(err.message);
         }
+        callback({message: 'OK' })
     });
 }
 
