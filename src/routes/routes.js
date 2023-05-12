@@ -97,7 +97,7 @@ module.exports = function(application){
 
     // retorna controlador para cadastrar professores
     application.post('/aluno/cadastrar', urlencodedParser, function(req, res){
-      application.src.controllers.areaConhecimentoControllers.cadastra(
+      application.src.controllers.alunoControllers.cadastra(
         application, req, res
       );
     });
