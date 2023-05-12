@@ -48,5 +48,20 @@ module.exports = function(application){
       );
     });
 
+    // retorna controlador para a atualização do professor
+    application.post('/professor/atualizar', urlencodedParser, function(req, res){
+      application.src.controllers.professorControllers.atualiza(
+        application, req, res
+      );
+    });
+
+    application.delete('/professor/deletar', urlencodedParser, function(req, res){
+      application.src.controllers.professorControllers.deleta(
+        application, req, res
+      );
+    });
+    
+
+
 
   }
