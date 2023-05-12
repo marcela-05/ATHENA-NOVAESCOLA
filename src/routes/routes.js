@@ -28,7 +28,7 @@ module.exports = function(application){
     });
 
     // retorna controlador para deletar a turma
-    application.get('/turma/deletar', urlencodedParser, function(req, res){
+    application.delete('/turma/deletar', urlencodedParser, function(req, res){
       application.src.controllers.turmaControllers.deleta(
         application, req, res
       );
@@ -60,6 +60,61 @@ module.exports = function(application){
         application, req, res
       );
     });
+
+    // retorna controlador para listar professores
+    application.get('/areaConhecimento', function(req, res){
+      application.src.controllers.areaConhecimentoControllers.listaAreaConhecimento(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para cadastrar professores
+    application.post('/areaConhecimento/cadastrar', urlencodedParser, function(req, res){
+      application.src.controllers.areaConhecimentoControllers.cadastra(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para a atualização do professor
+    application.post('/areaConhecimento/atualizar', urlencodedParser, function(req, res){
+      application.src.controllers.areaConhecimentoControllers.atualiza(
+        application, req, res
+      );
+    });
+
+    application.delete('/areaConhecimento/deletar', urlencodedParser, function(req, res){
+      application.src.controllers.areaConhecimentoControllers.deleta(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para listar professores
+    application.get('/alunos', function(req, res){
+      application.src.controllers.areaConhecimentoControllers.listaAreaConhecimento(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para cadastrar professores
+    application.post('/aluno/cadastrar', urlencodedParser, function(req, res){
+      application.src.controllers.areaConhecimentoControllers.cadastra(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para a atualização do professor
+    application.post('/aluno/atualizar', urlencodedParser, function(req, res){
+      application.src.controllers.areaConhecimentoControllers.atualiza(
+        application, req, res
+      );
+    });
+
+    application.delete('/aluno/deletar', urlencodedParser, function(req, res){
+      application.src.controllers.areaConhecimentoControllers.deleta(
+        application, req, res
+      );
+    });
+    
     
 
 
