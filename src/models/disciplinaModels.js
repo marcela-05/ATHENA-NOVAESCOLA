@@ -40,12 +40,12 @@ disciplinas.prototype.postDisciplina = function(callback, nomeDisciplina, idProf
             if (err) {
                 console.error(err.message);
             }
-            callback("professor criado e vinculado à disciplina")
+            callback({message:"disciplina criada e vinculada ao professor"})
         });
     };
 }
 
-disciplinas.prototype.updateProfessor = function(callback, idDisciplina, nomeDisciplina) {
+disciplinas.prototype.updateDisciplina = function(callback, idDisciplina, nomeDisciplina) {
     console.log("aqui")
     var sql = 'UPDATE disciplina set nome = "' + nomeDisciplina + '"' +
     'WHERE id_disciplina = ' + idDisciplina;
@@ -56,7 +56,7 @@ disciplinas.prototype.updateProfessor = function(callback, idDisciplina, nomeDis
         if (err) {
             console.error(err.message);
         }
-        callback('Turma atualizada')
+        callback({message: 'disciplina atualizada'})
     });
 }
 

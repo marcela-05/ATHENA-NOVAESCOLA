@@ -28,7 +28,8 @@ areaConhecimento.prototype.postAreaConhecimento = function(callback, nomeArea, i
         if (err) {
             console.error(err.message);
             erro = err; // caso haja erro na inserção, ele é inserido na variável erro
-        }
+        } 
+        console.log({message: "area do conhecimento criada"});
     });
 
     // se o tamanho da variável for menor que 1, significa que a variável está vazia
@@ -56,7 +57,7 @@ areaConhecimento.prototype.updateAreaConhecimento = function(callback, idArea, n
         if (err) {
             console.error(err.message);
         }
-        callback('Area de conhecimento atualizada')
+        callback({message:'Area de conhecimento atualizada'})
     });
 }
 

@@ -65,7 +65,7 @@ turmas.prototype.postTurma = function(callback, idProfessor, idDisciplina, nomeT
         if (err) {
             console.error(err.message);
         }
-        callback({message: 'OK' })
+        callback({message: 'Turma criada com sucesso' })
     });
 }
 
