@@ -32,8 +32,7 @@ avaliacoes.prototype.postAvaliacao = function(callback, nomeAvaliacao, dataAvali
     });
 }
 
-avaliacoes.prototype.updateAvaliacao = function(callback, nomeAvaliacao, dataAvaliacao, serieAvaliacao, idAvaliacao) {
-    console.log("aqui")
+avaliacoes.prototype.updateAvaliacao = function(callback, idAvaliacao, nomeAvaliacao, dataAvaliacao, serieAvaliacao) {
     var sql = 'UPDATE avaliacao set nome = "' + nomeAvaliacao + '", data = "' + dataAvaliacao + '", serie = "' + serieAvaliacao + '"' +
     'WHERE id_avaliacao = ' + idAvaliacao;
 

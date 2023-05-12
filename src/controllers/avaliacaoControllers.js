@@ -24,7 +24,7 @@ module.exports.cadastra = function(application, req, res) {
     // Como, por exemplo, o nome. Para isso, o id da turma e o nome da turma são passados como argumentos.
     avaliacoes.updateAvaliacao((result) => {
       res.json(result);
-    }, req.query.idAvaliacao, req.body.nomeAvaliacao, req.body.dataAvaliacao, req.body.serieAvaliacao);
+    }, req.body.idAvaliacao, req.body.nomeAvaliacao, req.body.dataAvaliacao, req.body.serieAvaliacao);
   }
 
   module.exports.deleta = function(application, req, res) {
