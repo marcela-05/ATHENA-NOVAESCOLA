@@ -65,7 +65,6 @@ turmas.prototype.postTurma = function(callback, idProfessor, idDisciplina, nomeT
     database.appDB.run(sql, [], (err) => {
         if (err) {
             console.error(err.message);
-            callback(err.message);
         }
     });
 }

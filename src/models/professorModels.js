@@ -17,21 +17,18 @@ professores.prototype.getProfessores = function(callback, idProf) {
 }
 
 // modelo responsável por criar um professor
-professores.prototype.postProfessor = function(callback, nomeProfessor, emailProfessor, senhaProfessor) {
+professores.prototype.postProfessor = function(callback, nomeProfessor, emailProfessor, senhaProfessor, idDisciplina) {
 
     // nesse ponto, o professor é criado com o nome, email e senha
     // passados via corpo da requisição
-    console.log("aqui")
     var sql = 'INSERT INTO professor (nome, email, senha) VALUES ( "' + 
     nomeProfessor + '", "' + emailProfessor + '", "' + senhaProfessor + '");';
     var erro = ''
     database.appDB.all(sql, [], (err, rows) => {
         if (err) {
             console.error(err.message);
-            callback(err.message);
             erro = err; // caso haja erro na inserção, ele é inserido na variável erro
         }
-        callback("Professor inserido com sucesso!")
     });
 
     // se o tamanho da variável for menor que 1, significa que a variável está vazia
@@ -42,9 +39,8 @@ professores.prototype.postProfessor = function(callback, nomeProfessor, emailPro
         database.appDB.all(sql, [], (err, rows) => {
             if (err) {
                 console.error(err.message);
-                callback(err.message)
             }
-            callback("turma criada e vinculada à disciplina")
+            callback("professor criado e vinculado à disciplina")
         });
     };
 }
