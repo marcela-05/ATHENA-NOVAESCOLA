@@ -13,9 +13,8 @@ turmas.prototype.updateTurma = function(callback, idTurma, nomeTurma) {
     database.appDB.all(sql, [], (err, rows) => {
         if (err) {
             console.error(err.message);
-            callback(err.message)
         }
-        callback('Turma atualizada')
+        callback({message: 'Turma atualizada'})
     });
 }
 
@@ -80,7 +79,7 @@ turmas.prototype.deleteTurma = function(callback, idTurma) {
         if (err) {
             console.error(err.message);
             }
-        callback('Turma e vínculos entre aluno-turma e turma-disciplina excluídos.')
+        callback({message: 'Turma e vínculos entre aluno-turma e turma-disciplina excluídos.'})
     });
 }
 

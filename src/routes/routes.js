@@ -90,27 +90,27 @@ module.exports = function(application){
 
     // retorna controlador para listar professores
     application.get('/alunos', function(req, res){
-      application.src.controllers.areaConhecimentoControllers.listaAreaConhecimento(
+      application.src.controllers.alunoControllers.listaAlunos(
         application, req, res
       );
     });
 
     // retorna controlador para cadastrar professores
     application.post('/aluno/cadastrar', urlencodedParser, function(req, res){
-      application.src.controllers.areaConhecimentoControllers.cadastra(
+      application.src.controllers.alunoControllers.cadastra(
         application, req, res
       );
     });
 
     // retorna controlador para a atualização do professor
     application.post('/aluno/atualizar', urlencodedParser, function(req, res){
-      application.src.controllers.areaConhecimentoControllers.atualiza(
+      application.src.controllers.alunoControllers.atualiza(
         application, req, res
       );
     });
 
     application.delete('/aluno/deletar', urlencodedParser, function(req, res){
-      application.src.controllers.areaConhecimentoControllers.deleta(
+      application.src.controllers.alunoControllers.deleta(
         application, req, res
       );
     });
