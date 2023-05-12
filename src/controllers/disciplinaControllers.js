@@ -2,7 +2,7 @@
 exports.listaDisciplinas = function(application, req, res) {
     // cria conexão com o modelo /src/models/turmaModels.js
     var disciplinas = new application.src.models.disciplinaModels() 
-    
+    // esse controlador chama o modelo de listagem de disciplinas
     disciplinas.getDisciplinas((result) => {
         res.json(result);
     });
@@ -11,7 +11,7 @@ exports.listaDisciplinas = function(application, req, res) {
 module.exports.cadastra = function(application, req, res) {
     // cria conexão com o modelo /src/models/professorModels.js
     var disciplinas = new application.src.models.disciplinaModels() 
-    // Esse controlador é responsável por chamar o modelo que cadastra o professor.
+    // Esse controlador é responsável por chamar o modelo que cadastra as disciplinas
     disciplinas.postDisciplina((result) => {
       res.json(result);
     }, req.body.nomeDisciplina, req.body.idProfessor);
@@ -20,7 +20,7 @@ module.exports.cadastra = function(application, req, res) {
   module.exports.atualiza = function(application, req, res) {
     // cria conexão com o modelo /src/models/turmaModels.js
     var disciplinas = new application.src.models.disciplinaModels() 
-    // Esse controlador é responsável por chamar o modelo que atualiza os dados básicos da turma.
+    // Esse controlador é responsável por chamar o modelo que atualiza as disciplinas
     // Como, por exemplo, o nome. Para isso, o id da turma e o nome da turma são passados como argumentos.
     disciplinas.updateDisciplina((result) => {
       res.json(result);
@@ -30,7 +30,7 @@ module.exports.cadastra = function(application, req, res) {
   module.exports.deleta = function(application, req, res) {
     // cria conexão com o modelo /src/models/turmaModels.js
     var disciplinas = new application.src.models.disciplinaModels() 
-    // Esse controlador chama o modelo de deleção das turmas, passando o idTurma que veio da url.
+    // Esse controlador chama o modelo de deleção das disciplinas
     disciplinas.deleteDisciplina((result) => {
       res.json(result);
     }, req.query.idDisciplina);

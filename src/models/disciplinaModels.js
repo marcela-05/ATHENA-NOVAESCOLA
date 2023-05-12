@@ -3,6 +3,7 @@ const database = require('../data/data')
 
 function disciplinas() {}
 
+// modelo responsável por listar as disciplinas 
 disciplinas.prototype.getDisciplinas = function(callback) {
     var sql = 'SELECT * FROM disciplina';
 
@@ -16,10 +17,10 @@ disciplinas.prototype.getDisciplinas = function(callback) {
     });
 }
 
-// modelo responsável por criar um professor
+// modelo responsável por criar uma disciplina
 disciplinas.prototype.postDisciplina = function(callback, nomeDisciplina, idProfessor) {
 
-    // nesse ponto, o professor é criado com o nome, email e senha
+    // nesse ponto, o professor é criado com o nome
     // passados via corpo da requisição
     var sql = 'INSERT INTO disciplina (nome) VALUES ( "' + 
     nomeDisciplina + '");';
@@ -45,6 +46,7 @@ disciplinas.prototype.postDisciplina = function(callback, nomeDisciplina, idProf
     };
 }
 
+// modelo responsável por atualizar disciplina
 disciplinas.prototype.updateDisciplina = function(callback, idDisciplina, nomeDisciplina) {
     var sql = 'UPDATE disciplina set nome = "' + nomeDisciplina + '"' +
     'WHERE id_disciplina = ' + idDisciplina;
@@ -58,6 +60,7 @@ disciplinas.prototype.updateDisciplina = function(callback, idDisciplina, nomeDi
     });
 }
 
+// modelo responsável por deletar disciplina
 disciplinas.prototype.deleteDisciplina = function(callback, idDisciplina) {
     var sql = 'DELETE FROM disciplina WHERE id_disciplina = ' + idDisciplina;
 

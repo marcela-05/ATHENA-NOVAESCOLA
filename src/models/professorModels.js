@@ -3,6 +3,7 @@ const database = require('../data/data')
 
 function professores() {}
 
+// modelo responsável por listar professores
 professores.prototype.getProfessores = function(callback, idProf) {
     var sql = 'SELECT * FROM professor';
 
@@ -45,6 +46,7 @@ professores.prototype.postProfessor = function(callback, nomeProfessor, emailPro
     };
 }
 
+// modelo responsável por atualizar professor
 professores.prototype.updateProfessor = function(callback, idProfessor, nomeProfessor, emailProfessor, senhaProfessor) {
     console.log("aqui")
     var sql = 'UPDATE professor set nome = "' + nomeProfessor + '", email = "' + emailProfessor + '", senha = "' + senhaProfessor + '"' +
@@ -60,6 +62,7 @@ professores.prototype.updateProfessor = function(callback, idProfessor, nomeProf
     });
 }
 
+// modelo responsável por deletar professor
 professores.prototype.deleteProfessor = function(callback, idProfessor) {
     var sql = 'DELETE FROM professor WHERE id_professor = ' + idProfessor;
 

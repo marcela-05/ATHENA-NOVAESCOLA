@@ -1,7 +1,7 @@
 exports.listaAlunos = function(application, req, res) {
     // cria conexão com o modelo /src/models/alunoModels.js
     var alunos = new application.src.models.alunoModels() 
-    
+    // esse controlador chama o modelo de listagem de alunos
     alunos.getAlunos((result) => {
         res.json(result);
     }, req.query.idProfessor);

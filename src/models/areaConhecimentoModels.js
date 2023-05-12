@@ -3,6 +3,7 @@ const database = require('../data/data')
 
 function areaConhecimento() {}
 
+// modelo responsável por listar áreas do conhecimento
 areaConhecimento.prototype.getAreaConhecimento = function(callback, idDisciplina) {
     var sql = 'SELECT * FROM area_conhecimento WHERE id_disciplina = ' + idDisciplina;
 
@@ -16,10 +17,10 @@ areaConhecimento.prototype.getAreaConhecimento = function(callback, idDisciplina
     });
 }
 
-// modelo responsável por criar um professor
+// modelo responsável por criar uma área do conhecimento
 areaConhecimento.prototype.postAreaConhecimento = function(callback, nomeArea, idDisciplina) {
 
-    // nesse ponto, o professor é criado com o nome, email e senha
+    // nesse ponto, a área do conhecimento é criada com o nome
     // passados via corpo da requisição
     var sql = 'INSERT INTO area_conhecimento (nome, id_disciplina) VALUES ( "' + 
     nomeArea + '", "' + idDisciplina + '");';
@@ -34,6 +35,7 @@ areaConhecimento.prototype.postAreaConhecimento = function(callback, nomeArea, i
 
 }
 
+// modelo resposável por atualizar uma área do conhecimento
 areaConhecimento.prototype.updateAreaConhecimento = function(callback, idArea, nomeArea, idDisciplina) {
     var sql = 'UPDATE area_conhecimento set nome = "' + nomeArea + '", id_disciplina = "' + idDisciplina + '"' +
     'WHERE id_area = ' + idArea;
@@ -47,6 +49,7 @@ areaConhecimento.prototype.updateAreaConhecimento = function(callback, idArea, n
     });
 }
 
+// modelo resposável por apagar uma área do conhecimento
 areaConhecimento.prototype.deleteAreaConhecimento = function(callback, idArea) {
     var sql = 'DELETE FROM area_conhecimento WHERE id_area = ' + idArea;
 
