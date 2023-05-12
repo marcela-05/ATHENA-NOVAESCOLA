@@ -48,6 +48,19 @@ alunos.prototype.updateAluno = function(callback, nomeAluno, serieAluno, idAluno
     });
 }
 
+alunos.prototype.deleteAluno = function(callback, idAluno) {
+    var sql = 'DELETE FROM aluno WHERE id_aluno = ' + idAluno;
+
+    // executa a consulta sql e retorna os dados na função callback, a qual será usada
+    // no controlador para mostrar os dados na página.
+    database.appDB.all(sql, [], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            }
+        callback({message: 'Aluno Excluído'})
+    });
+}
+
 module.exports = function(){
     return alunos;
 }

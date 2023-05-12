@@ -110,7 +110,7 @@ module.exports = function(application){
     });
 
     application.delete('/aluno/deletar', urlencodedParser, function(req, res){
-      application.src.controllers.areaConhecimentoControllers.deleta(
+      application.src.controllers.alunoControllers.deleta(
         application, req, res
       );
     });

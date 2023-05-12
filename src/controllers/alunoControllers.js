@@ -24,3 +24,12 @@ module.exports.atualiza = function(application, req, res) {
       res.json(result);
     }, req.body.nomeAluno, req.body.serieAluno, req.body.idAluno);
 }
+
+module.exports.deleta = function(application, req, res) {
+    // cria conexão com o modelo /src/models/alunoModels.js
+    var alunos = new application.src.models.alunoModels() 
+    // Esse controlador chama o modelo de deleção dos alunos
+    alunos.deleteAluno((result) => {
+      res.json(result);
+    }, req.query.idAluno);
+  }
