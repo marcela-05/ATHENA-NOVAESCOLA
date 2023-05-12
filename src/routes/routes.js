@@ -90,7 +90,7 @@ module.exports = function(application){
 
     // retorna controlador para listar professores
     application.get('/alunos', function(req, res){
-      application.src.controllers.areaConhecimentoControllers.listaAreaConhecimento(
+      application.src.controllers.alunoControllers.listaAlunos(
         application, req, res
       );
     });
