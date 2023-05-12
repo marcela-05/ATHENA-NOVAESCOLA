@@ -23,7 +23,7 @@ exports.listaTurmas = function(application, req, res) {
 module.exports.cadastra = function(application, req, res) {
     // cria conexão com o modelo /src/models/turmaModels.js
     var turmas = new application.src.models.turmaModels() 
-    // Esse controlador é responsável por chamar o modelo que cadastra a turma.
+    // Esse controlador é responsável por chamar o modelo que cadastra a turma
     // O modelo depende que o id do professor, o id da disciplina, o nome da Turma e a série
     // Sendo assim, esses dados são pegados do corpo da requisição e passados como argumentos.
     turmas.postTurma((result) => {

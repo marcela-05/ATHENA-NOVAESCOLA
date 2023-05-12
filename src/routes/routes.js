@@ -55,114 +55,119 @@ module.exports = function(application){
       );
     });
 
+    // retorna controlador para deletar professor
     application.delete('/professor/deletar', urlencodedParser, function(req, res){
       application.src.controllers.professorControllers.deleta(
         application, req, res
       );
     });
 
-    // retorna controlador para listar professores
+    // retorna controlador para listar área do conhecimento
     application.get('/areaConhecimento', function(req, res){
       application.src.controllers.areaConhecimentoControllers.listaAreaConhecimento(
         application, req, res
       );
     });
 
-    // retorna controlador para cadastrar professores
+    // retorna controlador para cadastrar área do conhecimento
     application.post('/areaConhecimento/cadastrar', urlencodedParser, function(req, res){
       application.src.controllers.areaConhecimentoControllers.cadastra(
         application, req, res
       );
     });
 
-    // retorna controlador para a atualização do professor
+    // retorna controlador para a atualização da área do conhecimento
     application.post('/areaConhecimento/atualizar', urlencodedParser, function(req, res){
       application.src.controllers.areaConhecimentoControllers.atualiza(
         application, req, res
       );
     });
 
+    // retorna controlador para deletar área do conhecimento
     application.delete('/areaConhecimento/deletar', urlencodedParser, function(req, res){
       application.src.controllers.areaConhecimentoControllers.deleta(
         application, req, res
       );
     });
 
-    // retorna controlador para listar professores
+    // retorna controlador para listar alunos
     application.get('/alunos', function(req, res){
       application.src.controllers.alunoControllers.listaAlunos(
         application, req, res
       );
     });
 
-    // retorna controlador para cadastrar professores
+    // retorna controlador para cadastrar aluno
     application.post('/aluno/cadastrar', urlencodedParser, function(req, res){
       application.src.controllers.alunoControllers.cadastra(
         application, req, res
       );
     });
 
-    // retorna controlador para a atualização do professor
+    // retorna controlador para a atualização do aluno
     application.post('/aluno/atualizar', urlencodedParser, function(req, res){
       application.src.controllers.alunoControllers.atualiza(
         application, req, res
       );
     });
 
+    // retorna controlador para deletar aluno
     application.delete('/aluno/deletar', urlencodedParser, function(req, res){
       application.src.controllers.alunoControllers.deleta(
         application, req, res
       );
     });
 
-    // retorna controlador para listar professores
+    // retorna controlador para listar avaliações
     application.get('/avaliacoes', function(req, res){
       application.src.controllers.avaliacaoControllers.listaAvaliacoes(
         application, req, res
       );
     });
 
-    // retorna controlador para cadastrar professores
+    // retorna controlador para cadastrar avaliação
     application.post('/avaliacao/cadastrar', urlencodedParser, function(req, res){
       application.src.controllers.avaliacaoControllers.cadastra(
         application, req, res
       );
     });
 
-    // retorna controlador para a atualização do professor
+    // retorna controlador para a atualização da avaliação
     application.post('/avaliacao/atualizar', urlencodedParser, function(req, res){
       application.src.controllers.avaliacaoControllers.atualiza(
         application, req, res
       );
     });
 
+    // retorna controlador para deletar avaliação
     application.delete('/avaliacao/deletar', urlencodedParser, function(req, res){
       application.src.controllers.avaliacaoControllers.deleta(
         application, req, res
       );
     });
 
-    // retorna controlador para listar professores
+    // retorna controlador para listar disciplinas
     application.get('/disciplinas', function(req, res){
       application.src.controllers.disciplinaControllers.listaDisciplinas(
         application, req, res
       );
     });
 
-    // retorna controlador para cadastrar professores
+    // retorna controlador para cadastrar disciplina
     application.post('/disciplina/cadastrar', urlencodedParser, function(req, res){
       application.src.controllers.disciplinaControllers.cadastra(
         application, req, res
       );
     });
 
-    // retorna controlador para a atualização do professor
+    // retorna controlador para a atualização da disciplina
     application.post('/disciplina/atualizar', urlencodedParser, function(req, res){
       application.src.controllers.disciplinaControllers.atualiza(
         application, req, res
       );
     });
 
+    // retorna controlador para deletar disciplina
     application.delete('/disciplina/deletar', urlencodedParser, function(req, res){
       application.src.controllers.disciplinaControllers.deleta(
         application, req, res

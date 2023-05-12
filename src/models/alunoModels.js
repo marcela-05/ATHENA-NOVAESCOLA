@@ -3,6 +3,7 @@ const database = require('../data/data')
 
 function alunos() {}
 
+// modelo responsável por listar alunos
 alunos.prototype.getAlunos = function(callback, idProf) {
     var sql = 'SELECT * FROM aluno WHERE id_professor = ' + idProf;
     
@@ -48,6 +49,7 @@ alunos.prototype.updateAluno = function(callback, nomeAluno, serieAluno, idAluno
     });
 }
 
+// modelo responsável por deletar um aluno
 alunos.prototype.deleteAluno = function(callback, idAluno) {
     var sql = 'DELETE FROM aluno WHERE id_aluno = ' + idAluno;
 

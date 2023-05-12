@@ -3,6 +3,7 @@ const database = require('../data/data')
 
 function avaliacoes() {}
 
+// modelo responsável por listar avaliações
 avaliacoes.prototype.getAvaliacoes = function(callback, idProf) {
     var sql = 'SELECT * FROM avaliacao WHERE id_professor = ' + idProf;
 
@@ -16,10 +17,10 @@ avaliacoes.prototype.getAvaliacoes = function(callback, idProf) {
     });
 }
 
-// modelo responsável por criar um professor
+// modelo responsável por criar uma avaliação
 avaliacoes.prototype.postAvaliacao = function(callback, nomeAvaliacao, dataAvaliacao, serieAvaliacao, idProfessor) {
 
-    // nesse ponto, o professor é criado com o nome, email e senha
+    // nesse ponto, o professor é criado com o nome, data e serie
     // passados via corpo da requisição
     var sql = 'INSERT INTO avaliacao (nome, data, serie, id_professor) VALUES ( "' + 
     nomeAvaliacao + '", "' + dataAvaliacao + '", "' + serieAvaliacao + '", "' + idProfessor + '");';
@@ -32,7 +33,8 @@ avaliacoes.prototype.postAvaliacao = function(callback, nomeAvaliacao, dataAvali
     });
 }
 
-avaliacoes.prototype.updateAvaliacao = function(callback, idAvaliacao, nomeAvaliacao, dataAvaliacao, serieAvaliacao) {
+avaliacoes.prototype.updateAvaliacao = function(callback, nomeAvaliacao, dataAvaliacao, serieAvaliacao, idAvaliacao) {
+    console.log("aqui")
     var sql = 'UPDATE avaliacao set nome = "' + nomeAvaliacao + '", data = "' + dataAvaliacao + '", serie = "' + serieAvaliacao + '"' +
     'WHERE id_avaliacao = ' + idAvaliacao;
 
@@ -46,6 +48,7 @@ avaliacoes.prototype.updateAvaliacao = function(callback, idAvaliacao, nomeAvali
     });
 }
 
+// modelo responsável por deletar uma avaliação
 avaliacoes.prototype.deleteAvaliacao = function(callback, idAvaliacao) {
     var sql = 'DELETE FROM avaliacao WHERE id_avaliacao = ' + idAvaliacao;
 
