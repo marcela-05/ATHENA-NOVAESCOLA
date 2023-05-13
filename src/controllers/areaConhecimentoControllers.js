@@ -1,6 +1,6 @@
 // nome do controlador vem depois do exports
 exports.listaAreaConhecimento = function(application, req, res) {
-    // cria conexão com o modelo /src/models/turmaModels.js
+    // cria conexão com o modelo /src/models/areaConhecimentoModels.js
     var areaConhecimento = new application.src.models.areaConhecimentoModels() 
     // esse controlador chama o modelo de listagem de área do conhecimento
     areaConhecimento.getAreaConhecimento((result) => {
@@ -9,7 +9,7 @@ exports.listaAreaConhecimento = function(application, req, res) {
 }
 
 module.exports.cadastra = function(application, req, res) {
-    // cria conexão com o modelo /src/models/professorModels.js
+    // cria conexão com o modelo /src/models/areaConhecimentoModels.js
     var areaConhecimento = new application.src.models.areaConhecimentoModels() 
     // Esse controlador é responsável por chamar o modelo que cadastra uma área do conhecimento
     areaConhecimento.postAreaConhecimento((result) => {
@@ -18,17 +18,17 @@ module.exports.cadastra = function(application, req, res) {
   }
 
   module.exports.atualiza = function(application, req, res) {
-    // cria conexão com o modelo /src/models/turmaModels.js
+    // cria conexão com o modelo /src/models/areaConhecimentoModels.js
     var areaConhecimento = new application.src.models.areaConhecimentoModels() 
     // Esse controlador é responsável por chamar o modelo que atualiza os dados da área do conhecimento.
-    // Como, por exemplo, o nome. Para isso, o id da turma e o nome da turma são passados como argumentos.
+    // Como, por exemplo, o nome. Para isso, os atributos dessa tabela são passados via POST.
     areaConhecimento.updateAreaConhecimento((result) => {
       res.json(result);
     }, req.query.idArea, req.body.nomeArea, req.body.idDisciplina);
   }
 
   module.exports.deleta = function(application, req, res) {
-    // cria conexão com o modelo /src/models/turmaModels.js
+    // cria conexão com o modelo /src/models/areaConhecimentoModels.js
     var areaConhecimento = new application.src.models.areaConhecimentoModels() 
     // Esse controlador chama o modelo de deleção das áreas de conhecimento
     areaConhecimento.deleteAreaConhecimento((result) => {
