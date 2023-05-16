@@ -1,6 +1,6 @@
 // nome do controlador vem depois do exports
 exports.listaProfessores = function(application, req, res) {
-    // cria conexão com o modelo /src/models/turmaModels.js
+    // cria conexão com o modelo /src/models/professorModels.js
     var professores = new application.src.models.professorModels() 
     // esse controlador chama o modelo de listagem de professores
     professores.getProfessores((result) => {
@@ -18,7 +18,7 @@ module.exports.cadastra = function(application, req, res) {
   }
 
   module.exports.atualiza = function(application, req, res) {
-    // cria conexão com o modelo /src/models/turmaModels.js
+    // cria conexão com o modelo /src/models/professorModels.js
     var professores = new application.src.models.professorModels() 
     // Esse controlador é responsável por chamar o modelo que atualiza os dados do professor
     // Como, por exemplo, o nome. Para isso, o id da turma e o nome da turma são passados como argumentos.
@@ -28,7 +28,7 @@ module.exports.cadastra = function(application, req, res) {
   }
 
   module.exports.deleta = function(application, req, res) {
-    // cria conexão com o modelo /src/models/turmaModels.js
+    // cria conexão com o modelo /src/models/professorModels.js
     var professores = new application.src.models.professorModels() 
     // Esse controlador chama o modelo de deleção do professor
     professores.deleteProfessor((result) => {
