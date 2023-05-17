@@ -174,10 +174,31 @@ module.exports = function(application){
       );
     });
 
+    // retorna controlador para listar blocos
+    application.get('/blocos', function(req, res){
+      application.src.controllers.blocoQuestaoControllers.listaBlocos(
+        application, req, res
+      );
+    });
 
-    
-    
+    // retorna controlador para cadastrar bloco
+    application.post('/bloco/cadastrar', urlencodedParser, function(req, res){
+      application.src.controllers.blocoQuestaoControllers.cadastra(
+        application, req, res
+      );
+    });
 
+    // retorna controlador para a atualização do bloco
+    application.post('/bloco/atualizar', urlencodedParser, function(req, res){
+      application.src.controllers.blocoQuestaoControllers.atualiza(
+        application, req, res
+      );
+    });
 
-
+    // retorna controlador para deletar bloco
+    application.delete('/bloco/deletar', urlencodedParser, function(req, res){
+      application.src.controllers.blocoQuestaoControllers.deleta(
+        application, req, res
+      );
+    });
   }
