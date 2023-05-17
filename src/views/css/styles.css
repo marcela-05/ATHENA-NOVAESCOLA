@@ -1,0 +1,18 @@
+@import url(/css/login.css);
+@import url(/css/reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+:root {
+    --fonte-principal: 'Work Sans', sans-serif;
+    --cor-de-fundo: #e8e8e8;
+    --azul: #444AC2; 
+    --cinza: #63666A;
+}
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-de-fundo);
+}
+
+
+
