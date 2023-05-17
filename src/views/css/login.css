@@ -8,7 +8,7 @@
   
 .conteudo_logo {
     margin-top: 2em;
-    width: 70%;
+    width: 20em;
     float: left;
 }
   
@@ -222,6 +222,9 @@ button:hover {
         box-shadow: -10px 10px 100px 0px #00000080;
         align-items: center;
         background-position: center;
+        position: relative;
+        box-sizing: border-box;
+        overflow: hidden;
     }
 
     .conteudo_esqueceu {
@@ -231,5 +234,11 @@ button:hover {
 
     .cadastro {
         margin-left: 2.5em;
+    }
+
+    .conteudo_inteli, .conteudo_novaescola {
+        max-width: 100%;
+        max-height: auto;
+        height: auto;
     }
 }
