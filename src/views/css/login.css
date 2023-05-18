@@ -2,16 +2,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: fit-content;
-    width: auto;
+    height: 92vh;
+    width: 92vw;
 }
-  
+
 .conteudo_logo {
     margin-top: 2em;
-    width: 20em;
+    width: 70%;
     float: left;
 }
-  
+
 .conteudo_titulo {
     font-size: 3.5em;
     text-align: left;
@@ -20,10 +20,10 @@
     margin-top: 0.5em;
     margin-right: 3.4em;
 }
-  
+
 .conteudo_input {
-   float: left;
-   margin-left: .6em;
+    float: left;
+    margin-left: .6em;
 }
 
 .input-container {
@@ -32,7 +32,7 @@
     width: 330px;
     margin-bottom: 1em;
 }
-  
+
 .input-container input[type="text"] {
     font-size: 20px;
     width: 100%;
@@ -42,7 +42,7 @@
     background-color: transparent;
     outline: none;
 }
-  
+
 .input-container .label {
     position: absolute;
     top: 0;
@@ -51,14 +51,14 @@
     transition: all 0.3s ease;
     pointer-events: none;
 }
-  
-.input-container input[type="text"]:focus ~ .label,
-.input-container input[type="text"]:valid ~ .label {
+
+.input-container input[type="text"]:focus~.label,
+.input-container input[type="text"]:valid~.label {
     top: -20px;
     font-size: 16px;
     color: var(--azul);
 }
-  
+
 .input-container .underline {
     position: absolute;
     bottom: 0;
@@ -69,9 +69,9 @@
     transform: scaleX(0);
     transition: all 0.3s ease;
 }
-  
-.input-container input[type="text"]:focus ~ .underline,
-.input-container input[type="text"]:valid ~ .underline {
+
+.input-container input[type="text"]:focus~.underline,
+.input-container input[type="text"]:valid~.underline {
     transform: scaleX(1);
 }
 
@@ -83,54 +83,48 @@
 
 .sei_la {
     position: relative;
-    height: 55vh; 
+    height: 55vh;
 }
 
 .button-28 {
-  appearance: none;
-  background-color: white;
-  border: 2px solid #1A1A1A;
-  border-radius: 15px;
-  box-sizing: border-box;
-  color: #3B3B3B;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 14px;
-  font-weight: 600;
-  line-height: normal;
-  margin: 0;
-  min-height: 60px;
-  min-width: 0;
-  outline: none;
-  padding: 8px 8px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 30%;
-  will-change: transform;
-  position: absolute;
-  left: 34%;
-  margin-bottom: 5em;
+    appearance: none;
+    background-color: white;
+    border: 2px solid #1A1A1A;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #3B3B3B;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 56px;
+    min-width: 96px;
+    outline: none;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
 }
 
 .button-28:disabled {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 .button-28:hover {
-  color: white;
-  background-color: var(--azul);
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
+    color: white;
+    background-color: var(--azul);
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
 }
 
 .button-28:active {
-  box-shadow: none;
-  transform: translateY(0);
+    box-shadow: none;
+    transform: translateY(0);
 }
 
 button {
@@ -151,22 +145,19 @@ button {
     background-color: #fff;
     cursor: pointer;
     transition: all .6s ease;
-    margin-top: 6em;
-    margin-left: 15%;
 }
-  
+
 .button svg {
-    height: 24px;   
+    height: 24px;
 }
-  
+
 button:hover {
     transform: scale(1.02);
 }
 
 .cadastro {
     margin-top: 2em;
-    margin-left: 1.5em;
-    margin-left: 2.2em;
+    margin-left: 1000em;
 }
 
 .criar_conta {
@@ -186,7 +177,7 @@ button:hover {
     height: auto;
 }
 
-@media screen and (min-width: 810px) {
+@media screen and (min-width: 768px) {
     .conteudo {
         align-items: center;
     }
@@ -194,7 +185,7 @@ button:hover {
     .conteudo_titulo {
         margin-right: auto;
     }
-    
+
     .conteudo_esqueceu {
         margin-right: 11.7em;
     }
@@ -212,33 +203,167 @@ button:hover {
 
     .conteudo_titulo {
         margin-right: auto;
+        font-size: 2vw;
     }
 
     .conteudo {
-        background-image: url(/assets/athena\ background.png);
+        background-image: url(../assets/athena\ background.png);
         background-repeat: no-repeat;
         background-color: white;
-        margin: 3em 5em 3em 5em;
+        background-size: 128vh;
+        margin: 4vh 0 0 4vw;
         box-shadow: -10px 10px 100px 0px #00000080;
         align-items: center;
         background-position: center;
-        position: relative;
-        box-sizing: border-box;
-        overflow: hidden;
     }
 
     .conteudo_esqueceu {
         float: left;
-        margin-right: 11.7em;
+        margin-left: 0.4vw;
+        font-size: 1vw;
     }
 
     .cadastro {
-        margin-left: 2.5em;
+        margin-left: 7vw;
     }
 
-    .conteudo_inteli, .conteudo_novaescola {
-        max-width: 100%;
-        max-height: auto;
+    .conteiner_login {
+        margin-top: 1vh;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        height: 90vh;
+        width: 30vw;
+    }
+
+    .conteudo_input {
+        float: left;
+        margin-left: .6em;
+        
+    }
+
+    .input-container {
+        position: relative;
+        margin: 3vw auto;
+        width: 20vw;
         height: auto;
+        margin-bottom: 0.3vw;
+    }
+
+    .input-container input[type="text"] {
+        font-size: 1.55vw;
+        width: 100%;
+        border: none;
+        border-bottom: 0.1em solid black;
+        padding: 0.4vw 0;
+        background-color: transparent;
+        outline: none;
+    }
+
+    .input-container .label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: black;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        font-size: 1vw;
+    }
+
+    .input-container input[type="text"]:focus~.label,
+    .input-container input[type="text"]:valid~.label {
+        top: -20px;
+        font-size: 1.1vw;
+        color: var(--azul);
+    }
+
+    .input-container .underline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 0.2vw;
+        width: 100%;
+        background-color: var(--azul);
+        transform: scaleX(0);
+        transition: all 0.3s ease;
+    }
+    .sei_la {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        height: 60vw;
+        width: 18vw;
+        background-color: #1A1A1A;
+    }
+
+    .button-28 {
+        font-size: 1vw;
+        padding: 0px 0px;
+        margin-bottom: 4vw;
+        height: 3.8vw;
+        width: 13vw;
+        max-width: none;
+        border-radius: 1vw;
+    }
+
+    .button-28:disabled {
+        pointer-events: none;
+    }
+
+    .button-28:hover {
+        color: white;
+        background-color: var(--azul);
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-0.3vw);
+    }
+
+    .button-28:active {
+        box-shadow: none;
+    }
+    button {
+        font-size: 1vw;
+        line-height: 1.25rem;
+        font-weight: 700;
+        width: 18vw;
+        height: 3vw;
+        max-width: none;
+        max-height: none;
+        border-radius: 0.5vw;
+        gap: 0.8vw;
+        padding: 0.4rem  1.3vw;
+    }
+    
+    .button svg {
+        height: 1.8vw;
+        ;
+    }
+    
+    button:hover {
+        transform: scale(1.02);
+    }
+
+    .cadastro {
+        margin-top: 1vw;
+        margin-left: 0;
+        font-size: 1vw;
+    }
+    
+    .imagens {
+        display: flex;
+        margin-top: 0;
+    }
+
+    .conteudo_inteli {
+        position: relative;
+        left: 30vw;
+        width: 18vw;
+        height: 8vw;
+    }
+
+    .conteudo_novaEscola {
+        position: relative;
+        right: 28vw;
+        width: 15vw;
+        height: 9vw;
     }
 }
