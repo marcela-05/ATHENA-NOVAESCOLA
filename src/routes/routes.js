@@ -201,4 +201,18 @@ module.exports = function(application){
         application, req, res
       );
     });
+
+    // retorna controlador para listar notas
+    application.get('/notas', function(req, res){
+      application.src.controllers.notaControllers.listaNotas(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para cadastrar nota
+    application.post('/nota/cadastrar', urlencodedParser, function(req, res){
+      application.src.controllers.notaControllers.cadastra(
+        application, req, res
+      );
+    });
   }
