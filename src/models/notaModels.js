@@ -27,8 +27,34 @@ notas.prototype.getNotas = function(callback, idAluno) {
 // modelo responsável por criar uma nova nota
 notas.prototype.postNota = function(callback, idAluno, idAvaliacao, numBlocos, notaAcertos) {
     var sql = 'INSERT INTO nota (id_aluno, id_avaliacao, num_bloco, nota_acertos, data) VALUES (?,?,?,?,?)';
-    let data = new Date().toLocaleDateString('pt-BR')
+    let data = new Date().toLocaleDateString('pt-BR') // data atual
     database.appDB.run(sql, [idAluno, idAvaliacao, numBlocos, notaAcertos, data], (err) => {
+        if(err){
+            console.error(err.message);
+            callback(err.message)
+        } else{
+            callback()
+        }
+    });
+}
+
+// modelo responsável por atualizar uma nota
+notas.prototype.updateNota = function(callback, idAluno, idAvaliacao, numBlocos, notaAcertos) {
+    var sql = 'UPDATE nota SET nota_acertos = ? WHERE id_aluno = ? AND id_avaliacao = ? AND num_bloco = ?';
+    database.appDB.run(sql, [notaAcertos, idAluno, idAvaliacao, numBlocos], (err) => {
+        if(err){
+            console.error(err.message);
+            callback(err.message)
+        } else{
+            callback()
+        }
+    });
+}
+
+// modelo responsável por deletar uma nota
+notas.prototype.deleteNota = function(callback, idAluno, idAvaliacao, numBlocos) {
+    var sql = 'DELETE FROM nota WHERE id_aluno = ? AND id_avaliacao = ? AND num_bloco = ?';
+    database.appDB.run(sql, [idAluno, idAvaliacao, numBlocos], (err) => {
         if(err){
             console.error(err.message);
             callback(err.message)
