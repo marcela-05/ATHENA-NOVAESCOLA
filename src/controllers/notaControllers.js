@@ -138,7 +138,7 @@ exports.deleta = function(application, req, res) {
             req.query.numBloco = parseInt(req.query.numBloco)
             // verifica se o número de blocos é um número, se não for, retorna mensagem de erro
             if(isNaN(req.query.numBloco)){
-                res.json({message: 'número de blocos inválido'})
+                res.status(406).json({message: 'número de blocos inválido'})
             } else {
                 // chama o modelo que deleta a nota
                 notas.deleteNota((result) => {

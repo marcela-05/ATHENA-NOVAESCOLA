@@ -1,3 +1,7 @@
+body {
+    background-color: #FFFFFF;
+}
+
 .conteudo {
     display: flex;
     flex-direction: column;
@@ -18,7 +22,7 @@
     margin-left: 0.2em;
     margin-bottom: 0.3em;
     margin-top: 0.5em;
-    margin-right: 3.4em;
+    margin-right: auto;
 }
 
 .conteudo_input {
@@ -78,89 +82,11 @@
 .conteudo_esqueceu {
     float: left;
     margin-bottom: 2.5em;
-    margin-right: 11em
 }
 
 .sei_la {
     position: relative;
     height: 55vh;
-}
-
-.button-28 {
-    appearance: none;
-    background-color: white;
-    border: 2px solid #1A1A1A;
-    border-radius: 15px;
-    box-sizing: border-box;
-    color: #3B3B3B;
-    cursor: pointer;
-    display: inline-block;
-    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    font-weight: 600;
-    line-height: normal;
-    margin: 0;
-    min-height: 60px;
-    min-width: 0;
-    outline: none;
-    padding: 8px 8px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    width: 30%;
-    will-change: transform;
-    position: absolute;
-    left: 34%;
-    margin-bottom: 5em;
-}
-
-.button-28:disabled {
-    pointer-events: none;
-}
-
-.button-28:hover {
-    color: white;
-    background-color: var(--azul);
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    transform: translateY(-2px);
-}
-
-.button-28:active {
-    box-shadow: none;
-    transform: translateY(0);
-}
-
-button {
-    max-width: 320px;
-    display: flex;
-    padding: 0.5rem 1.4rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: 700;
-    text-align: center;
-    text-transform: uppercase;
-    vertical-align: middle;
-    align-items: center;
-    border-radius: 0.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    gap: 0.75rem;
-    color: rgb(65, 63, 63);
-    background-color: #fff;
-    cursor: pointer;
-    transition: all .6s ease;
-    margin-top: 6em;
-    margin-left: 15%;
-}
-
-.button svg {
-    height: 24px;
-}
-
-button:hover {
-    transform: scale(1.02);
 }
 
 .cadastro {
@@ -186,6 +112,60 @@ button:hover {
     height: auto;
 }
 
+.conteiner_login {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.imagens {
+    display: flex;
+    margin-top: 5rem;
+}
+
+.botao-entrar {
+    background: #444AC2;
+    outline: none;
+    border: none;
+    color: #FFFFFF;
+    width: 50%;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    height: 43px;
+    transition: all ease .4s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.botao-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 35px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    margin-top: 2rem;
+    background-color: transparent;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.botao-entrar:hover, .botao-google:hover {
+    cursor: pointer;
+}
+
+.botao-entrar:hover {
+    padding: .5rem;
+    background-color: #545ceb;
+}
+
+.svg-google {
+    width: 20px;
+    margin-right: .5rem;
+}
+
 @media screen and (min-width: 768px) {
     .conteudo {
         align-items: center;
@@ -195,9 +175,6 @@ button:hover {
         margin-right: auto;
     }
 
-    .conteudo_esqueceu {
-        margin-right: 11.7em;
-    }
 
     .cadastro {
         margin-left: 2.5em;
@@ -213,7 +190,16 @@ button:hover {
 
     .conteudo_titulo {
         margin-right: auto;
-        font-size: 2vw;
+    }
+
+    .botao-entrar {
+        width: 55%;
+        height: 35px;
+    }
+    
+    .botao-google {
+        width: 55%;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
     .conteudo {
@@ -224,6 +210,7 @@ button:hover {
         margin: 4vh 0 0 4vw;
         box-shadow: -10px 10px 100px 0px #00000080;
         align-items: center;
+        justify-content: center;
         background-position: center;
         height: 92vh;
         width: 92vw;
@@ -231,8 +218,8 @@ button:hover {
 
     .conteudo_esqueceu {
         float: left;
-        margin-left: 0.4vw;
-        font-size: 1vw;
+        font-size: .5rem;
+        margin-top: 1rem;
     }
 
     .cadastro {
@@ -246,12 +233,11 @@ button:hover {
         align-items: center;
         height: 90vh;
         width: 30vw;
+        justify-content: center;
     }
 
     .conteudo_input {
-        float: left;
-        margin-left: .6em;
-
+        margin-left: 0rem;
     }
 
     .input-container {
@@ -309,59 +295,6 @@ button:hover {
         background-color: #1A1A1A;
     }
 
-    .button-28 {
-        position: relative;
-        left: 0;
-        font-size: 1vw;
-        padding: 0px 0px;
-        text-align: center;
-        margin-bottom: 4vw;
-        height: 3.8vw;
-        width: 13vw;
-        max-width: none;
-        border-radius: 1vw;
-        min-height: 56px;
-        min-width: 96px;
-    }
-
-    .button-28:disabled {
-        pointer-events: none;
-    }
-
-    .button-28:hover {
-        color: white;
-        background-color: var(--azul);
-        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-        transform: translateY(-0.3vw);
-    }
-
-    .button-28:active {
-        box-shadow: none;
-    }
-
-    button {
-        font-size: 1vw;
-        line-height: 1.25rem;
-        font-weight: 700;
-        width: 18vw;
-        height: 3vw;
-        max-width: none;
-        max-height: none;
-        border-radius: 0.5vw;
-        gap: 0.8vw;
-        padding: 0.4rem 1.3vw;
-        margin-top: 0;
-        margin-left: 0;
-    }
-
-    .button svg {
-        height: 1.8vw;
-        ;
-    }
-
-    button:hover {
-        transform: scale(1.02);
-    }
 
     .cadastro {
         margin-top: 1vw;
