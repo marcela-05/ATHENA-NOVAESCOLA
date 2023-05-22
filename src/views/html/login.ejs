@@ -10,14 +10,16 @@
 </head>
 
 <body>
-    <section class="conteudo">
-        <img class="conteudo_logo" src="../assets/athena logo.png" alt="Logo da Athena">
+    <main class="conteudo">
+        <figure>
+            <img class="conteudo_logo" src="../assets/athena logo.png" alt="Logo da Athena">
+        </figure>
 
-        <div class="conteiner_login">
-            <div>
-                <h1 class="conteudo_titulo">Login</h1>
-            </div>
-            <div class="conteudo_input">
+        <section class="conteiner_login">
+            
+            <h1 class="conteudo_titulo">Login</h1>
+            
+            <form class="conteudo_input">
                 <div class="input-container">
                     <input type="text" id="input-email" required="">
                     <label for="input-email" class="label">Email</label>
@@ -28,9 +30,12 @@
                     <label for="input-senha" class="label">Senha</label>
                     <div class="underline"></div>
                 </div>
-            </div>
+            </form>
+
             <a class="conteudo_esqueceu" href="#">Esqueceu a senha</a>
+
             <button class="botao-entrar">Entrar</button>
+
             <button class="botao-google">
                 <svg class="svg-google" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 256 262">
                     <path fill="#4285F4"
@@ -49,12 +54,12 @@
                 Entrar com o Google
             </button>
             <p class="cadastro">Não tem login? <a href="#"> Cadastre-se!</a></p>
-        </div>
-        <div class="imagens">
+        </section>
+        <article class="imagens">
             <img class="conteudo_novaEscola" src="../assets/nova escola logo.png" alt="Logo da Nova Escola">
             <img class="conteudo_inteli" src="../assets/inteli logo.png" alt="Logo do Inteli">
-        </div>
-    </section>
+        </article>
+    </main>
 </body>
 
 </html>
