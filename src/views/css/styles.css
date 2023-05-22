@@ -4,12 +4,40 @@
 
 :root {
     --fonte-principal: 'Work Sans', sans-serif;
-    --cor-de-fundo: #e8e8e8;
+    --fonte-secundaria: 'Lora', serif;
+    --athena-col-primaria: #0A7585;
+    --athena-bg-primaria: #0A7585;
+    --athena-col-secundaria: #12AFC0;
+    --athena-bg-secundaria: #12AFC0;
+    --athena-col-terciaria: #71CFCE;
+    --athena-bg-terciaria: #71CFCE;
+    --athena-col-nova1: #E32459;
+    --athena-bg-nova1: #E32459;
+    --athena-col-nova2: #960840;
+    --athena-bg-nova2: #960840;
+    --athena-col-link: #32378F;
+    --athena-bg-link: #32378F;
+    --athena-col-success: #068A13;
+    --athena-bg-success: #068A13;
+    --athena-col-error: #DA2A20;
+    --athena-bg-error: #DA2A20;
+    --athena-col-alert: #F1AF43;
+    --athena-bg-alert: #F1AF43;
+    --athena-col-cinza-700: #282828;
+    --athena-bg-cinza-700: #282828;
+    --athena-col-dracula-4: #2D3436;
+    --athena-bg-dracula-4: #2D3436;
+    --athena-col-cinza-3: #9CA7AC;
+    --athena-bg-cinza-3: #9CA7AC;
+    --athena-col-cinza-4: #B2BEC3;
+    --athena-bg-cinza-4: #B2BEC3;
+    --athena-bg: #e8e8e8;
     --azul: #444AC2; 
     --cinza: #63666A;
 }
 
 body {
+    font-size: 18px;
     font-family: var(--fonte-principal);
     background-color: #FFFF;
 }

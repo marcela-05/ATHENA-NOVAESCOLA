@@ -17,24 +17,28 @@
 
         <section class="conteiner_login">
             
-            <h1 class="conteudo_titulo">Login</h1>
+            <article>
+                <h1 class="conteudo_titulo">Login</h1>
+            </article>
             
-            <form class="conteudo_input">
-                <div class="input-container">
-                    <input type="text" id="input-email" required="">
-                    <label for="input-email" class="label">Email</label>
-                    <div class="underline"></div>
-                </div>
-                <div class="input-container">
-                    <input type="text" id="input-senha" required="">
-                    <label for="input-senha" class="label">Senha</label>
-                    <div class="underline"></div>
-                </div>
+            <!-- Início - Formulário de login -->
+            <form class="conteiner_login_form" method="post" action="" enctype="multipart/form-data">
+                <fieldset class="conteudo_input">
+                    <legend>Seção para inserir email e senha</legend>
+                    <div class="input-container">
+                        <input type="email" id="input-email" placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="email inválido" required="">
+                        <label for="input-email" class="label">Email</label>
+                        <div class="underline"></div>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" id="input-senha" required="">
+                        <label for="input-senha" class="label">Senha</label>
+                        <div class="underline"></div>
+                    </div>
+                </fieldset>
+                <button type="submit" class="botao-entrar">Entrar</button>
             </form>
-
-            <a class="conteudo_esqueceu" href="#">Esqueceu a senha</a>
-
-            <button class="botao-entrar">Entrar</button>
+            <!-- Fim - Formulário de login -->
 
             <button class="botao-google">
                 <svg class="svg-google" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 256 262">
@@ -53,11 +57,19 @@
                 </svg>
                 Entrar com o Google
             </button>
+
+            <a class="conteudo_esqueceu" href="#">Esqueceu a senha</a>
+
             <p class="cadastro">Não tem login? <a href="#"> Cadastre-se!</a></p>
         </section>
         <article class="imagens">
-            <img class="conteudo_novaEscola" src="../assets/nova escola logo.png" alt="Logo da Nova Escola">
-            <img class="conteudo_inteli" src="../assets/inteli logo.png" alt="Logo do Inteli">
+            <figure>
+                <img class="conteudo_novaEscola" src="../assets/nova escola logo.png" alt="Logo da Nova Escola">
+            </figure>
+           
+            <figure>
+                <img class="conteudo_inteli" src="../assets/inteli logo.png" alt="Logo do Inteli">
+            </figure>
         </article>
     </main>
 </body>
