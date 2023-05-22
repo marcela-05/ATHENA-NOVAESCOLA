@@ -215,4 +215,18 @@ module.exports = function(application){
         application, req, res
       );
     });
+
+    // retorna controlador para a atualização da nota
+    application.post('/nota/atualizar', urlencodedParser, function(req, res){
+      application.src.controllers.notaControllers.atualiza(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para deletar nota
+    application.delete('/nota/deletar', urlencodedParser, function(req, res){
+      application.src.controllers.notaControllers.deleta(
+        application, req, res
+      );
+    });
   }
