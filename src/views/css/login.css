@@ -1,5 +1,9 @@
 body {
-    background-color: #FFFFFF;
+    background-color: var(--athena-bg);
+}
+
+a {
+    color: var(--athena-col-link);
 }
 
 legend {
@@ -73,13 +77,13 @@ legend {
 .input-container input[type="password"]:valid~.label {
     top: -20px;
     font-size: .8em;
-    color: var(--azul);
+    color: var(--athena-col-link);
 }
 
 .input-container input[type="email"]:not(:placeholder-shown) ~ .label {
     top: -20px;
     font-size: .8em;
-    color: var(--azul);
+    color: var(--athena-col-link);
 }
 
 .input-container .underline {
@@ -88,7 +92,7 @@ legend {
     left: 0;
     height: 2px;
     width: 100%;
-    background-color: var(--azul);
+    background-color: var(--athena-col-link);
     transform: scaleX(0);
     transition: all 0.3s ease;
 }
@@ -111,8 +115,6 @@ legend {
 
 .cadastro {
     margin-top: 2em;
-    margin-left: 1.5em;
-    margin-left: 2.2em;
 }
 
 .criar_conta {
@@ -129,7 +131,7 @@ legend {
 }
 
 .conteudo_inteli {
-    height: auto;
+    width: 185px;
 }
 
 .conteiner_login {
@@ -147,7 +149,7 @@ legend {
 }
 
 .botao-entrar {
-    background: #444AC2;
+    background: var(--athena-bg-link);
     outline: none;
     border: none;
     color: #FFFFFF;
@@ -195,11 +197,6 @@ legend {
     .conteudo_titulo {
         margin-right: auto;
     }
-
-
-    .cadastro {
-        margin-left: 2.5em;
-    }
 }
 
 
@@ -240,10 +237,6 @@ legend {
     .conteudo_esqueceu {
         float: left;
         font-size: .5rem;
-    }
-
-    .cadastro {
-        margin-left: 7vw;
     }
 
     .conteiner_login {
@@ -294,24 +287,13 @@ legend {
         left: 0;
         height: 0.2vw;
         width: 100%;
-        background-color: var(--azul);
+        background-color: var(--athena-col-link);
         transform: scaleX(0);
         transition: all 0.3s ease;
     }
 
-    .sei_la {
-        flex-direction: column;
-        display: flex;
-        align-items: center;
-        height: 60vw;
-        width: 18vw;
-        background-color: #1A1A1A;
-    }
-
-
     .cadastro {
         margin-top: 1vw;
-        margin-left: 0;
         font-size: 1vw;
     }
 
@@ -322,7 +304,7 @@ legend {
 
     .conteudo_inteli {
         position: relative;
-        left: 30vw;
+        left: 29vw;
         width: 18vw;
         height: 8vw;
     }
