@@ -8,7 +8,7 @@ app.set('views', './src/views/');
 app.use(express.static('./src/views/'));
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('html/login.ejs');
 });
 
 consign()

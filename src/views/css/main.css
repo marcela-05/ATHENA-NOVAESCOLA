@@ -38,7 +38,7 @@
     align-items: center;
 }
 
-.analises h3 {
+.analises h3, .avaliacoes h3 {
     font-weight: bold;
     margin-bottom: 1em;
 }
@@ -61,15 +61,15 @@
     display:inline-block;
     color:#000;
     font-weight: bold;
-    border-radius:3px 3px 0px 0px;
+    border-radius:4px 3px 4px 4px;
+    margin-left: .5%;
     box-shadow: 0 0.5rem 0.8rem #00000080;
     border-top: 3px solid var(--athena-col-dracula-4);
     width: 50%;
   }
   .conteudos{
-    background:#D9D9D9;
+    background:#f3f2f2;
     color: #000;
-    box-shadow: 0 .8rem .8rem #00000080;
     min-height: 13em;
     border-radius:3px;
     overflow:hidden;
@@ -79,7 +79,7 @@
   }
   .conteudo_tab{
     display:none;
-    animation: fadein .8s;
+    animation: fadein 1s;
   }
   .title{
     font-weight: bold;
@@ -122,4 +122,137 @@
     border-color: var(--athena-col-primaria);
   }
 
-    
+.avaliacoes {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--athena-col-nova1);
+  padding:20px 50px;
+  color: #E9E9E9;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_avaliacao{
+  border-radius: 8px;
+  box-sizing: border-box;
+  border: 1px solid #a6a9ad;
+  position: relative;
+  transition: .3s ease;
+  background-color: #fff;
+  margin-bottom: 2em;
+}
+
+.card_avaliacao_tag {
+  color: #282828;
+  background: #fff;
+  border-radius: 12px;
+  font-size: 14px;
+  padding: 5px 10px;
+  line-height: 16px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 2;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card_avaliacao_img{
+  border-radius: 8px 8px 0 0;
+  height: 150px;
+  position: relative;
+}
+
+.card_avaliacao_bg{
+  background-color: rgba(0,0,0,.2);
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
+.card_img{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
+.card_avaliacao_info{
+  padding: 20px;
+  color: #000;
+}
+
+.card_txt{
+  font-size: 14px;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 42px;
+  max-width: 100%;
+  -webkit-line-clamp: 2;
+}
+
+@media screen and (min-width: 768px) {
+  .conteudo_tab .botao-entrar{
+    margin-top: 2em;
+    width: 20%;
+  }
+
+  .avaliacoes_cards{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .card_avaliacao{
+    width: 100%;
+    margin: .5em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .banner article{
+    width: 500px;
+  }
+
+  .analises {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .tabs{
+    width: 40%;
+    text-align: center;
+  }
+
+  .conteudos {
+    padding: 30px 60px;
+    min-height: 200px;
+  }
+
+  .conteudo_tab p{
+    text-align: center;
+  }
+
+  .conteudo_tab .botao-entrar{
+    margin-top: 2em;
+    width: 20%;
+  }
+
+  .avaliacoes_cards{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .card_avaliacao{
+    width: 30%;
+    margin: 1em;
+  }
+}
