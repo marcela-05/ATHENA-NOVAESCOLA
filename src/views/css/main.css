@@ -110,13 +110,13 @@
     border-top: 3px solid --athena-col-dracula-4;
   }
 
-  .botao-entrar{
+  .conteudo_tab .botao-entrar{
     background-color: transparent;
     color: #000;
     border-color: var(--athena-col-terciaria);
   }
 
-  .botao-entrar:hover{
+  .conteudo_tab .botao-entrar:hover{
     background-color: var(--athena-bg-terciaria);
     color: #000;
     border-color: var(--athena-col-primaria);
