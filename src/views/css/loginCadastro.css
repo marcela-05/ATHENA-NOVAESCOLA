@@ -17,22 +17,18 @@ legend {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: fit-content;
-    width: auto;
 }
 
 .conteudo_logo {
     margin-top: 2em;
+    margin-bottom: -1em;
     width: 20em;
     float: left;
 }
 
-.conteudo_titulo {
-    font-size: 3.5em;
-    text-align: left;
-    margin-bottom: 0.3em;
-    margin-top: 0.5em;
-    margin-right: auto;
+.conteudo_titulo{
+    text-align: center;
+    margin-bottom: -1.2em;
 }
 
 .conteudo_input {
@@ -40,7 +36,7 @@ legend {
     margin-left: .6em;
 }
 
-.conteiner_login_form {
+.conteiner_login_form, .conteiner_cadastro_form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,7 +50,7 @@ legend {
     margin-bottom: 1em;
 }
 
-.input-container input[type="password"], .input-container input[type="email"] {
+.input-container input {
     font-size: 1em;
     width: 100%;
     border: none;
@@ -74,7 +70,8 @@ legend {
 }
 
 .input-container input[type="password"]:focus~.label, .input-container input[type="email"]:focus~.label,
-.input-container input[type="password"]:valid~.label {
+.input-container input[type="password"]:valid~.label, .input-container input[type="text"]:valid~.label,
+.input-container input[type="text"]:focus~.label {
     top: -20px;
     font-size: .8em;
     color: var(--athena-col-link);
@@ -98,6 +95,7 @@ legend {
 }
 
 .input-container input[type="password"]:focus~.underline, .input-container input[type="email"]:focus~.underline,
+.input-container input[type="text"]:focus~.underline, .input-container input[type="text"]:valid~.underline,
 .input-container input[type="password"]:valid~.underline, .input-container input[type="email"]:valid~.underline {
     transform: scaleX(1);
 }
@@ -106,23 +104,6 @@ legend {
     float: left;
     margin-bottom: 2.5em;
     margin-top: 1rem;
-}
-
-.sei_la {
-    position: relative;
-    height: 55vh;
-}
-
-.cadastro {
-    margin-top: 2em;
-}
-
-.criar_conta {
-    margin-top: 2em;
-}
-
-.criar_conta:hover {
-    background-color: var(--cinza);
 }
 
 .imagens {
@@ -142,13 +123,12 @@ legend {
     align-items: center;
 }
 
-
 .imagens {
     display: flex;
     margin-top: 5rem;
 }
 
-.botao-entrar {
+.botao_entrar {
     background: var(--athena-bg-link);
     outline: none;
     border: none;
@@ -175,11 +155,11 @@ legend {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.botao-entrar:hover, .botao-google:hover {
+.botao_entrar:hover, .botao-google:hover {
     cursor: pointer;
 }
 
-.botao-entrar:hover {
+.botao_entrar:hover {
     padding: .5rem;
     background-color: #545ceb;
 }
@@ -193,12 +173,7 @@ legend {
     .conteudo {
         align-items: center;
     }
-
-    .conteudo_titulo {
-        margin-right: auto;
-    }
 }
-
 
 @media screen and (min-width: 1024px) {
     .conteudo_logo {
@@ -206,17 +181,13 @@ legend {
         width: 70%;
     }
 
-    .conteudo_titulo {
-        margin-right: auto;
-    }
-
-    .botao-entrar {
-        width: 15vw;
-        height: 5.2vh;
+    .botao_entrar {
+        width: 60%;
+        height: 35px;
     }
     
     .botao-google {
-        width: 50%;
+        width: 60%;
         box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
@@ -225,48 +196,31 @@ legend {
         background-repeat: no-repeat;
         background-color: white;
         background-size: 128vh;
-        margin: 4vh 0 0 4vw;
         box-shadow: -10px 10px 100px 0px #00000080;
         align-items: center;
         justify-content: center;
         background-position: center;
-        height: 92vh;
-        width: 92vw;
+        margin: 2rem;
+        min-height: 90vh;
     }
 
     .conteudo_esqueceu {
         float: left;
-        font-size: .5rem;
+        font-size: .7em;
     }
 
-    .conteiner_login {
-        margin-top: 1vh;
+    .conteiner_login, .conteiner_cadastro {
         flex-direction: column;
         display: flex;
         align-items: center;
-        height: 90vh;
-        width: 30vw;
         justify-content: center;
     }
 
-    .conteudo_input {
-        margin-left: 0rem;
-    }
-
-    .input-container {
-        position: relative;
-        margin: 3vw auto;
-        width: 20vw;
-        height: auto;
-        margin-bottom: 0.3vw;
-    }
-
-    .input-container input[type="password"], .input-container input[type="email"] {
+    .input-container input[type="password"], .input-container input[type="email"], .input-container input[type="text"] {
         font-size: 1em;
         width: 100%;
         border: none;
         border-bottom: 0.1em solid black;
-        padding: 0.4vw 0;
         background-color: transparent;
         outline: none;
     }
@@ -278,41 +232,23 @@ legend {
         color: black;
         transition: all 0.3s ease;
         pointer-events: none;
-        font-size: 1vw;
+        font-size: 0.8em;
     }
 
     .input-container .underline {
         position: absolute;
         bottom: 0;
         left: 0;
-        height: 0.2vw;
         width: 100%;
         background-color: var(--athena-col-link);
         transform: scaleX(0);
         transition: all 0.3s ease;
     }
 
-    .cadastro {
-        margin-top: 1vw;
-        font-size: 1vw;
-    }
-
     .imagens {
         display: flex;
-        margin-top: 0;
-    }
-
-    .conteudo_inteli {
-        position: relative;
-        left: 29vw;
-        width: 18vw;
-        height: 8vw;
-    }
-
-    .conteudo_novaEscola {
-        position: relative;
-        right: 28vw;
-        width: 15vw;
-        height: 9vw;
+        margin-top: 0em;
+        justify-content: space-between;
+        width: 90%;
     }
 }
