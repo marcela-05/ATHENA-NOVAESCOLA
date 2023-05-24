@@ -159,7 +159,7 @@ legend {
     height: 43px;
     margin-top: 1.3rem;
     transition: all ease .4s;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .botao-google {
@@ -211,8 +211,8 @@ legend {
     }
 
     .botao-entrar {
-        width: 70%;
-        height: 35px;
+        width: 15vw;
+        height: 5.2vh;
     }
     
     .botao-google {
