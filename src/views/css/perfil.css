@@ -56,7 +56,7 @@ hr {
     height: 40px;
     width: 172px;
     border: none;
-    background: #FF2849;
+    background: var(--athena-col-primaria);
     border-radius: 20px;
     cursor: pointer;
     margin-left: -64px;
@@ -237,16 +237,22 @@ hr {
 
     .conteudo_ajuste {
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
+        transform: translate(30px);
     }
+
+    .conteudo_sua_foto{
+        transform: translate(0, 1em);
+    }
+
 
     .conteudo_sua_foto_selecione {
         font-size: 1.5em
     }
 
     .conteudo_sua_foto_imagem {
-        width: 200px;
-        height: 200px;
+        width: 225px;
+        height: 225px;
         border-radius: 50%;
         transform: translate(1.15em);
         margin-bottom: 1em;
@@ -280,11 +286,16 @@ hr {
 
     .conteudo_dados_academicos {
         margin-top: -1.2em;
+        transform: translate(20px);
     }
 
     .conteudo_dados_academicos_titulo{
         font-size: 1.5em;
         margin-bottom: 1em;
+    }
+
+    .conteudo_dados_academicos_subTitulo{
+        margin-top: -0.6em;
     }
 
     .conteudo_dados_academicos_materia_checks {
@@ -293,6 +304,7 @@ hr {
         width: 40vw;
         justify-content: space-around;
         margin-top: 2em;
+        transform: translate(30px);
     }
 
     .conteudo_dados_academicos_materia_checks_checkbox{
