@@ -15,12 +15,11 @@ exports.listaNotas = function(application, req, res) {
         } else{
             // chama modelo que lista os blocos de questões
             notas.getNotas((result) => {
-                // verifica se o resultado da consulta é vazio. 
-                // Se for, retorna mensagem de erro (result), se não, retorna os blocos de questões (result)
-                if(result == undefined){
-                    res.json({message: result})
+                // verifica se o resultado da consulta é vazio
+                if(result.length == 0){
+                    res.json({message: 'nenhuma nota encontrada'})
                 } else{
-                    res.json(result)
+                    res.json(result);
                 }
             }, req.query.idAluno);
         }
