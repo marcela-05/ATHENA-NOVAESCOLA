@@ -110,13 +110,13 @@
     border-top: 3px solid --athena-col-dracula-4;
   }
 
-  .conteudo_tab .botao-entrar{
+  .conteudo_tab .botao_primario{
     background-color: transparent;
     color: #000;
     border-color: var(--athena-col-terciaria);
   }
 
-  .conteudo_tab .botao-entrar:hover{
+  .conteudo_tab .botao_primario:hover{
     background-color: var(--athena-bg-terciaria);
     color: #000;
     border-color: var(--athena-col-primaria);
@@ -201,7 +201,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .conteudo_tab .botao-entrar{
+  .conteudo_tab .botao_primario{
     margin-top: 2em;
     width: 20%;
   }
@@ -241,7 +241,7 @@
     text-align: center;
   }
 
-  .conteudo_tab .botao-entrar{
+  .conteudo_tab .botao_primario{
     margin-top: 2em;
     width: 20%;
   }

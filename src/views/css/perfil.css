@@ -1,38 +1,25 @@
-body {
-    background-color: var(--athena-bg);
-}
-
-a {
-    color: var(--athena-col-link);
-}
-
-legend {
-    display: block;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.conteudo {
+.conteudo_perfil {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: fit-content;
-    width: auto;
 }
 
-.conteudo_logo {
+.conteudo_perfil_logo {
     margin-top: 2em;
-    margin-bottom: -3em;
+    margin-bottom: -1em;
     width: 20em;
     float: left;
-
 }
 
-.conteudo_titulo {
-    font-size: 3.5em;
-    text-align: center;
-    margin-bottom: -1em;
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+hr {
+    width: 85%;
 }
 
 .conteudo_ajuste {
@@ -46,12 +33,9 @@ legend {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-bottom: 2.5em;
-}
-
-.conteudo_sua_foto_selecione {
-    font-size: 1.5em
+    margin-bottom: 4.5em;
 }
 
 .conteudo_sua_foto_imagem {
@@ -60,11 +44,11 @@ legend {
     border-radius: 50%;
     transform: translate(1.15em);
     margin-bottom: 1em;
+    margin-left: -50px;
 }
 
 .conteudo_sua_foto_botao {
     display: flex;
-    justify-content: ;
     align-items: center;
     padding: 9px 12px;
     gap: 1.25em;
@@ -75,13 +59,12 @@ legend {
     background: #FF2849;
     border-radius: 20px;
     cursor: pointer;
+    margin-left: -64px;
 }
 
 .conteudo_sua_foto_botao_gap {
     gap: 2em;
 }
-
-
 
 .conteudo_sua_foto_botao_label {
     line-height: 1.5em;
@@ -108,9 +91,9 @@ legend {
     --s-xsmall: 0.625em;
     --s-small: 1.2em;
     --border-width: 1px;
-    --c-primary: var(--athena-col-nova1);
-    --c-primary-20-percent-opacity: var(--athena-col-nova1);
-    --c-primary-10-percent-opacity: var(--athena-col-nova1);
+    --c-primary: var(--athena-col-primaria);
+    --c-primary-20-percent-opacity: var(--athena-col-primaria);
+    --c-primary-10-percent-opacity: var(--athena-col-primaria);
     --t-base: 0.4s;
     --t-fast: 0.2s;
     --e-in: ease-in;
@@ -118,7 +101,7 @@ legend {
     margin-bottom: 1.2em;
 }
 
-.conteudo_dados_academicos_materia_checks_checkbox .visuallyhidden {
+.conteudo_dados_academicos_materia_checks_checkbox .hidden {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -234,65 +217,27 @@ legend {
     align-items: center;
 }
 
-
-.imagens_perfil {
-    display: flex;
-    margin-top: 5em;
-}
-
-.conteudo_inteli {
-    width: 220px;
-    height: auto;
-}
-
-.conteudo_novaEscola {
-    width: 200px;
-}
-
-@media screen and (min-width: 768px) {
-    .conteudo {
-        align-items: center;
-    }
-
-    .conteudo_titulo {
-        margin-right: auto;
-    }
-}
-
-
 @media screen and (min-width: 1024px) {
-    .conteudo_logo {
+    .conteudo_perfil_logo {
         display: none;
         width: 70%;
     }
 
-    .conteudo_titulo {
-        margin-right: auto;
-        margin-top: -5vw;
-    }
-
-    .conteudo {
-        background-image: url(../assets/athena\ background.png);
+    .conteudo_perfil {
+        background-image: url(../assets/athena_background.png);
         background-repeat: no-repeat;
-        background-color: white;
         background-size: 128vh;
-        margin: 4vh 0 0 4vw;
         box-shadow: -10px 10px 100px 0px #00000080;
         align-items: center;
         justify-content: center;
         background-position: center;
-        height: 92vh;
-        width: 92vw;
+        margin: 2rem;
+        min-height: 90vh;
     }
 
     .conteudo_ajuste {
-        width: 70vw;
-        height: 25vw;
         flex-direction: row;
         justify-content: space-around;
-        margin-left: 4em;
-        margin-top: 3vw;
-
     }
 
     .conteudo_sua_foto_selecione {
@@ -309,7 +254,6 @@ legend {
 
     .conteudo_sua_foto_botao {
         display: flex;
-        justify-content: ;
         align-items: center;
         padding: 9px 12px;
         gap: 1.25em;
@@ -317,7 +261,7 @@ legend {
         height: 40px;
         width: 172px;
         border: none;
-        background: #FF2849;
+        background: var(--athena-col-primaria);
         border-radius: 20px;
         cursor: pointer;
     }
@@ -331,6 +275,7 @@ legend {
         font-size: 1em;
         color: #fff;
         letter-spacing: 1px;
+        cursor: pointer;
     }
 
     .conteudo_dados_academicos {
@@ -363,22 +308,8 @@ legend {
         flex-direction: column;
     }
 
-    .imagens_perfil {
-        display: flex;
-        margin-top: -5em;
-    }
-
-    .conteudo_inteli {
-        position: relative;
-        left: 29vw;
-        width: 18vw;
-        height: 8vw;
-    }
-
-    .conteudo_novaEscola {
-        position: relative;
-        right: 28vw;
-        width: 15vw;
-        height: 9vw;
+    .botao_primario{
+        margin-top: 1em;
+        width: 30%;
     }
 }

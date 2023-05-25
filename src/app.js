@@ -8,7 +8,19 @@ app.set('views', './src/views/');
 app.use(express.static('./src/views/'));
 
 app.get('/', (req, res) => {
-  res.render('html/perfil.ejs');
+  res.render('html/login');
+});
+
+app.get('/cadastro', (req, res) => {
+  res.render('html/register');
+});
+
+app.get('/perfil', (req, res) => {
+  res.render('html/perfil');
+});
+
+app.get('/home', (req, res) => {
+  res.render('html/index');
 });
 
 consign()
