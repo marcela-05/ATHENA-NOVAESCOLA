@@ -105,7 +105,7 @@ module.exports = function(application){
     });
 
     // retorna controlador para a atualização do aluno
-    application.post('/aluno/atualizar', urlencodedParser, function(req, res){
+    application.put('/aluno/atualizar', urlencodedParser, function(req, res){
       application.src.controllers.alunoControllers.atualiza(
         application, req, res
       );
