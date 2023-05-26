@@ -42,10 +42,13 @@ Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solu
   &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.docx<br>
 |--> imagens<br>
 |--> src<br>
-  &emsp;|--> Backend<br>
-  &emsp;|--> Frontend<br>
-| readme.md<br>
-| license.txt
+  &emsp;|--> controllers<br>
+  &emsp;|--> data<br>
+  &emsp;|--> models<br>
+  &emsp;|--> routes<br>
+  &emsp;|--> views<br>
+| README.md<br>
+| LICENSE
 
 Dentre os arquivos presentes na raiz do projeto, definem-se:
 
