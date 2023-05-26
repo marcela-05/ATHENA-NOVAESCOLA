@@ -49,13 +49,13 @@ Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solu
 
 Dentre os arquivos presentes na raiz do projeto, definem-se:
 
-- <b>readme.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
+- <b>README.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
 
 - <b>documentos</b>: aqui estarão todos os documentos do projeto. Há também uma pasta denominada <b>outros</b> onde estão presentes aqueles documentos complementares ao <b>web application document</b>.
 
 - <b>imagens</b>: imagens relacionadas ao projeto como um todo (por exemplo imagens do sistema, do grupo, logotipos e afins).
 
-- <b>src</b>: nesta pasta encontra-se todo o código fonte do sistema (existem duas subpastas <b>backend</b> e <b>frontend</b> que contêm, respectivamente, o código do servidor e o código da página web).
+- <b>src</b>: nesta pasta encontra-se todo o código fonte do sistema (existem outras subpastas: <b>controllers</b>, <b>data</b>, <b>models</b>, <b>routes</b>, <b>views</b> que representam a implementação do padrão de projeto MVC, na qual as rotas direcionam para o controlador, que chamam os modelos, os quais retornam os dados para as views (páginas) por meio do banco de dados (data)).
 
 ## 💻 Configuração para desenvolvimento
 
@@ -66,7 +66,7 @@ Aqui encontram-se todas as instruções necessárias para a instalação de todo
 3.  No modo administrador, abra o "prompt de comando" ou o "terminal" e, após,  abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
 
 ```sh
-npm install
+npm i
 ```
 
 Isso instalará todas as dependências definidas no arquivo <b>package.json</b> que são necessárias para rodar o projeto. Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
@@ -74,42 +74,37 @@ Isso instalará todas as dependências definidas no arquivo <b>package.json</b> 
 ```sh
 npm start
 ```
-5. Agora você pode acessar a aplicação através do link http://localhost:1234/
+5. Agora você pode acessar a aplicação através do link http://localhost:3000/
 6. O servidor está online.
-
-
-```
-Alunos inteli (remover essa observação do readme.md após leitura e execução):
-
-1. Certifique-se que há um arquivo "package.json" na pasta backend do projeto.
-
-2. Dentro deste arquivo, encontre a propriedade "scripts", e adicione um atributo de nome "start"
-com o valor "node <CAMINHO_DO_ARQUIVO_DO_SERVIDOR>." Atenção: "<CAMINHO_DO_ARQUIVO_DO_SERVIDOR>" 
-deve ser substituído pelo caminho para o arquivo principal da aplicação, utilizado para subir o
-servidor. Por exemplo, se o arquivo utilizado para subir o servidor é "app.js", o atributo start
-deve possuir o valor "node app.js".
-
-3. No arquivo utilizado para subir a aplicação, defina a porta padrão de execução para "1234".
-````
 
 ## 🗃 Histórico de lançamentos
 
-* 0.2.1 - 25/01/2022
-    * Atualização de documentos (código do módulo permanece inalterado).
-* 0.2.0 - 15/01/2022
-    * Remove `setDefaultXYZ()`
-    * Adiciona `init()`
-* 0.1.1 - 11/01/2022
-    * Crash quando chama `baz()`
-* 0.1.0 - 10/01/2022
-    * O primeiro lançamento adequado
-    * Renomeia `foo()` para `bar()`
-* 0.0.1 - 01/01/2022
-    * Trabalho em andamento
+* 0.5.1 - 26/05/2023
+    * Correção da semântica da página de login;
+    * Adição da página inicial (mobile e desktop);
+    * Adição da tela de perfil (mobile e desktop);
+    * Adição da tela de cadastro (mobile e desktop);
+    * Padronização do css;
+    * Renderização das páginas no servidor;
+    * Adição de validações nos endpoints de alunos.
+* 0.4.0 - 18/05/2023
+    * Endpoints (CRUD) das tabelas bloco de questão e notas;
+    * Validações nas requisições contra SQL Injection;
+    * Adição de feedbacks nas requisições incorretas (bloco de questão e notas).
+* 0.3.0 - 17/05/2023
+    * Primeira versão da página de login (mobile e desktop);
+    * Estruturação do modelo MVC - Model, Views e Controllers.
+* 0.2.0 - 12/05/2023
+    * Criação dos modelos conceitual, lógico e físico do Athena DB;
+    * Endpoints (CRUD) de turmas, professores, alunos, áreas do conhecimento e disciplinas;
+    * Documentação dos testes da API via postman;
+    * Wireframe desktop da aplicação.
+* 0.1.0 - 28/04/2023
+    * Criação do wireframe mobile da aplicação.
 
 ## 📋 Licença/License
 
-<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Spidus/Teste_Final_1">MODELO GIT INTELI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.yggbrasil.com.br/vr">Inteli, Nome do integrante 1, Nome do integrante 2, Nome do integrante 3, Nome do integrante 4, Nome do integrante 5, Nome do integrante 6, Nome do integrante 7</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Spidus/Teste_Final_1">MODELO GIT INTELI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://inteli.edu.br/">Inteli, Davi Ferreira Arantes, Marcela Issa Avila Vieira Alves Martins, Marcelo Miguel Pereira de Assis, Pedro Auler de Barros Martins,Raissa de Cássia Moraes Paula, Victor Gabriel Marques</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
 
 ## 🎓 Referências
 
