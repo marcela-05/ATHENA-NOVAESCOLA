@@ -38,8 +38,8 @@ Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solu
 
 |--> documentos<br>
   &emsp;| --> outros <br>
-  &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.pdf<br>
-  &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.docx<br>
+  &emsp;| T06_G4_V0.3.0_Web_application_document.pdf<br>
+  &emsp;| T06_G4_V0.3.0_Web_application_document.docx<br>
 |--> imagens<br>
 |--> src<br>
   &emsp;|--> controllers<br>
