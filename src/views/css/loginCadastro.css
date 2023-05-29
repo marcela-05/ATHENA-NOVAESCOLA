@@ -77,7 +77,7 @@ legend {
     color: var(--athena-col-link);
 }
 
-.input-container input[type="email"]:not(:placeholder-shown) ~ .label {
+.input-container input[type="email"]:not(:placeholder-shown) ~ .label, .input-container input[type="password"]:not(:placeholder-shown) ~ .label {
     top: -20px;
     font-size: .8em;
     color: var(--athena-col-link);
