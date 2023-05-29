@@ -12,67 +12,58 @@ professores.prototype.getProfessores = function(callback, idProf) {
     database.appDB.all(sql, [], (err, rows) => {
         if (err) {
             console.error(err.message);
-            }
-        callback(rows)
+            callback(err.message)
+        } else{
+            callback(rows)
+        }
     });
 }
 
 // modelo responsável por criar um professor
-professores.prototype.postProfessor = function(callback, nomeProfessor, emailProfessor, senhaProfessor, idDisciplina) {
+professores.prototype.postProfessor = function(callback, nomeProfessor, emailProfessor, senhaProfessor) {
 
     // nesse ponto, o professor é criado com o nome, email e senha
     // passados via corpo da requisição
-    var sql = 'INSERT INTO professor (nome, email, senha) VALUES ( "' + 
-    nomeProfessor + '", "' + emailProfessor + '", "' + senhaProfessor + '");';
+    var sql = 'INSERT INTO professor (nome, email, senha) VALUES (?,?,?)';
     var erro = ''
-    database.appDB.all(sql, [], (err, rows) => {
+    database.appDB.all(sql, [nomeProfessor, emailProfessor, senhaProfessor], (err, rows) => {
         if (err) {
             console.error(err.message);
-            erro = err; // caso haja erro na inserção, ele é inserido na variável erro
+            callback(err.message)
+        } else{
+            callback()
         }
     });
-
-    // se o tamanho da variável for menor que 1, significa que a variável está vazia
-    // logo, não houve erro na inserção e, por isso, pode criar o relacionamento
-    if(erro.length < 1){
-        sql = 'INSERT INTO prof_disciplina VALUES ((SELECT id_professor FROM professor WHERE email = "' + emailProfessor +
-        '" AND senha = "' + senhaProfessor + '"), ' + idDisciplina + ');';
-        database.appDB.all(sql, [], (err, rows) => {
-            if (err) {
-                console.error(err.message);
-            }
-            callback({message: "professor criado e vinculado à disciplina"})
-        });
-    };
 }
 
 // modelo responsável por atualizar professor
 professores.prototype.updateProfessor = function(callback, idProfessor, nomeProfessor, emailProfessor, senhaProfessor) {
-    console.log("aqui")
-    var sql = 'UPDATE professor set nome = "' + nomeProfessor + '", email = "' + emailProfessor + '", senha = "' + senhaProfessor + '"' +
-    'WHERE id_professor = ' + idProfessor;
+    var sql = 'UPDATE professor set nome = ?, email = ?, senha = ? WHERE id_professor = ?';
 
-    console.log(sql)
     // executa a atualização e verifica se houve algum erro
-    database.appDB.all(sql, [], (err, rows) => {
+    database.appDB.all(sql, [nomeProfessor, emailProfessor, senhaProfessor, idProfessor], (err, rows) => {
         if (err) {
             console.error(err.message);
+            callback(err.message)
+        } else{
+            callback()
         }
-        callback({message:'professor atualizado'})
     });
 }
 
 // modelo responsável por deletar professor
 professores.prototype.deleteProfessor = function(callback, idProfessor) {
-    var sql = 'DELETE FROM professor WHERE id_professor = ' + idProfessor;
+    var sql = 'DELETE FROM professor WHERE id_professor = ?';
 
     // executa a consulta sql e retorna os dados na função callback, a qual será usada
     // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [], (err, rows) => {
+    database.appDB.all(sql, [idProfessor], (err, rows) => {
         if (err) {
             console.error(err.message);
-            }
-        callback({message: 'Professor Excluído'})
+            callback(err.message)
+        } else{
+            callback()
+        }
     });
 }
 
