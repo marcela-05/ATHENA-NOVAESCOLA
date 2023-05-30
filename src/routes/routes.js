@@ -62,6 +62,13 @@ module.exports = function(application){
       );
     });
 
+    // retorna controlador para login dos professores
+    application.post('/login', urlencodedParser, function(req, res){
+      application.src.controllers.professorControllers.login(
+        application, req, res
+      );
+    });
+
     // retorna controlador para listar área do conhecimento
     application.get('/areaConhecimento', function(req, res){
       application.src.controllers.areaConhecimentoControllers.listaAreaConhecimento(
