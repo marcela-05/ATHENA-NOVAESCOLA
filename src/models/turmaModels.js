@@ -5,31 +5,34 @@ function turmas() {}
 
 // modelo responsável por fazer a atualização da turma
 // o id e o nome da turma são passados via corpo da requisição.
-turmas.prototype.updateTurma = function(callback, idTurma, nomeTurma) {
-    var sql = 'UPDATE turma set nome = "' + nomeTurma + '"' + 
-    'WHERE id_turma = ' + idTurma;
+turmas.prototype.updateTurma = function(callback, nomeTurma, idTurma) {
+    var sql = 'UPDATE turma set nome = ? WHERE id_turma = ?';
 
     // executa a atualização e verifica se houve algum erro
-    database.appDB.all(sql, [], (err, rows) => {
+    database.appDB.all(sql, [nomeTurma, idTurma], (err, rows) => {
         if (err) {
             console.error(err.message);
+            callback(err.message)
+        }else{
+            callback()
         }
-        callback({message: 'Turma atualizada'})
     });
 }
 
 // modelo responsável por fazer a consulta das turmas de acordo com o id do professor
 // esse id é passado via url. Ex.: turmas?idProfessor=1
 turmas.prototype.getProfTurmas = function(callback, idProf) {
-    var sql = 'SELECT * FROM turma WHERE id_professor = ' + idProf;
+    var sql = 'SELECT * FROM turma WHERE id_professor = ?';
 
     // executa a consulta sql e retorna os dados na função callback, a qual será usada
     // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [], (err, rows) => {
+    database.appDB.all(sql, [idProf], (err, rows) => {
         if (err) {
             console.error(err.message);
-            }
-        callback(rows)
+            callback(err.message)
+        }else{
+            callback(rows)
+        }
     });
 }
 
@@ -59,27 +62,30 @@ turmas.prototype.postTurma = function(callback, idProfessor, idDisciplina, nomeT
 
     // nesse ponto, a turma é criada com o nome, serie e id do professor
     // passados via corpo da requisição
-    var sql = 'INSERT INTO turma (nome, serie, id_professor, id_disciplina) VALUES ( "' + 
-    nomeTurma + '",' + serieTurma + ',' + idProfessor + ',' + idDisciplina + ');';
-    database.appDB.all(sql, [], (err, rows) => {
+    var sql = 'INSERT INTO turma (nome, serie, id_professor, id_disciplina) VALUES (?,?,?,?);';
+    database.appDB.all(sql, [nomeTurma, serieTurma,idProfessor, idDisciplina], (err, rows) => {
         if (err) {
             console.error(err.message);
+            callback(err.message)
+        }else{
+            callback()
         }
-        callback({message: 'Turma criada com sucesso' })
     });
 }
 
 // modelo responsável por deletar a turma. O id é informado via url, ex.: /turma/deletar?idTurma=1
 turmas.prototype.deleteTurma = function(callback, idTurma) {
-    var sql = 'DELETE FROM turma WHERE id_turma = ' + idTurma;
+    var sql = 'DELETE FROM turma WHERE id_turma = ?';
 
     // executa a consulta sql e retorna os dados na função callback, a qual será usada
     // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [], (err, rows) => {
+    database.appDB.all(sql, [idTurma], (err, rows) => {
         if (err) {
             console.error(err.message);
-            }
-        callback({message: 'Turma e vínculos entre aluno-turma e turma-disciplina excluídos.'})
+            callback(err.message)
+        }else {
+            callback()
+        }
     });
 }
 

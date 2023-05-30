@@ -48,29 +48,32 @@ disciplinas.prototype.postDisciplina = function(callback, nomeDisciplina, idProf
 
 // modelo responsável por atualizar disciplina
 disciplinas.prototype.updateDisciplina = function(callback, idDisciplina, nomeDisciplina) {
-    var sql = 'UPDATE disciplina set nome = "' + nomeDisciplina + '"' +
-    'WHERE id_disciplina = ' + idDisciplina;
+    var sql = 'UPDATE disciplina set nome = ? WHERE id_disciplina = ?';
 
     // executa a atualização e verifica se houve algum erro
-    database.appDB.all(sql, [], (err, rows) => {
+    database.appDB.all(sql, [nomeDisciplina, idDisciplina], (err, rows) => {
         if (err) {
             console.error(err.message);
+            callback(err.message)
+        }else {
+            callback()
         }
-        callback({message: 'disciplina atualizada'})
     });
 }
 
 // modelo responsável por deletar disciplina
 disciplinas.prototype.deleteDisciplina = function(callback, idDisciplina) {
-    var sql = 'DELETE FROM disciplina WHERE id_disciplina = ' + idDisciplina;
+    var sql = 'DELETE FROM disciplina WHERE id_disciplina = ?';
 
     // executa a consulta sql e retorna os dados na função callback, a qual será usada
     // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [], (err, rows) => {
+    database.appDB.all(sql, [idDisciplina], (err, rows) => {
         if (err) {
             console.error(err.message);
-            }
-        callback({message: 'Disciplina Excluída'})
+            callback(err.message)
+        }else{
+            callback()
+        }
     });
 }
 

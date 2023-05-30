@@ -21,7 +21,7 @@ module.exports = function(application){
     });
 
     // retorna controlador para a atualização da turma
-    application.post('/turma/atualizar', urlencodedParser, function(req, res){
+    application.put('/turma/atualizar', urlencodedParser, function(req, res){
       application.src.controllers.turmaControllers.atualiza(
         application, req, res
       );
@@ -77,7 +77,7 @@ module.exports = function(application){
     });
 
     // retorna controlador para a atualização da área do conhecimento
-    application.post('/areaConhecimento/atualizar', urlencodedParser, function(req, res){
+    application.put('/areaConhecimento/atualizar', urlencodedParser, function(req, res){
       application.src.controllers.areaConhecimentoControllers.atualiza(
         application, req, res
       );
@@ -133,7 +133,7 @@ module.exports = function(application){
     });
 
     // retorna controlador para a atualização da avaliação
-    application.post('/avaliacao/atualizar', urlencodedParser, function(req, res){
+    application.put('/avaliacao/atualizar', urlencodedParser, function(req, res){
       application.src.controllers.avaliacaoControllers.atualiza(
         application, req, res
       );
@@ -161,7 +161,7 @@ module.exports = function(application){
     });
 
     // retorna controlador para a atualização da disciplina
-    application.post('/disciplina/atualizar', urlencodedParser, function(req, res){
+    application.put('/disciplina/atualizar', urlencodedParser, function(req, res){
       application.src.controllers.disciplinaControllers.atualiza(
         application, req, res
       );
@@ -189,7 +189,7 @@ module.exports = function(application){
     });
 
     // retorna controlador para a atualização do bloco
-    application.post('/bloco/atualizar', urlencodedParser, function(req, res){
+    application.put('/bloco/atualizar', urlencodedParser, function(req, res){
       application.src.controllers.blocoQuestaoControllers.atualiza(
         application, req, res
       );
