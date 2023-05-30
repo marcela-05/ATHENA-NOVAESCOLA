@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/meusdados.css">
+</head>
+<body>
+    <main class="conteudo">
+        <figure>
+            <img class="conteudo_logo" src="../assets/athena_logo.png" alt="Logo da Athena">
+        </figure>
+
+        <section class="container_dados">
+            <article>
+                <h1 class="conteudo_titulo_dados"> Meus dados</h1>
+            </article>
+
+            <!-- inicio Formulario de dados-->
+            <form class="container_dados_form" method="post" action="" enctype="multipart/form-data">
+                <fieldset class="conteudo_input_dados">
+                    <legend> Seção para inserir nome e email </legend>
+                    <div class="input-container-dados">
+                        <input type="name" id="input-name" required="">
+                        <label for="input-nome" class="label">nome:</label>
+                        <div class="underline"></div>
+                    </div>
+                    <div class="input-container-dados">
+                        <input type="email" id="input-email" placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="email inválido" required="">
+                        <label for="input-email" class="label">email:</label>
+                        <div class="underline"></div>
+                    </div>
+                </fieldset>
+                
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

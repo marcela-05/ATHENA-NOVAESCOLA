@@ -36,7 +36,7 @@ legend {
     margin-left: .6em;
 }
 
-.conteiner_login_form, .conteiner_cadastro_form {
+.container_login_form, .container_cadastro_form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -110,7 +110,7 @@ legend {
     width: 185px;
 }
 
-.conteiner_login {
+.container_login {
     display: flex;
     flex-direction: column;
     margin-top: 3rem;
@@ -176,7 +176,7 @@ legend {
         font-size: .7em;
     }
 
-    .conteiner_login, .conteiner_cadastro {
+    .container_login, .container_cadastro {
         flex-direction: column;
         display: flex;
         align-items: center;
