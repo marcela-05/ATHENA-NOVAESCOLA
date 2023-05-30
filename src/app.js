@@ -17,22 +17,34 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./src/views/'));
 
 app.get('/', (req, res) => {
-  res.render('html/login');
+	if (req.session.autorizado) {
+		res.redirect('/home');
+	} else {
+		res.render('html/login');
+	}
 });
 
 app.get('/cadastro', (req, res) => {
-  res.render('html/register');
+	if (req.session.autorizado) {
+		res.redirect('/home');
+	} else {
+		res.render('html/register');
+	}
 });
 
-app.get('/perfil', (req, res) => {
-	res.render('html/perfil');
+app.get('/cadastro/perfil', (req, res) => {
+	if (req.session.autorizado && req.session.cadastrado) {
+		res.render('html/perfil');
+	} else {
+		res.redirect('/home')
+	}
 });
 
 app.get('/home', (req, res) => {
   if (req.session.autorizado) {
-		res.render('html/index');
+		res.render('html/index', {nome: `${req.session.nomeProfessor}`});
 	} else {
-		res.send('Acesso negado').status(401);
+		res.redirect('/')
 	}
 	res.end();
 });
