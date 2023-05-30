@@ -69,6 +69,13 @@ module.exports = function(application){
       );
     });
 
+    // retorna controlador para vincular professor com disciplina
+    application.post('/professor/disciplina', urlencodedParser, function(req, res){
+      application.src.controllers.professorControllers.vinculaDisciplina(
+        application, req, res
+      );
+    });
+
     // retorna controlador para listar área do conhecimento
     application.get('/areaConhecimento', function(req, res){
       application.src.controllers.areaConhecimentoControllers.listaAreaConhecimento(

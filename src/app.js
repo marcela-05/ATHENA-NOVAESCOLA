@@ -25,12 +25,7 @@ app.get('/cadastro', (req, res) => {
 });
 
 app.get('/perfil', (req, res) => {
-  if (req.session.autorizado) {
-		res.render('html/perfil');
-	} else {
-		res.send('Acesso negado').status(401);
-	}
-	res.end();
+	res.render('html/perfil');
 });
 
 app.get('/home', (req, res) => {

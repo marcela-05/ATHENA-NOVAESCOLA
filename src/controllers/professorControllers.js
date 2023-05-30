@@ -116,3 +116,7 @@ module.exports.cadastra = function(application, req, res) {
       }
     }, req.body.emailProfessor, req.body.senhaProfessor);
   }
+
+  module.exports.vinculaDisciplina = function(application, req, res) {
+    console.log(req.body.checkboxDisciplina)
+  }
