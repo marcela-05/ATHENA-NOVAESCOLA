@@ -4,7 +4,7 @@ const database = require('../data/data')
 function professores() {}
 
 // modelo responsável por listar professores
-professores.prototype.getProfessores = function(callback, idProf) {
+professores.prototype.getProfessores = function(callback) {
     var sql = 'SELECT * FROM professor';
 
     // executa a consulta sql e retorna os dados na função callback, a qual será usada
@@ -67,7 +67,22 @@ professores.prototype.deleteProfessor = function(callback, idProfessor) {
     });
 }
 
+// modelo responsável pelo login do professor
+professores.prototype.loginProfessor = function(callback, emailProfessor, senhaProfessor) {
+    var sql = 'SELECT * FROM professor WHERE email = ? AND senha = ?';
+
+    // executa a consulta sql e retorna os dados na função callback, a qual será usada
+    // no controlador para mostrar os dados na página.
+    database.appDB.all(sql, [emailProfessor, senhaProfessor], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            callback({message: 'erro interno'})
+        } else{
+            callback(rows)
+        }
+    });
+}
+
 module.exports = function(){
     return professores;
 }
-

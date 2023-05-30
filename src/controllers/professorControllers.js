@@ -96,3 +96,23 @@ module.exports.cadastra = function(application, req, res) {
       }, req.query.idProfessor);
     }
   }
+
+  module.exports.login = function(application, req, res) {
+    // cria conexão com o modelo /src/models/professorModels.js
+    var professores = new application.src.models.professorModels() 
+    // Esse controlador é responsável por chamar o modelo que faz o login do professor
+    // Para isso, o email e senha são passados como argumentos.
+
+    professores.loginProfessor((result) => {
+      // verifica se o resultado da consulta é vazio.
+      // Se for, retorna mensagem de erro, se não, retorna mensagem de sucesso (result)
+      if(result.length <= 0 || result.message == 'erro interno') {
+        res.send({message: 'email ou senha inválidos'}).status(401)
+      } else {
+        req.session.autorizado = true
+        req.session.emailProfessor = req.body.emailProfessor
+        req.session.idProfessor = result[0].idProfessor
+        res.redirect('/home')
+      }
+    }, req.body.emailProfessor, req.body.senhaProfessor);
+  }

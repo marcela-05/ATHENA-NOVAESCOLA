@@ -1,10 +1,19 @@
 const express = require('express');
+const session = require('express-session');
 const consign = require('consign');
 
 const app = express();
 app.set('view engine', 'ejs');
 app.set('views', './src/views/');
 
+app.use(session({
+	secret: 'secret-key-nv-int-321',
+	resave: true,
+	saveUninitialized: true
+}));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./src/views/'));
 
 app.get('/', (req, res) => {
@@ -16,11 +25,21 @@ app.get('/cadastro', (req, res) => {
 });
 
 app.get('/perfil', (req, res) => {
-  res.render('html/perfil');
+  if (req.session.autorizado) {
+		res.render('html/perfil');
+	} else {
+		res.send('Acesso negado').status(401);
+	}
+	res.end();
 });
 
 app.get('/home', (req, res) => {
-  res.render('html/index');
+  if (req.session.autorizado) {
+		res.render('html/index');
+	} else {
+		res.send('Acesso negado').status(401);
+	}
+	res.end();
 });
 
 consign()
