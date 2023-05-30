@@ -1,13 +1,14 @@
 .materia {
-    background: var(--cinza);
+    background: var(--athena-bg-turmas);
     color: white;
     font-size: 20px;
     padding: 85px 3.5em;
     text-align: center;
+    line-height: 1.5;
 }
 
 .media {
-    background: var(--athena-bg-cinza-3);
+    background: var(--cinza);
     color: white;
     font-size: 20px;
     padding: 62px 104px;
@@ -16,7 +17,7 @@
 }
 
 .defasagem {
-    background: var(--athena-bg-cinza-3);
+    background: var(--cinza);
     color: white;
     font-size: 20px;
     padding: 62px 104px;
@@ -30,6 +31,8 @@
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 0;
+    line-height: 1.5;
+    margin-bottom: 1em;
 }
 
 .grafico {
@@ -46,17 +49,15 @@
     margin-right: auto;
 }
 
-.botao {
-    background-color: var(--athena-bg-link);
-    border: 0;
-    border-radius: 10px;
-    padding: 0.3em 3em;
-    color: white;
+.botao_primario {
+    display: flex;
     margin-left: auto;
     margin-right: auto;
-    display: flex;
-    margin-top: 1em;
-    margin-bottom: 2em;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    max-width: 130px;
+    margin-bottom: 1em;
 }
 
 .lista_alunos {
@@ -66,9 +67,9 @@
 }
 
 .aluno {
-    background: var(--athena-bg-cinza-3);
+    background: var(--athena-bg-alunos);
     padding: 24px 1em;
-    color: white;
+    color: black;
     display: flex;
     align-items: center;
     gap: 1em;
@@ -79,6 +80,13 @@
     height: auto;
 }
 
+.planos {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1em;
+}
+
 .planos_de_aula {
     display: flex;
     border: 1px solid black;
@@ -87,6 +95,7 @@
     height: 147px;
     margin-left: auto;
     margin-right: auto;
+    align-items: center;
 }
 
 .plano_de_aula_imagem {
@@ -96,5 +105,9 @@
 }
 
 .assunto {
+    font-size: 12px;
+}
+
+.descricao {
     font-size: 12px;
 }

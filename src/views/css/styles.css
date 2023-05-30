@@ -22,6 +22,9 @@
     --athena-bg-nova2: #960840;
     --athena-col-link: #32378F;
     --athena-bg-link: #32378F;
+    --athena-bg-link-hover: #3a42d4; 
+    --athena-col-link-hover: #3a42d4;
+    --athena-bg-link: #32378F;
     --athena-col-success: #068A13;
     --athena-bg-success: #068A13;
     --athena-col-error: #DA2A20;
@@ -40,6 +43,8 @@
     --athena-bg-header-avaliacoes: #FCD4DF;
     --athena-bg-header-alunos: #EDD3FF;
     --cinza: #1E1E1E;
+    --athena-bg-turmas: #71CFCE;
+    --athena-bg-alunos: #D5A3F9;
 }
 
 body {
@@ -89,7 +94,6 @@ p {
 
 .botao_primario:hover {
     cursor: pointer;
-    padding: .5rem;
     background-color: #545ceb;
 }
 
