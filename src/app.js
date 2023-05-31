@@ -17,38 +17,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'views')));
 
-app.get('/', (req, res) => {
-	if (req.session.autorizado) {
-		res.redirect('/home');
-	} else {
-		res.render('html/login');
-	}
-});
-
-app.get('/cadastro', (req, res) => {
-	if (req.session.autorizado) {
-		res.redirect('/home');
-	} else {
-		res.render('html/register');
-	}
-});
-
-app.get('/cadastro/perfil', (req, res) => {
-	if (req.session.autorizado && req.session.cadastrado) {
-		res.render('html/perfil');
-	} else {
-		res.redirect('/home')
-	}
-});
-
-app.get('/home', (req, res) => {
-  if (req.session.autorizado) {
-		res.render('html/index', {nome: `${req.session.nomeProfessor}`});
-	} else {
-		res.redirect('/')
-	}
-});
-
 consign()
   .include('src/routes')
   .then('src/models')
