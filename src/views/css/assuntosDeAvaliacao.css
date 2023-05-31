@@ -1,0 +1,65 @@
+.assuntoAvaliacao {
+    background: var(--athena-bg-nova1);
+    color: white;
+    font-size: 20px;
+    padding: 85px 3.5em;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.botao_primario {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    max-width: 130px;
+    margin-bottom: 1em;
+}
+.assuntos {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.assuntos_de_avaliacao {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 320px;
+    height: 147px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.assuntos_de_avaliacao_imagem {
+    width: 125px;
+    height: auto;
+    padding: .5em .2em .5em .2em;
+}
+.assuntos_de_avaliacao_texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95px;
+    margin-top: -30px;
+}
+
+.assuntos_de_avaliacao_texto_materia{
+    margin-top: -2em;
+}
+
+.assuntos_de_avaliacao_visualizar {
+    font-size: 15px;
+    margin-bottom: -1em;
+}
+
+.assuntos_de_avaliacao_lixeira{
+    width: 1.5em;
+    height: 1.5em;
+    margin-bottom: 100px;
+    margin-left: 75px;
+}
