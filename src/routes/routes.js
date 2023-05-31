@@ -243,4 +243,41 @@ module.exports = function(application){
         application, req, res
       );
     });
+
+    // renderiza página de login
+    application.get('/', (req, res) => {
+      if (req.session.autorizado) {
+        res.redirect('/home');
+      } else {
+        res.render('html/login');
+      }
+    });
+    
+    // renderiza página de cadastro
+    application.get('/cadastro', (req, res) => {
+      if (req.session.autorizado) {
+        res.redirect('/home');
+      } else {
+        res.render('html/register');
+      }
+    });
+    
+    // renderiza página de cadastro de perfil
+    application.get('/cadastro/perfil', (req, res) => {
+      if (req.session.autorizado && req.session.cadastrado) {
+        res.render('html/perfil');
+      } else {
+        res.redirect('/home')
+      }
+    });
+    
+    // renderiza página principal
+    application.get('/home', (req, res) => {
+      if (req.session.autorizado) {
+        res.render('html/index', {nome: `${req.session.nomeProfessor}`});
+      } else {
+        res.redirect('/')
+      }
+    });
+
   }
