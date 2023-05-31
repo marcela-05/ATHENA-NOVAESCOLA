@@ -1,7 +1,7 @@
-.cadastrarAssunto {
+.editarAssunto {
     background: var(--athena-bg-nova1);
     color: white;
-    font-size: 24px;
+    font-size: 28px;
     padding: 85px 3.5em;
     text-align: center;
     line-height: 1.5;
@@ -97,4 +97,5 @@
     padding: 10px;
     max-width: 130px;
     margin-bottom: 1em;
+    font-size: 16px;
 }
