@@ -46,7 +46,6 @@ app.get('/home', (req, res) => {
 	} else {
 		res.redirect('/')
 	}
-	res.end();
 });
 
 consign()

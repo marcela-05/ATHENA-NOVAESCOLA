@@ -201,6 +201,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .banner article{
+    width: 500px;
+}
+
   .conteudo_tab .botao_primario{
     margin-top: 2em;
     width: 20%;
