@@ -19,6 +19,22 @@ turmas.prototype.updateTurma = function(callback, nomeTurma, idTurma) {
     });
 }
 
+// modelo responsável por fazer a consulta de uma turma específica
+turmas.prototype.getTurma = function(callback, idTurma, idProfessor) {
+    var sql = 'SELECT * FROM turma WHERE id_turma = ? AND id_professor = ?';
+
+    // executa a consulta sql e retorna os dados na função callback, a qual será usada
+    // no controlador para mostrar os dados na página.
+    database.appDB.all(sql, [idTurma, idProfessor], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            callback(err.message)
+        }else{
+            callback(rows)
+        }
+    });
+}
+
 // modelo responsável por fazer a consulta das turmas de acordo com o id do professor
 // esse id é passado via url. Ex.: turmas?idProfessor=1
 turmas.prototype.getProfTurmas = function(callback, idProf) {
@@ -85,6 +101,24 @@ turmas.prototype.deleteTurma = function(callback, idTurma) {
             callback(err.message)
         }else {
             callback()
+        }
+    });
+}
+
+// modelo responsável por pegar a disciplina da turma
+turmas.prototype.getDisciplinaDaTurma = function(callback, idTurma) {
+    var sql = 'SELECT disciplina.nome FROM disciplina ' +
+    'JOIN turma ON disciplina.id_disciplina = turma.id_disciplina ' +
+    'WHERE turma.id_turma = ?';
+
+    // executa a consulta sql e retorna os dados na função callback, a qual será usada
+    // no controlador para mostrar os dados na página.
+    database.appDB.all(sql, [idTurma], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            callback(err.message)
+        }else{
+            callback(rows)
         }
     });
 }

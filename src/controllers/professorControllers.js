@@ -136,7 +136,7 @@ module.exports.cadastra = function(application, req, res) {
     professores.vinculaDisciplina((result) => {
       // verifica se o resultado da consulta é vazio.
       // Se for, retorna mensagem de erro, se não, retorna mensagem de sucesso (result)
-      if (result != undefined) {
+      if (result != undefined && result.length > 0) {
         res.json({message: result})
       } else {
         res.redirect('/home')
