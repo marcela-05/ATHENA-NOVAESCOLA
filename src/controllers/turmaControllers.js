@@ -15,12 +15,16 @@ exports.listaTurmas = function(application, req, res) {
     // No final, o resultado que o modelo retorna é mostrado em formato json como resposta.
     else if(req.query.idTurma && req.query.idProfessor == undefined) {
       turmas.getTurma((result) => {
-        turmas.getDisciplinaDaTurma((disciplina) => {
-          turmas.getTurmaAlunos((alunos) => {
-            console.log(alunos);
-            res.render('html/turma', {turma: result[0], disciplina: disciplina[0], alunos: alunos});
+        if(result == 'turma não encontrada'){
+          res.json({message: 'turma não encontrada'});
+        } else {
+          turmas.getDisciplinaDaTurma((disciplina) => {
+            turmas.getTurmaAlunos((alunos) => {
+              console.log(alunos);
+              res.render('html/turma', {turma: result[0], disciplina: disciplina[0], alunos: alunos});
+            }, req.query.idTurma);
           }, req.query.idTurma);
-        }, req.query.idTurma);
+        }
       }, req.query.idTurma, req.session.idProfessor);
     }
   }

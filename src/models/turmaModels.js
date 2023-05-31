@@ -30,7 +30,11 @@ turmas.prototype.getTurma = function(callback, idTurma, idProfessor) {
             console.error(err.message);
             callback(err.message)
         }else{
-            callback(rows)
+            if(rows.length > 0) {
+                callback(rows)
+            } else {
+                callback('turma não encontrada')
+            }
         }
     });
 }
