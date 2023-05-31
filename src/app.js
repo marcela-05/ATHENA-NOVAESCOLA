@@ -54,6 +54,6 @@ consign()
   .then('src/controllers')
   .into(app);
 
-app.listen(3000, '127.0.0.1', () => {
+app.listen(3000, () => {
 console.log(`Servidor rodando em http://127.0.0.1:3000/`);
 });
