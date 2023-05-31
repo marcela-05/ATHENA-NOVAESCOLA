@@ -83,6 +83,80 @@ professores.prototype.loginProfessor = function(callback, emailProfessor, senhaP
     });
 }
 
+// modelo responsável por buscar o id do professor de acordo com nome e email
+professores.prototype.getIdProfessor = function(callback, nomeProfessor, emailProfessor) {
+    var sql = 'SELECT id_professor FROM professor WHERE nome = ? AND email = ?';
+
+    // executa a consulta sql e retorna os dados na função callback, a qual será usada
+    // no controlador para mostrar os dados na página.
+    database.appDB.all(sql, [nomeProfessor, emailProfessor], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            callback(err.message)
+        } else{
+            callback(rows)
+        }
+    });
+}
+
+// modelo responsável por vincular um professor a uma disciplina
+professores.prototype.vinculaDisciplina = function(callback, idProfessor, disciplinas) {
+    if (typeof disciplinas !== 'string') {
+        // se o tipo não for string, significa que mais de uma opção foi marcada
+        // logo, o processo de vinculação é repetido para cada opção
+        for (let disciplina of disciplinas) {
+            // busca o id da disciplina de acordo com o nome
+            let sql = 'SELECT id_disciplina FROM disciplina WHERE nome = ?';
+
+            database.appDB.all(sql, [disciplina.toLocaleLowerCase()], (err, rows) => {
+                if (err) {
+                    console.error(err.message);
+                    callback(err.message)
+                } else {
+                    // vincula o professor à disciplina
+                    let idDisciplina = rows[0].id_disciplina
+                    let sql = 'INSERT INTO prof_disciplina (id_professor, id_disciplina) VALUES (?,?)';
+
+                    // executa a consulta sql e retorna os dados na função callback, a qual será usada
+                    // no controlador para mostrar os dados na página.
+                    database.appDB.run(sql, [idProfessor, idDisciplina], (err, rows) => {
+                        if (err) {
+                            console.error(err.message);
+                            callback(err.message)
+                        } else{
+                            callback()
+                        }
+                    });
+                }
+            });
+        }
+    } else {
+        // busca o id da disciplina de acordo com o nome - quando somente uma opção é marcada.
+        let sql = 'SELECT id_disciplina FROM disciplina WHERE nome = ?';
+
+        database.appDB.all(sql, [disciplinas.toLocaleLowerCase()], (err, rows) => {
+            if (err) {
+                console.error(err.message);
+                callback(err.message)
+            } else {
+                // vincula o professor à disciplina
+                let idDisciplina = rows[0].id_disciplina
+                let sql = 'INSERT INTO prof_disciplina (id_professor, id_disciplina) VALUES (?,?)';
+
+                database.appDB.run(sql, [idProfessor, idDisciplina], (err, rows) => {
+                    if (err) {
+                        console.error(err.message);
+                        callback(err.message)
+                    } else{
+                        callback()
+                    }
+                });
+            }
+        });
+    }
+}
+
+
 module.exports = function(){
     return professores;
 }

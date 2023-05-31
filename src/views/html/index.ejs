@@ -8,12 +8,16 @@
     <title>Principal - Athena</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/cabecalho.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="../js/cabecalho.js"></script>
 </head>
 <body>
+    <%- include('cabecalho') %>
     <main>
         <section class="banner">
             <article>
-                <h2>Bem-Vinda, Júlia!</h2>
+                <h2>Bem-Vinda(o), <%= nome %></h2>
                 <p>Aqui você pode ver <span id="bold">análises completas</span> dos seus alunos, <span id="bold">cadastrar avaliações</span> e <span id="bold">muito mais!</span></p>
             </article>
         </section>

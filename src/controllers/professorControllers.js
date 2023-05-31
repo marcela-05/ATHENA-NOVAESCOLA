@@ -33,7 +33,16 @@ module.exports.cadastra = function(application, req, res) {
             if(result != undefined){
               res.json({message: result})
             } else{
-              res.json({message: 'Professor cadastrado com sucesso'})
+              req.session.autorizado = true;
+              req.session.cadastrado = true;
+              req.session.nomeProfessor = req.body.nomeProfessor;
+              req.session.emailProfessor = req.body.emailProfessor;
+
+              // busca o id do professor que acabou de ser cadastrado e salva na sessão
+              professores.getIdProfessor((result) => {
+                req.session.idProfessor = result[0].id_professor;
+                res.redirect('/cadastro/perfil');
+              }, req.body.nomeProfessor, req.body.emailProfessor);
             }
           }, req.body.nomeProfessor, req.body.emailProfessor, req.body.senhaProfessor);}
         }
@@ -106,13 +115,31 @@ module.exports.cadastra = function(application, req, res) {
     professores.loginProfessor((result) => {
       // verifica se o resultado da consulta é vazio.
       // Se for, retorna mensagem de erro, se não, retorna mensagem de sucesso (result)
-      if(result.length <= 0 || result.message == 'erro interno') {
+      if (result.length <= 0 || result.message == 'erro interno') {
         res.send({message: 'email ou senha inválidos'}).status(401)
       } else {
         req.session.autorizado = true
         req.session.emailProfessor = req.body.emailProfessor
-        req.session.idProfessor = result[0].idProfessor
+        req.session.idProfessor = result[0].id_professor
+        req.session.nomeProfessor = result[0].nome
         res.redirect('/home')
       }
     }, req.body.emailProfessor, req.body.senhaProfessor);
+  }
+
+  module.exports.vinculaDisciplina = function(application, req, res) {
+    // cria conexão com o modelo /src/models/professorModels.js
+    var professores = new application.src.models.professorModels()
+    // Esse controlador é responsável por chamar o modelo que vincula o professor a uma disciplina
+    // Para isso, o id do professor e o id da disciplina são passados como argumentos.
+
+    professores.vinculaDisciplina((result) => {
+      // verifica se o resultado da consulta é vazio.
+      // Se for, retorna mensagem de erro, se não, retorna mensagem de sucesso (result)
+      if (result != undefined) {
+        res.json({message: result})
+      } else {
+        res.redirect('/home')
+      }
+    }, req.session.idProfessor, req.body.checkboxDisciplina);
   }
