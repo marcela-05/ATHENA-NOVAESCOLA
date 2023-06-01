@@ -19,7 +19,7 @@
         <h1 class="cadastrarAssunto">Cadastrar Assunto</h1>
         <form class="form_assunto" action="" method="post" enctype="application/x-www-form-urlencoded">
             <fieldset class="form_input">
-                <input type="text" id="titulo-assunto" name="tituloAssunto" required="">
+                <input type="text" id="titulo-assunto" name="nomeArea" required="">
                 <label for="titulo-assunto">
                     <span style="transition-delay:0ms">T</span><span style="transition-delay:50ms">í</span><span
                         style="transition-delay:100ms">t</span><span style="transition-delay:150ms">u</span><span
@@ -35,11 +35,17 @@
 
             <fieldset class="form_disciplina">
                 <h4 class="titulo_selecao_de_materia">Selecione a matéria</h4>
-                <select class="selecao_de_materia">
-                    <option value="opcao1">Matéria 1</option>
+                <select class="selecao_de_materia" name="disciplina">
+                    <% for (let disciplina of disciplinas) { %>
+                        <option value=<%= disciplina.id_disciplina %>><%= disciplina.nome %></option>
+                    <% } %>
                 </select>
             </fieldset>
-            <button class="botao_primario" type="submit">Cadastrar</button>
+            <% if (disciplinas.length > 1) { %>
+                <button class="botao_primario" type="submit">Cadastrar</button>
+            <% } else { %>
+                <button class="botao_primario" type="button" disabled>Cadastrar</button>
+            <% } %>
         </form>
         
     </main>

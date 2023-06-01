@@ -162,6 +162,22 @@ professores.prototype.vinculaDisciplina = function(callback, idProfessor, discip
     }
 }
 
+// modelo responsável por listar as disciplinas do professor
+professores.prototype.listaDisciplinas = function(callback, idProfessor) {
+    var sql = 'SELECT disciplina.nome, disciplina.id_disciplina FROM disciplina INNER JOIN prof_disciplina ON disciplina.id_disciplina = prof_disciplina.id_disciplina WHERE prof_disciplina.id_professor = ?';
+
+    // executa a consulta sql e retorna os dados na função callback, a qual será usada
+    // no controlador para mostrar os dados na página.
+    database.appDB.all(sql, [idProfessor], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            callback(err.message)
+        } else{
+            callback(rows)
+        }
+    });
+}
+
 
 module.exports = function(){
     return professores;

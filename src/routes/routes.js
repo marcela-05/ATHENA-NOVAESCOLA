@@ -280,12 +280,10 @@ module.exports = function(application){
       }
     });
 
-    // renderiza página de cadastrar assunto/área do conhecimento
-    application.get('/assunto/cadastrar', (req, res) => {
-      if (req.session.autorizado) {
-        res.render('html/cadastrarAssunto');
-      } else {
-        res.redirect('/')
-      }
+    // retorna controlador para renderizr página de cadastro de assunto/area de conhecimento
+    application.get('/areaConhecimento/cadastrar', urlencodedParser, function(req, res){
+      application.src.controllers.areaConhecimentoControllers.cadastra(
+        application, req, res
+      );
     });
   }

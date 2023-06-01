@@ -24,8 +24,7 @@ areaConhecimento.prototype.postAreaConhecimento = function(callback, nomeArea, i
 
     // nesse ponto, a área do conhecimento é criada com o nome
     // passados via corpo da requisição
-    var sql = 'INSERT INTO area_conhecimento (nome, id_disciplina) VALUES (?,?);';
-    var erro = ''
+    var sql = 'INSERT INTO area_conhecimento (nome_area, id_disciplina) VALUES (?,?);';
     database.appDB.all(sql, [nomeArea, idDisciplina], (err, rows) => {
         if (err) {
             console.error(err.message);
