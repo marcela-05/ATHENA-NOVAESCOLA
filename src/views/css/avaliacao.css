@@ -1,0 +1,125 @@
+.avaliacao {
+    background: var(--athena-bg-nova1);
+    color: white;
+    font-size: 20px;
+    padding: 85px 3.5em;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.media {
+    background: var(--cinza);
+    color: white;
+    font-size: 20px;
+    padding: 62px 104px;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.defasagem {
+    background: var(--cinza);
+    color: white;
+    font-size: 20px;
+    padding: 62px 104px;
+    text-align: center;
+} 
+
+.titulo {
+    font-size: 24px;
+    text-align: center;
+    padding-top: 35px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.5;
+    margin-bottom: 1em;
+}
+
+.botao_primario {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    max-width: 130px;
+    margin-bottom: 1em;
+}
+
+.lista_alunos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.aluno {
+    background: var(--athena-bg-alunos);
+    padding: 24px 1em;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.aluno_imagem {
+    width: 31px;
+    height: auto;
+}
+
+
+.barra_pesquisa {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid purple;
+  border-radius: 4px;
+}
+
+.barra_filtrar {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.botao_filtrar, .botao_pesquisa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 2px;
+  width: 20px;
+}
+
+
+.icone_pesquisar, .icone_filtrar {
+  width: 20px;
+}
+
+@media (min-width: 768px) {
+  .barra_pesquisa {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .botao_pesquisa, .botao_filtrar {
+    margin-left: 8px;
+    margin-top: auto;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 8px;
+  }
+
+}
