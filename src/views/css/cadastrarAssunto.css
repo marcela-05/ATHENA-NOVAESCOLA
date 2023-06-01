@@ -7,10 +7,10 @@
     line-height: 1.5;
 }
 
-.coluna {
+.form_assunto {
     display: flex;
     flex-direction: column;
-    align-content: center;
+    align-items: center;
 }
 
 .form_input {
