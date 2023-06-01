@@ -6,51 +6,81 @@ a {
     color: var(--athena-col-link);
 }
 
-legend {
-    display: block;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
 .conteudo {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.conteudo_logo {
-    margin-top: 2em;
-    margin-bottom: -1em;
-    width: 20em;
-    float: left;
-}
-
-.conteudo_titulo {
+.conteudo_titulo_dados{
     text-align: center;
     margin-bottom: -1.2em;
 }
 
-.conteudo_input_dados {
-    float: left;
-    margin-left: .6em; 
-}
-
-.container_dados_form {
+/*estilo imagem da persona e edição da foto*/
+.conteudo_foto_dados {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items:center ;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 4.5em;
 }
 
-.input-container-dados {
+.conteudo_foto_imagem_dados {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transform: translate(1.15em);
+    margin-bottom: 1em;
+    margin-left: -50px;
+}
+
+.conteudo_foto_botao_dados {
+    display: flex;
+    align-items: center;
+    padding: 9px 12px;
+    gap: 1.25em;
+    transform: translate(2.5em);
+    height: 40px;
+    width: 172px;
+    border: none;
+    background: var(--athena-col-primaria);
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: -64px;
+}
+
+.conteudo_foto_botao_gap_dados {
+    gap: 2em;
+}
+
+.conteudo_foto_botao_label_dados {
+    line-height: 1.5em;
+    font-size: 1em;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+
+/*estilo formulario de dados*/
+
+
+.container_dados_form,  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-container {
     position: relative;
     margin: 50px auto;
     width: 330px;
     margin-bottom: 1em;
 }
 
-.input-container-dados input {
+.input-container input {
     font-size: 1em;
     width: 100%;
     border: none;
@@ -60,7 +90,7 @@ legend {
     outline: none;
 }
 
-.input-container-dados .label {
+.input-container .label {
     position: absolute;
     top: 0;
     left: 0;
@@ -68,37 +98,34 @@ legend {
     transition: all 0.3s ease;
     pointer-events: none;
 }
-.input-container-dados input[type="name"]:focus~.label, .input-container input[type="email"]:focus~.label,
-.input-container-dados input[type="name"]:valid~.label, .input-container input[type="text"]:valid~.label,
-.input-container-dados input[type="text"]:focus~.label {
+
+.input-container input[type="password"]:focus~.label, .input-container input[type="email"]:focus~.label,
+.input-container input[type="password"]:valid~.label, .input-container input[type="text"]:valid~.label,
+.input-container input[type="text"]:focus~.label {
     top: -20px;
     font-size: .8em;
     color: var(--athena-col-link);
-
 }
-.input-container-dados input[type="email"]:not(:placeholder-shown)~ .label {
-    top: -10px;
+
+.input-container input[type="email"]:not(:placeholder-shown) ~ .label, .input-container input[type="password"]:not(:placeholder-shown) ~ .label {
+    top: -20px;
     font-size: .8em;
     color: var(--athena-col-link);
 }
 
-.input-container-dados .underline {
+.input-container .underline {
     position: absolute;
     bottom: 0;
     left: 0;
     height: 2px;
-    width: 100px;
+    width: 100%;
     background-color: var(--athena-col-link);
     transform: scaleX(0);
     transition: all 0.3s ease;
 }
 
-.input-container input[type="name"]:focus~.underline, .input-container input[type="email"]:focus~.underline,
+.input-container input[type="password"]:focus~.underline, .input-container input[type="email"]:focus~.underline,
 .input-container input[type="text"]:focus~.underline, .input-container input[type="text"]:valid~.underline,
-.input-container input[type="nameß"]:valid~.underline, .input-container input[type="email"]:valid~.underline {
+.input-container input[type="password"]:valid~.underline, .input-container input[type="email"]:valid~.underline {
     transform: scaleX(1);
-} 
-
-
-
-
+}
