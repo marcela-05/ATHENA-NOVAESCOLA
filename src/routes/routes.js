@@ -76,13 +76,6 @@ module.exports = function(application){
       );
     });
 
-    // retorna controlador para listar área do conhecimento
-    application.get('/areaConhecimento', function(req, res){
-      application.src.controllers.areaConhecimentoControllers.listaAreaConhecimento(
-        application, req, res
-      );
-    });
-
     // retorna controlador para cadastrar área do conhecimento
     application.post('/areaConhecimento/cadastrar', urlencodedParser, function(req, res){
       application.src.controllers.areaConhecimentoControllers.cadastra(
@@ -91,7 +84,7 @@ module.exports = function(application){
     });
 
     // retorna controlador para a atualização da área do conhecimento
-    application.put('/areaConhecimento/atualizar', urlencodedParser, function(req, res){
+    application.post('/areaConhecimento/atualizar', urlencodedParser, function(req, res){
       application.src.controllers.areaConhecimentoControllers.atualiza(
         application, req, res
       );
@@ -267,7 +260,7 @@ module.exports = function(application){
       if (req.session.autorizado && req.session.cadastrado) {
         res.render('html/perfil');
       } else {
-        res.redirect('/home')
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
       }
     });
     
@@ -280,4 +273,36 @@ module.exports = function(application){
       }
     });
 
+    // retorna controlador para renderizr página de cadastro de assunto/area de conhecimento
+    application.get('/areaConhecimento/cadastrar', urlencodedParser, function(req, res){
+      if (req.session.autorizado != true) {
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+      } else {
+        application.src.controllers.areaConhecimentoControllers.cadastra(
+          application, req, res
+        );
+      }
+    });
+
+    // retorna controlador para renderizr página de atualização de assunto/area de conhecimento
+    application.get('/areaConhecimento/atualizar', urlencodedParser, function(req, res){
+      if (req.session.autorizado != true) {
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+      } else {
+        application.src.controllers.areaConhecimentoControllers.atualiza(
+          application, req, res
+        );
+      }
+    });
+
+    // retorna controlador para renderizar a página que lista todas as áreas
+    application.get('/areaConhecimento/listar', urlencodedParser, function(req, res){
+      if (req.session.autorizado != true) {
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+      } else {
+        application.src.controllers.areaConhecimentoControllers.listaAreasConhecimento(
+          application, req, res
+        );
+      }
+    });
   }

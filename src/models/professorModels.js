@@ -102,6 +102,7 @@ professores.prototype.getIdProfessor = function(callback, nomeProfessor, emailPr
 // modelo responsável por vincular um professor a uma disciplina
 professores.prototype.vinculaDisciplina = function(callback, idProfessor, disciplinas) {
     if (typeof disciplinas !== 'string') {
+        let erro = ''
         // se o tipo não for string, significa que mais de uma opção foi marcada
         // logo, o processo de vinculação é repetido para cada opção
         for (let disciplina of disciplinas) {
@@ -111,7 +112,7 @@ professores.prototype.vinculaDisciplina = function(callback, idProfessor, discip
             database.appDB.all(sql, [disciplina.toLocaleLowerCase()], (err, rows) => {
                 if (err) {
                     console.error(err.message);
-                    callback(err.message)
+                    erro = err.message
                 } else {
                     // vincula o professor à disciplina
                     let idDisciplina = rows[0].id_disciplina
@@ -122,13 +123,18 @@ professores.prototype.vinculaDisciplina = function(callback, idProfessor, discip
                     database.appDB.run(sql, [idProfessor, idDisciplina], (err, rows) => {
                         if (err) {
                             console.error(err.message);
-                            callback(err.message)
-                        } else{
-                            callback()
+                            erro = err.message
                         }
                     });
                 }
             });
+        }
+
+        // retorno do modelo para o controlador
+        if (erro.length > 0) {
+            callback(erro)
+        } else {
+            callback()
         }
     } else {
         // busca o id da disciplina de acordo com o nome - quando somente uma opção é marcada.
@@ -154,6 +160,22 @@ professores.prototype.vinculaDisciplina = function(callback, idProfessor, discip
             }
         });
     }
+}
+
+// modelo responsável por listar as disciplinas do professor
+professores.prototype.listaDisciplinas = function(callback, idProfessor) {
+    var sql = 'SELECT disciplina.nome, disciplina.id_disciplina FROM disciplina INNER JOIN prof_disciplina ON disciplina.id_disciplina = prof_disciplina.id_disciplina WHERE prof_disciplina.id_professor = ?';
+
+    // executa a consulta sql e retorna os dados na função callback, a qual será usada
+    // no controlador para mostrar os dados na página.
+    database.appDB.all(sql, [idProfessor], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            callback(err.message)
+        } else{
+            callback(rows)
+        }
+    });
 }
 
 

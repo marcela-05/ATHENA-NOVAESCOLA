@@ -1,0 +1,92 @@
+.container_erro{
+    background-color: #E9E9E9;
+    min-height: 100vh;
+    padding: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-404{
+    width: 70%;
+    margin-bottom: 1.5em;
+}
+
+/* -----Classes genéricas para editar os svgs----- */
+.cls-1 {
+    fill: var(--athena-col-primaria);
+}
+
+.cls-2, .cls-3, .cls-5{
+    fill: var(--athena-col-secundaria);
+}
+
+.cls-4{
+    fill: #e1ebef
+}
+
+.cls-6{
+    fill: var(--athena-col-nova2);
+}
+
+.cls-7, .cls-8{
+    fill: var(--athena-col-cinza-3);
+}
+
+.cls-9{
+    fill: var(--athena-col-nova1);
+}
+
+.cls-11{
+    fill: #fff;
+}
+/* ----------------------------------------------- */
+
+.codigo{
+    font-size: 4em;
+    font-weight: bold;
+    fill: var(--athena-col-terciaria);
+}
+
+.titulo{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.5em;
+    color: var(--athena-col-primaria);
+}
+
+.mensagem{
+    margin-top: 1.5em;
+    text-align: center;
+    color: var(--athena-col-dracula-4);
+}
+
+.botao_primario{
+    background-color: transparent;
+    color: var(--athena-col-primaria);
+    margin-top: 1.5em;
+    text-decoration: none;
+    text-align: center;
+    width: 35%;
+}
+
+.botao_primario:hover{
+    cursor: pointer;
+    background-color: var(--athena-col-primaria);
+    color: #fff;
+    text-decoration: underline;
+}
+
+@media screen and (min-width: 1024px) {
+    .imagem-404{
+        width: 30%;
+        margin-bottom: 1.5em;
+    }
+
+    .botao_primario{
+        width: 15%;
+    }
+}

@@ -10,13 +10,22 @@ exports.listaTurmas = function(application, req, res) {
       }, req.query.idProfessor);
     }
 
-    // Caso o id da Turma seja informado, então o modelo de getTurmaAlunos é chamado.
+    // Caso o id da Turma seja informado, então o modelo de getTurma é chamado.
     // Esse controlador passa o idTurma, vindo da rota, para o modelo.
     // No final, o resultado que o modelo retorna é mostrado em formato json como resposta.
     else if(req.query.idTurma && req.query.idProfessor == undefined) {
-      turmas.getTurmaAlunos((result) => {
-        res.json(result);
-      }, req.query.idTurma);
+      turmas.getTurma((result) => {
+        if(result == 'turma não encontrada'){
+          res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Turma não encontrada', mensagem: ''});
+        } else {
+          turmas.getDisciplinaDaTurma((disciplina) => {
+            turmas.getTurmaAlunos((alunos) => {
+              console.log(alunos);
+              res.render('html/turma', {turma: result[0], disciplina: disciplina[0], alunos: alunos});
+            }, req.query.idTurma);
+          }, req.query.idTurma);
+        }
+      }, req.query.idTurma, req.session.idProfessor);
     }
   }
 
