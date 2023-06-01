@@ -1,4 +1,5 @@
 const database = require('../data/data')
+const DAO = require('../data/DAO') // template para executar comandos no banco de dados
 
 
 function alunos() {}
@@ -7,14 +8,9 @@ function alunos() {}
 alunos.prototype.getAlunos = function(callback, idProfessor) {
     var sql = 'SELECT * FROM aluno WHERE id_professor = ?';
     
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [idProfessor], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-        }else{
-            callback(rows)
-        }
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.select(sql, [idProfessor], retorno => {
+        callback(retorno)
     });
 }
 
@@ -24,13 +20,8 @@ alunos.prototype.postAluno = function(callback, nomeAluno, serieAluno, idProfess
     // nesse ponto, o aluno é criado com o nome, serie e id do professor
     // passados via corpo da requisição
     var sql = 'INSERT INTO aluno (nome, serie, id_professor) VALUES (?,?,?);';
-    database.appDB.all(sql, [nomeAluno, serieAluno, idProfessor], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        } else{
-            callback()
-        }
+    DAO.insert(sql, [nomeAluno, serieAluno, idProfessor], retorno => {
+        callback(retorno)
     });
 }
 
@@ -40,13 +31,8 @@ alunos.prototype.updateAluno = function(callback, nomeAluno, serieAluno, idAluno
 
     console.log(sql)
     // executa a atualização e verifica se houve algum erro
-    database.appDB.all(sql, [nomeAluno, serieAluno,idAluno], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        } else {
-            callback()
-        }
+    DAO.update(sql, [nomeAluno, serieAluno, idAluno], retorno => {
+        callback(retorno)
     });
 }
 
@@ -56,13 +42,8 @@ alunos.prototype.deleteAluno = function(callback, idAluno) {
 
     // executa a consulta sql e retorna os dados na função callback, a qual será usada
     // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [idAluno], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        }else{
-            callback()
-        }
+    DAO.delete(sql, [idAluno], retorno => {
+        callback(retorno)
     });
 }
 

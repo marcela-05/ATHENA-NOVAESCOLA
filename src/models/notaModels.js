@@ -1,4 +1,5 @@
 const database = require('../data/data')
+const DAO = require('../data/DAO') // template para executar comandos no banco de dados
 
 
 function notas() {}
@@ -13,14 +14,10 @@ notas.prototype.getNotas = function(callback, idAluno) {
     'JOIN nota ON bloco_questao.id_avaliacao = nota.id_avaliacao AND bloco_questao.num_bloco = nota.num_bloco ' + 
     'JOIN aluno ON nota.id_aluno = aluno.id_aluno ' +
     'JOIN area_conhecimento ON bloco_questao.id_area = area_conhecimento.id_area ' +
-    'WHERE aluno.id_aluno = ' + idAluno;
-    database.appDB.all(sql, [], (err, rows) => {
-        if(err){
-            console.error(err.message);
-            callback(err.message)
-        } else {
-            callback(rows)
-        }
+    'WHERE aluno.id_aluno = ?';
+
+    DAO.select(sql, [idAluno], retorno => {
+        callback(retorno)
     });
 }
 
@@ -28,39 +25,27 @@ notas.prototype.getNotas = function(callback, idAluno) {
 notas.prototype.postNota = function(callback, idAluno, idAvaliacao, numBlocos, notaAcertos) {
     var sql = 'INSERT INTO nota (id_aluno, id_avaliacao, num_bloco, nota_acertos, data) VALUES (?,?,?,?,?)';
     let data = new Date().toLocaleDateString('pt-BR') // data atual
-    database.appDB.run(sql, [idAluno, idAvaliacao, numBlocos, notaAcertos, data], (err) => {
-        if(err){
-            console.error(err.message);
-            callback(err.message)
-        } else{
-            callback()
-        }
+
+    DAO.insert(sql, [idAluno, idAvaliacao, numBlocos, notaAcertos, data], retorno => {
+        callback(retorno)
     });
 }
 
 // modelo responsável por atualizar uma nota
 notas.prototype.updateNota = function(callback, idAluno, idAvaliacao, numBlocos, notaAcertos) {
     var sql = 'UPDATE nota SET nota_acertos = ? WHERE id_aluno = ? AND id_avaliacao = ? AND num_bloco = ?';
-    database.appDB.run(sql, [notaAcertos, idAluno, idAvaliacao, numBlocos], (err) => {
-        if(err){
-            console.error(err.message);
-            callback(err.message)
-        } else{
-            callback()
-        }
+
+    DAO.update(sql, [notaAcertos, idAluno, idAvaliacao, numBlocos], retorno => {
+        callback(retorno)
     });
 }
 
 // modelo responsável por deletar uma nota
 notas.prototype.deleteNota = function(callback, idAluno, idAvaliacao, numBlocos) {
     var sql = 'DELETE FROM nota WHERE id_aluno = ? AND id_avaliacao = ? AND num_bloco = ?';
-    database.appDB.run(sql, [idAluno, idAvaliacao, numBlocos], (err) => {
-        if(err){
-            console.error(err.message);
-            callback(err.message)
-        } else{
-            callback()
-        }
+
+    DAO.delete(sql, [idAluno, idAvaliacao, numBlocos], retorno => {
+        callback(retorno)
     });
 }
 

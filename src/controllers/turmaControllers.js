@@ -20,7 +20,6 @@ exports.listaTurmas = function(application, req, res) {
         } else {
           turmas.getDisciplinaDaTurma((disciplina) => {
             turmas.getTurmaAlunos((alunos) => {
-              console.log(alunos);
               res.render('html/turma', {turma: result[0], disciplina: disciplina[0], alunos: alunos});
             }, req.query.idTurma);
           }, req.query.idTurma);

@@ -1,4 +1,5 @@
 const database = require('../data/data')
+const DAO = require('../data/DAO') // template para executar comandos no banco de dados
 
 
 function turmas() {}
@@ -9,13 +10,8 @@ turmas.prototype.updateTurma = function(callback, nomeTurma, idTurma) {
     var sql = 'UPDATE turma set nome = ? WHERE id_turma = ?';
 
     // executa a atualização e verifica se houve algum erro
-    database.appDB.all(sql, [nomeTurma, idTurma], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        }else{
-            callback()
-        }
+    DAO.update(sql, [nomeTurma, idTurma], retorno => {
+        callback(retorno)
     });
 }
 
@@ -23,18 +19,13 @@ turmas.prototype.updateTurma = function(callback, nomeTurma, idTurma) {
 turmas.prototype.getTurma = function(callback, idTurma, idProfessor) {
     var sql = 'SELECT * FROM turma WHERE id_turma = ? AND id_professor = ?';
 
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [idTurma, idProfessor], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        }else{
-            if(rows.length > 0) {
-                callback(rows)
-            } else {
-                callback('turma não encontrada')
-            }
+    // executa a consulta sql e retorna os dados na função callback
+
+    DAO.select(sql, [idTurma, idProfessor], retorno => {
+        if(retorno.length > 0) {
+            callback(retorno)
+        } else {
+            callback('turma não encontrada')
         }
     });
 }
@@ -44,15 +35,9 @@ turmas.prototype.getTurma = function(callback, idTurma, idProfessor) {
 turmas.prototype.getProfTurmas = function(callback, idProf) {
     var sql = 'SELECT * FROM turma WHERE id_professor = ?';
 
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [idProf], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        }else{
-            callback(rows)
-        }
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.select(sql, [idProf], retorno => {
+        callback(retorno)
     });
 }
 
@@ -66,14 +51,10 @@ turmas.prototype.getTurmaAlunos = function(callback, idTurma) {
     'FROM aluno_turma ' +
     'JOIN aluno ON aluno_turma.id_aluno = aluno.id_aluno ' +
     'JOIN turma ON aluno_turma.id_turma = turma.id_turma ' +
-    'WHERE aluno_turma.id_turma = ' + idTurma;
+    'WHERE aluno_turma.id_turma = ?';
 
-    // retorno dos dados
-    database.appDB.all(sql, [], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            }
-        callback(rows)
+    DAO.select(sql, [idTurma], retorno => {
+        callback(retorno)
     });
 }
 
@@ -83,29 +64,19 @@ turmas.prototype.postTurma = function(callback, idProfessor, idDisciplina, nomeT
     // nesse ponto, a turma é criada com o nome, serie e id do professor
     // passados via corpo da requisição
     var sql = 'INSERT INTO turma (nome, serie, id_professor, id_disciplina) VALUES (?,?,?,?);';
-    database.appDB.all(sql, [nomeTurma, serieTurma,idProfessor, idDisciplina], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        }else{
-            callback()
-        }
-    });
+
+    DAO.insert(sql, [nomeTurma, serieTurma, idProfessor, idDisciplina], retorno => {
+        callback(retorno)
+    })
 }
 
 // modelo responsável por deletar a turma. O id é informado via url, ex.: /turma/deletar?idTurma=1
 turmas.prototype.deleteTurma = function(callback, idTurma) {
     var sql = 'DELETE FROM turma WHERE id_turma = ?';
 
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [idTurma], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        }else {
-            callback()
-        }
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.delete(sql, [idTurma], retorno => {
+        callback(retorno)
     });
 }
 
@@ -115,15 +86,9 @@ turmas.prototype.getDisciplinaDaTurma = function(callback, idTurma) {
     'JOIN turma ON disciplina.id_disciplina = turma.id_disciplina ' +
     'WHERE turma.id_turma = ?';
 
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [idTurma], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        }else{
-            callback(rows)
-        }
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.select(sql, [idTurma], retorno => {
+        callback(retorno)
     });
 }
 
