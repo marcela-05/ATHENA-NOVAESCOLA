@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cadastrar Assunto</title>
+    <link rel="stylesheet" href="../css/assunto.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/cabecalho.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="../js/cabecalho.js"></script>
+</head>
+
+<body>
+    <%- include('cabecalho') %>
+    <main>
+        <h1 class="tituloAssunto">Editar Assunto</h1>
+        <form class="form_assunto" action="" method="post" enctype="application/x-www-form-urlencoded">
+            <fieldset class="form_input">
+                <input type="text" value="<%= area.nome_area %>" name="nomeArea" required="">
+                <input type="text" value="<%= idArea %>" name="idArea" style="display: none;">
+                <label>
+                    <span style="transition-delay:0ms">N</span><span style="transition-delay:50ms">o</span><span
+                        style="transition-delay:100ms">v</span><span style="transition-delay:150ms">o</span><span
+                        style="transition-delay:200ms">&nbsp;</span><span style="transition-delay:250ms">T</span><span
+                        style="transition-delay:300ms">í</span><span style="transition-delay:350ms">t</span><span
+                        style="transition-delay:400ms">u</span><span style="transition-delay:450ms">l</span><span
+                        style="transition-delay:500ms">o</span><span style="transition-delay:550ms">&nbsp;</span><span
+                        style="transition-delay:600ms">d</span><span style="transition-delay:650ms">o</span><span
+                        style="transition-delay:700ms">&nbsp;</span><span style="transition-delay:750ms">A</span><span
+                        style="transition-delay:800ms">s</span><span style="transition-delay:850ms">s</span><span
+                        style="transition-delay:900ms">u</span><span style="transition-delay:950ms">n</span><span
+                        style="transition-delay:1000ms">t</span><span style="transition-delay:1050ms">o</span>
+                </label>
+            </fieldset>
+
+            <fieldset class="form_disciplina">
+                <h4 class="titulo_selecao_de_materia">Selecione a nova matéria</h4>
+                <select class="selecao_de_materia" name="disciplina">
+                    <option value disabled selected><%= atual %></option>
+                    <% for (let disciplina of disciplinas) { %>
+                        <option value=<%= disciplina.id_disciplina %>><%= disciplina.nome %></option>
+                    <% } %>
+                </select>
+            </fieldset>
+
+            <button class="botao_primario" type="submit">Atualizar</button>
+        </form>
+    </main>
+</body>
+
+</html>

@@ -122,7 +122,12 @@ module.exports.cadastra = function(application, req, res) {
         req.session.emailProfessor = req.body.emailProfessor
         req.session.idProfessor = result[0].id_professor
         req.session.nomeProfessor = result[0].nome
-        res.redirect('/home')
+        professores.listaDisciplinas((result) => {
+          if (result != undefined && result.length > 0) {
+            req.session.profDisciplinas = result
+            res.redirect('/home')
+          }
+        }, req.session.idProfessor)
       }
     }, req.body.emailProfessor, req.body.senhaProfessor);
   }
@@ -139,7 +144,12 @@ module.exports.cadastra = function(application, req, res) {
       if (result != undefined && result.length > 0) {
         res.json({message: result})
       } else {
-        res.redirect('/home')
+        professores.listaDisciplinas((result) => {
+          if (result != undefined && result.length > 0) {
+            req.session.profDisciplinas = result
+            res.redirect('/home')
+          }
+        }, req.session.idProfessor)
       }
     }, req.session.idProfessor, req.body.checkboxDisciplina);
   }
