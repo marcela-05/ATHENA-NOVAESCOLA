@@ -16,7 +16,7 @@ exports.listaTurmas = function(application, req, res) {
     else if(req.query.idTurma && req.query.idProfessor == undefined) {
       turmas.getTurma((result) => {
         if(result == 'turma não encontrada'){
-          res.json({message: 'turma não encontrada'});
+          res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Turma não encontrada', mensagem: ''});
         } else {
           turmas.getDisciplinaDaTurma((disciplina) => {
             turmas.getTurmaAlunos((alunos) => {
