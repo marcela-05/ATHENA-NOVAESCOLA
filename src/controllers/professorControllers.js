@@ -122,7 +122,7 @@ module.exports.cadastra = function(application, req, res) {
         req.session.emailProfessor = req.body.emailProfessor
         req.session.idProfessor = result[0].id_professor
         req.session.nomeProfessor = result[0].nome
-        professores.listaDisciplinas((result) => {
+        professores.listaDisciplinas(() => {
           if (result != undefined && result.length > 0) {
             req.session.profDisciplinas = result
             res.redirect('/home')
