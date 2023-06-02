@@ -7,22 +7,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../css/meusdados.css">
+
 </head>
 <body>
     <main class="conteudo">
-        <figure>
-            <img class="conteudo_logo" src="../assets/athena_logo.png" alt="Logo da Athena">
-        </figure>
-
+        
         <section class="container_dados">
-            <article>
-                <h1 class="conteudo_titulo_dados"> Meus dados</h1>
+            <article class="conteudo_dados_titulo">
+                <h1 class="conteudo_titulo_dados_texto"> Meus dados</h1>
             </article>
+            <!--Ediçao foto perfil-->
+           
+            <form class="conteudo_foto_dados"> 
+            <figure>
+                <img class="conteudo_foto_imagem_dados" src="../assets/persona.jpg" alt="Logo da persona">
+            </figure>
 
+                 <button type="button" class="conteudo_foto_botao_dados">
+                    <svg xmls="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon">
+                        <g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd"
+                            clip-rule="evenodd">
+                            <path
+                                d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z">
+                            </path>
+                            <path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path>
+                        </g>
+                    </svg>
+                    <label for="file-update" class="conteudo_foto_label_dados">Editar foto</label>
+                    <input type="file" id="file-update" style="display: none;">
+                </button>
+            </form>
+            <!--final foto perfil-->
+            
+            
+            
+            
+            
             <!-- inicio Formulario de dados-->
             <form class="container_dados_form" method="post" action="" enctype="multipart/form-data">
-                <fieldset class="conteudo_input_dados">
-                    <legend> Seção para inserir nome e email </legend>
+                <form class="conteudo_input_dados">
                     <div class="input-container-dados">
                         <input type="name" id="input-name" required="">
                         <label for="input-nome" class="label">nome:</label>
@@ -33,11 +56,17 @@
                         <label for="input-email" class="label">email:</label>
                         <div class="underline"></div>
                     </div>
-                </fieldset>
-                
-
+                </form>
             </form>
+            <!--Final do formulario de dados-->
 
+            <button class="botao-trocar-senha">Trocar senha</button>
+            <button class="botao-editar-dados">Editar dados academicos</button>
+            <div class="botoes-sair-deletar">
+                <button class="sair-conta"> Sair</button>
+                <button class="deletar-conta">Deletar conta </button>
+            </div>
+            <button class="voltar-conta">Voltar</button>
         </section>
 
     </main>
