@@ -1,19 +1,10 @@
 exports.listaTurmas = function(application, req, res) {
     // cria conexão com o modelo /src/models/turmaModels.js
     var turmas = new application.src.models.turmaModels() 
-    // Caso o id do Professor seja informado, então o modelo de getProfTurmas é chamado.
-    // Esse controlador passa o idProfessor, vindo da rota, para o modelo.
-    // No final, o resultado que o modelo retorna é mostrado em formato json como resposta.
-    if(req.query.idTurma == undefined && req.query.idProfessor){
-      turmas.getProfTurmas((result) => {
-        res.json(result);
-      }, req.query.idProfessor);
-    }
-
     // Caso o id da Turma seja informado, então o modelo de getTurma é chamado.
     // Esse controlador passa o idTurma, vindo da rota, para o modelo.
     // No final, o resultado que o modelo retorna é mostrado em formato json como resposta.
-    else if(req.query.idTurma && req.query.idProfessor == undefined) {
+    if(req.query.idTurma != undefined) {
       turmas.getTurma((result) => {
         if(result == 'turma não encontrada'){
           res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Turma não encontrada', mensagem: ''});
@@ -25,6 +16,20 @@ exports.listaTurmas = function(application, req, res) {
           }, req.query.idTurma);
         }
       }, req.query.idTurma, req.session.idProfessor);
+    }
+
+    // caso o id da turma não seja infomrado, então o modelo de getProfTurmas é chamado.
+    // Esse controlador passa o idProfessor, vindo da sessão, para o modelo.
+    else if(req.query.idTurma == undefined && req.query.idProfessor == undefined){
+      turmas.getProfTurmas((result) => {
+        if (result.length == 0) {
+          res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Nenhuma turma encontrada', mensagem: 'Se achar que isso é um problema, entre em contato conosco.'});
+        } else {
+          turmas.getDisciplinaDaTurma((disciplinas) => {
+            res.render('html/turmas', {turmas: result, disciplinas: disciplinas, profDisciplinas: req.session.profDisciplinas});
+          }, '', req.session.idProfessor);
+        }
+      }, req.session.idProfessor);
     }
   }
 

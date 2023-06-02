@@ -81,15 +81,25 @@ turmas.prototype.deleteTurma = function(callback, idTurma) {
 }
 
 // modelo responsável por pegar a disciplina da turma
-turmas.prototype.getDisciplinaDaTurma = function(callback, idTurma) {
-    var sql = 'SELECT disciplina.nome FROM disciplina ' +
-    'JOIN turma ON disciplina.id_disciplina = turma.id_disciplina ' +
-    'WHERE turma.id_turma = ?';
+turmas.prototype.getDisciplinaDaTurma = function(callback, idTurma, idProfessor) {
+    // se não informar o id da turma, retorna o nome da disciplina de todas as turmas do professor
+    if(idTurma == undefined || idTurma == '') {
+        var sql = 'SELECT disciplina.nome FROM disciplina JOIN turma ON disciplina.id_disciplina = turma.id_disciplina WHERE turma.id_professor = ?';
 
-    // executa a consulta sql e retorna os dados na função callback
-    DAO.select(sql, [idTurma], retorno => {
-        callback(retorno)
-    });
+        // executa a consulta sql e retorna os dados na função callback
+        DAO.select(sql, [idProfessor], retorno => {
+            callback(retorno)
+        });
+    } else {
+        var sql = 'SELECT disciplina.nome FROM disciplina ' +
+        'JOIN turma ON disciplina.id_disciplina = turma.id_disciplina ' +
+        'WHERE turma.id_turma = ?';
+
+        // executa a consulta sql e retorna os dados na função callback
+        DAO.select(sql, [idTurma], retorno => {
+            callback(retorno)
+        });
+    }
 }
 
 module.exports = function(){
