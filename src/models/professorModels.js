@@ -1,4 +1,5 @@
 const database = require('../data/data')
+const DAO = require('../data/DAO') // template para executar comandos no banco de dados
 
 
 function professores() {}
@@ -7,15 +8,9 @@ function professores() {}
 professores.prototype.getProfessores = function(callback) {
     var sql = 'SELECT * FROM professor';
 
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        } else{
-            callback(rows)
-        }
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.select(sql, [], retorno => {
+        callback(retorno)
     });
 }
 
@@ -25,14 +20,8 @@ professores.prototype.postProfessor = function(callback, nomeProfessor, emailPro
     // nesse ponto, o professor é criado com o nome, email e senha
     // passados via corpo da requisição
     var sql = 'INSERT INTO professor (nome, email, senha) VALUES (?,?,?)';
-    var erro = ''
-    database.appDB.all(sql, [nomeProfessor, emailProfessor, senhaProfessor], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        } else{
-            callback()
-        }
+    DAO.insert(sql, [nomeProfessor, emailProfessor, senhaProfessor], retorno => {
+        callback(retorno)
     });
 }
 
@@ -41,13 +30,8 @@ professores.prototype.updateProfessor = function(callback, idProfessor, nomeProf
     var sql = 'UPDATE professor set nome = ?, email = ?, senha = ? WHERE id_professor = ?';
 
     // executa a atualização e verifica se houve algum erro
-    database.appDB.all(sql, [nomeProfessor, emailProfessor, senhaProfessor, idProfessor], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        } else{
-            callback()
-        }
+    DAO.update(sql, [nomeProfessor, emailProfessor, senhaProfessor, idProfessor], retorno => {
+        callback(retorno)
     });
 }
 
@@ -55,15 +39,9 @@ professores.prototype.updateProfessor = function(callback, idProfessor, nomeProf
 professores.prototype.deleteProfessor = function(callback, idProfessor) {
     var sql = 'DELETE FROM professor WHERE id_professor = ?';
 
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [idProfessor], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        } else{
-            callback()
-        }
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.delete(sql, [idProfessor], retorno => {
+        callback(retorno)
     });
 }
 
@@ -71,15 +49,9 @@ professores.prototype.deleteProfessor = function(callback, idProfessor) {
 professores.prototype.loginProfessor = function(callback, emailProfessor, senhaProfessor) {
     var sql = 'SELECT * FROM professor WHERE email = ? AND senha = ?';
 
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [emailProfessor, senhaProfessor], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback({message: 'erro interno'})
-        } else{
-            callback(rows)
-        }
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.select(sql, [emailProfessor, senhaProfessor], retorno => {
+        callback(retorno)
     });
 }
 
@@ -87,15 +59,9 @@ professores.prototype.loginProfessor = function(callback, emailProfessor, senhaP
 professores.prototype.getIdProfessor = function(callback, nomeProfessor, emailProfessor) {
     var sql = 'SELECT id_professor FROM professor WHERE nome = ? AND email = ?';
 
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [nomeProfessor, emailProfessor], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        } else{
-            callback(rows)
-        }
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.select(sql, [nomeProfessor, emailProfessor], retorno => {
+        callback(retorno)
     });
 }
 
@@ -118,8 +84,7 @@ professores.prototype.vinculaDisciplina = function(callback, idProfessor, discip
                     let idDisciplina = rows[0].id_disciplina
                     let sql = 'INSERT INTO prof_disciplina (id_professor, id_disciplina) VALUES (?,?)';
 
-                    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-                    // no controlador para mostrar os dados na página.
+                    // executa a consulta sql e retorna os dados na função callback
                     database.appDB.run(sql, [idProfessor, idDisciplina], (err, rows) => {
                         if (err) {
                             console.error(err.message);
@@ -166,15 +131,9 @@ professores.prototype.vinculaDisciplina = function(callback, idProfessor, discip
 professores.prototype.listaDisciplinas = function(callback, idProfessor) {
     var sql = 'SELECT disciplina.nome, disciplina.id_disciplina FROM disciplina INNER JOIN prof_disciplina ON disciplina.id_disciplina = prof_disciplina.id_disciplina WHERE prof_disciplina.id_professor = ?';
 
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [idProfessor], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        } else{
-            callback(rows)
-        }
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.select(sql, [idProfessor], retorno => {
+        callback(retorno)
     });
 }
 

@@ -1,4 +1,4 @@
-const database = require('../data/data')
+const DAO = require('../data/DAO') // template para executar comandos no banco de dados
 
 
 function areaConhecimento() {}
@@ -17,29 +17,18 @@ areaConhecimento.prototype.getAreaConhecimento = function(callback, idArea, disc
 
         var sql = 'SELECT * FROM area_conhecimento WHERE id_disciplina IN (' + disciplinasFormatadas + ') ORDER BY id_disciplina ASC;';
         
-        // executa a consulta sql e retorna os dados na função callback, a qual será usada
-        // no controlador para mostrar os dados na página
-        database.appDB.all(sql, [], (err, rows) => {
-            if (err) {
-                console.error(err.message);
-                callback(err.message)
-            } else{
-                callback(rows)
-            }
+        // executa a consulta sql e retorna os dados na função callback
+        DAO.select(sql, [], retorno => {
+            callback(retorno)
         });
+
     } else {
         // se o id da área for passado, então a consulta sql trará somente a área com o id passado
         var sql = 'SELECT * FROM area_conhecimento WHERE id_area = ?';
 
-        // executa a consulta sql e retorna os dados na função callback, a qual será usada
-        // no controlador para mostrar os dados na página.
-        database.appDB.all(sql, [idArea], (err, rows) => {
-            if (err) {
-                console.error(err.message);
-                callback(err.message)
-            } else{
-                callback(rows)
-            }
+        // executa a consulta sql e retorna os dados na função callback
+        DAO.select(sql, [idArea], retorno => {
+            callback(retorno)
         });
     }
 }
@@ -55,27 +44,17 @@ areaConhecimento.prototype.getNomeDisciplina = function(callback, idArea, discip
         disciplinasFormatadas = disciplinasFormatadas.slice(0, -1)
 
         var sql = 'SELECT disciplina.nome FROM area_conhecimento JOIN disciplina ON area_conhecimento.id_disciplina = disciplina.id_disciplina WHERE disciplina.id_disciplina IN (' + disciplinasFormatadas + ') ORDER BY area_conhecimento.id_disciplina ASC';
-        // executa a consulta sql e retorna os dados na função callback, a qual será usada
-        // no controlador para mostrar os dados na página.
-        database.appDB.all(sql, [], (err, rows) => {
-            if (err) {
-                console.error(err.message);
-                callback(err.message)
-            } else{
-                callback(rows)
-            }
+        // executa a consulta sql e retorna os dados na função callback
+        DAO.select(sql, [], retorno => {
+            callback(retorno)
         });
+
     } else {
         var sql = 'SELECT disciplina.nome FROM area_conhecimento JOIN disciplina ON area_conhecimento.id_disciplina = disciplina.id_disciplina WHERE area_conhecimento.id_area = ?';
         // executa a consulta sql e retorna os dados na função callback, a qual será usada
         // no controlador para mostrar os dados na página.
-        database.appDB.all(sql, [idArea], (err, rows) => {
-            if (err) {
-                console.error(err.message);
-                callback(err.message)
-            } else{
-                callback(rows)
-            }
+        DAO.select(sql, [idArea], retorno => {
+            callback(retorno)
         });
     }
 }
@@ -86,15 +65,9 @@ areaConhecimento.prototype.postAreaConhecimento = function(callback, nomeArea, i
     // nesse ponto, a área do conhecimento é criada com o nome
     // passados via corpo da requisição
     var sql = 'INSERT INTO area_conhecimento (nome_area, id_disciplina) VALUES (?,?);';
-    database.appDB.all(sql, [nomeArea, idDisciplina], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        }else{
-            callback();
-        }
+    DAO.insert(sql, [nomeArea, idDisciplina], retorno => {
+        callback(retorno)
     });
-
 }
 
 // modelo resposável por atualizar uma área do conhecimento
@@ -102,13 +75,8 @@ areaConhecimento.prototype.updateAreaConhecimento = function(callback, idArea, n
     var sql = 'UPDATE area_conhecimento SET nome_area = ?, id_disciplina = ? WHERE id_area = ?';
 
     // executa a atualização e verifica se houve algum erro
-    database.appDB.all(sql, [nomeArea, idDisciplina, idArea], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        }else{
-            callback()
-        }
+    DAO.update(sql, [nomeArea, idDisciplina, idArea], retorno => {
+        callback(retorno)
     });
 }
 
@@ -116,15 +84,9 @@ areaConhecimento.prototype.updateAreaConhecimento = function(callback, idArea, n
 areaConhecimento.prototype.deleteAreaConhecimento = function(callback, idArea) {
     var sql = 'DELETE FROM area_conhecimento WHERE id_area = ?';
 
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [idArea], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-            }else{
-            callback()
-            }
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.delete(sql, [idArea], retorno => {
+        callback(retorno)
     });
 }
 

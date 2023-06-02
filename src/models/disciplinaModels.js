@@ -1,4 +1,5 @@
 const database = require('../data/data')
+const DAO = require('../data/DAO') // template para executar comandos no banco de dados
 
 
 function disciplinas() {}
@@ -7,43 +8,21 @@ function disciplinas() {}
 disciplinas.prototype.getDisciplinas = function(callback) {
     var sql = 'SELECT * FROM disciplina';
 
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            }
-        callback(rows)
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.select(sql, [], retorno => {
+        callback(retorno)
     });
 }
 
 // modelo responsável por criar uma disciplina
 disciplinas.prototype.postDisciplina = function(callback, nomeDisciplina, idProfessor) {
 
-    // nesse ponto, o professor é criado com o nome
-    // passados via corpo da requisição
-    var sql = 'INSERT INTO disciplina (nome) VALUES ( "' + 
-    nomeDisciplina + '");';
-    var erro = ''
-    database.appDB.all(sql, [], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            erro = err; // caso haja erro na inserção, ele é inserido na variável erro
-        }
-    });
+    // nesse ponto, a disciplina é criada com o nome passado via corpo da requisição
+    var sql = 'INSERT INTO disciplina (nome) VALUES (?);';
 
-    // se o tamanho da variável for menor que 1, significa que a variável está vazia
-    // logo, não houve erro na inserção e, por isso, pode criar o relacionamento
-    if(erro.length < 1){
-        sql = 'INSERT INTO prof_disciplina VALUES ((SELECT id_disciplina FROM disciplina WHERE nome = "' + nomeDisciplina +
-        '"), ' + idProfessor + ');';
-        database.appDB.all(sql, [], (err, rows) => {
-            if (err) {
-                console.error(err.message);
-            }
-            callback({message:"disciplina criada e vinculada ao professor"})
-        });
-    };
+    DAO.insert(sql, [nomeDisciplina], retorno => {
+        callback(retorno)
+    });
 }
 
 // modelo responsável por atualizar disciplina
@@ -51,13 +30,8 @@ disciplinas.prototype.updateDisciplina = function(callback, idDisciplina, nomeDi
     var sql = 'UPDATE disciplina set nome = ? WHERE id_disciplina = ?';
 
     // executa a atualização e verifica se houve algum erro
-    database.appDB.all(sql, [nomeDisciplina, idDisciplina], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        }else {
-            callback()
-        }
+    DAO.update(sql, [nomeDisciplina, idDisciplina], retorno => {
+        callback(retorno)
     });
 }
 
@@ -65,19 +39,12 @@ disciplinas.prototype.updateDisciplina = function(callback, idDisciplina, nomeDi
 disciplinas.prototype.deleteDisciplina = function(callback, idDisciplina) {
     var sql = 'DELETE FROM disciplina WHERE id_disciplina = ?';
 
-    // executa a consulta sql e retorna os dados na função callback, a qual será usada
-    // no controlador para mostrar os dados na página.
-    database.appDB.all(sql, [idDisciplina], (err, rows) => {
-        if (err) {
-            console.error(err.message);
-            callback(err.message)
-        }else{
-            callback()
-        }
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.delete(sql, [idDisciplina], retorno => {
+        callback(retorno)
     });
 }
 
 module.exports = function(){
     return disciplinas;
 }
-
