@@ -144,9 +144,12 @@ module.exports.cadastra = function(application, req, res) {
       if (result != undefined && result.length > 0) {
         res.json({message: result})
       } else {
-        professores.listaDisciplinas((result) => {
-          if (result != undefined && result.length > 0) {
-            req.session.profDisciplinas = result
+        professores.listaDisciplinas((result2) => {
+          if (result2 != undefined && result2.length > 0) {
+            req.session.profDisciplinas = result2
+            res.redirect('/home')
+          }
+          else {
             res.redirect('/home')
           }
         }, req.session.idProfessor)
