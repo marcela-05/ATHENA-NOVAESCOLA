@@ -1,0 +1,189 @@
+.conteudo_input {
+    float: left;
+    margin-left: .6em;
+}
+
+.container_login_form, .container_cadastro_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-container {
+    position: relative;
+    /* margin: 50px auto; */
+    width: 330px;
+    margin-bottom: 1em;
+    margin-left: auto;
+}
+
+.input-container input {
+    font-size: 1em;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 5px 0;
+    background-color: transparent;
+    outline: none;
+}
+
+.input-container .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-container input[type="password"]:focus~.label, .input-container input[type="email"]:focus~.label,
+.input-container input[type="password"]:valid~.label, .input-container input[type="text"]:valid~.label,
+.input-container input[type="text"]:focus~.label {
+    top: -20px;
+    font-size: .8em;
+    color: var(--athena-col-link);
+}
+
+.input-container input[type="email"]:not(:placeholder-shown) ~ .label, .input-container input[type="password"]:not(:placeholder-shown) ~ .label {
+    top: -20px;
+    font-size: .8em;
+    color: var(--athena-col-link);
+}
+
+.input-container .underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--athena-col-link);
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+}
+
+.input-container input[type="password"]:focus~.underline, .input-container input[type="email"]:focus~.underline,
+.input-container input[type="text"]:focus~.underline, .input-container input[type="text"]:valid~.underline,
+.input-container input[type="password"]:valid~.underline, .input-container input[type="email"]:valid~.underline {
+    transform: scaleX(1);
+}
+
+
+.titulo {
+  background: var(--athena-bg-turmas);
+  color: white;
+  font-size: 36px;
+  padding: 85px 3.5em;
+  text-align: center;
+  line-height: 1.5;
+  padding: 2em;
+  margin-bottom: 1em;
+}
+
+.filtro {
+  width: 92vw;
+  background-color: var(--cinza);
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+
+.filtro_botao {
+    display: none;
+}
+
+.filtro_botao:checked ~ .filtro_lista {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+}
+
+.filtro_header {
+  cursor: pointer;
+  display: flex;
+  gap: 30vw;
+  color: white;
+}
+
+.filtro_imagem {
+    width: 16px;
+}
+
+.filtro_lista {
+  display: none;
+  background-color: var(--cinza);
+  padding: 10px;
+}
+
+.filtro_lista_checkbox {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin-top: 1em;
+}
+
+.filtro {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+/*   border: 2px solid var(--athena-bg-turmas); */
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  margin-right: 5px;
+  align-items: center;
+}
+
+.checkbox:checked {
+  background-color: var(--athena-bg-turmas);
+  border-color: var(--athena-bg-turmas);
+}
+
+.label {
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+
+.vincular_alunos {
+    font-size: 24px;
+    text-align: center;
+}
+
+.buscar_por_nome {
+    background-color: var(--cinza);
+    color: white;
+    border: none;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    width: 90vw;
+    outline: none;
+}
+
+.filtrar_serie {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-top: .5em;
+}
+
+.botao_primario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
