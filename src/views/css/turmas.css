@@ -1,0 +1,162 @@
+.suas_turmas {
+  background: var(--athena-bg-turmas);
+  color: white;
+  font-size: 36px;
+  padding: 85px 3.5em;
+  text-align: center;
+  line-height: 1.5;
+  padding: 2em;
+}
+
+.filtro {
+  width: 92vw;
+  background-color: var(--cinza);
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+
+.filtro_botao {
+    display: none;
+}
+
+.filtro_botao:checked ~ .filtro_lista {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+}
+
+.filtro_header {
+  cursor: pointer;
+  display: flex;
+  gap: 30vw;
+  color: white;
+}
+
+.filtro_imagem {
+    width: 16px;
+}
+
+.filtro_lista {
+  display: none;
+  background-color: var(--cinza);
+  padding: 10px;
+}
+
+.filtro_lista_checkbox {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin-top: 1em;
+}
+
+.filtro {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+/*   border: 2px solid var(--athena-bg-turmas); */
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  margin-right: 5px;
+  align-items: center;
+}
+
+.checkbox:checked {
+  background-color: var(--athena-bg-turmas);
+  border-color: var(--athena-bg-turmas);
+}
+
+.label {
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+
+.materia {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 15px;
+  width: 320px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.materia_imagem {
+  width: 139px;
+  height: auto;
+  padding: .5em .2em .5em .2em;
+}
+
+.materia_divisao {
+  margin-left: 10px;
+}
+
+.materia_titulo {
+  line-height: 1.5;
+}
+
+.materia_conteudo {
+  font-size: 12px;
+}
+
+.materia_link {
+  text-decoration: none;
+  color: var(--athena-col-link);
+}
+
+.materia_link:hover {
+  color: var(--athena-col-link-hover);
+}
+
+.grafico {
+  background-color: var(--athena-bg-cinza-4);
+  border: 2px;
+  width: 246px;
+  height: 147px;
+  border-radius: 15px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3em;
+}
+
+.botao_primario {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  max-width: 130px;
+  margin-bottom: 1em;
+}
+
+.cadastrar_nova_turma {
+  text-decoration: none;
+  color: var(--athena-col-link);
+  display: flex;
+  justify-content: center;
+  margin-top: 5em;
+  margin-bottom: 2em;
+}
+
+.cadastrar_nova_turma:hover {
+  color: var(--athena-col-link-hover);
+}
