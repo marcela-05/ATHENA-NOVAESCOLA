@@ -1,4 +1,4 @@
-.cadastrarAssunto {
+.tituloAssunto {
     background: var(--athena-bg-nova1);
     color: white;
     font-size: 24px;
@@ -7,10 +7,10 @@
     line-height: 1.5;
 }
 
-.coluna {
+.form_assunto {
     display: flex;
     flex-direction: column;
-    align-content: center;
+    align-items: center;
 }
 
 .form_input {

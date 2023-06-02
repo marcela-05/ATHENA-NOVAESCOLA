@@ -122,7 +122,12 @@ module.exports.cadastra = function(application, req, res) {
         req.session.emailProfessor = req.body.emailProfessor
         req.session.idProfessor = result[0].id_professor
         req.session.nomeProfessor = result[0].nome
-        res.redirect('/home')
+        professores.listaDisciplinas((result) => {
+          if (result != undefined && result.length > 0) {
+            req.session.profDisciplinas = result
+            res.redirect('/home')
+          }
+        }, req.session.idProfessor)
       }
     }, req.body.emailProfessor, req.body.senhaProfessor);
   }
@@ -136,10 +141,18 @@ module.exports.cadastra = function(application, req, res) {
     professores.vinculaDisciplina((result) => {
       // verifica se o resultado da consulta é vazio.
       // Se for, retorna mensagem de erro, se não, retorna mensagem de sucesso (result)
-      if (result != undefined) {
+      if (result != undefined && result.length > 0) {
         res.json({message: result})
       } else {
-        res.redirect('/home')
+        professores.listaDisciplinas((result2) => {
+          if (result2 != undefined && result2.length > 0) {
+            req.session.profDisciplinas = result2
+            res.redirect('/home')
+          }
+          else {
+            res.redirect('/home')
+          }
+        }, req.session.idProfessor)
       }
     }, req.session.idProfessor, req.body.checkboxDisciplina);
   }
