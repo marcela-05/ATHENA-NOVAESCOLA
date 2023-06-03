@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Turma</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/cadastrarTurma.css">
+</head>
+<body>
+    <h1 class="titulo">Cadastrar Turma</h1>
+    <fieldset class="conteudo_input">
+        <div class="input-container">
+            <input type="email" id="input-email" name="emailProfessor" placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="email inválido" required="">
+            <label for="input-email" class="label">Editar Turma</label>
+            <div class="underline"></div>
+        </div>
+    </fieldset>
+    <div class="filtro">
+        <input class="filtro_botao" type="checkbox" id="filtro">
+        <label for="filtro" class="filtro_header">Filtrar por matéria</label>
+        <div class="filtro_lista">
+            <div class="filtro_lista_checkbox">
+                <input class="checkbox" type="checkbox" id="teste 1">
+                <label class="label" for="teste 1">teste 1</label>
+            </div>
+            <div class="filtro_lista_checkbox">
+                <input class="checkbox" type="checkbox" id="teste 2">
+                <label class="label" for="teste 2">teste 2</label>
+            </div>
+            <div class="filtro_lista_checkbox">
+                <input class="checkbox" type="checkbox" id="teste 3">
+                <label class="label" for="teste 3">teste 3</label>
+            </div>
+            <div class="filtro_lista_checkbox">
+                <input class="checkbox" type="checkbox" id="teste 4">
+                <label class="label" for="teste 4">teste 4</label>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="vincular_alunos">Vincular Alunos</h2>
+
+    <input class="buscar_por_nome" type="text" placeholder="Buscar por nome..."> 
+    <div class="filtrar_serie">
+        <select name="série" id="serie">
+            <option value="6a">6a</option>
+            <option value="6b">6b</option>
+            <option value="6c">6c</option>
+            <option value="6d">6d</option>
+        </select>
+        <button>Filtrar</button>
+    </div>
+
+    <button class="botao_primario">Vincular todos</button>
+
+    <div class="aluno">
+        <div class="aluno_perfil">
+            <img class="aluno_imagem" src="../assets/icone_aluno_perfil.png" alt="Ícone de aluno">
+            <p>Aluno 1</p>
+        </div>
+        <input class="aluno_checkbox" type="checkbox">
+    </div>
+
+    <div class="aluno">
+        <div class="aluno_perfil">
+            <img class="aluno_imagem" src="../assets/icone_aluno_perfil.png" alt="Ícone de aluno">
+            <p>Aluno 2</p>
+        </div>
+        <input class="aluno_checkbox" type="checkbox">
+    </div>
+
+    <div class="aluno">
+        <div class="aluno_perfil">
+            <img class="aluno_imagem" src="../assets/icone_aluno_perfil.png" alt="Ícone de aluno">
+            <p>Aluno 3</p>
+        </div>
+        <input class="aluno_checkbox" type="checkbox">
+    </div>
+
+    <div class="aluno">
+        <div class="aluno_perfil">
+            <img class="aluno_imagem" src="../assets/icone_aluno_perfil.png" alt="Ícone de aluno">
+            <p>Aluno 4</p>
+        </div>
+        <input class="aluno_checkbox" type="checkbox">
+    </div>
+
+    <div class="aluno">
+        <div class="aluno_perfil">
+            <img class="aluno_imagem" src="../assets/icone_aluno_perfil.png" alt="Ícone de aluno">
+            <p>Aluno 5</p>
+        </div>
+        <input class="aluno_checkbox" type="checkbox">
+    </div>
+
+    <a class="aluno_link" href="#">Ver mais</a>
+
+    <button class="botao_primario ultimo_elemento">Atualizar</button>
+
+</body>
+</html>
