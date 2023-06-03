@@ -20,32 +20,33 @@ exports.listaAlunos = function(application, req, res) {
 module.exports.cadastra = function(application, req, res) {
     // cria conexão com o modelo /src/models/alunoModels.js
     var alunos = new application.src.models.alunoModels() 
-    
-    // verifica se o nome do aluno foi informado
-    if(req.body.nomeAluno==undefined || req.body.nomeAluno == ' '){
-      res.json({message: 'nome do aluno não informado'})
-    }else {
-      // verifica se a série do aluno foi informada
-      if(req.body.serieAluno == undefined || req.body.serieAluno == ''){
-        res.json({message: 'Série do aluno não informada'})
-      }else{
-      // verifica se o id do professor foi informado
-        if(req.body.idProfessor == undefined || req.body.idProfessor == ''){
-          res.json({message: 'id do professor não informado'})
-        }else{
-            // Esse controlador é responsável por chamar o modelo que cadastra o aluno.
-            alunos.postAluno((result) => {
-             // verifica se o resultado da consulta é vazio. 
+
+    // verifica se o método é GET
+    if(req.method == 'GET'){
+      res.render('html/cadastrarAluno')
+    }
+    else{
+      // verifica se o nome do aluno foi informado
+      if(req.body.nomeAluno == undefined || req.body.nomeAluno == ''){
+        res.render('html/erro', {codigoStatus: 400, tituloMensagem: 'Nome do aluno não informado', mensagem: 'Por favor, informe todos os parâmetros necessários para cadastrar um aluno'});
+      }else {
+        // verifica se a série do aluno foi informada
+        if(req.body.serieAluno == undefined || req.body.serieAluno == ''){
+          res.render('html/erro', {codigoStatus: 400, tituloMensagem: 'Série do aluno não informada', mensagem: 'Por favor, informe todos os parâmetros necessários para cadastrar um aluno'});
+        }else {
+          // Esse controlador é responsável por chamar o modelo que cadastra o aluno.
+          alunos.postAluno((result) => {
+            // verifica se o resultado da consulta é vazio. 
             // Se for, retorna mensagem de sucesso, se não, retorna mensagem de erro (result)
-             if(result != undefined){
-                res.json({message: result})
-             }else{
-                 res.json({message: 'Aluno cadastrado com sucesso'})
-             }
-          }, req.body.nomeAluno, req.body.serieAluno, req.body.idProfessor);
+            if(result != undefined){
+              res.render('html/erro', {codigoStatus: 500, tituloMensagem: 'Erro ao cadastrar aluno', mensagem: result});
+            }else{
+              res.redirect('/home');
+            }
+          }, req.body.nomeAluno, req.body.serieAluno, req.session.idProfessor);
+        }
       }
     }
-  }
 }
 
 module.exports.atualiza = function(application, req, res) {
