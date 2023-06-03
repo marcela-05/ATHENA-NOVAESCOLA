@@ -1,4 +1,4 @@
-.suas_turmas {
+.planos_de_aula_titulo {
   background: var(--athena-bg-turmas);
   color: white;
   font-size: 36px;
@@ -82,7 +82,7 @@
   text-align: center;
 }
 
-.materia {
+.plano {
   display: flex;
   border: 1px solid black;
   border-radius: 15px;
@@ -94,68 +94,37 @@
   margin-top: 1em;
 }
 
-.materia_imagem {
+.plano_imagem {
   width: 139px;
   height: auto;
   padding: .5em .2em .5em .2em;
 }
 
-.materia_divisao {
+.plano_divisao {
   margin-left: 10px;
 }
 
-.materia_titulo {
+.plano_titulo {
   line-height: 1.5;
 }
 
-.materia_conteudo {
+.plano_conteudo {
   font-size: 12px;
 }
 
-.materia_link {
+.plano_link {
   text-decoration: none;
   color: var(--athena-col-link);
 }
 
-.materia_link:hover {
-  color: var(--athena-col-link-hover);
+.seletor_pagina {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+    gap: 1em;
 }
 
-.grafico {
-  background-color: var(--athena-bg-cinza-4);
-  border: 2px;
-  width: 246px;
-  height: 147px;
-  border-radius: 15px;
-  text-align: center;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 3em;
-}
-
-.botao_primario {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px;
-  max-width: 130px;
-  margin-bottom: 1em;
-}
-
-.cadastrar_nova_turma {
-  text-decoration: none;
-  color: var(--athena-col-link);
-  display: flex;
-  justify-content: center;
-  margin-top: 5em;
-  margin-bottom: 2em;
-}
-
-.cadastrar_nova_turma:hover {
-  color: var(--athena-col-link-hover);
+.seta {
+    width: 34px;
 }
