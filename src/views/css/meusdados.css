@@ -1,99 +1,50 @@
-body {
-    background-color: var(--athena-bg);
+.dados_titulo {
+    font-size: 36px;
+    text-align: center;
 }
 
-a {
-    color: var(--athena-col-link);
-}
-
-.conteudo {
+.dados_imagem {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.conteudo_dados_titulo{
-    display: flex;
-    align-content: center;
-}
-
-.conteudo_titulo_dados_texto{
     margin-left: auto;
     margin-right: auto;
-    font-family: 'Lora';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 46px;
-
-  
 }
 
-/*estilo imagem da persona e edição da foto*/
-.conteudo_foto_dados {
+.dados_editar_foto {
+    display: flex;
+    justify-content: center;
+    color: var(--athena-col-link);
+    font-size: 14px;
+}
+
+.dados_editar_foto:hover {
+    color: var(--athena-col-link-hover);
+}
+
+.formulario {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    margin-bottom: 3.5em;
 }
 
-.conteudo_foto_imagem_dados {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    transform: translate(1.15em);
+.conteudo_input {
     margin-bottom: 1em;
-    margin-left: -50px;
-    bottom: 1px;
 }
 
-.conteudo_foto_botao_dados {
-    display: flex;
-    align-items: center;
-    padding: 9px 12px;
-    gap: 1.25em;
-    transform: translate(2.5em);
-    height: 40px;
-    width: 172px;
-    border: none;
-    background: var(--athena-col-primaria);
-    border-radius: 20px;
-    cursor: pointer;
-    margin-left: -64px;
-}
-
-.conteudo_foto_botao_gap_dados {
-    gap: 16em;
-}
-
-.conteudo_foto_botao_label_dados {
-    line-height: 1.5em;
-    font-size: 1em;
-    color: #fff;
-    letter-spacing: 1px;
-}
-
-
-/*estilo formulario de dados*/
-
-
-.container_dados_form {
+.container_login_form, .container_cadastro_form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.input-container-dados {
+.input-container {
     position: relative;
-    margin: 50px auto;
     width: 330px;
     margin-bottom: 1em;
 }
 
-.input-container-dados input {
+.input-container input {
     font-size: 1em;
     width: 100%;
     border: none;
@@ -103,7 +54,7 @@ a {
     outline: none;
 }
 
-.input-container-dados .label {
+.input-container .label {
     position: absolute;
     top: 0;
     left: 0;
@@ -112,21 +63,21 @@ a {
     pointer-events: none;
 }
 
-.input-container-dados input[type="email"]:focus~.label, .input-container-dados input[type="name"]:focus~.label,
-.input-container-dados input[type="email"]:valid~.label, .input-container-dados input[type="text"]:valid~.label,
-.input-container-dados input[type="text"]:focus~.label {
+.input-container input[type="password"]:focus~.label, .input-container input[type="email"]:focus~.label,
+.input-container input[type="password"]:valid~.label, .input-container input[type="text"]:valid~.label,
+.input-container input[type="text"]:focus~.label {
     top: -20px;
-    font-size: 1.0em;
+    font-size: .8em;
     color: var(--athena-col-link);
 }
 
-.input-container-dados input[type="email"]:not(:placeholder-shown) ~ .label, .input-container-dados input[type="email"]:not(:placeholder-shown) ~ .label {
+.input-container input[type="email"]:not(:placeholder-shown) ~ .label, .input-container input[type="password"]:not(:placeholder-shown) ~ .label {
     top: -20px;
-    font-size: 1.8em;
+    font-size: .8em;
     color: var(--athena-col-link);
 }
 
-.input-container-dados .underline {
+.input-container .underline {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -137,124 +88,50 @@ a {
     transition: all 0.3s ease;
 }
 
-.input-container-dados input[type="email"]:focus~.underline, .input-container-dados input[type="name"]:focus~.underline,
-.input-container-dados input[type="text"]:focus~.underline, .input-container-dados input[type="text"]:valid~.underline,
-.input-container-dados input[type="email"]:valid~.underline, .input-container-dados input[type="name"]:valid~.underline {
+.input-container input[type="password"]:focus~.underline, .input-container input[type="email"]:focus~.underline,
+.input-container input[type="text"]:focus~.underline, .input-container input[type="text"]:valid~.underline,
+.input-container input[type="password"]:valid~.underline, .input-container input[type="email"]:valid~.underline {
     transform: scaleX(1);
 }
 
-.botao-trocar-senha {
-    background-color: #210A4B;
-    color: white;
-    width: 100%;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    height: 43px;
-    margin-top: 1.3rem;
-    transition: all ease .4s;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.botao-editar-dados {
-    background-color: #210A4B;
-    color: white;
-    width: 100%;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    height: 43px;
-    margin-top: 1.3rem;
-    transition: all ease .4s;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.sair-conta{
-    background-color: #63666A;
-    color: white;
-    width: 45%;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    height: 43px;
-    margin-top: 1.3rem;
-    transition: all ease .4s;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0 , 0.5);
-
-}
-
-.deletar-conta{
-    background-color: #63666A;
-    color: white;
-    width: 45%;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    height: 43px;
-    margin-top: 1.3rem;
-    transition: all ease .4s;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0 , 0.5);
-
-
-}
-.botoes-sair-deletar {
+.trocar_senha {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.editar_dados {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botoes {
+    display: flex;
     justify-content: space-between;
+    margin-right: 1em;
+    margin-left: 1em;
 }
 
-
-.voltar-conta{
-    background-color: #63666A;
-    color: white;
-    width: 45%;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    height: 43px;
-    margin-top: 1.3rem;
-    transition: all ease .4s;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0 , 0.5);
-    margin-left: 5rem;
-
-}
-
-
-
-/*.sair-conta{
-    box-sizing: border-box;
-    position: absolute;
+.botao_cinza {
+    background-color: var(--athena-col-cinza-3);
     width: 140px;
-    height: 42px;
-    left: 710px;
-    top: 780px;
-    color: #fff;
-    background: #63666A;
-    border: 1px solid #000000;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 8px;
 }
 
-
-.deletar-conta{
-    box-sizing: border-box;
-    position: absolute;
-    width: 140px;
-    height: 42px;
-    left: 940px;
-    top: 780px;
-    color: #fff;
-    background: #63666A;
-    border: 1px solid #000000;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 8px;
+.botao_cinza:hover {
+    background-color: var(--athena-col-cinza-4);
 }
 
-.voltar-botao{
-    box-sizing: border-box;
-
-    position: absolute;
-    width: 140px;
-    height: 42px;
-    left: 825px;
-    top: 850px;
-    color: #fff;
-    background-color: #63666A;
-    border: 1px solid #000000;
-    border-radius: 8px;
-}/*
+.botao_voltar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
