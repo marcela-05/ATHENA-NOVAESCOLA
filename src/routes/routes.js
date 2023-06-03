@@ -110,9 +110,14 @@ module.exports = function(application){
 
     // retorna controlador para cadastrar aluno
     application.post('/alunos/cadastrar', urlencodedParser, function(req, res){
-      application.src.controllers.alunoControllers.cadastra(
-        application, req, res
-      );
+      // verifica se a requisição não veio de um formulário
+      if(req.body.formulario === undefined && req.session.autorizado !== true){
+        res.status(403).json({message: 'Acesso negado. Por favor, faça login.'});
+      } else {
+        application.src.controllers.alunoControllers.cadastra(
+          application, req, res
+        );
+      }
     });
 
     // retorna controlador para a atualização do aluno
@@ -314,10 +319,11 @@ module.exports = function(application){
     application.get('/alunos/cadastrar', urlencodedParser, function(req, res){
       if (req.session.autorizado != true) {
         res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+      } else {
+        application.src.controllers.alunoControllers.cadastra(
+          application, req, res
+        );
       }
-      application.src.controllers.alunoControllers.cadastra(
-        application, req, res
-      );
     });
 
     // retorna controlador para listar alunos
