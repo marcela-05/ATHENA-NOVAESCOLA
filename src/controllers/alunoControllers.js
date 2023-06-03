@@ -1,19 +1,34 @@
 exports.listaAlunos = function(application, req, res) {
     // cria conexão com o modelo /src/models/alunoModels.js
-    var alunos = new application.src.models.alunoModels() 
-  
-    //verifica se o id do professor foi informado
-    if(req.query.idProfessor==undefined || req.query.idProfessor == ' '){
-      res.json({message: 'id do professor não informado'})
-    } else{// chama modelo que lista os alunos com base no id do professor
+    var alunos = new application.src.models.alunoModels()
+
+    // verifica se o método é GET e valida se a url é /alunos/verTodos
+    if(req.method == 'GET' && req.url == '/alunos/verTodos'){
       alunos.getAlunos((result) => {
-          // verifica se o resultado da consulta é vazio
-          if(result.length == 0){
-              res.json({message: 'nenhum aluno encontrado'})
-          } else{
-              res.json(result);
-          }
-      }, req.query.idProfessor);
+        // verifica se o resultado da consulta é vazio
+        if(result.length == 0){
+            res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Nenhum aluno encontrado', mensagem: 'Não foi possível encontrar nenhum aluno cadastrado'});
+        } else{
+            res.render('html/alunos', {alunos: result});
+        }
+      }, req.session.idProfessor)
+    }
+
+    // retorno do json para teste da API
+    else if(req.method == 'GET' && req.url != '/alunos/verTodos'){
+      //verifica se o id do professor foi informado
+      if(req.query.idProfessor==undefined || req.query.idProfessor == ' '){
+        res.json({message: 'id do professor não informado'})
+      } else{// chama modelo que lista os alunos com base no id do professor
+        alunos.getAlunos((result) => {
+            // verifica se o resultado da consulta é vazio
+            if(result.length == 0){
+                res.json({message: 'nenhum aluno encontrado'})
+            } else{
+                res.json(result);
+            }
+        }, req.query.idProfessor);
+      }
     }
  }
 

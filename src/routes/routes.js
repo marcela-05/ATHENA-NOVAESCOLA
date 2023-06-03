@@ -99,9 +99,13 @@ module.exports = function(application){
 
     // retorna controlador para listar alunos
     application.get('/alunos', function(req, res){
-      application.src.controllers.alunoControllers.listaAlunos(
-        application, req, res
-      );
+      if(req.session.autorizado !== true){
+        res.status(403).json({message: 'Acesso negado. Por favor, faça login.'});
+      } else {
+        application.src.controllers.alunoControllers.listaAlunos(
+          application, req, res
+        );
+      }
     });
 
     // retorna controlador para cadastrar aluno
@@ -312,6 +316,16 @@ module.exports = function(application){
         res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
       }
       application.src.controllers.alunoControllers.cadastra(
+        application, req, res
+      );
+    });
+
+    // retorna controlador para listar alunos
+    application.get('/alunos/verTodos', urlencodedParser, function(req, res){
+      if (req.session.autorizado != true) {
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+      }
+      application.src.controllers.alunoControllers.listaAlunos(
         application, req, res
       );
     });
