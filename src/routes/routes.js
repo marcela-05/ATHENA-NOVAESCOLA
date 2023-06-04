@@ -21,7 +21,7 @@ module.exports = function(application){
     });
 
     // retorna controlador para a atualização da turma
-    application.put('/turma/atualizar', urlencodedParser, function(req, res){
+    application.post('/turmas/editar', urlencodedParser, function(req, res){
       application.src.controllers.turmaControllers.atualiza(
         application, req, res
       );
@@ -342,6 +342,17 @@ module.exports = function(application){
         res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
       } else {
         application.src.controllers.turmaControllers.cadastra(
+          application, req, res
+        );
+      }
+    });
+
+    // retorna controlador para renderizar a página de editar turma
+    application.get('/turmas/editar', urlencodedParser, function(req, res){
+      if (req.session.autorizado != true) {
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+      } else {
+        application.src.controllers.turmaControllers.atualiza(
           application, req, res
         );
       }

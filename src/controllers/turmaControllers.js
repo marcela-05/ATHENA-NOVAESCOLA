@@ -121,28 +121,86 @@ module.exports.cadastra = function(application, req, res) {
   
 
 module.exports.atualiza = function(application, req, res) {
-    // cria conexão com o modelo /src/models/turmaModels.js
-    var turmas = new application.src.models.turmaModels() 
-     // verifica se o id da turma foi informado
-     if(req.body.idTurma == undefined || req.body.idTurma == ''){
-      res.json({message: 'id da turma não informado'})
+  // cria conexão com o modelo /src/models/turmaModels.js
+  var turmas = new application.src.models.turmaModels()
+  // cria conexão com o modelo /src/models/alunoModels.js
+  var alunos = new application.src.models.alunoModels()
+  // cria conexão com o modelo /src/models/professorModels.js
+  var professor = new application.src.models.professorModels()
+
+  // verifica se o método da requisição é GET
+  if(req.method == 'GET'){
+    // verifica se o id da turma foi informado
+    if(req.query.idTurma == undefined || req.query.idTurma == ''){
+      res.render('html/erro', {codigoStatus: 400, tituloMensagem: 'Turma não informada', mensagem: 'Por favor, informe a turma que deseja editar.'})
+    } else {
+      // esse controlador chama o modelo de listagem de disciplinas
+      professor.listaDisciplinas((result) => {
+        // esse controlador chama o modelo de listagem de alunos
+        alunos.getAlunos((alunos) => {
+
+          // get turma é responsável por pegar os dados da turma que será editada
+          turmas.getTurma((turma) => {
+
+            // get disciplina da turma é responsável por pegar o nome da disciplina da turma que será editada
+            turmas.getDisciplinaDaTurma((disciplina) => {
+
+              // get turma alunos é responsável por pegar os alunos da turma que será editada
+              turmas.getTurmaAlunos((alunosDaTurma) => {
+
+                // cria um array com os ids dos alunos da turma que será editada
+                let idAlunosDaTurma = []
+                for(aluno of alunosDaTurma){
+                  idAlunosDaTurma.push(aluno.id_aluno)
+                }
+                // itera pelos alunos e verifica se o id do aluno está no array de ids dos alunos da turma
+                // se estiver, o atributo checked do aluno é setado como true
+                for(aluno of alunos){
+                  if(idAlunosDaTurma.includes(aluno.id_aluno)){
+                    aluno.checked = true
+                  }
+                }
+                // seta o nome da disciplina e o id da disciplina da turma que será editada
+                turma[0].disciplina = disciplina[0].nome
+                turma[0].idDisciplina = disciplina[0].id_disciplina
+
+                // renderiza a página de edição de turma, passando as disciplinas, os alunos e a turma que será editada
+                res.render('html/editarTurma', {disciplinas: result, alunos: alunos, turma: turma[0]});
+              }, req.query.idTurma)
+            }, req.query.idTurma)
+            
+          }, req.query.idTurma, req.session.idProfessor);
+        }, req.session.idProfessor)
+
+      }, req.session.idProfessor);
+    }
+  } else{
+    // verifica se o id da disciplina foi informado
+    if(req.body.disciplina == undefined || req.body.disciplina == ''){
+        res.render('html/erro', {codigoStatus: 400, tituloMensagem: 'Disciplina não informada', mensagem: 'Por favor, informe a disciplina da turma.'})
     } else{
       // verifica se o nome da turma foi informado
       if(req.body.nomeTurma == undefined || req.body.nomeTurma == ''){
-          res.json({message: 'nome da turma não informado'})
+          res.render('html/erro', {codigoStatus: 400, tituloMensagem: 'Nome da turma não informado', mensagem: 'Por favor, informe o nome da turma.'})
       } else{
-        // Esse controlador é responsável por chamar o modelo que atualiza os dados básicos da turma.
-        // Como, por exemplo, o nome. Para isso, o id da turma e o nome da turma são passados como argumentos.
-         turmas.updateTurma((result) => {
-          if(result != undefined){
-            res.json({message: result})
-          } else{
-            res.json({message: 'turma atualizada com sucesso'})
-           }
-          }, req.body.idTurma, req.body.nomeTurma);
+          // verifica se a série da turma foi informada
+          if(req.body.serieTurma == undefined || req.body.serieTurma == ''){
+              res.render('html/erro', {codigoStatus: 400, tituloMensagem: 'Série da turma não informada', mensagem: 'Por favor, informe a série da turma.'})
+          } 
+          else{
+            turmas.updateTurma((result) => {
+              if(req.body.alunos !== undefined){
+                for(aluno of req.body.alunos){
+                  alunos.vinculaTurma((res) => {}, aluno, req.body.idTurma);
+                }
+              }
+              res.redirect('/turmas');
+            }, req.body.nomeTurma, req.body.idTurma, req.body.serieTurma, req.body.disciplina);
+          }
       }
     }
   }
+}
    
 
 module.exports.deleta = function(application, req, res) {

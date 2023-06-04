@@ -6,11 +6,11 @@ function turmas() {}
 
 // modelo responsável por fazer a atualização da turma
 // o id e o nome da turma são passados via corpo da requisição.
-turmas.prototype.updateTurma = function(callback, nomeTurma, idTurma) {
-    var sql = 'UPDATE turma set nome = ? WHERE id_turma = ?';
+turmas.prototype.updateTurma = function(callback, nomeTurma, idTurma, serieTurma, idDisciplina) {
+    var sql = 'UPDATE turma set nome = ?, serie = ?, id_disciplina = ? WHERE id_turma = ?';
 
     // executa a atualização e verifica se houve algum erro
-    DAO.update(sql, [nomeTurma, idTurma], retorno => {
+    DAO.update(sql, [nomeTurma, serieTurma, idDisciplina, idTurma], retorno => {
         callback(retorno)
     });
 }
@@ -22,11 +22,7 @@ turmas.prototype.getTurma = function(callback, idTurma, idProfessor) {
     // executa a consulta sql e retorna os dados na função callback
 
     DAO.select(sql, [idTurma, idProfessor], retorno => {
-        if(retorno.length > 0) {
-            callback(retorno)
-        } else {
-            callback('turma não encontrada')
-        }
+        callback(retorno)
     });
 }
 
@@ -96,7 +92,7 @@ turmas.prototype.getDisciplinaDaTurma = function(callback, idTurma, idProfessor)
             callback(retorno)
         });
     } else {
-        var sql = 'SELECT disciplina.nome FROM disciplina ' +
+        var sql = 'SELECT disciplina.nome, disciplina.id_disciplina FROM disciplina ' +
         'JOIN turma ON disciplina.id_disciplina = turma.id_disciplina ' +
         'WHERE turma.id_turma = ?';
 

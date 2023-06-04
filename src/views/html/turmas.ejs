@@ -32,11 +32,11 @@
             <div class="turmas_cards">
                 <% for (let i = 0; i < turmas.length; i++) { %>
                 <article class="card_turma">
-                    <p class="card_turma_tag"><a href="#">Editar</a></p>
+                    <p class="card_turma_tag"><a href="/turmas/editar?idTurma=<%= turmas[i].id_turma %>">Editar</a></p>
                     <a href="/turmas?idTurma=<%= turmas[i].id_turma %>">
                         <figure class="card_turma_img">
                             <div class="card_turma_bg"></div>
-                            <img src="https://nova-escola-producao.s3.amazonaws.com/rj7MCqsaaaSMsQzdU6srCuNp5Fep4VaeBksJWKk54HdwnKTF7y2KRfRC9JtS/coluna-paula-sestari.jpg" alt="" class="card_img">
+                            <img src="https://nova-escola-producao.s3.amazonaws.com/YVwdYKeDYC8fSVGKX9fs8mzac8aRM67TaX5aqdj8bM4p4jd4Zd82KtnJ2saD/professora-sala-aula.jpg" alt="" class="card_img">
                         </figure>
                         <div class="card_turma_info">
                             <p>[<%= disciplinas[i].nome %>] <%= turmas[i].nome %></p>

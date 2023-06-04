@@ -16,9 +16,9 @@
     <main>
         <h1 class="titulo">Editar Turma</h1>
         <form class="form_turma" action="" method="POST" enctype="application/x-www-form-urlencoded">
-        
+        <input type="hidden" name="idTurma" value="<%= turma.id_turma %>">
         <fieldset class="form_input">
-            <input type="text" id="nome-turma" name="nomeTurma" required="">
+            <input type="text" id="nome-turma" name="nomeTurma" value="<%= turma.nome %>" required="">
             <label for="nome-turma">
                 <span style="transition-delay:0ms">N</span><span style="transition-delay:50ms">o</span><span
                     style="transition-delay:100ms">m</span><span style="transition-delay:150ms">e</span><span
@@ -33,7 +33,7 @@
         <fieldset class="form_materia">
             <label for="materia" class="titulo_selecao_da_materia">Disciplina</label>
             <select id="materia" class="selecao_de_materia" name="disciplina" required>
-                <option value="" selected disabled hidden>Selecione</option>
+                <option value="<%= turma.idDisciplina %>" selected hidden><%= turma.disciplina %></option>
                 <% for (let disciplina of disciplinas) { %>
                     <option value=<%= disciplina.id_disciplina %>><%= disciplina.nome %></option>
                 <% } %>
@@ -43,7 +43,7 @@
         <fieldset class="form_materia">
             <label for="serie" class="titulo_selecao_da_materia">Série</label>
             <select id="serie" class="selecao_de_materia" name="serieTurma" required>
-                <option value="" selected disabled hidden>Selecione</option>
+                <option value="<%= turma.serie %>" selected hidden><%= turma.serie %>º ano</option>
                 <option value="6">6º ano</option>
                 <option value="7">7º ano</option>
                 <option value="8">8º ano</option>
@@ -71,7 +71,11 @@
                 <img class="aluno_imagem" src="../assets/icone_aluno_perfil.png" alt="Ícone de aluno">
                 <p><%= aluno.nome %></p>
             </div>
-            <input class="aluno_checkbox" type="checkbox" name="alunos" value="<%= aluno.id_aluno %>">
+            <% if(aluno.checked){ %>
+                <input class="aluno_checkbox" type="checkbox" name="alunos" value="<%= aluno.id_aluno %>" checked>
+            <% } else { %>
+                <input class="aluno_checkbox" type="checkbox" name="alunos" value="<%= aluno.id_aluno %>">
+            <% } %>
         </div>
         <% } %>
         <button tupe="submit" class="botao_primario ultimo_elemento">Atualizar</button>
