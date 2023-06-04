@@ -28,27 +28,34 @@
             </div>
         </div>
 
-        <div class="materias">
-            <% for (let i = 0; i < turmas.length; i++) { %>
-            <div class="materia">
-                <img class="materia_imagem" src="../assets/bg_plano_de_aula.png" alt="Ícone plano de aula">
-                <div class="materia_divisao">
-                    <h3 class="materia_titulo">[<%= disciplinas[i].nome %>] <%= turmas[i].nome %></h3>
-                    <p class="materia_conteudo">Média Geral: XX</p>
-                    <p class="materia_conteudo">Defasagem Média: XX</p>
-                    <a class="materia_link" href="/turmas?idTurma=<%= turmas[i].id_turma %>">Ver turma</a>
-                </div>
+        <section class="turmas">
+            <div class="turmas_cards">
+                <% for (let i = 0; i < turmas.length; i++) { %>
+                <article class="card_turma">
+                    <p class="card_turma_tag"><a href="#">Editar</a></p>
+                    <a href="/turmas?idTurma=<%= turmas[i].id_turma %>">
+                        <figure class="card_turma_img">
+                            <div class="card_turma_bg"></div>
+                            <img src="https://nova-escola-producao.s3.amazonaws.com/rj7MCqsaaaSMsQzdU6srCuNp5Fep4VaeBksJWKk54HdwnKTF7y2KRfRC9JtS/coluna-paula-sestari.jpg" alt="" class="card_img">
+                        </figure>
+                        <div class="card_turma_info">
+                            <p>[<%= disciplinas[i].nome %>] <%= turmas[i].nome %></p>
+                            <p class="card_txt">Média Geral: XX</p>
+                            <p class="card_txt">Defasagem Média: XX</p>
+                        </div>
+                    </a>
+                </article>
+                <% } %>
             </div>
-            <% } %>
-        </div>
+        </section>
 
         <!-- <p class="grafico">Gráfico da Média</p>
         <button class="botao_primario">Detalhar</button>
         <p class="grafico">Gráfico da Defasagem</p>
         <button class="botao_primario">Detalhar</button> -->
         
-        <div class="teste">
-            <button class="cadastrar_nova_turma">Cadastrar nova turma</button>
+        <div class="botao_cadastrar">
+            <button onclick="window.location.href='/turmas/cadastrar'" class="cadastrar_nova_turma">Cadastrar nova turma</button>
         </div>
     </main>
 </body>
