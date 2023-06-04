@@ -65,9 +65,14 @@ turmas.prototype.postTurma = function(callback, idProfessor, idDisciplina, nomeT
     // passados via corpo da requisição
     var sql = 'INSERT INTO turma (nome, serie, id_professor, id_disciplina) VALUES (?,?,?,?);';
 
-    DAO.insert(sql, [nomeTurma, serieTurma, idProfessor, idDisciplina], retorno => {
-        callback(retorno)
-    })
+    database.appDB.run(sql, [nomeTurma, serieTurma, idProfessor, idDisciplina], function(err) {
+        if (err) {
+            console.error(err.message);
+            callback(err.message)
+        } else{
+            callback(this.lastID)
+        }
+    });
 }
 
 // modelo responsável por deletar a turma. O id é informado via url, ex.: /turma/deletar?idTurma=1

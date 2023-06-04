@@ -335,4 +335,15 @@ module.exports = function(application){
         application, req, res
       );
     });
+
+    // retorna controlador para renderizar a página de cadastrar turma
+    application.get('/turmas/cadastrar', urlencodedParser, function(req, res){
+      if (req.session.autorizado != true) {
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+      } else {
+        application.src.controllers.turmaControllers.cadastra(
+          application, req, res
+        );
+      }
+    });
   }
