@@ -78,7 +78,7 @@ module.exports.cadastra = function(application, req, res) {
                   alunos.vinculaTurma((res) => {}, aluno, result);
                 }
               }
-              res.redirect('/home');
+              res.redirect('/turmas');
             }, req.session.idProfessor, req.body.disciplina, req.body.nomeTurma, req.body.serieTurma);
           }
       }
