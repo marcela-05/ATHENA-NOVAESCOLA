@@ -7,11 +7,19 @@ exports.listaTurmas = function(application, req, res) {
     if(req.query.idTurma != undefined) {
       turmas.getTurma((result) => {
         if(result == 'turma não encontrada'){
-          res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Turma não encontrada', mensagem: ''});
+          if(req.query.tipoConsulta == 'json'){
+            res.json({message: 'turma não encontrada'})
+          } else {
+            res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Turma não encontrada', mensagem: ''});
+          }
         } else {
           turmas.getDisciplinaDaTurma((disciplina) => {
             turmas.getTurmaAlunos((alunos) => {
-              res.render('html/turma', {turma: result[0], disciplina: disciplina[0], alunos: alunos});
+              if(req.query.tipoConsulta == 'json'){
+                res.json({turma: result[0], disciplina: disciplina[0], alunos: alunos});
+              } else {
+                res.render('html/turma', {turma: result[0], disciplina: disciplina[0], alunos: alunos});
+              }
             }, req.query.idTurma);
           }, req.query.idTurma);
         }
@@ -23,10 +31,18 @@ exports.listaTurmas = function(application, req, res) {
     else if(req.query.idTurma == undefined && req.query.idProfessor == undefined){
       turmas.getProfTurmas((result) => {
         if (result.length == 0) {
-          res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Nenhuma turma encontrada', mensagem: 'Se achar que isso é um problema, entre em contato conosco.'});
+          if(req.query.tipoConsulta == 'json'){
+            res.json({message: 'Nenhuma turma encontrada'}).status(404)
+          } else {
+            res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Nenhuma turma encontrada', mensagem: 'Se achar que isso é um problema, entre em contato conosco.'});
+          }
         } else {
           turmas.getDisciplinaDaTurma((disciplinas) => {
-            res.render('html/turmas', {turmas: result, disciplinas: disciplinas, profDisciplinas: req.session.profDisciplinas});
+            if(req.query.tipoConsulta == 'json'){
+              res.json({turmas: result, disciplinas: disciplinas});
+            } else {
+              res.render('html/turmas', {turmas: result, disciplinas: disciplinas, profDisciplinas: req.session.profDisciplinas});
+            }
           }, '', req.session.idProfessor);
         }
       }, req.session.idProfessor);

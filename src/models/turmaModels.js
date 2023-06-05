@@ -1,5 +1,6 @@
 const database = require('../data/data')
-const DAO = require('../data/DAO') // template para executar comandos no banco de dados
+const DAO = require('../data/DAO'); // template para executar comandos no banco de dados
+const e = require('express');
 
 
 function turmas() {}
@@ -22,7 +23,11 @@ turmas.prototype.getTurma = function(callback, idTurma, idProfessor) {
     // executa a consulta sql e retorna os dados na função callback
 
     DAO.select(sql, [idTurma, idProfessor], retorno => {
-        callback(retorno)
+       if(retorno.length > 0) {
+           callback(retorno)
+       } else {
+            callback('turma não encontrada')
+       }
     });
 }
 
