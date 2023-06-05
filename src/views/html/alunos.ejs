@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Alunos</title>
+    <link rel="stylesheet" href="..\css\listarAlunos.css"> 
+    <link rel="stylesheet" href="..\css\styles.css">
+    <link rel="stylesheet" href="../css/cabecalho.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="../js/cabecalho.js"></script>
+</head>
+<body>
+    <%- include('cabecalho') %>
+
+    <main>
+        <h1 class="seus_alunos">Seus Alunos</h1> 
+        <br>
+        <div class="barra_pesquisa">
+            <input type="text" placeholder="Buscar por nome">
+            <button class= "botao_pesquisa "><img class= "icone_pesquisar" src="../assets/icone_pesquisar.png" alt= "ícone pesquisar"></button>
+        </div>
+        <br>
+        <ul class="lista_alunos">
+            <% for(let aluno of alunos) { %>
+            <li class="aluno"><img class="aluno_imagem" src="../assets/icone_aluno_perfil.png" alt="Ícone de aluno"><%= aluno.nome %></li>
+            <% } %>
+        </ul>
+        <button class="botao_primario" onclick="window.location.href='/alunos/cadastrar'">Inserir aluno</button>
+    </main>
+</body> 
+</html> 

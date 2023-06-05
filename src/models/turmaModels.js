@@ -1,16 +1,17 @@
 const database = require('../data/data')
-const DAO = require('../data/DAO') // template para executar comandos no banco de dados
+const DAO = require('../data/DAO'); // template para executar comandos no banco de dados
+const e = require('express');
 
 
 function turmas() {}
 
 // modelo responsável por fazer a atualização da turma
 // o id e o nome da turma são passados via corpo da requisição.
-turmas.prototype.updateTurma = function(callback, nomeTurma, idTurma) {
-    var sql = 'UPDATE turma set nome = ? WHERE id_turma = ?';
+turmas.prototype.updateTurma = function(callback, nomeTurma, idTurma, serieTurma, idDisciplina) {
+    var sql = 'UPDATE turma set nome = ?, serie = ?, id_disciplina = ? WHERE id_turma = ?';
 
     // executa a atualização e verifica se houve algum erro
-    DAO.update(sql, [nomeTurma, idTurma], retorno => {
+    DAO.update(sql, [nomeTurma, serieTurma, idDisciplina, idTurma], retorno => {
         callback(retorno)
     });
 }
@@ -22,11 +23,11 @@ turmas.prototype.getTurma = function(callback, idTurma, idProfessor) {
     // executa a consulta sql e retorna os dados na função callback
 
     DAO.select(sql, [idTurma, idProfessor], retorno => {
-        if(retorno.length > 0) {
-            callback(retorno)
-        } else {
+       if(retorno.length > 0) {
+           callback(retorno)
+       } else {
             callback('turma não encontrada')
-        }
+       }
     });
 }
 
@@ -65,9 +66,14 @@ turmas.prototype.postTurma = function(callback, idProfessor, idDisciplina, nomeT
     // passados via corpo da requisição
     var sql = 'INSERT INTO turma (nome, serie, id_professor, id_disciplina) VALUES (?,?,?,?);';
 
-    DAO.insert(sql, [nomeTurma, serieTurma, idProfessor, idDisciplina], retorno => {
-        callback(retorno)
-    })
+    database.appDB.run(sql, [nomeTurma, serieTurma, idProfessor, idDisciplina], function(err) {
+        if (err) {
+            console.error(err.message);
+            callback(err.message)
+        } else{
+            callback(this.lastID)
+        }
+    });
 }
 
 // modelo responsável por deletar a turma. O id é informado via url, ex.: /turma/deletar?idTurma=1
@@ -81,15 +87,25 @@ turmas.prototype.deleteTurma = function(callback, idTurma) {
 }
 
 // modelo responsável por pegar a disciplina da turma
-turmas.prototype.getDisciplinaDaTurma = function(callback, idTurma) {
-    var sql = 'SELECT disciplina.nome FROM disciplina ' +
-    'JOIN turma ON disciplina.id_disciplina = turma.id_disciplina ' +
-    'WHERE turma.id_turma = ?';
+turmas.prototype.getDisciplinaDaTurma = function(callback, idTurma, idProfessor) {
+    // se não informar o id da turma, retorna o nome da disciplina de todas as turmas do professor
+    if(idTurma == undefined || idTurma == '') {
+        var sql = 'SELECT disciplina.nome FROM disciplina JOIN turma ON disciplina.id_disciplina = turma.id_disciplina WHERE turma.id_professor = ?';
 
-    // executa a consulta sql e retorna os dados na função callback
-    DAO.select(sql, [idTurma], retorno => {
-        callback(retorno)
-    });
+        // executa a consulta sql e retorna os dados na função callback
+        DAO.select(sql, [idProfessor], retorno => {
+            callback(retorno)
+        });
+    } else {
+        var sql = 'SELECT disciplina.nome, disciplina.id_disciplina FROM disciplina ' +
+        'JOIN turma ON disciplina.id_disciplina = turma.id_disciplina ' +
+        'WHERE turma.id_turma = ?';
+
+        // executa a consulta sql e retorna os dados na função callback
+        DAO.select(sql, [idTurma], retorno => {
+            callback(retorno)
+        });
+    }
 }
 
 module.exports = function(){
