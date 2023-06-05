@@ -45,7 +45,18 @@ alunos.prototype.deleteAluno = function(callback, idAluno) {
     DAO.delete(sql, [idAluno], retorno => {
         callback(retorno)
     });
-}
+} 
+
+// modelo responsável por vincular o aluno a uma turma
+alunos.prototype.vinculaTurma = function(callback, idAluno, idTurma) {
+    var sql = 'INSERT INTO aluno_turma (id_aluno, id_turma) VALUES (?,?)';
+
+    // executa a consulta sql e retorna os dados na função callback, a qual será usada
+    // no controlador para mostrar os dados na página.
+    DAO.insert(sql, [idAluno, idTurma], retorno => {
+        callback(retorno)
+    });
+};
 
 module.exports = function(){
     return alunos;

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Aluno</title> <link rel="stylesheet" href="..\css\cadastrarAluno.css"> 
+    <link rel="stylesheet" href="..\css\styles.css">
+    <link rel="stylesheet" href="../css/cabecalho.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="../js/cabecalho.js"></script>
+</head>
+<body>
+    <%- include('cabecalho') %>
+
+    <main>
+    <h1 class="novo_aluno">Novo aluno</h1>
+
+    <form class="form_assunto" action="" method="post" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="formulario" value="formulario">
+        <!-- Início - seleção de foto -->
+        <!-- <fieldset class="conteudo_sua_foto">
+            <img class="conteudo_sua_foto_imagem" src="../assets/persona.jpg">
+        
+            <button type="button" class="conteudo_sua_foto_botao">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"
+                    class="svg-icon">
+                    <g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd"
+                        clip-rule="evenodd">
+                        <path
+                            d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z">
+                        </path>
+                        <path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path>
+                    </g>
+                </svg>
+                <label for="file-upload" class="conteudo_sua_foto_botao_label">Fazer Upload</label>
+                <input type="file" id="file-upload" style="display: none;">
+            </button>
+        </fieldset> -->
+        <!-- Fim - seleção de foto -->
+
+        <fieldset class="form_input">
+            <input type="text" id="nome_aluno" name="nomeAluno" required="">
+            <label for="Nome do Aluno">
+                <span style="transition-delay:0ms">N</span><span style="transition-delay:50ms">o</span><span
+                    style="transition-delay:100ms">m</span><span style="transition-delay:150ms">e</span><span
+                    style="transition-delay:200ms">&nbsp;</span><span style="transition-delay:250ms">d</span><span
+                    style="transition-delay:300ms">o</span><span style="transition-delay:350ms">&nbsp;</span><span
+                    style="transition-delay:400ms">A</span><span style="transition-delay:450ms">l</span><span
+                    style="transition-delay:500ms">u</span><span style="transition-delay:550ms">n</span><span
+                    style="transition-delay:600ms">o</span>
+            </label>
+        </fieldset>
+
+        <fieldset class="form_série">
+            <h4 class="titulo_selecao_da_serie">Série:</h4>
+            <select class="selecao_de_serie" name="serieAluno" required>
+                <option value="" selected disabled hidden>Selecione</option>
+                <option value="6">6º ano</option>
+                <option value="7">7º ano</option>
+                <option value="8">8º ano</option>
+                <option value="9">9º ano</option>
+            </select>
+        </fieldset>
+
+        <fieldset class="form_tags_comportamentais">
+            <h4 class="titulo_selecao_de_tags_comportamentais">Tags comportamentais:</h4>
+            <select class="selecao_de_tags_comportamentais" name="tagComportamental" required>
+                <option value="" selected disabled hidden>Selecione</option>
+                <option value="1">Tímido</option>
+                <option value="2">Ansioso</option>
+                <option value="3">Extrovertido</option>
+                <option value="4">Agressivo</option>
+                <option value="5">Estudioso</option>
+                <option value="6">Desatento</option>
+            </select>
+        </fieldset>
+        <button class="botao_primario" type="submit">Adicionar</button>
+    </form>
+    </main>
+</body>
+</html>

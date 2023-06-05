@@ -9,7 +9,7 @@
 }
 
 .filtro {
-  width: 92vw;
+  width: 90%;
   background-color: var(--cinza);
   padding: 10px;
   margin-left: auto;
@@ -30,8 +30,10 @@
 .filtro_header {
   cursor: pointer;
   display: flex;
-  gap: 30vw;
   color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .filtro_imagem {
@@ -82,43 +84,84 @@
   text-align: center;
 }
 
-.materia {
+.turmas {
+  margin-top: 2em;
   display: flex;
-  border: 1px solid black;
-  border-radius: 15px;
-  width: 320px;
-  height: auto;
+  flex-direction: column;
+  color: #E9E9E9;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
-  align-items: center;
-  margin-top: 1em;
 }
 
-.materia_imagem {
-  width: 139px;
-  height: auto;
-  padding: .5em .2em .5em .2em;
+.card_turma{
+  border-radius: 8px;
+  box-sizing: border-box;
+  border: 1px solid #a6a9ad;
+  position: relative;
+  transition: .3s ease;
+  background-color: #fff;
+  margin-bottom: 2em;
 }
 
-.materia_divisao {
-  margin-left: 10px;
+.card_turma_tag {
+  color: #282828;
+  background: #fff;
+  border-radius: 12px;
+  font-size: 14px;
+  padding: 5px 10px;
+  line-height: 16px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 2;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.materia_titulo {
-  line-height: 1.5;
+.card_turma_img{
+  border-radius: 8px 8px 0 0;
+  height: 150px;
+  position: relative;
 }
 
-.materia_conteudo {
-  font-size: 12px;
+.card_turma_bg{
+  background-color: rgba(0,0,0,.2);
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
 }
 
-.materia_link {
-  text-decoration: none;
-  color: var(--athena-col-link);
+.card_img{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
 }
 
-.materia_link:hover {
-  color: var(--athena-col-link-hover);
+.card_turma_info{
+  padding: 20px;
+  color: #000;
+}
+
+.card_txt{
+  font-size: 14px;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 42px;
+  max-width: 100%;
+  -webkit-line-clamp: 2;
+  margin-bottom: -1.5em;
 }
 
 .grafico {
@@ -148,14 +191,44 @@
 }
 
 .cadastrar_nova_turma {
-  text-decoration: none;
-  color: var(--athena-col-link);
-  display: flex;
-  justify-content: center;
-  margin-top: 5em;
-  margin-bottom: 2em;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: var(--athena-col-link);
+    width: 200px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    height: 43px;
+    transition: all ease .4s;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cadastrar_nova_turma:hover {
-  color: var(--athena-col-link-hover);
+  background: var(--athena-bg-turmas);
+  color: #fff;
+}
+
+.botao_cadastrar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+@media screen and (min-width: 1024px) {
+  .filtro{
+    width: 60%;
+  }
+  .turmas_cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+    flex-wrap: wrap;
+  }
+
+  .card_turma{
+    margin: 1em;
+    width: 45%;
+  }
 }
