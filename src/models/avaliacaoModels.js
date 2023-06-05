@@ -15,12 +15,14 @@ avaliacoes.prototype.getAvaliacoes = function(callback, idProf) {
 }
 
 // modelo responsável por criar uma avaliação
-avaliacoes.prototype.postAvaliacao = function(callback, nomeAvaliacao, dataAvaliacao, serieAvaliacao, idProfessor) {
+avaliacoes.prototype.postAvaliacao = function(callback, idProfessor, nomeAvaliacao, serieAvaliacao, idDisciplina, quantQuestoes) {
 
     // nesse ponto, o professor é criado com o nome, data e serie
     // passados via corpo da requisição
-    var sql = 'INSERT INTO avaliacao (nome, data, serie, id_professor) VALUES (?,?,?,?);';
-    DAO.insert(sql, [nomeAvaliacao, dataAvaliacao, serieAvaliacao, idProfessor], retorno => {
+    var sql = 'INSERT INTO avaliacao (nome_avaliacao, data, serie, num_total_questoes, id_professor, id_disciplina) VALUES (?,?,?,?,?,?);';
+    let data = new Date().toLocaleDateString('pt-BR') // data atual
+    
+    DAO.insert(sql, [nomeAvaliacao, data, serieAvaliacao, quantQuestoes, idProfessor, idDisciplina], retorno => {
         callback(retorno)
     });
 }

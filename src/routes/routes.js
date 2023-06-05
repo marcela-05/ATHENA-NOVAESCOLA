@@ -142,10 +142,14 @@ module.exports = function(application){
     });
 
     // retorna controlador para cadastrar avaliação
-    application.post('/avaliacao/cadastrar', urlencodedParser, function(req, res){
-      application.src.controllers.avaliacaoControllers.cadastra(
-        application, req, res
-      );
+    application.post('/avaliacoes/cadastrar', urlencodedParser, function(req, res){
+      if(req.session.autorizado !== true){
+        res.status(403).json({message: 'Acesso negado. Por favor, faça login.'});
+      } else {
+        application.src.controllers.avaliacaoControllers.cadastra(
+          application, req, res
+        );
+      }
     });
 
     // retorna controlador para a atualização da avaliação

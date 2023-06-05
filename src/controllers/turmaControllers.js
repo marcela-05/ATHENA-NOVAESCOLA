@@ -90,8 +90,13 @@ module.exports.cadastra = function(application, req, res) {
             turmas.postTurma((result) => {
               // itera pelos alunos selecionados, chamando o modelo vinculaTurma de aluno
               if(req.body.alunos !== undefined){
-                for(aluno of req.body.alunos){
-                  alunos.vinculaTurma((res) => {}, aluno, result);
+                console.log(alunos)
+                if(typeof req.body.alunos == 'string'){
+                  alunos.vinculaTurma((res) => {}, req.body.alunos, result);
+                } else {
+                  for(aluno of req.body.alunos){
+                    alunos.vinculaTurma((res) => {}, aluno, result);
+                  }
                 }
               }
               res.redirect('/turmas');

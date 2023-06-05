@@ -120,7 +120,8 @@
 }
 
 .assuntos_abordados {
-    margin-bottom: 2em;
+  width: 90%;
+  margin-bottom: 2em;
 }
 
 .titulo {
@@ -138,10 +139,6 @@
 
 .divisor {
     width: 90vw;
-}
-
-.assuntos_lista {
-    margin-left: .5em;
 }
 
 .assuntos_lista_checkbox {
@@ -171,9 +168,14 @@
 }
 
 .assuntos_label {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
+    -webkit-line-clamp: 1;
     cursor: pointer;
     color: black;
-    text-align: center;
 }
 
 .questoes_por_assunto {
