@@ -1,0 +1,152 @@
+.titulo {
+    background: var(--athena-bg-avaliacao);
+    color: white;
+    font-size: 36px;
+    padding: 85px 3.5em;
+    text-align: center;
+    line-height: 1.5;
+    padding: 2em;
+    margin-bottom: 1em;
+}
+
+.filtro {
+  width: 92vw;
+  background-color: var(--cinza);
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+
+.filtro_botao {
+    display: none;
+}
+
+.filtro_botao:checked ~ .filtro_lista {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+}
+
+.filtro_header {
+  cursor: pointer;
+  display: flex;
+  gap: 30vw;
+  color: white;
+}
+
+.filtro_imagem {
+    width: 16px;
+}
+
+.filtro_lista {
+  display: none;
+  background-color: var(--cinza);
+  padding: 10px;
+}
+
+.filtro_lista_checkbox {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin-top: 1em;
+}
+
+.filtro {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  margin-right: 5px;
+  align-items: center;
+}
+
+.checkbox:checked {
+  background-color: var(--athena-bg-turmas);
+  border-color: var(--athena-bg-turmas);
+}
+
+.label {
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+
+.container_respostas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2em;
+}
+
+.respostas {
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.divisor {
+    width: 90vw;
+}
+
+.questoes_por_assunto {
+    display: flex;
+    flex-direction: column;
+    background: var(--athena-bg-avaliacao);
+    padding: 2em;
+    gap: 1em;
+    margin-right: 1em;
+    margin-left: 1em;
+    border-radius: 8px;
+}
+
+.questoes_por_assunto_titulo {
+    line-height: 1.5;
+    font-size: 24px;
+    text-align: center;
+}
+
+.assunto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.assunto_nome {
+    color: white;
+}
+
+.assunto_input {
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background-color: var(--athena-bg-avaliacao);
+}
+
+.botao_salvar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
