@@ -5,13 +5,14 @@
   padding: 85px 3.5em;
   text-align: center;
   line-height: 1.5;
-  padding: 2em;
   margin-bottom: 1em;
 }
 
-.conteudo_input {
-    float: left;
-    width: 100%;
+.form_avaliacao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .container_login_form, .container_cadastro_form {
@@ -21,111 +22,76 @@
     align-items: center;
 }
 
-.input-container {
+.form_input {
     position: relative;
-    width: 330px;
-    margin-bottom: 1em;
-    margin-left: .6em;
+    margin: 20px 0 40px;
+    margin-left: auto;
     margin-right: auto;
-}
-
-.input-container input {
-    font-size: 1em;
-    width: 100%;
-    border: none;
-    border-bottom: 2px solid black;
-    padding: 5px 0;
+    width: 90%;
+  }
+  
+  .form_input input {
     background-color: transparent;
-    outline: none;
-}
-
-.input-container .label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: black;
-    transition: all 0.3s ease;
-    pointer-events: none;
-}
-
-.input-container input[type="password"]:focus~.label, .input-container input[type="email"]:focus~.label,
-.input-container input[type="password"]:valid~.label, .input-container input[type="text"]:valid~.label,
-.input-container input[type="text"]:focus~.label {
-    top: -20px;
-    font-size: .8em;
-    color: var(--athena-col-link);
-}
-
-.input-container input[type="email"]:not(:placeholder-shown) ~ .label, .input-container input[type="password"]:not(:placeholder-shown) ~ .label {
-    top: -20px;
-    font-size: .8em;
-    color: var(--athena-col-link);
-}
-
-.input-container .underline {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
+    border: 0;
+    border-bottom: 2px black solid;
+    display: block;
     width: 100%;
-    background-color: var(--athena-col-link);
-    transform: scaleX(0);
-    transition: all 0.3s ease;
-}
+    margin-top: 20px;
+    font-size: 18px;
+    color: black;
+  }
+  
+  .form_input input:focus,
+  .form_input input:valid {
+    outline: 0;
+    border-bottom-color: var(--athena-bg-avaliacao);
+  }
+  
+  .form_input label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    pointer-events: none;
+  }
+  
+  .form_input label span {
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+    color: black;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .form_input input:focus+label span,
+  .form_input input:valid+label span {
+    color: var(--athena-bg-avaliacao);
+    transform: translateY(-30px);
+  }
 
-.input-container input[type="password"]:focus~.underline, .input-container input[type="email"]:focus~.underline,
-.input-container input[type="text"]:focus~.underline, .input-container input[type="text"]:valid~.underline,
-.input-container input[type="password"]:valid~.underline, .input-container input[type="email"]:valid~.underline {
-    transform: scaleX(1);
-}
-
-.filtro {
-  width: 92vw;
-  background-color: var(--cinza);
-  padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1em;
-}
-
-.filtro_botao {
-    display: none;
-}
-
-.filtro_botao:checked ~ .filtro_lista {
-    display: flex;
-    flex-direction: column;
+.selecao_de_materia {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: #555;
+    background-color: #fff;
+    margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1em;
+    color: black;
 }
 
-.filtro_header {
-  cursor: pointer;
-  display: flex;
-  gap: 30vw;
-  color: white;
+.selecao_de_materia:focus {
+    outline: none;
+    border: 1px solid var(--athena-bg-avaliacao);
+    box-shadow: 0 0 5px var(--athena-bg-avaliacao);
+    color: var(--athena-bg-avaliacao);
 }
 
-.filtro_imagem {
-    width: 16px;
-}
-
-.filtro_lista {
-  display: none;
-  background-color: var(--cinza);
-  padding: 10px;
-}
-
-.filtro_lista_checkbox {
-    display: flex;
-    align-items: center;
-    gap: .5em;
-    margin-top: 1em;
-}
-
-.filtro {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+.form_materia{
+    width: 90%;
 }
 
 .checkbox {
@@ -219,6 +185,7 @@
     margin-right: 1em;
     margin-left: 1em;
     border-radius: 8px;
+    width: 90%;
 }
 
 .questoes_por_assunto_titulo {
@@ -231,17 +198,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 18px;
 }
 
 .assunto_nome {
     color: white;
+    max-width: 50%;
 }
 
 .assunto_input {
+    width: 50%;
     border: none;
     border-bottom: 1px solid black;
     outline: none;
     background-color: var(--athena-bg-avaliacao);
+    color: #fff;
+}
+
+.assunto_input::placeholder {
+    color: white;
+    opacity: 80%;
 }
 
 input[type="number"]::-webkit-inner-spin-button,

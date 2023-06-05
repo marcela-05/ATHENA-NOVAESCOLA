@@ -357,4 +357,15 @@ module.exports = function(application){
         );
       }
     });
+
+    // retorna controlador para renderizar a página de cadastrar avaliação
+    application.get('/avaliacoes/cadastrar', urlencodedParser, function(req, res){
+      if (req.session.autorizado != true) {
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+      } else {
+        application.src.controllers.avaliacaoControllers.cadastra(
+          application, req, res
+        );
+      }
+    });
   }
