@@ -1,0 +1,264 @@
+.cadastrar_avaliacao_titulo {
+  background: var(--athena-bg-avaliacao);
+  color: white;
+  font-size: 36px;
+  padding: 85px 3.5em;
+  text-align: center;
+  line-height: 1.5;
+  padding: 2em;
+  margin-bottom: 1em;
+}
+
+.conteudo_input {
+    float: left;
+    width: 100%;
+}
+
+.container_login_form, .container_cadastro_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-container {
+    position: relative;
+    width: 330px;
+    margin-bottom: 1em;
+    margin-left: .6em;
+    margin-right: auto;
+}
+
+.input-container input {
+    font-size: 1em;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 5px 0;
+    background-color: transparent;
+    outline: none;
+}
+
+.input-container .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-container input[type="password"]:focus~.label, .input-container input[type="email"]:focus~.label,
+.input-container input[type="password"]:valid~.label, .input-container input[type="text"]:valid~.label,
+.input-container input[type="text"]:focus~.label {
+    top: -20px;
+    font-size: .8em;
+    color: var(--athena-col-link);
+}
+
+.input-container input[type="email"]:not(:placeholder-shown) ~ .label, .input-container input[type="password"]:not(:placeholder-shown) ~ .label {
+    top: -20px;
+    font-size: .8em;
+    color: var(--athena-col-link);
+}
+
+.input-container .underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--athena-col-link);
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+}
+
+.input-container input[type="password"]:focus~.underline, .input-container input[type="email"]:focus~.underline,
+.input-container input[type="text"]:focus~.underline, .input-container input[type="text"]:valid~.underline,
+.input-container input[type="password"]:valid~.underline, .input-container input[type="email"]:valid~.underline {
+    transform: scaleX(1);
+}
+
+.filtro {
+  width: 92vw;
+  background-color: var(--cinza);
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+
+.filtro_botao {
+    display: none;
+}
+
+.filtro_botao:checked ~ .filtro_lista {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+}
+
+.filtro_header {
+  cursor: pointer;
+  display: flex;
+  gap: 30vw;
+  color: white;
+}
+
+.filtro_imagem {
+    width: 16px;
+}
+
+.filtro_lista {
+  display: none;
+  background-color: var(--cinza);
+  padding: 10px;
+}
+
+.filtro_lista_checkbox {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin-top: 1em;
+}
+
+.filtro {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  margin-right: 5px;
+  align-items: center;
+}
+
+.checkbox:checked {
+  background-color: var(--athena-bg-turmas);
+  border-color: var(--athena-bg-turmas);
+}
+
+.label {
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+
+.assuntos_abordados {
+    margin-bottom: 2em;
+}
+
+.titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.assuntos_titulo {
+    line-height: 1.5;
+    font-size: 24px;
+    margin-top: 1em;
+    margin-left: .2em;
+}
+
+.divisor {
+    width: 90vw;
+}
+
+.assuntos_lista {
+    margin-left: .5em;
+}
+
+.assuntos_lista_checkbox {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin-top: 1em;
+}
+
+.assuntos_checkbox {
+   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  outline: auto;
+  cursor: pointer;
+  background-color: white;
+  margin-right: 5px;
+  align-items: center;   
+}
+
+.assuntos_checkbox:checked {
+  background-color: var(--athena-bg-turmas);
+  border-color: var(--athena-bg-turmas);
+}
+
+.assuntos_label {
+    cursor: pointer;
+    color: black;
+    text-align: center;
+}
+
+.questoes_por_assunto {
+    display: flex;
+    flex-direction: column;
+    background: var(--athena-bg-avaliacao);
+    padding: 2em;
+    gap: 1em;
+    margin-right: 1em;
+    margin-left: 1em;
+    border-radius: 8px;
+}
+
+.questoes_por_assunto_titulo {
+    line-height: 1.5;
+    font-size: 24px;
+    text-align: center;
+}
+
+.assunto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.assunto_nome {
+    color: white;
+}
+
+.assunto_input {
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background-color: var(--athena-bg-avaliacao);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.botao_cadastrar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 3em;
+}

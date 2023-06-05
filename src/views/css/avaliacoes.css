@@ -1,0 +1,135 @@
+.avaliacoes_titulo {
+    background: var(--athena-bg-avaliacao);
+    color: white;
+    font-size: 36px;
+    padding: 85px 3.5em;
+    text-align: center;
+    line-height: 1.5;
+    padding: 2em;
+    margin-bottom: 1em;
+}
+
+.filtro {
+  width: 92vw;
+  background-color: var(--cinza);
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+
+.filtro_botao {
+    display: none;
+}
+
+.filtro_botao:checked ~ .filtro_lista {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+}
+
+.filtro_header {
+  cursor: pointer;
+  display: flex;
+  gap: 30vw;
+  color: white;
+}
+
+.filtro_imagem {
+    width: 16px;
+}
+
+.filtro_lista {
+  display: none;
+  background-color: var(--cinza);
+  padding: 10px;
+}
+
+.filtro_lista_checkbox {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin-top: 1em;
+}
+
+.filtro {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  margin-right: 5px;
+  align-items: center;
+}
+
+.checkbox:checked {
+  background-color: var(--athena-bg-turmas);
+  border-color: var(--athena-bg-turmas);
+}
+
+.label {
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+
+.materia {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 15px;
+  width: 320px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.materia_imagem {
+  width: 139px;
+  height: auto;
+  padding: .5em .2em .5em .2em;
+}
+
+.materia_divisao {
+  margin-left: 10px;
+}
+
+.materia_titulo {
+  line-height: 1.5;
+}
+
+.materia_conteudo {
+  font-size: 12px;
+}
+
+.materia_link {
+  text-decoration: none;
+  color: var(--athena-col-link);
+}
+
+.materia_link:hover {
+  color: var(--athena-col-link-hover);
+}
+
+.seletor_pagina {
+    display: flex;
+    align-items: flex;
+    justify-content: center;
+    margin-top: 2em;
+    gap: 1em;
+}
+
+.seta {
+    width: 34px;
+}
