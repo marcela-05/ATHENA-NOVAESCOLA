@@ -246,10 +246,18 @@ module.exports = function(application){
     });
 
     // retorna controlador para cadastrar nota
-    application.post('/nota/cadastrar', urlencodedParser, function(req, res){
-      application.src.controllers.notaControllers.cadastra(
-        application, req, res
-      );
+    application.post('/avaliacoes/inserirResultado', urlencodedParser, function(req, res){
+      if(req.session.autorizado !== true){
+        res.render('html/erro', {
+          codigoStatus: 403,
+          tituloMensagem: 'Acesso negado',
+          mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'
+        });
+      } else {
+        application.src.controllers.notaControllers.cadastra(
+          application, req, res
+        );
+      }
     });
 
     // retorna controlador para a atualização da nota

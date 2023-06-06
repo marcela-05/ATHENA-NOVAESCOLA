@@ -11,33 +11,28 @@
         <h1 class="titulo">Inserir Resultados</h1>
         <form class="form_avaliacao" action="" method="POST" enctype="application/x-www-form-urlencoded">
         <fieldset class="form_materia">
-            <label for="materia" class="titulo_selecao_da_materia">Disciplina</label>
-            <select id="materia" class="selecao_de_materia" name="disciplina" required>
-                <option value="" selected disabled hidden>Selecione</option>
-                <% for (let disciplina of disciplinas) { %>
-                    <option value=<%= disciplina.id_disciplina %>><%= disciplina.nome %></option>
-                <% } %>
-            </select>
-        </fieldset>
-        <fieldset class="form_materia">
             <label for="materia" class="titulo_selecao_da_materia">Aluno</label>
-            <select id="materia" class="selecao_de_materia" name="disciplina" required>
+            <select id="materia" class="selecao_de_materia" name="aluno" required>
                 <option value="" selected disabled hidden>Selecione</option>
-                
+                <% for (let aluno of alunos) { %>
+                    <option value=<%= aluno.id_aluno %>><%= aluno.nome %></option>
+                <% } %>
             </select>
         </fieldset>
 
         <h2 class="questoes_por_assunto_titulo">Respostas</h2>
 
-        <div class="questoes_por_assunto" id="teste">
+        <div class="questoes_por_assunto">
+            <% for(bloco of blocos){ %>
             <div class="assunto">
-                <p class="assunto_nome">Teste</p>
-                <input class="assunto_input" type="number" name="assunto" placeholder="Quantidade"> 
-                <input type="hidden" name="blocoArea"> 
+                <p class="assunto_nome"><%= bloco.nome_area %></p>
+                <input class="assunto_input" type="number" name="acertos" placeholder="Quantidade" required>
+                <input type="hidden" name="numBloco" value="<%= bloco.num_bloco %>" required>
             </div>
+            <% } %>
         </div> 
 
-        <button class="botao_primario botao_salvar">Salvar</button>
+        <button type="submit" class="botao_primario botao_salvar">Salvar</button>
     </form>
     </main>
 </body>

@@ -31,52 +31,43 @@ exports.cadastra = function(application, req, res) {
     var notas = new application.src.models.notaModels()
     // cria conexão com o modelo /src/models/professorModels.js
     var professor = new application.src.models.professorModels()
+    // cria conexão com o modelo /src/models/notaModels.js
+    var avaliacao = new application.src.models.notaModels()
+    // cria conexão com o modelo /src/models/alunoModels.js
+    var aluno = new application.src.models.alunoModels()
+    // cria conexão com o modelo /src/models/blocoQuestaoModels.js
+    var blocos = new application.src.models.blocoQuestaoModels()
     
     // verifica se o método da requisição é GET
     if(req.method == 'GET'){
-        professor.listaDisciplinas((result) => {
-            res.render('html/inserirResultados', {disciplinas: result})
-        }, req.session.idProfessor)
-    } else {
-        // código para evitar SQL Injection
-        // converte o id do aluno para inteiro
-        req.body.idAluno = parseInt(req.body.idAluno)
-        // verifica se o id do aluno é um número, se não for, retorna mensagem de erro
-        if(isNaN(req.body.idAluno)){
-            res.json({message: 'id do aluno inválido'})
+        if(req.query.idAvaliacao == undefined || req.query.idAvaliacao == ''){
+            res.render('html/erro', {codigoStatus: 400, tituloMensagem: 'ID da avaliação não informado', mensagem: 'Por favor, informe todos os campos obrigatórios'})
         } else {
-            // converte o id da avaliação para inteiro
-            req.body.idAvaliacao = parseInt(req.body.idAvaliacao)
-            // verifica se o id da avaliação é um número, se não for, retorna mensagem de erro
-            if(isNaN(req.body.idAvaliacao)){
-                res.json({message: 'id da avaliação inválido'})
-            } else {
-                // converte o número de blocos para inteiro
-                req.body.numBloco = parseInt(req.body.numBloco)
-                // verifica se o número de blocos é um número, se não for, retorna mensagem de erro
-                if(isNaN(req.body.numBloco)){
-                    res.json({message: 'número de blocos inválido'})
-                } else {
-                    // converte a nota de acertos para inteiro
-                    req.body.notaAcertos = parseInt(req.body.notaAcertos)
-                    // verifica se a nota de acertos é um número, se não for, retorna mensagem de erro
-                    if(isNaN(req.body.notaAcertos)){
-                        res.json({message: 'nota de acertos inválida'})
-                    } else {
-                        // chama modelo que cadastra a nota
-                        notas.postNota((result) => {
-                            // verifica se o resultado da consulta é vazio. 
-                            // Se for, retorna mensagem de sucesso, se não, retorna mensagem de erro (result)
-                            if(result != undefined){
-                                res.json({message: result})
-                            } else{
-                                res.json({message: 'nota cadastrada com sucesso'})
-                            }
-                        }, req.body.idAluno, req.body.idAvaliacao, req.body.numBloco, req.body.notaAcertos)
-                    }
-                }
-            }
+            aluno.getAlunos((alunos) => {
+                blocos.getBlocos((blocos) => {
+                    res.render('html/inserirResultados', {alunos: alunos, blocos: blocos})
+                }, req.query.idAvaliacao)
+            }, req.session.idProfessor)
         }
+    } else {
+        if(typeof req.body.numBloco == 'string'){
+            notas.postNota((result) => {
+                // verifica se o resultado da consulta é vazio. 
+                // Se for, retorna mensagem de sucesso, se não, retorna mensagem de erro (result)
+                if(result != undefined){
+                    res.render('html/erro', {codigoStatus: 400, tituloMensagem: 'Erro ao cadastrar nota', mensagem: result})
+                } else{
+                    res.redirect('/home')
+                }
+            }, req.body.aluno, req.query.idAvaliacao, req.body.numBloco, req.body.acertos);
+        } else {
+            for(let i = 0; i < req.body.numBloco.length; i++){
+                notas.postNota((result) => {
+                }, req.body.aluno, req.query.idAvaliacao, req.body.numBloco[i], req.body.acertos[i]);
+            }
+            res.redirect('/home')
+        }
+       
     }
 }
 

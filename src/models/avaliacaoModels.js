@@ -1,15 +1,21 @@
 const database = require('../data/data')
-const DAO = require('../data/DAO') // template para executar comandos no banco de dados
+const DAO = require('../data/DAO'); // template para executar comandos no banco de dados
+const e = require('express');
 
 
 function avaliacoes() {}
 
 // modelo responsável por listar avaliações
-avaliacoes.prototype.getAvaliacoes = function(callback, idProf) {
-    var sql = 'SELECT * FROM avaliacao WHERE id_professor = ?';
-
+avaliacoes.prototype.getAvaliacoes = function(callback, idProf, idAvaliacao) {
+    if(idAvaliacao == undefined){
+        var sql = 'SELECT * FROM avaliacao WHERE id_professor = ?';
+        var params = [idProf]
+    } else{
+        var sql = 'SELECT * FROM avaliacao WHERE id_professor = ? AND id_avaliacao = ?';
+        var params = [idProf, idAvaliacao]
+    }
     // executa a consulta sql e retorna os dados na função callback
-    DAO.select(sql, [idProf], retorno => {
+    DAO.select(sql, params, retorno => {
         callback(retorno)
     });
 }
