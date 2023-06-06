@@ -9,6 +9,46 @@
     margin-bottom: 1em;
 }
 
+.form_avaliacao{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_materia{
+  width: 90%;
+}
+
+.titulo_selecao_da_materia{
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.8em;
+}
+
+.selecao_de_materia {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 14px;
+  color: #555;
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  color: black;
+}
+
+.selecao_de_materia:focus {
+  outline: none;
+  border: 1px solid var(--athena-bg-avaliacao);
+  box-shadow: 0 0 5px var(--athena-bg-avaliacao);
+  color: var(--athena-bg-avaliacao);
+}
+
 .filtro {
   width: 92vw;
   background-color: var(--cinza);
@@ -73,8 +113,8 @@
 }
 
 .checkbox:checked {
-  background-color: var(--athena-bg-turmas);
-  border-color: var(--athena-bg-turmas);
+  background-color: var(--athena-bg-avaliacao);
+  border-color: var(--athena-bg-avaliacao);
 }
 
 .label {
@@ -83,31 +123,16 @@
   text-align: center;
 }
 
-.container_respostas {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2em;
-}
-
-.respostas {
-    font-size: 24px;
-    line-height: 1.5;
-}
-
-.divisor {
-    width: 90vw;
-}
-
 .questoes_por_assunto {
-    display: flex;
-    flex-direction: column;
-    background: var(--athena-bg-avaliacao);
-    padding: 2em;
-    gap: 1em;
-    margin-right: 1em;
-    margin-left: 1em;
-    border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  background: var(--athena-bg-avaliacao);
+  padding: 2em;
+  gap: 1em;
+  margin-right: 1em;
+  margin-left: 1em;
+  border-radius: 8px;
+  width: 90%;
 }
 
 .questoes_por_assunto_titulo {
@@ -120,17 +145,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 18px;
 }
 
 .assunto_nome {
-    color: white;
+  color: white;
+  max-width: 50%;
 }
 
 .assunto_input {
-    border: none;
-    border-bottom: 1px solid black;
-    outline: none;
-    background-color: var(--athena-bg-avaliacao);
+  width: 50%;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  background-color: var(--athena-bg-avaliacao);
+  color: #fff;
+}
+
+.assunto_input::placeholder {
+  color: white;
+  opacity: 80%;
 }
 
 .botao_salvar {
@@ -145,8 +179,4 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
 }

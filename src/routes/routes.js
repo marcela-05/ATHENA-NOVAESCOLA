@@ -8,9 +8,17 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 module.exports = function(application){
     // retorna controlador das turmas
     application.get('/turmas', function(req, res){
-      application.src.controllers.turmaControllers.listaTurmas(
-        application, req, res
-      );
+      if(req.session.autorizado){
+        application.src.controllers.turmaControllers.listaTurmas(
+          application, req, res
+        );
+      } else{
+        res.render('html/erro', {
+          codigoStatus: 403,
+          tituloMensagem: 'Acesso negado',
+          mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'
+        });
+      }
     });
 
     // retorna controlador para cadastro de turmas
@@ -135,10 +143,18 @@ module.exports = function(application){
     });
 
     // retorna controlador para listar avaliações
-    application.get('/avaliacoes', function(req, res){
-      application.src.controllers.avaliacaoControllers.listaAvaliacoes(
-        application, req, res
-      );
+    application.get('/avaliacoes', urlencodedParser, function(req, res){
+      if (req.session.autorizado != true) {
+        res.render('html/erro', {
+          codigoStatus: 403,
+          tituloMensagem: 'Acesso negado',
+          mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'
+        });
+      } else {
+        application.src.controllers.avaliacaoControllers.listaAvaliacoes(
+          application, req, res
+        );
+      }
     });
 
     // retorna controlador para cadastrar avaliação
@@ -230,10 +246,18 @@ module.exports = function(application){
     });
 
     // retorna controlador para cadastrar nota
-    application.post('/nota/cadastrar', urlencodedParser, function(req, res){
-      application.src.controllers.notaControllers.cadastra(
-        application, req, res
-      );
+    application.post('/avaliacoes/inserirResultado', urlencodedParser, function(req, res){
+      if(req.session.autorizado !== true){
+        res.render('html/erro', {
+          codigoStatus: 403,
+          tituloMensagem: 'Acesso negado',
+          mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'
+        });
+      } else {
+        application.src.controllers.notaControllers.cadastra(
+          application, req, res
+        );
+      }
     });
 
     // retorna controlador para a atualização da nota
@@ -368,6 +392,18 @@ module.exports = function(application){
         res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
       } else {
         application.src.controllers.avaliacaoControllers.cadastra(
+          application, req, res
+        );
+      }
+    });
+
+    // retorna controlador para renderizar a página de inserir nota de avaliação
+    // retorna controlador para cadastrar nota
+    application.get('/avaliacoes/inserirResultado', urlencodedParser, function(req, res){
+      if (req.session.autorizado != true) {
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+      } else {
+        application.src.controllers.notaControllers.cadastra(
           application, req, res
         );
       }

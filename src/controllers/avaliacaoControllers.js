@@ -2,20 +2,28 @@
 exports.listaAvaliacoes = function(application, req, res) {
   // cria conexão com o modelo /src/models/avaliacaoModels.js
   var avaliacoes = new application.src.models.avaliacaoModels() 
-  // verifica se o id do professor foi informado
-  if(req.query.idProfessor == undefined || req.query.idProfessor == ''){
-    res.json({message: 'id do professor não informado'})
-  } else{
-    // esse controlador chama o modelo de listagem de avaliações
-    avaliacoes.getAvaliacoes((result) => {
-      // verifica se o resultado da consulta é vazio
-      if(result.length == 0){
-          res.json({message: 'nenhuma avaliação encontrada'})
-      } else{
-          res.json(result);
-      }
-    }, req.query.idProfessor);
-  }
+  // cria conexão com o modelo /src/models/professorModels.js
+  var professor = new application.src.models.professorModels()
+  // cria conexão com o modelo /src/models/turmaModels.js
+  var turma = new application.src.models.turmaModels()
+
+  // esse controlador chama o modelo de listagem de avaliações
+  avaliacoes.getAvaliacoes((result) => {
+    professor.listaDisciplinas((disciplinas) => {
+      turma.getProfTurmas((turmas) => {
+        // verifica se o resultado da consulta é vazio
+        if(result.length == 0){
+          if(req.query.tipoConsulta == 'json'){
+            res.json({message: 'nenhuma avaliação encontrada'})
+          } else{
+            res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Nenhuma avaliação encontrada', mensagem: 'Não há avaliações cadastradas'})
+          }
+        } else{
+          res.render('html/avaliacoes', {avaliacoes: result, disciplinas: disciplinas, turmas: turmas});
+        }
+      }, req.session.idProfessor)
+    }, req.session.idProfessor)
+  }, req.session.idProfessor);
 }
 
 module.exports.cadastra = function(application, req, res) {
@@ -58,10 +66,21 @@ module.exports.cadastra = function(application, req, res) {
         }
       } else{
         // Esse controlador é responsável por chamar o modelo que cadastra a avaliação
-        avaliacoes.postAvaliacao((result) => {
-          if(req.query.tipoConsulta == 'json'){
-            res.json({message: 'avaliação cadastrada com sucesso'})
-          } else{
+        avaliacoes.postAvaliacao((avaliacaoLastID) => {
+          // cria objeto para armazenar dados do bloco de questões. Se for string, é apenas um bloco
+          // se for array, é mais de um bloco
+          if(typeof req.body.assunto == 'string'){
+            bloco = {quant_questoes: req.body.assunto, num_bloco: 1, id_area: req.body.blocoArea}
+            blocosQuestao.postBloco((result) => {
+            }, bloco.num_bloco, bloco.quant_questoes, avaliacaoLastID, bloco.id_area)
+            res.redirect('/home')
+          } else {
+            for(let i = 1; i <= req.body.assunto.length + 1; i++){
+              bloco = {quant_questoes: req.body.assunto[i-1], num_bloco: i, id_area: req.body.blocoArea[i-1]}
+              // esse controlador chama o modelo de cadastro de bloco de questões
+              blocosQuestao.postBloco((result) => {
+              }, bloco.num_bloco, bloco.quant_questoes, avaliacaoLastID, bloco.id_area)
+            }
             res.redirect('/home')
           }
         }, req.session.idProfessor, req.body.nomeAvaliacao, req.body.serieAvaliacao, req.body.disciplinaAvaliacao, req.body.quantQuestoes);

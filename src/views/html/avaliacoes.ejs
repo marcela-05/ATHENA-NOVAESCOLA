@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('partials/head') %>
+    <title>Athena ◆ Avaliações</title>
+    <link rel="stylesheet" href="../css/avaliacoes.css">
+</head>
+<body>
+    <%- include('partials/cabecalho') %>
+    <main>
+        <h1 class="avaliacoes_titulo">Avaliações</h1>
+        <div class="filtro">
+            <input class="filtro_botao" type="checkbox" id="filtro">
+            <label for="filtro" class="filtro_header">Matéria</label>
+            <% for(let disciplina of disciplinas){ %>
+            <div class="filtro_lista">
+                <div class="filtro_lista_checkbox">
+                    <input class="checkbox" type="checkbox" id="<%= disciplina.nome %>">
+                    <label class="label" for="<%= disciplina.nome %>"><%= disciplina.nome %></label>
+                </div>
+            </div>
+            <% } %>
+        </div>
+        <div class="filtro">
+            <input class="filtro_botao" type="checkbox" id="filtro2">
+            <label for="filtro2" class="filtro_header">Turmas</label>
+            <% for(let turma of turmas){ %>
+            <div class="filtro_lista">
+                <div class="filtro_lista_checkbox">
+                    <input class="checkbox" type="checkbox" id="<%= turma.nome %>">
+                    <label class="label" for="<%= turma.nome %>"><%= turma.nome %></label>
+                </div>
+            </div>
+            <% } %>
+        </div>
+
+        <section class="avaliacoes">
+            <div class="avaliacoes_cards">
+                <% for (let i = 0; i < avaliacoes.length; i++) { %>
+                <article class="card_avaliacao">
+                    <p class="card_avaliacao_tag"><a href="">Editar</a></p>
+                    <a href="/avaliacoes?idAvaliacao=<%= avaliacoes[i].id_avaliacao %>">
+                        <figure class="card_avaliacao_img">
+                            <div class="card_avaliacao_bg"></div>
+                            <img src="https://nova-escola-producao.s3.amazonaws.com/ncn6aAXb4ctH2fyHajCyB5gZH738UuNYzkVCUxcDaDJY5kdxH8EeQ6bfbBua/prova-teste-vestibular-nota-vermelha-azul-media-boletim-aluno-estudante-estudando.jpg" alt="" class="card_img">
+                        </figure>
+                        <div class="card_avaliacao_info">
+                            <p><%= avaliacoes[i].nome_avaliacao %></p>
+                            <p class="card_txt">Média Geral: XX</p>
+                            <p class="card_txt">Defasagem Média: XX</p>
+                            <a class="card_link" href="/avaliacoes/inserirResultado?idAvaliacao=<%= avaliacoes[i].id_avaliacao %>">Inserir Notas</a>
+                        </div>
+                    </a>
+                </article>
+                <% } %>
+            </div>
+        </section>
+        <!-- <div class="seletor_pagina">
+            <a href="#"><img class="seta" src="../assets/icone_seta_esquerda.png" alt="Ícone seta esquerda"></a>
+            <p>Página X de XX</p>
+            <a href="#"><img class="seta" src="../assets/icone_seta_direita.png" alt="Ícone seta direita"></a>
+        </div> -->
+    </main>
+</body>
+</html>

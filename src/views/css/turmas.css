@@ -1,11 +1,10 @@
 .suas_turmas {
   background: var(--athena-bg-turmas);
   color: white;
-  font-size: 36px;
+  font-size: 1.5em;
   padding: 85px 3.5em;
   text-align: center;
   line-height: 1.5;
-  padding: 2em;
 }
 
 .filtro {

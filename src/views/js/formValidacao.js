@@ -23,3 +23,18 @@ function confereEmail(){
         emailConfirma.setCustomValidity('');
     }
 }
+
+function confereQuestoes(){
+    const total = document.querySelector('input[name=quantQuestoes]');
+    const blocos = document.getElementsByName('assunto');
+    
+    var soma = 0;
+    for(let i = 0; i < blocos.length; i++){
+        soma += parseInt(blocos[i].value);
+    }
+    if(soma != total.value){
+        total.setCustomValidity('A soma das questões não bate com o total de questões!');
+    }else {
+        total.setCustomValidity('');
+    }
+}
