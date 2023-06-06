@@ -16,6 +16,8 @@
 
 .banner h2 {
     text-align: center;
+    line-height: normal;
+    margin-bottom: 1em;
 }
 
 .banner p #bold {

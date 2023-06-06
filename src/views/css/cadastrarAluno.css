@@ -1,7 +1,7 @@
 .novo_aluno {
-    background: var(--athena-bg-alunos);
-    color: black;
-    font-size: 36px;
+    background: var(--cinza);
+    color: white;
+    font-size: 1.5em;
     padding: 85px 3.5em;
     text-align: center;
     line-height: 1.5;
