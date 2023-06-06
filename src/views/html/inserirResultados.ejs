@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('partials/head') %>
+    <title>Athena ◆ Inserir Resultados da Avaliação</title>
+    <link rel="stylesheet" href="../css/inserirResultados.css">
+</head>
+<body>
+    <%- include('partials/cabecalho') %>
+    <main>
+        <h1 class="titulo">Inserir Resultados</h1>
+        <form class="form_avaliacao" action="" method="POST" enctype="application/x-www-form-urlencoded">
+        <fieldset class="form_materia">
+            <label for="materia" class="titulo_selecao_da_materia">Disciplina</label>
+            <select id="materia" class="selecao_de_materia" name="disciplina" required>
+                <option value="" selected disabled hidden>Selecione</option>
+                <% for (let disciplina of disciplinas) { %>
+                    <option value=<%= disciplina.id_disciplina %>><%= disciplina.nome %></option>
+                <% } %>
+            </select>
+        </fieldset>
+        <fieldset class="form_materia">
+            <label for="materia" class="titulo_selecao_da_materia">Aluno</label>
+            <select id="materia" class="selecao_de_materia" name="disciplina" required>
+                <option value="" selected disabled hidden>Selecione</option>
+                
+            </select>
+        </fieldset>
+
+        <h2 class="questoes_por_assunto_titulo">Respostas</h2>
+
+        <div class="questoes_por_assunto" id="teste">
+            <div class="assunto">
+                <p class="assunto_nome">Teste</p>
+                <input class="assunto_input" type="number" name="assunto" placeholder="Quantidade"> 
+                <input type="hidden" name="blocoArea"> 
+            </div>
+        </div> 
+
+        <button class="botao_primario botao_salvar">Salvar</button>
+    </form>
+    </main>
+</body>
+</html>

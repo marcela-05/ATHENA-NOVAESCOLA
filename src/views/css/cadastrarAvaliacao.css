@@ -223,10 +223,7 @@
     color: #fff;
 }
 
-.assunto_input::placeholder {
-    color: white;
-    opacity: 80%;
-}
+
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {

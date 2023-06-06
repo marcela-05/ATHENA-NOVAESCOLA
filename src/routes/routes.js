@@ -388,4 +388,16 @@ module.exports = function(application){
         );
       }
     });
+
+    // retorna controlador para renderizar a página de inserir nota de avaliação
+    // retorna controlador para cadastrar nota
+    application.get('/avaliacoes/inserirResultado', urlencodedParser, function(req, res){
+      if (req.session.autorizado != true) {
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+      } else {
+        application.src.controllers.notaControllers.cadastra(
+          application, req, res
+        );
+      }
+    });
   }
