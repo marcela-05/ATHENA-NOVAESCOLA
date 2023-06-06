@@ -62,10 +62,16 @@
     transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
   
-  .form_input input:focus+label span,
-  .form_input input:valid+label span {
+  .form_input input:focus ~ label span, .form_input input:valid ~ label span {
     color: var(--athena-bg-avaliacao);
     transform: translateY(-30px);
+  }
+
+  input[type="number"]:not(:placeholder-shown) ~ label span {
+    color: var(--athena-bg-avaliacao);
+    transform: translateY(-30px);
+    outline: 0;
+    border-bottom-color: var(--athena-bg-avaliacao);
   }
 
 .selecao_de_materia {

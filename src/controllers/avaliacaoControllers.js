@@ -58,10 +58,21 @@ module.exports.cadastra = function(application, req, res) {
         }
       } else{
         // Esse controlador é responsável por chamar o modelo que cadastra a avaliação
-        avaliacoes.postAvaliacao((result) => {
-          if(req.query.tipoConsulta == 'json'){
-            res.json({message: 'avaliação cadastrada com sucesso'})
-          } else{
+        avaliacoes.postAvaliacao((avaliacaoLastID) => {
+          // cria objeto para armazenar dados do bloco de questões. Se for string, é apenas um bloco
+          // se for array, é mais de um bloco
+          if(typeof req.body.assunto == 'string'){
+            bloco = {quant_questoes: req.body.assunto, num_bloco: 1, id_area: req.body.blocoArea}
+            blocosQuestao.postBloco((result) => {
+            }, bloco.num_bloco, bloco.quant_questoes, avaliacaoLastID, bloco.id_area)
+            res.redirect('/home')
+          } else {
+            for(let i = 1; i <= req.body.assunto.length + 1; i++){
+              bloco = {quant_questoes: req.body.assunto[i-1], num_bloco: i, id_area: req.body.blocoArea[i-1]}
+              // esse controlador chama o modelo de cadastro de bloco de questões
+              blocosQuestao.postBloco((result) => {
+              }, bloco.num_bloco, bloco.quant_questoes, avaliacaoLastID, bloco.id_area)
+            }
             res.redirect('/home')
           }
         }, req.session.idProfessor, req.body.nomeAvaliacao, req.body.serieAvaliacao, req.body.disciplinaAvaliacao, req.body.quantQuestoes);

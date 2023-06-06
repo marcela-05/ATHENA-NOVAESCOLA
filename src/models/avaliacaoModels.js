@@ -22,8 +22,13 @@ avaliacoes.prototype.postAvaliacao = function(callback, idProfessor, nomeAvaliac
     var sql = 'INSERT INTO avaliacao (nome_avaliacao, data, serie, num_total_questoes, id_professor, id_disciplina) VALUES (?,?,?,?,?,?);';
     let data = new Date().toLocaleDateString('pt-BR') // data atual
     
-    DAO.insert(sql, [nomeAvaliacao, data, serieAvaliacao, quantQuestoes, idProfessor, idDisciplina], retorno => {
-        callback(retorno)
+    database.appDB.run(sql, [nomeAvaliacao, data, serieAvaliacao, quantQuestoes, idProfessor, idDisciplina], function(err) {
+        if (err) {
+            console.error(err.message);
+            callback(err.message)
+        } else{
+            callback(this.lastID)
+        }
     });
 }
 
