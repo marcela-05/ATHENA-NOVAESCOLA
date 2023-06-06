@@ -115,8 +115,8 @@
 }
 
 .checkbox:checked {
-  background-color: var(--athena-bg-turmas);
-  border-color: var(--athena-bg-turmas);
+  background-color: var(--athena-bg-avaliacao);
+  border-color: var(--athena-bg-avaliacao);
 }
 
 .label {
@@ -169,8 +169,8 @@
 }
 
 .assuntos_checkbox:checked {
-  background-color: var(--athena-bg-turmas);
-  border-color: var(--athena-bg-turmas);
+  background-color: var(--athena-bg-avaliacao);
+  border-color: var(--athena-bg-avaliacao);
 }
 
 .assuntos_label {
