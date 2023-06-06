@@ -1,11 +1,10 @@
 .avaliacoes_titulo {
     background: var(--athena-bg-avaliacao);
     color: white;
-    font-size: 36px;
+    font-size: 1.5em;
     padding: 85px 3.5em;
     text-align: center;
     line-height: 1.5;
-    padding: 2em;
     margin-bottom: 1em;
 }
 
@@ -161,6 +160,12 @@
   max-width: 100%;
   -webkit-line-clamp: 2;
   margin-bottom: -1.5em;
+}
+
+.card_link{
+  color: var(--athena-col-link);
+  font-size: 1em;
+  cursor: pointer;
 }
 
 .seletor_pagina {

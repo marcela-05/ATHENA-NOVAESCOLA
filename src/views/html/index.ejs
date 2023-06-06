@@ -11,7 +11,7 @@
     <main>
         <section class="banner">
             <article>
-                <h2>Bem-Vinda(o), <%= nome %></h2>
+                <h2>Bom te ver, <%= nome %>!</h2>
                 <p>Aqui você pode ver <span id="bold">análises completas</span> dos seus alunos, <span id="bold">cadastrar avaliações</span> e <span id="bold">muito mais!</span></p>
             </article>
         </section>
@@ -38,7 +38,7 @@
                         <p class="title">Acesse os resultados e as análises dos seus alunos!</p>
                         <p>Para identificar os dados dos seus alunos individualmente, como média, defasagem e desempenho por habilidade específica, além de receber sugestões personalizadas de Materiais Didáticos, você pode acessar a página abaixo.</p>
 
-                        <button class="botao_primario">Ver Alunos</button>
+                        <button class="botao_primario" onclick="window.location.href='/alunos/verTodos'">Ver Alunos</button>
                     </div>
                 </div>
             </section>
@@ -49,7 +49,7 @@
             <div class="avaliacoes_cards">
                 <article class="card_avaliacao">
                     <p class="card_avaliacao_tag">Avaliação</p>
-                    <a>
+                    <a href="/avaliacoes/cadastrar">
                         <figure class="card_avaliacao_img">
                             <div class="card_avaliacao_bg"></div>
                             <img src="https://nova-escola-producao.s3.amazonaws.com/rj7MCqsaaaSMsQzdU6srCuNp5Fep4VaeBksJWKk54HdwnKTF7y2KRfRC9JtS/coluna-paula-sestari.jpg" alt="" class="card_img">
@@ -62,7 +62,7 @@
                 </article>
                 <article class="card_avaliacao">
                     <p class="card_avaliacao_tag">Avaliação</p>
-                    <a>
+                    <a href="/avaliacoes">
                         <figure class="card_avaliacao_img">
                             <div class="card_avaliacao_bg"></div>
                             <img src="https://nova-escola-producao.s3.amazonaws.com/4JCqwdPj6qbfZ9f22xpagNZRVkNrY54ys9ut9PQ3CAMnJcMNFS8xJHKbyHz5/avaliacao-matematica.jpg" alt="" class="card_img">
@@ -76,7 +76,7 @@
                 </article>
                 <article class="card_avaliacao">
                     <p class="card_avaliacao_tag">Avaliação</p>
-                    <a>
+                    <a href="/avaliacoes">
                         <figure class="card_avaliacao_img">
                             <div class="card_avaliacao_bg"></div>
                             <img src="https://nova-escola-producao.s3.amazonaws.com/rbdj8QHC2uCX7Pm83sqxARqzDExMDDG8XNEJwFv2fMtX6NHKrEZuX3NzsJuu/coluna-paula-sestari.jpg" alt="" class="card_img">
