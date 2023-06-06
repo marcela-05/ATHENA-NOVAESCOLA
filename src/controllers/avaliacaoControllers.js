@@ -2,20 +2,28 @@
 exports.listaAvaliacoes = function(application, req, res) {
   // cria conexão com o modelo /src/models/avaliacaoModels.js
   var avaliacoes = new application.src.models.avaliacaoModels() 
-  // verifica se o id do professor foi informado
-  if(req.query.idProfessor == undefined || req.query.idProfessor == ''){
-    res.json({message: 'id do professor não informado'})
-  } else{
-    // esse controlador chama o modelo de listagem de avaliações
-    avaliacoes.getAvaliacoes((result) => {
-      // verifica se o resultado da consulta é vazio
-      if(result.length == 0){
-          res.json({message: 'nenhuma avaliação encontrada'})
-      } else{
-          res.json(result);
-      }
-    }, req.query.idProfessor);
-  }
+  // cria conexão com o modelo /src/models/professorModels.js
+  var professor = new application.src.models.professorModels()
+  // cria conexão com o modelo /src/models/turmaModels.js
+  var turma = new application.src.models.turmaModels()
+
+  // esse controlador chama o modelo de listagem de avaliações
+  avaliacoes.getAvaliacoes((result) => {
+    professor.listaDisciplinas((disciplinas) => {
+      turma.getProfTurmas((turmas) => {
+        // verifica se o resultado da consulta é vazio
+        if(result.length == 0){
+          if(req.query.tipoConsulta == 'json'){
+            res.json({message: 'nenhuma avaliação encontrada'})
+          } else{
+            res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Nenhuma avaliação encontrada', mensagem: 'Não há avaliações cadastradas'})
+          }
+        } else{
+          res.render('html/avaliacoes', {avaliacoes: result, disciplinas: disciplinas, turmas: turmas});
+        }
+      }, req.session.idProfessor)
+    }, req.session.idProfessor)
+  }, req.session.idProfessor);
 }
 
 module.exports.cadastra = function(application, req, res) {
