@@ -122,9 +122,9 @@ module.exports.cadastra = function(application, req, res) {
         req.session.emailProfessor = req.body.emailProfessor
         req.session.idProfessor = result[0].id_professor
         req.session.nomeProfessor = result[0].nome
-        professores.listaDisciplinas((result2) => {
+        professores.listaDisciplinas((result) => {
           if (result != undefined && result.length > 0) {
-            req.session.profDisciplinas = result2
+            req.session.profDisciplinas = result
             res.redirect('/home')
           }
         }, req.session.idProfessor)
@@ -140,7 +140,7 @@ module.exports.cadastra = function(application, req, res) {
 
     professores.vinculaDisciplina((result) => {
       // verifica se o resultado da consulta é vazio.
-      // Se for, retorna mensagem de erro, se não, retorna mensagem de sucesso (result).
+      // Se for, retorna mensagem de erro, se não, retorna mensagem de sucesso (result)
       if (result != undefined && result.length > 0) {
         res.json({message: result})
       } else {
