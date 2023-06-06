@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Avaliação</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <%- include('partials/head') %>
+    <title>Athena ◆ Cadastrar Avaliação</title>
     <link rel="stylesheet" href="../css/cadastrarAvaliacao.css">
-    <link rel="stylesheet" href="../css/cabecalho.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="../js/cabecalho.js"></script>
     <script src="../js/check.js"></script>
     <script src="../js/formValidacao.js"></script>
 </head>
 <body>
-    <%- include('cabecalho') %>
+    <%- include('partials/cabecalho') %>
     <main>
     <h1 class="cadastrar_avaliacao_titulo">Cadastrar Avaliação</h1> 
     <form class="form_avaliacao" action="" method="POST" enctype="application/x-www-form-urlencoded">
