@@ -110,7 +110,7 @@ legend {
     width: 185px;
 }
 
-.container_login {
+.container_login, .container_cadastro {
     display: flex;
     flex-direction: column;
     margin-top: 3rem;
@@ -131,9 +131,18 @@ legend {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.botao-google:hover {
+    background-color: #000000;
+    color: white;
+}
+
 .svg-google {
     width: 20px;
     margin-right: .5rem;
+}
+
+.txt_login {
+    margin-top: 1em
 }
 
 @media screen and (min-width: 768px) {

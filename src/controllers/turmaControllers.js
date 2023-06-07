@@ -34,7 +34,7 @@ exports.listaTurmas = function(application, req, res) {
           if(req.query.tipoConsulta == 'json'){
             res.json({message: 'Nenhuma turma encontrada'}).status(404)
           } else {
-            res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Nenhuma turma encontrada', mensagem: 'Se achar que isso é um problema, entre em contato conosco.'});
+            res.redirect('/turmas/cadastrar')
           }
         } else {
           turmas.getDisciplinaDaTurma((disciplinas) => {
