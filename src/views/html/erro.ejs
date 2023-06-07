@@ -49,7 +49,11 @@
         <% } else { %>
             <p class="mensagem" id="mensagem">A página que você está procurando não existe ou foi removida.</p>
         <% } %>
-        <button onclick="window.location.href='/home'" class="botao_primario" id="botao">Início</button>
+        <% if(botao) { %>
+            <button onclick="window.location.href='<%= botao.url %>'" class="botao_primario" id="botao"><%= botao.texto %></button>
+        <% } else { %>
+            <button onclick="window.location.href='/home'" class="botao_primario" id="botao">Início</button>
+        <% } %>
     </section>
 </body>
 </html>

@@ -31,7 +31,9 @@ module.exports.cadastra = function(application, req, res) {
           // verifica se o resultado da consulta é vazio.
           // Se for, retorna mensagem de sucesso, se não, retorna mensagem de erro (result)
             if(result != undefined){
-              res.json({message: result})
+              if(result == 'SQLITE_CONSTRAINT: UNIQUE constraint failed: professor.email'){
+                res.render('html/erro', {codigoStatus: 401, tituloMensagem: 'Email existente', mensagem: 'O email informado já existe no nosso banco de dados, por favor, cadastre-se com outro e-mail ou faça login.', botao: {texto: 'Tentar novamente', url: '/'}});
+              }
             } else{
               req.session.autorizado = true;
               req.session.cadastrado = true;
@@ -116,7 +118,11 @@ module.exports.cadastra = function(application, req, res) {
       // verifica se o resultado da consulta é vazio.
       // Se for, retorna mensagem de erro, se não, retorna mensagem de sucesso (result)
       if (result.length <= 0 || result.message == 'erro interno') {
-        res.send({message: 'email ou senha inválidos'}).status(401)
+        if(req.tipoConsulta == 'json'){
+          res.json({message: 'email ou senha inválidos'}).status(401)
+        } else {
+          res.render('html/erro', {codigoStatus: 401, tituloMensagem: 'Email e/ou senha inválidos', mensagem: 'Por favor, caso não tenha conta, cadastre-se.', botao: {texto: 'Tentar novamente', url: '/'}});
+        }
       } else {
         req.session.autorizado = true
         req.session.emailProfessor = req.body.emailProfessor
