@@ -9,7 +9,7 @@ exports.listaAlunos = function(application, req, res) {
       alunos.getAlunos((result) => {
         // verifica se o resultado da consulta é vazio
         if(result.length == 0){
-            res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Nenhum aluno encontrado', mensagem: 'Não foi possível encontrar nenhum aluno cadastrado'});
+            res.redirect('/alunos/cadastrar')
         } else{
             res.render('html/alunos', {alunos: result});
         }

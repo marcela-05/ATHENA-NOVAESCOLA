@@ -34,7 +34,7 @@ exports.listaTurmas = function(application, req, res) {
           if(req.query.tipoConsulta == 'json'){
             res.json({message: 'Nenhuma turma encontrada'}).status(404)
           } else {
-            res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Nenhuma turma encontrada', mensagem: 'Se achar que isso é um problema, entre em contato conosco.'});
+            res.redirect('/turmas/cadastrar')
           }
         } else {
           turmas.getDisciplinaDaTurma((disciplinas) => {
@@ -89,8 +89,7 @@ module.exports.cadastra = function(application, req, res) {
             // se todos os campos foram informados, então o modelo de postTurma é chamado
             turmas.postTurma((result) => {
               // itera pelos alunos selecionados, chamando o modelo vinculaTurma de aluno
-              if(req.body.alunos !== undefined){
-                console.log(alunos)
+              if(req.body.alunos !== undefined && req.body.alunos !== ''){
                 if(typeof req.body.alunos == 'string'){
                   alunos.vinculaTurma((res) => {}, req.body.alunos, result);
                 } else {
