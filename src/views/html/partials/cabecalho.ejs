@@ -1,45 +1,77 @@
 <header>
-<nav class="nav"> 
-    <input class="nav_menu_botao" type="checkbox" id="menu"> 
-    <label for="menu"> 
-        <span"><img src="../assets/Menu.png" alt="Menu"></span> 
-    </label> 
-    <ul class="nav_lista">
-        <hr>
-        <li><input class="nav_lista_botao_turmas" type="checkbox" id="turmas"><label class="nav_lista_elemento" for="turmas"><span class="nav_lista_dropdown_turmas">Turmas</span><img class="seta" src="../assets/seta_baixo.png" alt="Seta para baixo"></label>
-            <ul class="nav_lista_turmas">
-                <hr>
-                <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_cadastrar_nova_turma.png" alt="Ícone de cadastro de turma"><a href="/turmas/cadastrar">Cadastrar Nova Turma</a></li>
-                <hr class="quebra_linha">
-                <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_plano_de_aula.png" alt="Ícone do plano de aula"><a href="#">Planos de Aulas</a></li>
-                <hr class="quebra_linha">
-                <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_ver_todas_turmas.png" alt="Ícone para ver todas as turmas"><a href="/turmas">Ver Todas</a></li>
-            </ul>
-        </li> 
-        <hr>
-        <li><input class="nav_lista_botao_avaliacoes" type="checkbox" id="avaliacoes"><label class="nav_lista_elemento" for="avaliacoes"><span class="nav_lista_dropdown_avaliacoes">Avaliações</span><img class="seta" src="../assets/seta_baixo.png" alt="Seta para baixo"></label>
-            <ul class="nav_lista_avaliacoes">
-                <hr>
-                <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_cadastrar_avaliacao.png" alt="Ícone de cadastro de avaliação"><a href="/avaliacoes/cadastrar">Cadastrar Avaliação</a></li>
-                <hr class="quebra_linha">
-                <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_assuntos_de_avaliacao.png" alt="Ícone de assuntos de avaliação"><a href="/areaConhecimento/listar">Assuntos de Avaliação</a></li>
-                <hr class="quebra_linha">
-                <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_ver_todas_avaliacoes.png" alt="Ícone para ver todas avaliações"><a href="/avaliacoes">Ver Todas</a></li>
-            </ul>
-        </li>
-        <hr>
-        <li><input class="nav_lista_botao_alunos" type="checkbox" id="alunos"><label class="nav_lista_elemento" for="alunos"><span class="nav_lista_dropdown_alunos">Alunos</span><img class="seta" src="../assets/seta_baixo.png" alt="Seta para baixo"></label>
-            <ul class="nav_lista_alunos">
-                <hr>
-                <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_cadastrar_aluno.png" alt="Ícone de cadastro de aluno"><a href="/alunos/cadastrar">Cadastrar Aluno</a></li>
-                <hr class="quebra_linha">
-                <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_ver_todos_alunos.png" alt="Ícone para ver todos alunos"><a href="/alunos/verTodos">Ver Todos</a></li>
-            </ul>
-        </li>
-        <hr>
-    </ul>
+    <nav class="nav">
+        <input type="checkbox" id="menu">
+        <label for="menu" class="nav_alternar">
+            <div class="barra barra--cima"></div>
+            <div class="barra barra--meio"></div>
+            <div class="barra barra--baixo"></div>
+        </label>
 
-    <figure><a href="/home"><img class="logo" src="../assets/logo athena 2.png" alt="Logo da Athena"></a></figure> 
-    <figure><img class="perfil" src="../assets/julia_perfil.png" alt="Foto de Perfil"></figure> 
-</nav> 
+
+        <ul class="nav_lista">
+            <hr>
+            <li><input class="nav_lista_botao_turmas" type="checkbox" id="turmas"><label class="nav_lista_elemento"
+                    for="turmas"><span class="nav_lista_dropdown_turmas">Turmas</span><img class="seta"
+                        src="../assets/seta_baixo.png" alt="Seta para baixo"></label>
+                <ul class="nav_lista_turmas">
+                    <hr>
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_cadastrar_nova_turma.png"
+                            alt="Ícone de cadastro de turma"><a href="/turmas/cadastrar">Cadastrar Nova Turma</a></li>
+                    <hr class="quebra_linha">
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_plano_de_aula.png"
+                            alt="Ícone do plano de aula"><a href="#">Planos de Aulas</a></li>
+                    <hr class="quebra_linha">
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_ver_todas_turmas.png"
+                            alt="Ícone para ver todas as turmas"><a href="/turmas">Ver Todas</a></li>
+                </ul>
+            </li>
+            <hr>
+            <li><input class="nav_lista_botao_avaliacoes" type="checkbox" id="avaliacoes"><label
+                    class="nav_lista_elemento" for="avaliacoes"><span
+                        class="nav_lista_dropdown_avaliacoes">Avaliações</span><img class="seta"
+                        src="../assets/seta_baixo.png" alt="Seta para baixo"></label>
+                <ul class="nav_lista_avaliacoes">
+                    <hr>
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_cadastrar_avaliacao.png"
+                            alt="Ícone de cadastro de avaliação"><a href="/avaliacoes/cadastrar">Cadastrar Avaliação</a>
+                    </li>
+                    <hr class="quebra_linha">
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_assuntos_de_avaliacao.png"
+                            alt="Ícone de assuntos de avaliação"><a href="/areaConhecimento/listar">Assuntos de
+                            Avaliação</a></li>
+                    <hr class="quebra_linha">
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_ver_todas_avaliacoes.png"
+                            alt="Ícone para ver todas avaliações"><a href="/avaliacoes">Ver Todas</a></li>
+                </ul>
+            </li>
+            <hr>
+            <li><input class="nav_lista_botao_alunos" type="checkbox" id="alunos"><label class="nav_lista_elemento"
+                    for="alunos"><span class="nav_lista_dropdown_alunos">Alunos</span><img class="seta"
+                        src="../assets/seta_baixo.png" alt="Seta para baixo"></label>
+                <ul class="nav_lista_alunos">
+                    <hr>
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_cadastrar_aluno.png"
+                            alt="Ícone de cadastro de aluno"><a href="/alunos/cadastrar">Cadastrar Aluno</a></li>
+                    <hr class="quebra_linha">
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_ver_todos_alunos.png"
+                            alt="Ícone para ver todos alunos"><a href="/alunos/verTodos">Ver Todos</a></li>
+                </ul>
+            </li>
+            <hr>
+            <div class="nav_lista_alterarTema">
+                <h3 style="color: var(--preto); margin-bottom: 15px;">Alterar Tema</h3>
+                <input class="marcador" type="checkbox" id="caixa_alternador">
+                <div class="caixa">
+                    <label for="caixa_alternador" class="deslizar">
+                        <label for="caixa_alternador" class="alternador"></label>
+                        <label for="caixa_alternador" class="texto">Claro</label>
+                        <label for="caixa_alternador" class="texto">Escuro</label>
+                    </label>
+                </div>
+            </div>
+        </ul>
+
+        <figure><a href="/home"><img class="logo" src="../assets/logo athena 2.png" alt="Logo da Athena"></a></figure>
+        <figure><img class="perfil" src="../assets/julia_perfil.png" alt="Foto de Perfil"></figure>
+    </nav>
 </header>

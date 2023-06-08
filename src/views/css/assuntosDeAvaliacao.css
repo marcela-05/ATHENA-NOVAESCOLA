@@ -16,6 +16,7 @@
     padding: 10px;
     max-width: 130px;
     margin-bottom: 1em;
+    color: white;
 }
 .assuntos {
     display: flex;
@@ -26,7 +27,7 @@
 
 .assuntos_de_avaliacao {
     display: flex;
-    border: 1px solid black;
+    border: 1px solid var(--preto);
     border-radius: 15px;
     width: 320px;
     height: auto;
@@ -45,8 +46,10 @@
 .assuntos_de_avaliacao_texto{
     margin-left: 10px;
     width: 200px;
+    color: var(--preto);
 }
 .assuntos_de_avaliacao_texto h3 {
+        color: var(--preto);
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden;
@@ -58,6 +61,7 @@
 .assuntos_de_avaliacao_visualizar {
     font-size: 15px;
     margin-bottom: -1em;
+    color: var(--preto);
 }
 
 .assuntos_de_avaliacao_lixeira{
