@@ -16,7 +16,7 @@ exports.listaAvaliacoes = function(application, req, res) {
           if(req.query.tipoConsulta == 'json'){
             res.json({message: 'nenhuma avaliação encontrada'})
           } else{
-            res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Nenhuma avaliação encontrada', mensagem: 'Não há avaliações cadastradas'})
+            res.redirect('/avaliacoes/cadastrar')
           }
         } else{
           res.render('html/avaliacoes', {avaliacoes: result, disciplinas: disciplinas, turmas: turmas});

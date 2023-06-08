@@ -13,11 +13,7 @@ module.exports = function(application){
           application, req, res
         );
       } else{
-        res.render('html/erro', {
-          codigoStatus: 403,
-          tituloMensagem: 'Acesso negado',
-          mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'
-        });
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       }
     });
 
@@ -121,6 +117,8 @@ module.exports = function(application){
       // verifica se a requisição não veio de um formulário
       if(req.body.formulario === undefined && req.session.autorizado !== true){
         res.status(403).json({message: 'Acesso negado. Por favor, faça login.'});
+      } else if(req.session.autorizado !== true){
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       } else {
         application.src.controllers.alunoControllers.cadastra(
           application, req, res
@@ -145,11 +143,7 @@ module.exports = function(application){
     // retorna controlador para listar avaliações
     application.get('/avaliacoes', urlencodedParser, function(req, res){
       if (req.session.autorizado != true) {
-        res.render('html/erro', {
-          codigoStatus: 403,
-          tituloMensagem: 'Acesso negado',
-          mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'
-        });
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       } else {
         application.src.controllers.avaliacaoControllers.listaAvaliacoes(
           application, req, res
@@ -248,11 +242,7 @@ module.exports = function(application){
     // retorna controlador para cadastrar nota
     application.post('/avaliacoes/inserirResultado', urlencodedParser, function(req, res){
       if(req.session.autorizado !== true){
-        res.render('html/erro', {
-          codigoStatus: 403,
-          tituloMensagem: 'Acesso negado',
-          mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'
-        });
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       } else {
         application.src.controllers.notaControllers.cadastra(
           application, req, res
@@ -297,7 +287,7 @@ module.exports = function(application){
       if (req.session.autorizado && req.session.cadastrado) {
         res.render('html/perfil');
       } else {
-        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       }
     });
     
@@ -313,7 +303,7 @@ module.exports = function(application){
     // retorna controlador para renderizr página de cadastro de assunto/area de conhecimento
     application.get('/areaConhecimento/cadastrar', urlencodedParser, function(req, res){
       if (req.session.autorizado != true) {
-        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       } else {
         application.src.controllers.areaConhecimentoControllers.cadastra(
           application, req, res
@@ -324,7 +314,7 @@ module.exports = function(application){
     // retorna controlador para renderizr página de atualização de assunto/area de conhecimento
     application.get('/areaConhecimento/atualizar', urlencodedParser, function(req, res){
       if (req.session.autorizado != true) {
-        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       } else {
         application.src.controllers.areaConhecimentoControllers.atualiza(
           application, req, res
@@ -335,7 +325,7 @@ module.exports = function(application){
     // retorna controlador para renderizar a página que lista todas as áreas
     application.get('/areaConhecimento/listar', urlencodedParser, function(req, res){
       if (req.session.autorizado != true) {
-        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       } else {
         application.src.controllers.areaConhecimentoControllers.listaAreasConhecimento(
           application, req, res
@@ -346,7 +336,7 @@ module.exports = function(application){
     // retorna controlador para renderizar a página de cadastrar aluno
     application.get('/alunos/cadastrar', urlencodedParser, function(req, res){
       if (req.session.autorizado != true) {
-        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       } else {
         application.src.controllers.alunoControllers.cadastra(
           application, req, res
@@ -357,17 +347,18 @@ module.exports = function(application){
     // retorna controlador para listar alunos
     application.get('/alunos/verTodos', urlencodedParser, function(req, res){
       if (req.session.autorizado != true) {
-        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
+      } else {
+        application.src.controllers.alunoControllers.listaAlunos(
+          application, req, res
+        );
       }
-      application.src.controllers.alunoControllers.listaAlunos(
-        application, req, res
-      );
     });
 
     // retorna controlador para renderizar a página de cadastrar turma
     application.get('/turmas/cadastrar', urlencodedParser, function(req, res){
       if (req.session.autorizado != true) {
-        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       } else {
         application.src.controllers.turmaControllers.cadastra(
           application, req, res
@@ -378,7 +369,7 @@ module.exports = function(application){
     // retorna controlador para renderizar a página de editar turma
     application.get('/turmas/editar', urlencodedParser, function(req, res){
       if (req.session.autorizado != true) {
-        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       } else {
         application.src.controllers.turmaControllers.atualiza(
           application, req, res
@@ -389,7 +380,7 @@ module.exports = function(application){
     // retorna controlador para renderizar a página de cadastrar avaliação
     application.get('/avaliacoes/cadastrar', urlencodedParser, function(req, res){
       if (req.session.autorizado != true) {
-        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       } else {
         application.src.controllers.avaliacaoControllers.cadastra(
           application, req, res
@@ -401,7 +392,7 @@ module.exports = function(application){
     // retorna controlador para cadastrar nota
     application.get('/avaliacoes/inserirResultado', urlencodedParser, function(req, res){
       if (req.session.autorizado != true) {
-        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.'});
+        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
       } else {
         application.src.controllers.notaControllers.cadastra(
           application, req, res
