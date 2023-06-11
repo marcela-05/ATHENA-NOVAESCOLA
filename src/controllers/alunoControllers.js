@@ -47,16 +47,20 @@ module.exports.cadastra = function(application, req, res) {
       // verifica se o nome do aluno foi informado
       if(req.body.nomeAluno == undefined || req.body.nomeAluno == ''){
         if(req.body.formulario === undefined){
+          // retorna mensagem de erro em formato json
           res.status(400).json({message: 'Nome do aluno não informado'})
         } else {
+          // retorna mensagem de erro em formato html
           res.render('html/erro', {codigoStatus: 400, tituloMensagem: 'Nome do aluno não informado', mensagem: 'Por favor, informe todos os parâmetros necessários para cadastrar um aluno'});
         }
       }else {
         // verifica se a série do aluno foi informada
         if(req.body.serieAluno == undefined || req.body.serieAluno == ''){
           if(req.body.formulario === undefined){
+            // retorna mensagem de erro em formato json
             res.status(400).json({message: 'Série do aluno não informada'})
           } else {
+            // retorna mensagem de erro em formato html
             res.render('html/erro', {codigoStatus: 400, tituloMensagem: 'Série do aluno não informada', mensagem: 'Por favor, informe todos os parâmetros necessários para cadastrar um aluno'});
           }
         }else {
@@ -66,14 +70,18 @@ module.exports.cadastra = function(application, req, res) {
             // Se for, retorna mensagem de sucesso, se não, retorna mensagem de erro (result)
             if(result != undefined){
               if(req.body.formulario === undefined){
+                // retorna mensagem de erro em formato json
                 res.status(500).json({message: result})
               } else {
+                // retorna mensagem de erro em formato html
                 res.render('html/erro', {codigoStatus: 500, tituloMensagem: 'Erro ao cadastrar aluno', mensagem: result});
               }
             }else{
               if(req.body.formulario === undefined){
+                // retorna mensagem de sucesso em formato json
                 res.status(200).json({message: 'Aluno cadastrado com sucesso'})
               } else {
+                // redireciona para a página home
                 res.redirect('/home');
               }
             }
