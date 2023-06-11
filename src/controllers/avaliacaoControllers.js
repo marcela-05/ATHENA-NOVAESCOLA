@@ -9,7 +9,9 @@ exports.listaAvaliacoes = function(application, req, res) {
 
   // esse controlador chama o modelo de listagem de avaliações
   avaliacoes.getAvaliacoes((result) => {
+    // esse controlador chama o modelo de listagem de disciplinas
     professor.listaDisciplinas((disciplinas) => {
+      // esse controlador chama o modelo de listagem de turmas
       turma.getProfTurmas((turmas) => {
         // verifica se o resultado da consulta é vazio
         if(result.length == 0){
@@ -70,6 +72,7 @@ module.exports.cadastra = function(application, req, res) {
           // cria objeto para armazenar dados do bloco de questões. Se for string, é apenas um bloco
           // se for array, é mais de um bloco
           if(typeof req.body.assunto == 'string'){
+            // cria objeto para armazenar dados do bloco de questões
             bloco = {quant_questoes: req.body.assunto, num_bloco: 1, id_area: req.body.blocoArea}
             blocosQuestao.postBloco((result) => {
             }, bloco.num_bloco, bloco.quant_questoes, avaliacaoLastID, bloco.id_area)

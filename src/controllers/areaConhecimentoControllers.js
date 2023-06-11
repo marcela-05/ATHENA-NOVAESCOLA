@@ -3,15 +3,15 @@ exports.listaAreasConhecimento = function(application, req, res) {
     // cria conexão com o modelo /src/models/areaConhecimentoModels.js
     var areaConhecimento = new application.src.models.areaConhecimentoModels()
 
-    var disciplinas = ''; // variável que armazena as disciplinas
-
     // esse controlador chama o modelo de listagem de área do conhecimento
     areaConhecimento.getAreaConhecimento((result) => {
       if(result.length == 0){
+        // retorna mensagem de erro em formato html
         res.render('html/erro', {codigoStatus: 204, tituloMensagem: 'Nenhuma área do conhecimento/assunto encontrada', mensagem: 'Se achar que isso é um erro, entre em contato.'});
       } else{
-        areaConhecimento.getNomeDisciplina((result2) => {
-          disciplinas = result2;
+        // esse controlador chama o modelo de listagem de disciplinas
+        areaConhecimento.getNomeDisciplina((disciplinas) => {
+          // renderiza a página de listagem de áreas do conhecimento, passando como parâmetro o resultado da consulta
           res.render('html/assuntosDeAvaliacao', {areasConhecimento: result, disciplinas: disciplinas})
         }, '', req.session.profDisciplinas);
       }
@@ -26,11 +26,8 @@ module.exports.cadastra = function(application, req, res) {
 
       // esse controlador chama o modelo de listagem de disciplinas
       professor.listaDisciplinas((result) => {
-        if(result.length == 0){
-          res.render('html/cadastrarAssunto', {disciplinas: ''});
-        } else{
-          res.render('html/cadastrarAssunto', {disciplinas: result});
-        }
+        // renderiza a página de cadastro de área do conhecimento, passando como parâmetro o resultado da consulta
+        res.render('html/cadastrarAssunto', {disciplinas: result});
       }, req.session.idProfessor);
     } else {
       // cria conexão com o modelo /src/models/areaConhecimentoModels.js

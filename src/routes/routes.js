@@ -284,7 +284,7 @@ module.exports = function(application){
     
     // renderiza página de cadastro de perfil
     application.get('/cadastro/perfil', (req, res) => {
-      if (req.session.autorizado && req.session.cadastrado) {
+      if (req.session.cadastrado) {
         res.render('html/perfil');
       } else {
         res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}});
