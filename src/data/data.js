@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const DBPATH = 'src/tests/novo_banco.db';
+const DBPATH = 'src/data/novo_banco.db';
 
 
 // Cria conexão com o banco de dados
