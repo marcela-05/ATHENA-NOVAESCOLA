@@ -4,7 +4,7 @@
     font-size: 20px;
     padding: 85px 3.5em;
     text-align: center;
-    line-height: 1.5;
+    line-height: 3;
 }
 
 .media {
@@ -23,6 +23,14 @@
     padding: 62px 104px;
     text-align: center;
 } 
+.comportamento {
+  background: var(--cinza);
+  color: white;
+  font-size: 20px;
+  padding: 62px 104px;
+  text-align: center;
+} 
+
 
 .titulo {
     font-size: 24px;
