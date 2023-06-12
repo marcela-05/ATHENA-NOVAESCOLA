@@ -82,6 +82,14 @@ npm start
 
 ## 🗃 Histórico de lançamentos
 
+* 0.7.0 - 09/06/2023
+    * Integração de todas as páginas da versão 0.6.0 com os respectivos controladores e modelos do back-end.
+* 0.6.0 - 04/06/2023
+    * Adição das telas de cadastrar, editar e listar turmas;
+    * Adição das telas de cadastrar, editar e listar assuntos de avaliação;
+    * Adição da tela de cadastrar avaliação;
+    * Adição da tela de inserir resultados;
+    * Adição das telas de cadastrar e editar alunos.
 * 0.5.1 - 26/05/2023
     * Correção da semântica da página de login;
     * Adição da página inicial (mobile e desktop);

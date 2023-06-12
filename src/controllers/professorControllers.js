@@ -35,10 +35,7 @@ module.exports.cadastra = function(application, req, res) {
                 res.render('html/erro', {codigoStatus: 401, tituloMensagem: 'Email existente', mensagem: 'O email informado já existe no nosso banco de dados, por favor, cadastre-se com outro e-mail ou faça login.', botao: {texto: 'Tentar novamente', url: '/'}});
               }
             } else{
-              req.session.autorizado = true;
               req.session.cadastrado = true;
-              req.session.nomeProfessor = req.body.nomeProfessor;
-              req.session.emailProfessor = req.body.emailProfessor;
 
               // busca o id do professor que acabou de ser cadastrado e salva na sessão
               professores.getIdProfessor((result) => {
@@ -124,6 +121,7 @@ module.exports.cadastra = function(application, req, res) {
           res.render('html/erro', {codigoStatus: 401, tituloMensagem: 'Email e/ou senha inválidos', mensagem: 'Por favor, caso não tenha conta, cadastre-se.', botao: {texto: 'Tentar novamente', url: '/'}});
         }
       } else {
+        req.session.cadastrado = false
         req.session.autorizado = true
         req.session.emailProfessor = req.body.emailProfessor
         req.session.idProfessor = result[0].id_professor
@@ -150,15 +148,7 @@ module.exports.cadastra = function(application, req, res) {
       if (result != undefined && result.length > 0) {
         res.json({message: result})
       } else {
-        professores.listaDisciplinas((result2) => {
-          if (result2 != undefined && result2.length > 0) {
-            req.session.profDisciplinas = result2
-            res.redirect('/home')
-          }
-          else {
-            res.redirect('/home')
-          }
-        }, req.session.idProfessor)
+        res.redirect('/')
       }
     }, req.session.idProfessor, req.body.checkboxDisciplina);
   }
