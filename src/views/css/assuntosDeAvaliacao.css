@@ -18,6 +18,7 @@
     margin-bottom: 1em;
     color: white;
 }
+
 .assuntos {
     display: flex;
     flex-direction: column;
@@ -43,20 +44,21 @@
     padding: .5em .2em .5em .2em;
 }
 
-.assuntos_de_avaliacao_texto{
+.assuntos_de_avaliacao_texto {
     margin-left: 10px;
     width: 200px;
     color: var(--preto);
 }
+
 .assuntos_de_avaliacao_texto h3 {
-        color: var(--preto);
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 100%;
-        -webkit-line-clamp: 1;
-    }
+    color: var(--preto);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    -webkit-line-clamp: 1;
+}
 
 .assuntos_de_avaliacao_visualizar {
     font-size: 15px;
@@ -64,14 +66,34 @@
     color: var(--preto);
 }
 
-.assuntos_de_avaliacao_lixeira{
+.assuntos_de_avaliacao_lixeira {
     content: var(--imagem-lixeira);
     max-width: 1.5em;
     max-height: 2em;
     margin-bottom: 100px;
 }
 
-.assuntos_de_avaliacao_lixeira:hover{
+.assuntos_de_avaliacao_lixeira:hover {
     content: var(--imagem-lixeira-aberta);
     max-height: 1.9em;
+}
+
+/* Estilos para dispositivos maiores, como tablet e notebook */
+@media screen and (min-width: 768px) {
+    .assuntos {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 90%;
+        justify-content: space-between;
+        margin: 0 auto;
+    }
+
+    .assuntos_de_avaliacao {
+        margin-bottom: 1em;
+    }
+
+    .assuntoAvaliacao {
+        margin-bottom: 1em;
+    }
+
 }
