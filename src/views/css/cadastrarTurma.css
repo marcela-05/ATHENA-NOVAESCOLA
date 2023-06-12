@@ -32,17 +32,18 @@
   margin-left: auto;
   margin-right: auto;
   width: 90%;
+  color: var(--preto);
 }
 
 .form_input input {
   background-color: transparent;
   border: 0;
-  border-bottom: 2px black solid;
+  border-bottom: 2px var(--preto) solid;
   display: block;
   width: 100%;
   margin-top: 20px;
   font-size: 18px;
-  color: black;
+  color: var(--preto);
 }
 
 .form_input input:focus,
@@ -63,7 +64,7 @@
   display: inline-block;
   font-size: 16px;
   min-width: 5px;
-  color: black;
+  color: var(--preto);
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
@@ -75,6 +76,7 @@
 }
 
 .titulo_selecao_da_materia{
+  color: var(--preto);
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -129,6 +131,7 @@
 }
 
 .vincular_alunos {
+  color: var(--preto);
   font-size: 24px;
   text-align: center;
 }
@@ -154,6 +157,7 @@
 }
 
 .botao_primario {
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
