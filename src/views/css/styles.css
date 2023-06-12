@@ -40,19 +40,36 @@
     --athena-bg-cinza-4: #B2BEC3;
     --athena-bg-header-turmas: #E7FFFE;
     --athena-bg-header-avaliacoes: #FCD4DF;
-    --athena-bg-header-alunos: #EDD3FF;
+    --athena-bg-header-alunos: #D5A3F9;
     --cinza: #1E1E1E;
     --athena-bg-turmas: #71CFCE;
     --athena-col-turmas: #71CFCE;
     --athena-bg-alunos: #D5A3F9;
     --athena-bg-avaliacao: #E32459;
+    --branco: #FFFF;
+    --branco-verdadeiro: #fff;
+    --preto: #000;
+    --cor-do-filtro: #1e1e1ee8;
+    --box-shadow: rgba(0, 0, 0, 0.7);
+    --titulo-do-input: #463434;
+    --imagem-seta: url('../assets/seta_baixo.png');
+}
+
+.darkMode {
+    --branco: #263238;
+    --branco-verdadeiro: #000;
+    --preto: #FFFF;
+    --cor-do-filtro: #fff;
+    --box-shadow: rgba(255, 255, 255, 0.5);
+    --titulo-do-input: #000;
+    --imagem-seta: url('../assets/seta_baixo_branca.png');
 }
 
 body {
     font-size: 18px;
     line-height: 22px;
     font-family: var(--fonte-principal);
-    background-color: #FFFF;
+    background-color: var(--branco);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -83,14 +100,14 @@ p {
     background: var(--athena-bg-link);
     outline: none;
     border: none;
-    color: #FFFFFF;
+    color: white;
     width: 50%;
-    border: 1px solid #000000;
+    border: 1px solid var(--preto);
     border-radius: 8px;
     height: 43px;
     margin-top: 1.3rem;
     transition: all ease .4s;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 4px var(--box-shadow);
 }
 
 .botao_primario:hover {
