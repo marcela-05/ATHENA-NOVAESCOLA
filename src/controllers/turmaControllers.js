@@ -104,39 +104,6 @@ module.exports.cadastra = function(application, req, res) {
       }
     }
   }
-
-    // // verifica se o id do professor foi informado
-    // if(req.body.idProfessor == undefined || req.body.idProfessor == ''){
-    //   res.json({message: 'id do professor não informado'})
-    // } else{
-    //   // verifica se o id da disciplina foi informado
-    //   if(req.body.idDisciplina == undefined || req.body.idDisciplina == ''){
-    //       res.json({message: 'id da disciplina não informada'})
-    //   } else{
-    //       // verifica se o nome da turma foi informado
-    //       if(req.body.nomeTurma == undefined || req.body.nomeTurma == ''){
-    //           res.json({message: 'nome da turma não informado'})
-    //       } else{
-    //           // verifica se a série da turma foi informada
-    //           if(req.body.serieTurma == undefined || req.body.serieTurma == ''){
-    //               res.json({message: 'série da turma não informada'})
-    //           } else{
-    //               // Esse controlador é responsável por chamar o modelo que cadastra a turma
-    //               // O modelo depende que o id do professor, o id da disciplina, o nome da Turma e a série
-    //               // Sendo assim, esses dados são pegados do corpo da requisição e passados como argumentos.
-    //               turmas.postTurma((result) => {
-    //               // verifica se o resultado da consulta é vazio. 
-    //               // Se for, retorna mensagem de sucesso, se não, retorna mensagem de erro (result)
-    //                 if(result != undefined){
-    //                       res.json({message: result})
-    //                 } else{
-    //                       res.json({message: 'turma cadastrada com sucesso'})
-    //                   }
-    //               }, req.body.idProfessor, req.body.idDisciplina, req.body.nomeTurma, req.body.serieTurma);
-    //           }
-    //       }
-    //   }
-    // }
 }
   
 
@@ -209,13 +176,50 @@ module.exports.atualiza = function(application, req, res) {
           } 
           else{
             turmas.updateTurma((result) => {
-              if(req.body.alunos !== undefined){
-                for(aluno of req.body.alunos){
-                  alunos.vinculaTurma((res) => {}, aluno, req.body.idTurma);
+              // se for string, significa que só um aluno foi selecionado
+              if(typeof req.body.alunos == 'string'){
+                // vincula o aluno à turma
+                alunos.vinculaTurma((res) => {}, req.body.alunos, req.query.idTurma);
+                
+                // lista os alunos da turma que foi editada
+                turmas.getTurmaAlunos((alunosDaTurma) => {
+                  if(alunosDaTurma.length > 0){
+                    // verifica se algum aluno foi desmarcado
+                    for(aluno of alunosDaTurma){
+                      if(!req.body.alunos.includes(aluno.id_aluno.toString())){
+                        // desvincula o aluno da turma, já que ele foi desmarcado
+                        alunos.desvinculaTurma((res) => {}, aluno.id_aluno, req.query.idTurma);
+                      }
+                    }
+                  }
+                }, req.query.idTurma)
+              } else {
+                // verifica se alunos é undefined, se for, seta o array como vazio
+                if(req.body.alunos == undefined){
+                  req.body.alunos = []
                 }
+                
+                // itera pelos alunos e vincula eles à turma
+                for(aluno of req.body.alunos){
+                  alunos.vinculaTurma((res) => {}, aluno, req.query.idTurma);
+                }
+
+                // lista os alunos da turma que foi editada
+                turmas.getTurmaAlunos((alunosDaTurma) => {
+                  if(alunosDaTurma.length > 0){
+                    // verifica se algum aluno foi desmarcado
+                    for(aluno of alunosDaTurma){
+                      if(!req.body.alunos.includes(aluno.id_aluno.toString())){
+                        // desvincula o aluno da turma, já que ele foi desmarcado
+                        alunos.desvinculaTurma((res) => {}, aluno.id_aluno, req.query.idTurma);
+                      }
+                    }
+                  }
+                }, req.query.idTurma)
               }
+            
               res.redirect('/turmas');
-            }, req.body.nomeTurma, req.body.idTurma, req.body.serieTurma, req.body.disciplina);
+            }, req.body.nomeTurma, req.query.idTurma, req.body.serieTurma, req.body.disciplina);
           }
       }
     }
