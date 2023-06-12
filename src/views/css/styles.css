@@ -53,6 +53,8 @@
     --box-shadow: rgba(0, 0, 0, 0.7);
     --titulo-do-input: #463434;
     --imagem-seta: url('../assets/seta_baixo.png');
+    --imagem-lixeira: url('../assets/lixeira.png');
+    --imagem-lixeira-aberta: url('../assets/lixeiraAberta.png')
 }
 
 .darkMode {
@@ -63,6 +65,8 @@
     --box-shadow: rgba(255, 255, 255, 0.5);
     --titulo-do-input: #000;
     --imagem-seta: url('../assets/seta_baixo_branca.png');
+    --imagem-lixeira: url('../assets/lixeiraBranca.png');
+    --imagem-lixeira-aberta: url('../assets/lixeiraBrancaAberta.png')
 }
 
 body {

@@ -65,6 +65,13 @@
 }
 
 .assuntos_de_avaliacao_lixeira{
-    width: 1.5em;
+    content: var(--imagem-lixeira);
+    max-width: 1.5em;
+    max-height: 2em;
     margin-bottom: 100px;
+}
+
+.assuntos_de_avaliacao_lixeira:hover{
+    content: var(--imagem-lixeira-aberta);
+    max-height: 1.9em;
 }

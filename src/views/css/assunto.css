@@ -25,7 +25,7 @@
 .form_input input {
     background-color: transparent;
     border: 0;
-    border-bottom: 2px var(--preto);
+    border-bottom: 2px var(--preto) solid;
     display: block;
     width: 100%;
     margin-top: 20px;
