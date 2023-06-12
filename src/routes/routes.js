@@ -81,17 +81,9 @@ module.exports = function(application){
 
     // retorna controlador para cadastrar professores
     application.post('/professor/cadastrar', urlencodedParser, function(req, res){
-      // verifica se o usuário está logado
-      if(req.session.autorizado){
-        application.src.controllers.professorControllers.cadastra(
-          application, req, res
-        );
-      } else if(req.query.tipoConsulta == 'json'){
-        // se existir um parâmetro tipoConsulta na URL com o valor json, retorna um json
-        res.status(403).json({message: 'Acesso negado. Por favor, faça login.'});
-      } else{
-        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}})
-      }
+      application.src.controllers.professorControllers.cadastra(
+        application, req, res
+      );
     });
 
     // retorna controlador para a atualização do professor
@@ -133,17 +125,9 @@ module.exports = function(application){
 
     // retorna controlador para vincular professor com disciplina
     application.post('/professor/disciplina', urlencodedParser, function(req, res){
-      // verifica se o usuário está logado
-      if(req.session.autorizado){
-        application.src.controllers.professorControllers.vinculaDisciplina(
-          application, req, res
-        );
-      } else if(req.query.tipoConsulta == 'json'){
-        // se existir um parâmetro tipoConsulta na URL com o valor json, retorna um json
-        res.status(403).json({message: 'Acesso negado. Por favor, faça login.'});
-      } else{
-        res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}})
-      }
+      application.src.controllers.professorControllers.vinculaDisciplina(
+        application, req, res
+      );
     });
 
     // retorna controlador para cadastrar área do conhecimento
