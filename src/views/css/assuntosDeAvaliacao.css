@@ -68,3 +68,23 @@
     width: 1.5em;
     margin-bottom: 100px;
 }
+
+/* Estilos para dispositivos maiores, como tablet e notebook */
+@media screen and (min-width: 768px) {
+    .assuntos {
+      flex-direction: row ;
+      flex-wrap: wrap;
+      width: 90%;
+      justify-content: space-between;
+      margin: 0 auto;
+    }
+
+    .assuntos_de_avaliacao {
+    margin-bottom: 1em;
+    }
+  
+    .assuntoAvaliacao {
+        margin-bottom: 1em;
+    }
+
+}
