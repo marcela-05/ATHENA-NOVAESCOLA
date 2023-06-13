@@ -58,6 +58,17 @@ alunos.prototype.vinculaTurma = function(callback, idAluno, idTurma) {
     });
 };
 
+// modelo responsável por desvincular o aluno de uma turma
+alunos.prototype.desvinculaTurma = function(callback, idAluno, idTurma) {
+    var sql = 'DELETE FROM aluno_turma WHERE id_aluno = ? AND id_turma = ?';
+
+    // executa a consulta sql e retorna os dados na função callback, a qual será usada
+    // no controlador para mostrar os dados na página.
+    DAO.delete(sql, [idAluno, idTurma], retorno => {
+        callback(retorno)
+    });
+}
+
 module.exports = function(){
     return alunos;
 }
