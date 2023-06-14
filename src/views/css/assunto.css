@@ -101,3 +101,14 @@
     margin-bottom: 1em;
     color: var(--preto);
 }
+
+/* Estilos para dispositivos maiores, como tablet e notebook */
+@media screen and (min-width: 768px) {
+    .selecao_de_materia{
+        width: 700px;
+    }
+
+    .form_input{
+        width: 700px;
+    }
+}
