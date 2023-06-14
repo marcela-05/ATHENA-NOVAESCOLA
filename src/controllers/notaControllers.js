@@ -26,6 +26,26 @@ exports.listaNotas = function(application, req, res) {
     }
 }
 
+exports.listaNotasPorTurma = function(application, req, res) {
+    // cria conexão com o modelo /src/models/notaModels.js
+    var notas = new application.src.models.notaModels()
+
+    // verifica se o id da turma foi informado
+    if(req.query.idTurma == undefined || req.query.idTurma == ''){
+        res.json({message: 'id da turma não informado'})
+    }
+    else{
+        notas.getNotasTurma((result) => {
+            // verifica se o resultado da consulta é vazio
+            if(result.length == 0){
+                res.json({message: 'nenhuma nota encontrada'})
+            } else{
+                res.json(result);  // retorna o resultado da consulta
+            }
+        }, req.query.idTurma);
+    }
+}
+
 exports.cadastra = function(application, req, res) {
     // cria conexão com o modelo /src/models/notaModels.js
     var notas = new application.src.models.notaModels()

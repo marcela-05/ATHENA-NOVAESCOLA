@@ -392,7 +392,7 @@ module.exports = function(application){
       }
     });
 
-    // retorna controlador para listar notas
+    // retorna controlador para listar notas por alunos
     application.get('/notas', function(req, res){
       // verifica se o usuário está logado
       if(req.session.autorizado){
@@ -405,6 +405,13 @@ module.exports = function(application){
       } else{
         res.render('html/erro', {codigoStatus: 403, tituloMensagem: 'Acesso negado', mensagem: 'Por favor, para aproveitar o melhor da Athena, faça login.', botao: {texto: 'Fazer login', url: '/'}})
       }
+    });
+
+    // retorna controlador para listar notas por turmas
+    application.get('/notas/turma', function(req, res){
+      application.src.controllers.notaControllers.listaNotasPorTurma(
+        application, req, res
+      );
     });
 
     // retorna controlador para cadastrar nota
