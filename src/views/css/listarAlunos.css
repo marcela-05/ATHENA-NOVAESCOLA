@@ -31,23 +31,24 @@
 
 .lista_alunos {
     display: flex;
+    align-items: center;
     flex-direction: column;
-    gap: 15px;
-    margin-bottom: 2em;
 }
 
 .aluno {
-    background: var(--athena-bg-alunos);
-    padding: 24px 1em;
-    color: black;
-    display: flex;
-    align-items: center;
-    gap: 1em;
+  background: var(--athena-bg-alunos);
+  width: 96%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  margin-bottom: 1em;
 }
 
 .aluno_imagem {
-    width: 31px;
-    height: auto;
+  width: 31px;
+  height: auto;
+  margin-right: 1em;
 }
 
 
@@ -55,7 +56,8 @@
   display: flex;
   align-items: center;
   width: 100%;
-  margin-left: 4px;
+  padding: 1em;
+  margin-left: 8px;
 }
 
 input[type="text"] {
@@ -74,8 +76,8 @@ input[type="text"] {
   border: 1px solid black;
   border-radius: 4px;
   cursor: pointer;
-  margin-left: 2px;
-  margin-right: 6px;
+  margin-left: 1em;
+  margin-right: 1em;
   width: 20px;
 }
 
@@ -89,13 +91,15 @@ input[type="text"] {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 4px;
+    width: 100%;
+    padding: 1em;
+    margin-left: 8px;
   }
 
   .botao_pesquisa {
-    margin-left: 8px;
+    margin-left: 1em;
     margin-top: auto;
-    margin-right: 6px;
+    margin-right: 1em;
   }
 
   input[type="text"] {
