@@ -21,6 +21,23 @@ notas.prototype.getNotas = function(callback, idAluno) {
     });
 }
 
+// modelo para trazer as notas de uma turma completa
+notas.prototype.getNotasTurma = function(callback, idTurma) {
+    var sql = 'SELECT aluno.nome as aluno, avaliacao.nome_avaliacao as avaliacao, bloco_questao.num_bloco as bloco, ' + 
+    'area_conhecimento.nome_area as area, nota.nota_acertos as acertos, bloco_questao.quant_questoes as total_questoes, ' + 
+    'round(((nota.nota_acertos * 1.0) / bloco_questao.quant_questoes) * 10, 2) as nota ' +
+    'FROM bloco_questao JOIN avaliacao ON bloco_questao.id_avaliacao = avaliacao.id_avaliacao ' +
+    'JOIN nota ON bloco_questao.id_avaliacao = nota.id_avaliacao AND bloco_questao.num_bloco = nota.num_bloco ' +
+    'JOIN aluno ON nota.id_aluno = aluno.id_aluno ' +
+    'JOIN area_conhecimento ON bloco_questao.id_area = area_conhecimento.id_area ' +
+    'JOIN aluno_turma ON aluno.id_aluno = aluno_turma.id_aluno ' +
+    'WHERE aluno_turma.id_turma = ?';
+
+    DAO.select(sql, [idTurma], retorno => {
+        callback(retorno)
+    });
+}
+
 // modelo responsável por criar uma nova nota
 notas.prototype.postNota = function(callback, idAluno, idAvaliacao, numBlocos, notaAcertos) {
     var sql = 'INSERT INTO nota (id_aluno, id_avaliacao, num_bloco, nota_acertos, data) VALUES (?,?,?,?,?)';

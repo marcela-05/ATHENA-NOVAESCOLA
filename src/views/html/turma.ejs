@@ -4,6 +4,7 @@
     <%- include('partials/head') %>
     <title>Athena ◆ Turma - Detalhe</title>
     <link rel="stylesheet" href="../css/turma.css"> 
+    <script src="../js/planosDeAula.js" defer></script>
 </head> 
 <body>
     <%- include('partials/cabecalho') %>
@@ -64,6 +65,8 @@
                 </div>
             </div>
         </div>
+
+        <input type="hidden" id="serie" value="<%= turma.serie %>º ano">
     </main>
 
     <button class="botao_primario" onclick="window.location.href='/turmas/editar?idTurma=<%= turma.id_turma %>'">Editar</button>
