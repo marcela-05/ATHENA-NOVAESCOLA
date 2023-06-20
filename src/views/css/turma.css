@@ -62,22 +62,24 @@
 
 .lista_alunos {
     display: flex;
+    align-items: center;
     flex-direction: column;
-    gap: 15px;
 }
 
 .aluno {
     background: var(--athena-bg-alunos);
-    padding: 24px 1em;
-    color: black;
+    width: 90%;
+    border-radius: 5px;
     display: flex;
     align-items: center;
-    gap: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
 }
 
 .aluno_imagem {
     width: 31px;
     height: auto;
+    margin-right: 1em;
 }
 
 .planos {
@@ -167,4 +169,26 @@
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 1;
+}
+
+/* Estilos para dispositivos maiores, como tablet e notebook */
+@media screen and (min-width: 768px) {
+    .planos {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        flex-wrap: wrap;
+        width: 90%;
+        justify-content: space-between;
+        margin: 0 auto;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    
+    .grafico{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+    }
 }
