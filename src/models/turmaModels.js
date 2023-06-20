@@ -90,7 +90,7 @@ turmas.prototype.deleteTurma = function(callback, idTurma) {
 turmas.prototype.getDisciplinaDaTurma = function(callback, idTurma, idProfessor) {
     // se não informar o id da turma, retorna o nome da disciplina de todas as turmas do professor
     if(idTurma == undefined || idTurma == '') {
-        var sql = 'SELECT disciplina.nome FROM disciplina JOIN turma ON disciplina.id_disciplina = turma.id_disciplina WHERE turma.id_professor = ?';
+        var sql = 'SELECT disciplina.nome, disciplina.id_disciplina FROM disciplina JOIN turma ON disciplina.id_disciplina = turma.id_disciplina WHERE turma.id_professor = ?';
 
         // executa a consulta sql e retorna os dados na função callback
         DAO.select(sql, [idProfessor], retorno => {

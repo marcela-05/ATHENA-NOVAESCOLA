@@ -37,12 +37,8 @@ exports.listaNotasPorTurma = function(application, req, res) {
     else{
         notas.getNotasTurma((result) => {
             // verifica se o resultado da consulta é vazio
-            if(result.length == 0){
-                res.json({message: 'nenhuma nota encontrada'})
-            } else{
-                res.json(result);  // retorna o resultado da consulta
-            }
-        }, req.query.idTurma);
+            res.json(result);  // retorna o resultado da consulta
+        }, req.query.idTurma, req.query.idDisciplina);
     }
 }
 

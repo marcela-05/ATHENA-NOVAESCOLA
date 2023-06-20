@@ -10,7 +10,8 @@
     <%- include('partials/cabecalho') %>
 
     <main>
-        <h1 class="materia">[<%= disciplina.nome.toUpperCase() %>] <%= turma.nome %></h1> 
+        <h1 class="materia">[<%= disciplina.nome.toUpperCase() %>] <%= turma.nome %></h1>
+        <input type="hidden" id="idDisciplina" value="<%= disciplina.id_disciplina %>">
         <p class="media">Média Geral: XX</p> 
         <p class="defasagem">Defasagem Média: XX</p> 
 
@@ -25,46 +26,9 @@
             <li class="aluno"><img class="aluno_imagem" src="/assets/icone_aluno_perfil.png" alt="Ícone de aluno"><%= aluno.nome_aluno %></li>
             <% } %>
         </ul>
-        <button class="botao_primario">Ver Todos</button>
-        <h2 class="titulo">Planos de Aula Recomendados</h2>
+        <h2 class="titulo" id="titulo">Planos de Aula Recomendados</h2>
 
-        <div class="planos">
-            <div class="planos_de_aula">
-                <img class="plano_de_aula_imagem" src="/assets/bg_plano_de_aula.png" alt="Ícone plano de aula">
-                <div>
-                    <h3 class="assunto">Assunto</h3>
-                    <p>Título do plano de aula</p>
-                    <p class="descricao">Descrição do plano de aula</p>
-                </div>
-            </div>
-
-            <div class="planos_de_aula">
-                <img class="plano_de_aula_imagem" src="/assets/bg_plano_de_aula.png" alt="Ícone plano de aula">
-                <div>
-                    <h3 class="assunto">Assunto</h3>
-                    <p>Título do plano de aula</p>
-                    <p class="descricao">Descrição do plano de aula</p>
-                </div>
-            </div>
-
-            <div class="planos_de_aula">
-                <img class="plano_de_aula_imagem" src="/assets/bg_plano_de_aula.png" alt="Ícone plano de aula">
-                <div>
-                    <h3 class="assunto">Assunto</h3>
-                    <p>Título do plano de aula</p>
-                    <p class="descricao">Descrição do plano de aula</p>
-                </div>
-            </div>
-
-            <div class="planos_de_aula">
-                <img class="plano_de_aula_imagem" src="/assets/bg_plano_de_aula.png" alt="Ícone plano de aula">
-                <div>
-                    <h3 class="assunto">Assunto</h3>
-                    <p>Título do plano de aula</p>
-                    <p class="descricao">Descrição do plano de aula</p>
-                </div>
-            </div>
-        </div>
+        <div class="planos" id="planos"></div>
 
         <input type="hidden" id="serie" value="<%= turma.serie %>º ano">
     </main>
