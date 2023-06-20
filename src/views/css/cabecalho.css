@@ -243,7 +243,7 @@ a {
     cursor: pointer;
 }
 
-.marcador:checked+.caixa .deslizar .alternador {
+#caixa_alternador-desktop:checked+.caixa .deslizar .alternador {
     transform: translateX(113px);
     background: linear-gradient(40deg, #8983F7, #A3DAFB 70%);
     box-shadow: -0px -0px 10px #8983F7, -0px -0px 30px #8983F7;
@@ -252,6 +252,10 @@ a {
 .marcador:checked+.caixa .deslizar {
     background-color: #0a1929;
     color: #fff;
+}
+
+#caixa_alternador-desktop {
+    display: none;
 }
 
 .logo {
@@ -451,5 +455,3 @@ a {
         margin-top: 18px;
     }
 }
-
-/* Início da estilização do cabeçalho para Desktop */
