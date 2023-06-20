@@ -22,7 +22,7 @@ notas.prototype.getNotas = function(callback, idAluno) {
 }
 
 // modelo para trazer as notas de uma turma completa
-notas.prototype.getNotasTurma = function(callback, idTurma) {
+notas.prototype.getNotasTurma = function(callback, idTurma, idDisciplina) {
     var sql = 'SELECT aluno.nome as aluno, avaliacao.nome_avaliacao as avaliacao, bloco_questao.num_bloco as bloco, ' + 
     'area_conhecimento.nome_area as area, nota.nota_acertos as acertos, bloco_questao.quant_questoes as total_questoes, ' + 
     'round(((nota.nota_acertos * 1.0) / bloco_questao.quant_questoes) * 10, 2) as nota ' +
@@ -31,9 +31,9 @@ notas.prototype.getNotasTurma = function(callback, idTurma) {
     'JOIN aluno ON nota.id_aluno = aluno.id_aluno ' +
     'JOIN area_conhecimento ON bloco_questao.id_area = area_conhecimento.id_area ' +
     'JOIN aluno_turma ON aluno.id_aluno = aluno_turma.id_aluno ' +
-    'WHERE aluno_turma.id_turma = ?';
+    'WHERE aluno_turma.id_turma = ? AND avaliacao.id_disciplina = ?';
 
-    DAO.select(sql, [idTurma], retorno => {
+    DAO.select(sql, [idTurma, idDisciplina], retorno => {
         callback(retorno)
     });
 }

@@ -82,32 +82,89 @@
 
 .planos {
     display: flex;
-    flex-direction: column;
-    gap: 1em;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 90%;
     margin-top: 1em;
-}
-
-.planos_de_aula {
-    display: flex;
-    border: 1px solid black;
-    border-radius: 15px;
-    width: 320px;
-    height: auto;
     margin-left: auto;
     margin-right: auto;
+}
+
+.plano {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    color: #E9E9E9;
+    justify-content: center;
     align-items: center;
+    margin: 1em;
+    width: 250px;
+  }
+
+.card_plano{
+    border-radius: 8px;
+    box-sizing: border-box;
+    border: 1px solid #a6a9ad;
+    position: relative;
+    transition: .3s ease;
+    background-color: #fff;
+    margin-bottom: 2em;
 }
 
-.plano_de_aula_imagem {
-    width: 139px;
-    height: auto;
-    padding: .5em .2em .5em .2em;
+.card_plano_tag {
+    color: #282828;
+    background: #fff;
+    border-radius: 12px;
+    font-size: 14px;
+    padding: 5px 10px;
+    line-height: 16px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 2;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.assunto {
-    font-size: 12px;
+.card_plano_img{
+    border-radius: 8px 8px 0 0;
+    height: 150px;
+    position: relative;
 }
 
-.descricao {
-    font-size: 12px;
+.card_plano_bg{
+    background-color: rgba(0,0,0,.2);
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+.card_img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+.card_plano_info{
+    padding: 20px;
+    color: #000;
+}
+
+.card_txt{
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
 }
