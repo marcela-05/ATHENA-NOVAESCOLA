@@ -614,4 +614,11 @@ module.exports = function(application){
         );
       }
     });
+
+    // logout
+    application.get('/logout', function(req, res){
+      req.session.destroy(function(err){
+        res.redirect('/');
+      });
+    });
   }

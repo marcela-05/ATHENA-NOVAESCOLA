@@ -41,25 +41,23 @@ passport.use(
       callbackURL: '/auth/google/callback',
     },
     (accessToken, refreshToken, profile, done) => {
-      // Here, you can save the user profile to the database or perform any other necessary operations.
-      // In this example, we'll just pass the profile to the callback.
+      // Aqui, podemos salvar o usuário no banco de dados, ou procurar o usuário caso ele já tenha sido salvo anteriormente
       return done(null, profile);
     }
   )
 );
 
-// Serialize user into the session
+// Serializa o usuário para salvar na sessão
 passport.serializeUser((user, done) => {
   done(null, user);
 });
 
-// Deserialize user from the session
+// Deserializa o usuário da sessão
 passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-// Routes
-
+// Rotas de autenticação com Google
 app.get(
   '/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
@@ -80,6 +78,8 @@ app.get('/homeGoogle', (req, res) => {
   );
 });
 
+// FIM - LOGIN COM GOOGLE
+
 app.listen(3000, () => {
-console.log(`Servidor rodando em http://127.0.0.1:3000/`);
+  console.log(`Servidor rodando em http://127.0.0.1:3000/`);
 });
