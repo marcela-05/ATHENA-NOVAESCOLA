@@ -33,7 +33,52 @@
     margin-bottom: 0;
     line-height: 1.5;
     margin-bottom: 1em;
+    color: var(--preto);
 }
+
+.container {
+    display: flex;
+}
+
+.tabs {
+    display: flex;
+    position: relative;
+    background-color: var(--preto);
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+    padding: 0.75rem;
+    border-radius: 99px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tabs * {
+    z-index: 2;
+}
+
+.container input[type="radio"] {
+    display: none;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: auto;
+    font-size: .8rem;
+    color: var(--branco);
+    font-weight: 500;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: color 0.15s ease-in;
+    padding-right: 10px;
+}
+
+.container input[type="radio"]:checked+label {
+    color: #185ee0;
+}
+
 
 .grafico {
     background-color: var(--athena-bg-cinza-4);
@@ -49,6 +94,16 @@
     margin-right: auto;
 }
 
+.div_titulo_grafico {
+    display: flex;
+}
+
+.titulo_grafico {
+    color: var(--preto);
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .botao_primario {
     display: flex;
     margin-left: auto;
@@ -58,6 +113,7 @@
     padding: 10px;
     max-width: 130px;
     margin-bottom: 1em;
+    color: var(--preto);
 }
 
 .lista_alunos {
