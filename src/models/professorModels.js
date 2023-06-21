@@ -137,6 +137,16 @@ professores.prototype.listaDisciplinas = function(callback, idProfessor) {
     });
 }
 
+// modelo responsável por verificar se um professor existe a partir do email
+professores.prototype.verificaProfessor = function(callback, emailProfessor) {
+    var sql = 'SELECT * FROM professor WHERE email = ?';
+
+    // executa a consulta sql e retorna os dados na função callback
+    DAO.select(sql, [emailProfessor], retorno => {
+        callback(retorno)
+    });
+}
+
 
 module.exports = function(){
     return professores;
