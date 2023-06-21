@@ -136,6 +136,29 @@ module.exports.cadastra = function(application, req, res) {
     }, req.body.emailProfessor, req.body.senhaProfessor);
   }
 
+  module.exports.loginGoogle = function(application, req, res) {
+    // cria conexão com o modelo /src/models/professorModels.js
+    var professores = new application.src.models.professorModels() 
+    // Esse controlador é responsável por chamar o modelo que faz o login do professor
+    // Para isso, o email e senha são passados como argumentos.
+
+    professores.verificaProfessor((result) => {
+      if(result.length > 0){
+        req.session.autorizado = true
+        req.session.emailProfessor = req.user.emails[0].value
+        req.session.idProfessor = result[0].id_professor
+        req.session.nomeProfessor = result[0].nome
+        professores.listaDisciplinas((result) => {
+          if (result != undefined && result.length > 0) {
+            req.session.profDisciplinas = result
+            req.session.autorizado = true;
+            res.redirect('/home')
+          }
+        }, req.session.idProfessor)
+      }
+    }, req.user.emails[0].value)
+  }
+
   module.exports.vinculaDisciplina = function(application, req, res) {
     // cria conexão com o modelo /src/models/professorModels.js
     var professores = new application.src.models.professorModels()

@@ -9,7 +9,7 @@ $(document).ready(() => {
         }
     })
 
-    $('#caixa_alternador-desktop').change(() => {
+    $('#checkbox_dark_mode').change(() => {
         alternarTema()
 
         localStorage.removeItem('darkMode');
