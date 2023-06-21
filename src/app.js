@@ -12,7 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(session({
 	secret: 'secret-key-nv-int-321',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 24 hours
 }));

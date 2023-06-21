@@ -1,23 +1,23 @@
 $(document).ready(() => {
     $('#caixa_alternador').change(() => {
-        alternarTema()
-
-        localStorage.removeItem('darkMode');
+        alternarTema();
 
         if ($(':root').hasClass('darkMode')) {
-            localStorage.setItem('darkMode', 1);
+            localStorage.setItem('darkMode', 'true');
+        } else {
+            localStorage.removeItem('darkMode');
         }
-    })
+    });
 
     $('#checkbox_dark_mode').change(() => {
-        alternarTema()
-
-        localStorage.removeItem('darkMode');
+        alternarTema();
 
         if ($(':root').hasClass('darkMode')) {
-            localStorage.setItem('darkMode', 1);
+            localStorage.setItem('darkMode', 'true');
+        } else {
+            localStorage.removeItem('darkMode');
         }
-    })
+    });
 
     function alternarTema() {
         $(':root').toggleClass('darkMode');
@@ -25,9 +25,9 @@ $(document).ready(() => {
 
     function carregarTema() {
         if (localStorage.getItem('darkMode')) {
-            $('#caixa_alternador-desktop').click();
+            $('#caixa_alternador').prop('checked', true);
+            alternarTema();
         }
     }
-    carregarTema()
-})
-
+    carregarTema();
+});

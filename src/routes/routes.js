@@ -1,7 +1,6 @@
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const multer = require('multer');
-const path = require('path');
 
 // Configuração de armazenamento de arquivos com multer
 const storage = multer.diskStorage({
@@ -13,7 +12,7 @@ const storage = multer.diskStorage({
       const extensaoArquivo = file.originalname.split('.')[1];
 
       // Cria um código randômico que será o nome do arquivo
-      const novoNomeArquivo = file.originalname + '-' + req.session.idProfessor;
+      const novoNomeArquivo = file.originalname.split('.')[0] + '-' + req.session.idProfessor;
 
       // Indica o novo nome do arquivo:
       cb(null, `${novoNomeArquivo}.${extensaoArquivo}`)

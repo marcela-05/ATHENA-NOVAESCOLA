@@ -1,5 +1,3 @@
-const e = require("express");
-
 exports.listaAlunos = function(application, req, res) {
     // cria conexão com o modelo /src/models/alunoModels.js
     var alunos = new application.src.models.alunoModels()
