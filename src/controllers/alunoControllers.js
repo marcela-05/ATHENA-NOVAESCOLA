@@ -11,7 +11,7 @@ exports.listaAlunos = function(application, req, res) {
         if(result.length == 0){
             res.redirect('/alunos/cadastrar')
         } else{
-            res.render('html/alunos', {alunos: result});
+            res.render('html/alunos', {alunos: result, urlFoto: req.session.urlFoto});
         }
       }, req.session.idProfessor)
     }
@@ -40,7 +40,7 @@ module.exports.cadastra = function(application, req, res) {
 
     // verifica se o método é GET
     if(req.method == 'GET'){
-      res.render('html/cadastrarAluno')
+      res.render('html/cadastrarAluno', {urlFoto: req.session.urlFoto})
     }
     
     else{

@@ -489,7 +489,7 @@ module.exports = function(application){
     // renderiza página principal
     application.get('/home', (req, res) => {
       if (req.session.autorizado) {
-        res.render('html/index', {nome: `${req.session.nomeProfessor}`});
+        res.render('html/index', {nome: `${req.session.nomeProfessor}`, urlFoto: req.session.urlFoto});
       } else {
         res.redirect('/')
       }

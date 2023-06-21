@@ -139,11 +139,11 @@ module.exports.cadastra = function(application, req, res) {
   module.exports.loginGoogle = function(application, req, res) {
     // cria conexão com o modelo /src/models/professorModels.js
     var professores = new application.src.models.professorModels() 
-    // Esse controlador é responsável por chamar o modelo que faz o login do professor
-    // Para isso, o email e senha são passados como argumentos.
-
+    
+    // verifica se o e-mail do usuário já existe no banco de dados
     professores.verificaProfessor((result) => {
       if(result.length > 0){
+        // se existir, faz o login, preenchendo a sessão com os dados do usuário
         req.session.autorizado = true
         req.session.emailProfessor = req.user.emails[0].value
         req.session.idProfessor = result[0].id_professor
@@ -152,9 +152,23 @@ module.exports.cadastra = function(application, req, res) {
           if (result != undefined && result.length > 0) {
             req.session.profDisciplinas = result
             req.session.autorizado = true;
-            res.redirect('/home')
+            req.session.urlFoto = req.user.photos[0].value
+            res.render('html/index', {nome: req.session.nomeProfessor, urlFoto: req.session.urlFoto})
           }
         }, req.session.idProfessor)
+      }
+      else{
+        // se não existir, cadastra o usuário com o e-mail e o nome do usuário do google, e uma senha padrão chamada 'google'
+        professores.postProfessor((result) => {
+    
+          req.session.cadastrado = true;
+
+          // busca o id do professor que acabou de ser cadastrado e salva na sessão
+          professores.getIdProfessor((result) => {
+            req.session.idProfessor = result[0].id_professor;
+            res.redirect('/cadastro/perfil');
+          }, req.user.displayName, req.user.emails[0].value);
+        }, req.user.displayName, req.user.emails[0].value, 'google');
       }
     }, req.user.emails[0].value)
   }
