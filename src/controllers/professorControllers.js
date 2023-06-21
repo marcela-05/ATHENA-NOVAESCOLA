@@ -1,3 +1,6 @@
+var fs = require('fs');
+var path = require('path');
+
 // nome do controlador vem depois do exports
 exports.listaProfessores = function(application, req, res) {
     // cria conexão com o modelo /src/models/professorModels.js
@@ -128,6 +131,12 @@ module.exports.cadastra = function(application, req, res) {
         req.session.nomeProfessor = result[0].nome
         professores.listaDisciplinas((result) => {
           if (result != undefined && result.length > 0) {
+            // itera pelas imagens do diretório e verifica se alguma, após o - e antes do . é igual ao id do professor
+            fs.readdirSync(path.join(__dirname, '../views/uploads/')).forEach(file => {
+              if(file.split('-')[1].split('.')[0] == req.session.idProfessor){
+                req.session.urlFoto = 'uploads/' + file
+              }
+            });
             req.session.profDisciplinas = result
             res.redirect('/home')
           }
@@ -179,6 +188,8 @@ module.exports.cadastra = function(application, req, res) {
     // Esse controlador é responsável por chamar o modelo que vincula o professor a uma disciplina
     // Para isso, o id do professor e o id da disciplina são passados como argumentos.
 
+    const disciplinas = req.body.checkboxDisciplina
+
     professores.vinculaDisciplina((result) => {
       // verifica se o resultado da consulta é vazio.
       // Se for, retorna mensagem de erro, se não, retorna mensagem de sucesso (result)
@@ -187,5 +198,5 @@ module.exports.cadastra = function(application, req, res) {
       } else {
         res.redirect('/')
       }
-    }, req.session.idProfessor, req.body.checkboxDisciplina);
+    }, req.session.idProfessor, disciplinas);
   }

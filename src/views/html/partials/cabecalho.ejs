@@ -72,7 +72,11 @@
         </ul>
 
         <figure><a href="/home"><img class="logo" src="../assets/logo athena 2.png" alt="Logo da Athena"></a></figure>
-        <figure><img class="perfil" src="<%= urlFoto %>" alt="Foto de Perfil"></figure>
+        <% if(urlFoto) { %>
+            <figure><img class="perfil" src="<%= urlFoto %>" alt="Foto de Perfil"></figure>
+        <% } else {%>
+            <figure><img class="perfil" src="uploads/perfil.jfif" alt="Foto de Perfil"></figure>
+        <% } %>
     </nav>
     <!-- fim - cabeçalho mobile -->
 
@@ -107,14 +111,19 @@
                     <a class="link_desktop" href="/alunos/verTodos">Ver Todos</a>
                 </div>
             </li>
-       </ul>
+        </ul>
 
-       <div style="display: inline-flex; align-items: center; margin-right: 1em;">
-        <figure><img class="perfil" src="<%= urlFoto %>" alt="Foto de Perfil"></figure>
-            <label class="caixa-selecao">
-                <input type="checkbox" id="checkbox_dark_mode">
-                <span class="controle-deslizante"></span>
-            </label>
+        <div style="display: inline-flex; align-items: center; margin-right: 1em;">
+        <% if(urlFoto) { %>
+            <figure><img class="perfil" src="<%= urlFoto %>" alt="Foto de Perfil"></figure>
+        <% } else {%>
+            <figure><img class="perfil" src="uploads/perfil.jfif" alt="Foto de Perfil"></figure>
+        <% } %>
+
+        <label class="caixa-selecao">
+            <input type="checkbox" id="checkbox_dark_mode">
+            <span class="controle-deslizante"></span>
+        </label>
         </div>
     </nav> 
     <!-- fim - cabeçalho desktop -->
