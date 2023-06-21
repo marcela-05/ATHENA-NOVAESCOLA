@@ -26,6 +26,7 @@ $(document).ready(() => {
     function carregarTema() {
         if (localStorage.getItem('darkMode')) {
             $('#caixa_alternador').prop('checked', true);
+            $('#checkbox_dark_mode').prop('checked', true);
             alternarTema();
         }
     }

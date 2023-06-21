@@ -294,8 +294,7 @@ a {
 }
 
 .nav_desktop_botao {
-/*   background-color: var(--athena-col-cinza-4); */
-/*   color: var(--athena-col-cinza-4); */
+  color: var(--cinza);
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -326,7 +325,7 @@ a {
   font-size: 0.8em;
 }
 
-.nav_desktop_conteudo_dropdown a:hover {background-color: #f1f1f1}
+.nav_desktop_conteudo_dropdown a:hover {background-color: var(--athena-col-cinza-4)}
 
 .nav_desktop_dropdown:hover .nav_desktop_conteudo_dropdown {
   display: block;
