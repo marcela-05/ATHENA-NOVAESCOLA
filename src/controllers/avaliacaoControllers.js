@@ -21,7 +21,7 @@ exports.listaAvaliacoes = function(application, req, res) {
             res.redirect('/avaliacoes/cadastrar')
           }
         } else{
-          res.render('html/avaliacoes', {avaliacoes: result, disciplinas: disciplinas, turmas: turmas});
+          res.render('html/avaliacoes', {avaliacoes: result, disciplinas: disciplinas, turmas: turmas, urlFoto: req.session.urlFoto});
         }
       }, req.session.idProfessor)
     }, req.session.idProfessor)
@@ -45,7 +45,7 @@ module.exports.cadastra = function(application, req, res) {
       // esse controlador chama o modelo de listagem de áreas de conhecimento
       areaConhecimento.getAreaConhecimento((areas) => {
         // renderiza a página de cadastro de avaliação, com as disciplinas e áreas de conhecimento
-        res.render('html/cadastrarAvaliacao', {disciplinas: disciplinas, areas: areas})
+        res.render('html/cadastrarAvaliacao', {disciplinas: disciplinas, areas: areas, urlFoto: req.session.urlFoto})
       }, '', req.session.profDisciplinas)
     }, req.session.idProfessor)
   } else {

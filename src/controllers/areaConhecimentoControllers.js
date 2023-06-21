@@ -12,7 +12,7 @@ exports.listaAreasConhecimento = function(application, req, res) {
         // esse controlador chama o modelo de listagem de disciplinas
         areaConhecimento.getNomeDisciplina((disciplinas) => {
           // renderiza a página de listagem de áreas do conhecimento, passando como parâmetro o resultado da consulta
-          res.render('html/assuntosDeAvaliacao', {areasConhecimento: result, disciplinas: disciplinas})
+          res.render('html/assuntosDeAvaliacao', {areasConhecimento: result, disciplinas: disciplinas, urlFoto: req.session.urlFoto})
         }, '', req.session.profDisciplinas);
       }
     }, '', req.session.profDisciplinas);
@@ -27,7 +27,7 @@ module.exports.cadastra = function(application, req, res) {
       // esse controlador chama o modelo de listagem de disciplinas
       professor.listaDisciplinas((result) => {
         // renderiza a página de cadastro de área do conhecimento, passando como parâmetro o resultado da consulta
-        res.render('html/cadastrarAssunto', {disciplinas: result});
+        res.render('html/cadastrarAssunto', {disciplinas: result, urlFoto: req.session.urlFoto});
       }, req.session.idProfessor);
     } else {
       // cria conexão com o modelo /src/models/areaConhecimentoModels.js
@@ -46,7 +46,7 @@ module.exports.cadastra = function(application, req, res) {
             if(result != undefined){
               res.render('html/erro', {codigoStatus: 500, tituloMensagem: 'Erro Interno do Servidor', mensagem: result});
             }else{
-                res.json({message: 'Área do conhecimento cadastrada com sucesso'})
+                res.redirect('/areaConhecimento/listar');
             }
         }, req.body.nomeArea, req.body.disciplina);
       }
@@ -85,7 +85,7 @@ module.exports.cadastra = function(application, req, res) {
         if(result.length == 0){
           res.render('html/erro', {codigoStatus: 404, tituloMensagem: 'Página não encontrada', mensagem: 'A página que você está procurando não existe ou foi removida.'});
         } else{
-          res.render('html/atualizarAssunto', {disciplinas: disciplinas, atual: disciplinaAtual, area: result[0], idArea: req.query.idArea});
+          res.render('html/atualizarAssunto', {disciplinas: disciplinas, atual: disciplinaAtual, area: result[0], idArea: req.query.idArea, urlFoto: req.session.urlFoto});
         }
       }, req.query.idArea);
 
