@@ -243,7 +243,7 @@ a {
     cursor: pointer;
 }
 
-#caixa_alternador-desktop:checked+.caixa .deslizar .alternador {
+#caixa_alternador:checked+.caixa .deslizar .alternador {
     transform: translateX(113px);
     background: linear-gradient(40deg, #8983F7, #A3DAFB 70%);
     box-shadow: -0px -0px 10px #8983F7, -0px -0px 30px #8983F7;
@@ -252,10 +252,6 @@ a {
 .marcador:checked+.caixa .deslizar {
     background-color: #0a1929;
     color: #fff;
-}
-
-#caixa_alternador-desktop {
-    display: none;
 }
 
 .logo {
@@ -269,6 +265,8 @@ a {
     margin-right: 10px;
     margin-top: 3px;
 }
+
+/* INÍCIO CABEÇALHO DESKTOP */
 
 .nav_desktop {
     display: flex;
@@ -324,6 +322,7 @@ a {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  font-size: 0.8em;
 }
 
 .nav_desktop_conteudo_dropdown a:hover {background-color: #f1f1f1}
@@ -333,7 +332,7 @@ a {
 }
 
 .nav_desktop_dropdown:hover .nav_desktop_botao {
-  background-color: var(--athena-col-cinza-3);
+  color: var(--athena-col-nova1);
 }
 
 .perfil_desktop {
@@ -341,117 +340,57 @@ a {
     margin-right: 3em;
 }
 
-@media screen and (min-width: 768px) {
-    a {
-        font-size: 1.2em;
-    }
 
-    .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+/* Botão para dark mode */
+.caixa-selecao {
+        font-size: 17px;
+        position: relative;
+        display: inline-block;
+        width: 3.5em;
+        height: 2em;
     }
-
-    #menu:checked~.nav_lista {
-        display: flex;
-        flex-direction: column;
+    
+    /* Ocultar o checkbox HTML padrão */
+    .caixa-selecao input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    /* O controle deslizante */
+    .controle-deslizante {
+        --background: #28096b;
         position: absolute;
-        top: 100px;
-        gap: 2em;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--background);
+        transition: .5s;
+        border-radius: 30px;
+    }
+    
+    .controle-deslizante::before {
+        position: absolute;
+        content: "";
+        height: 1.4em;
+        width: 1.4em;
+        border-radius: 50%;
+        left: 10%;
+        bottom: 15%;
+        box-shadow: inset 8px -4px 0px 0px #fff000;
+        background: var(--background);
+        transition: .5s;
+    }
+    
+    input:checked + .controle-deslizante {
+        background-color: #522ba7;
+    }
+    
+    input:checked + .controle-deslizante::before {
+        transform: translateX(100%);
+        box-shadow: inset 15px -4px 0px 15px #fff000;
     }
 
-    .nav_lista {
-        display: none;
-    }
-
-    .nav_lista_dropdown_turmas {
-        font-size: 1.2em;
-    }
-
-    .nav_lista_dropdown_avaliacoes {
-        font-size: 1.2em;
-    }
-
-    .nav_lista_dropdown_alunos {
-        font-size: 1.2em;
-    }
-
-    .nav_lista_botao_turmas,
-    .nav_lista_botao_avaliacoes,
-    .nav_lista_botao_alunos {
-        display: none;
-    }
-
-    .nav_lista_botao_turmas:checked~.nav_lista_turmas {
-        display: flex;
-        flex-direction: column;
-        gap: 2em;
-        margin-top: .4em;
-        background: var(--athena-bg-header-turmas);
-        background-clip: border-box;
-        background-position: center;
-        margin-bottom: -2em;
-        padding-bottom: 1em;
-    }
-
-    .nav_lista_botao_avaliacoes:checked~.nav_lista_avaliacoes {
-        display: flex;
-        flex-direction: column;
-        gap: 2em;
-        margin-top: .4em;
-        background: var(--athena-bg-header-avaliacoes);
-        background-clip: border-box;
-        background-position: center;
-        margin-bottom: -2em;
-        padding-bottom: 1em;
-    }
-
-    .nav_lista_botao_alunos:checked~.nav_lista_alunos {
-        display: flex;
-        flex-direction: column;
-        gap: 2em;
-        margin-top: .4em;
-        background: var(--athena-bg-header-alunos);
-        background-clip: border-box;
-        background-position: center;
-        margin-bottom: -2em;
-        padding-bottom: 1em;
-    }
-
-    .nav_lista_elemento {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .nav_lista_dropdown_turmas,
-    .nav_lista_dropdown_avaliacoes,
-    .nav_lista_dropdown_alunos {
-        margin-left: 1em;
-    }
-
-    .seta {
-        width: 20px;
-        margin-right: 2em;
-    }
-
-    .nav_lista_icone {
-        width: 40px;
-    }
-
-    .quebra_linha {
-        border-width: 1px 0 0;
-    }
-
-    .logo {
-        margin: center;
-        width: 220px;
-        height: auto;
-        margin-top: 28px;
-    }
-
-    .perfil {
-        width: 64px;
-        margin-right: 18px;
-        margin-top: 18px;
-    }
-}
+/* FIM CABEÇALHO DESKTOP */

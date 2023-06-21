@@ -1,4 +1,5 @@
 <header>
+    <!-- início - cabeçalho mobile -->
     <nav class="nav">
         <input type="checkbox" id="menu">
         <label for="menu" class="nav_alternar">
@@ -6,7 +7,6 @@
             <div class="barra barra--meio"></div>
             <div class="barra barra--baixo"></div>
         </label>
-
 
         <ul class="nav_lista">
             <hr>
@@ -74,20 +74,14 @@
         <figure><a href="/home"><img class="logo" src="../assets/logo athena 2.png" alt="Logo da Athena"></a></figure>
         <figure><img class="perfil" src="../assets/julia_perfil.png" alt="Foto de Perfil"></figure>
     </nav>
-    <nav class="nav_desktop" style="display: none;">
-        <div class="nav_desktop_esquerda">
-            <figure><img class="logo_desktop" src="../assets/logo athena 2.png" alt="Logo da athena"></figure>
+    <!-- fim - cabeçalho mobile -->
 
-            <div class="nav_lista_alterarTema">
-                <input class="marcador" type="checkbox" id="caixa_alternador-desktop">
-                <div class="caixa">
-                    <label for="caixa_alternador-desktop" class="deslizar">
-                        <label for="caixa_alternador-desktop" class="alternador"></label>
-                        <label for="caixa_alternador-desktop" class="texto">Claro</label>
-                        <label for="caixa_alternador-desktop" class="texto">Escuro</label>
-                    </label>
-                </div>
-            </div>
+    <!-- início - cabeçalho desktop -->
+    <nav class="nav_desktop" style="display: none;">
+        <div class="nav_desktop_esquerda" style="margin-left: 1em;">
+            <a href="/home">
+                <figure><img class="logo_desktop" style="margin: auto; display: block;" src="../assets/logo athena 2.png" alt="Logo da athena"></figure>
+            </a>
         </div>
         <ul class="nav_desktop_lista">
             <li class="nav_desktop_dropdown">
@@ -115,6 +109,13 @@
             </li>
        </ul>
 
-        <figure><img class="perfil_desktop" src="../assets/julia_perfil.png" alt="Foto de Perfil"></figure>
+       <div style="display: inline-flex; align-items: center; margin-right: 1em;">
+            <figure><img class="perfil_desktop" src="../assets/julia_perfil.png" alt="Foto de Perfil"></figure>
+            <label class="caixa-selecao">
+                <input type="checkbox" id="checkbox_dark_mode">
+                <span class="controle-deslizante"></span>
+            </label>
+        </div>
     </nav> 
+    <!-- fim - cabeçalho desktop -->
 </header>
