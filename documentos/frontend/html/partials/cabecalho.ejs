@@ -1,0 +1,126 @@
+<header>
+    <!-- início - cabeçalho mobile -->
+    <nav class="nav">
+        <input type="checkbox" id="menu">
+        <label for="menu" class="nav_alternar">
+            <div class="barra barra--cima"></div>
+            <div class="barra barra--meio"></div>
+            <div class="barra barra--baixo"></div>
+        </label>
+
+        <ul class="nav_lista">
+            <hr>
+            <li><input class="nav_lista_botao_turmas" type="checkbox" id="turmas"><label class="nav_lista_elemento"
+                    for="turmas"><span class="nav_lista_dropdown_turmas">Turmas</span><img class="seta"
+                        src="../assets/seta_baixo.png" alt="Seta para baixo"></label>
+                <ul class="nav_lista_turmas">
+                    <hr>
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_cadastrar_nova_turma.png"
+                            alt="Ícone de cadastro de turma"><a href="/turmas/cadastrar">Cadastrar Turma</a></li>
+                    <hr class="quebra_linha">
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_ver_todas_turmas.png"
+                            alt="Ícone para ver todas as turmas"><a href="/turmas">Ver Todas</a></li>
+                </ul>
+            </li>
+            <hr>
+            <li><input class="nav_lista_botao_avaliacoes" type="checkbox" id="avaliacoes"><label
+                    class="nav_lista_elemento" for="avaliacoes"><span
+                        class="nav_lista_dropdown_avaliacoes">Avaliações</span><img class="seta"
+                        src="../assets/seta_baixo.png" alt="Seta para baixo"></label>
+                <ul class="nav_lista_avaliacoes">
+                    <hr>
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_cadastrar_avaliacao.png"
+                            alt="Ícone de cadastro de avaliação"><a href="/avaliacoes/cadastrar">Cadastrar Avaliação</a>
+                    </li>
+                    <hr class="quebra_linha">
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_assuntos_de_avaliacao.png"
+                            alt="Ícone de assuntos de avaliação"><a href="/areaConhecimento/listar">Assuntos de
+                            Avaliação</a></li>
+                    <hr class="quebra_linha">
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_ver_todas_avaliacoes.png"
+                            alt="Ícone para ver todas avaliações"><a href="/avaliacoes">Ver Todas</a></li>
+                </ul>
+            </li>
+            <hr>
+            <li><input class="nav_lista_botao_alunos" type="checkbox" id="alunos"><label class="nav_lista_elemento"
+                    for="alunos"><span class="nav_lista_dropdown_alunos">Alunos</span><img class="seta"
+                        src="../assets/seta_baixo.png" alt="Seta para baixo"></label>
+                <ul class="nav_lista_alunos">
+                    <hr>
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_cadastrar_aluno.png"
+                            alt="Ícone de cadastro de aluno"><a href="/alunos/cadastrar">Cadastrar Aluno</a></li>
+                    <hr class="quebra_linha">
+                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_ver_todos_alunos.png"
+                            alt="Ícone para ver todos alunos"><a href="/alunos/verTodos">Ver Todos</a></li>
+                </ul>
+            </li>
+            <hr>
+            <div class="nav_lista_alterarTema">
+                <h3 style="color: var(--preto); margin-bottom: 15px;">Alterar Tema</h3>
+                <input class="marcador" type="checkbox" id="caixa_alternador">
+                <div class="caixa">
+                    <label for="caixa_alternador" class="deslizar">
+                        <label for="caixa_alternador" class="alternador"></label>
+                        <label for="caixa_alternador" class="texto">Claro</label>
+                        <label for="caixa_alternador" class="texto">Escuro</label>
+                    </label>
+                </div>
+            </div>
+        </ul>
+
+        <figure><a href="/home"><img class="logo" src="../assets/logo athena 2.png" alt="Logo da Athena"></a></figure>
+        <% if(urlFoto) { %>
+            <figure><img class="perfil" src="<%= urlFoto %>" alt="Foto de Perfil"></figure>
+        <% } else {%>
+            <figure><img class="perfil" src="../uploads/perfil-0.jfif" alt="Foto de Perfil"></figure>
+        <% } %>
+    </nav>
+    <!-- fim - cabeçalho mobile -->
+
+    <!-- início - cabeçalho desktop -->
+    <nav class="nav_desktop" style="display: none;">
+        <div class="nav_desktop_esquerda" style="margin-left: 1em;">
+            <a href="/home">
+                <figure><img class="logo_desktop" style="margin: auto; display: block;" src="../assets/logo athena 2.png" alt="Logo da athena"></figure>
+            </a>
+        </div>
+        <ul class="nav_desktop_lista">
+            <li class="nav_desktop_dropdown">
+                <button class="nav_desktop_botao">Turmas</button>
+                <div class="nav_desktop_conteudo_dropdown">
+                    <a class="link_desktop" href="/turmas/cadastrar">Cadastrar Turma</a>
+                    <a class="link_desktop" href="/turmas">Ver Todas</a>
+                </div>
+            </li>
+            <li class="nav_desktop_dropdown">
+                <button class="nav_desktop_botao">Avaliações</button>
+                <div class="nav_desktop_conteudo_dropdown">
+                    <a class="link_desktop" href="/avaliacoes/cadastrar">Cadastrar Avaliação</a>
+                    <a class="link_desktop" href="/areaConhecimento/listar">Assuntos de Avaliação</a>
+                    <a class="link_desktop" href="/avaliacoes">Ver Todas</a>
+                </div>
+            </li>
+            <li class="nav_desktop_dropdown">
+                <button class="nav_desktop_botao">Alunos</button>
+                <div class="nav_desktop_conteudo_dropdown">
+                    <a class="link_desktop" href="/alunos/cadastrar">Cadastrar Aluno</a>
+                    <a class="link_desktop" href="/alunos/verTodos">Ver Todos</a>
+                </div>
+            </li>
+        </ul>
+
+        <div style="display: inline-flex; align-items: center; margin-right: 1em;">
+        <% if(urlFoto) { %>
+            <figure><img class="perfil" src="<%= urlFoto %>" alt="Foto de Perfil"></figure>
+        <% } else {%>
+            <figure><img class="perfil" src="../uploads/perfil-0.jfif" alt="Foto de Perfil"></figure>
+        <% } %>
+
+        <label class="caixa-selecao">
+            <input type="checkbox" id="checkbox_dark_mode">
+            <span class="controle-deslizante"></span>
+        </label>
+        </div>
+    </nav> 
+    <!-- fim - cabeçalho desktop -->
+</header>

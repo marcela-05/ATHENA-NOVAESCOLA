@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('partials/head') %>
+    <title>Athena ◆ Assuntos de Avaliação ◆ Áreas de Conhecimento</title>
+    <link rel="stylesheet" href="../css/assuntosDeAvaliacao.css">
+</head>
+
+<body>
+    <%- include('partials/cabecalho') %>
+    <main>
+        <h1 class="assuntoAvaliacao">Assuntos de Avaliação</h1>
+        <%- include('partials/libras') %>
+        <div class="assuntos">
+            <% for (let i = 0; i < areasConhecimento.length;i ++) { %>
+            <div class="assuntos_de_avaliacao">
+                <img class="assuntos_de_avaliacao_imagem" src="../assets/bg_plano_de_aula.png" alt="Ícone assunto de Avaliação">
+                <div class="assuntos_de_avaliacao_texto">
+                    <h3 id="titulo" title="<%= areasConhecimento[i].nome_area %>"><%= areasConhecimento[i].nome_area %></h3>
+                    <p class="assuntos_de_avaliacao_texto_materia"><%= disciplinas[i].nome %></p>
+                    <a href="/areaConhecimento/atualizar?idArea=<%= areasConhecimento[i].id_area %>" class="assuntos_de_avaliacao_visualizar">Ver Assunto</a>
+                </div>
+                <div>
+                    <img class="assuntos_de_avaliacao_lixeira" src="../assets/lixeira.svg" alt="Ícone lixeira">
+                </div>
+            </div>
+            <% } %>
+        </div>
+
+        <button onclick="window.location.href='/areaConhecimento/cadastrar'" class="botao_primario">Novo Assunto</button>
+    </main>
+</body>
+
+</html>

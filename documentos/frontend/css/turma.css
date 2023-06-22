@@ -1,0 +1,194 @@
+.materia {
+    background: var(--athena-bg-turmas);
+    color: white;
+    font-size: 20px;
+    padding: 85px 3.5em;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.media {
+    background: var(--cinza);
+    color: white;
+    font-size: 20px;
+    padding: 62px 104px;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.defasagem {
+    background: var(--cinza);
+    color: white;
+    font-size: 20px;
+    padding: 62px 104px;
+    text-align: center;
+} 
+
+.titulo {
+    font-size: 24px;
+    text-align: center;
+    padding-top: 35px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.5;
+    margin-bottom: 1em;
+}
+
+.grafico {
+    background-color: var(--athena-bg-cinza-4);
+    border: 2px;
+    width: 246px;
+    height: 147px;
+    border-radius: 15px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.botao_primario {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    max-width: 130px;
+    margin-bottom: 1em;
+}
+
+.lista_alunos {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.aluno {
+    background: var(--athena-bg-alunos);
+    width: 90%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.aluno_imagem {
+    width: 31px;
+    height: auto;
+    margin-right: 1em;
+}
+
+.planos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 90%;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.plano {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    color: #E9E9E9;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    width: 250px;
+  }
+
+.card_plano{
+    border-radius: 8px;
+    box-sizing: border-box;
+    border: 1px solid #a6a9ad;
+    position: relative;
+    transition: .3s ease;
+    background-color: #fff;
+    margin-bottom: 2em;
+}
+
+.card_plano_tag {
+    color: #282828;
+    background: #fff;
+    border-radius: 12px;
+    font-size: 14px;
+    padding: 5px 10px;
+    line-height: 16px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 2;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card_plano_img{
+    border-radius: 8px 8px 0 0;
+    height: 150px;
+    position: relative;
+}
+
+.card_plano_bg{
+    background-color: rgba(0,0,0,.2);
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+.card_img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+.card_plano_info{
+    padding: 20px;
+    color: #000;
+}
+
+.card_txt{
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+}
+
+/* Estilos para dispositivos maiores, como tablet e notebook */
+@media screen and (min-width: 768px) {
+    .planos {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        flex-wrap: wrap;
+        width: 90%;
+        justify-content: space-between;
+        margin: 0 auto;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    
+    .grafico{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+    }
+}

@@ -134,7 +134,7 @@ module.exports.cadastra = function(application, req, res) {
             // itera pelas imagens do diretório e verifica se alguma, após o - e antes do . é igual ao id do professor
             fs.readdirSync(path.join(__dirname, '../views/uploads/')).forEach(file => {
               if(file.split('-')[1].split('.')[0] == req.session.idProfessor){
-                req.session.urlFoto = 'uploads/' + file
+                req.session.urlFoto = '../uploads/' + file
               }
             });
             req.session.profDisciplinas = result

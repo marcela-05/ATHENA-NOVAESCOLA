@@ -1,0 +1,226 @@
+body {
+    background-color: var(--athena-bg);
+}
+
+a {
+    color: var(--athena-col-link);
+}
+
+legend {
+    display: block;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conteudo_logo {
+    margin-top: 2em;
+    margin-bottom: -1em;
+    width: 20em;
+    float: left;
+}
+
+.conteudo_titulo{
+    text-align: center;
+    margin-bottom: -1.2em;
+}
+
+.conteudo_input {
+    float: left;
+    margin-left: .6em;
+}
+
+.container_login_form, .container_cadastro_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-container {
+    position: relative;
+    margin: 50px auto;
+    width: 330px;
+    margin-bottom: 1em;
+}
+
+.input-container input {
+    font-size: 1em;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 5px 0;
+    background-color: transparent;
+    outline: none;
+}
+
+.input-container .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-container input[type="password"]:focus~.label, .input-container input[type="email"]:focus~.label,
+.input-container input[type="password"]:valid~.label, .input-container input[type="text"]:valid~.label,
+.input-container input[type="text"]:focus~.label {
+    top: -20px;
+    font-size: .8em;
+    color: var(--athena-col-link);
+}
+
+.input-container input[type="email"]:not(:placeholder-shown) ~ .label, .input-container input[type="password"]:not(:placeholder-shown) ~ .label {
+    top: -20px;
+    font-size: .8em;
+    color: var(--athena-col-link);
+}
+
+.input-container .underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--athena-col-link);
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+}
+
+.input-container input[type="password"]:focus~.underline, .input-container input[type="email"]:focus~.underline,
+.input-container input[type="text"]:focus~.underline, .input-container input[type="text"]:valid~.underline,
+.input-container input[type="password"]:valid~.underline, .input-container input[type="email"]:valid~.underline {
+    transform: scaleX(1);
+}
+
+.conteudo_esqueceu {
+    float: left;
+    margin-bottom: 2.5em;
+    margin-top: 1rem;
+}
+
+.conteudo_inteli {
+    width: 185px;
+}
+
+.container_login, .container_cadastro {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 35px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    margin-top: 2rem;
+    background-color: transparent;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    font-size: 0.75em;
+    color: #000000;
+}
+
+.botao-google:hover {
+    background-color: #000000;
+    color: white;
+}
+
+.svg-google {
+    width: 20px;
+    margin-right: .5rem;
+}
+
+.txt_login {
+    margin-top: 1em
+}
+
+@media screen and (min-width: 768px) {
+    .conteudo {
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .conteudo_logo {
+        display: none;
+        width: 70%;
+    }
+
+    .botao_primario {
+        width: 60%;
+        height: 35px;
+    }
+    
+    .botao-google {
+        width: 60%;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .conteudo {
+        background-image: url(../assets/athena_background.png);
+        background-repeat: no-repeat;
+        background-color: white;
+        background-size: 128vh;
+        box-shadow: -10px 10px 100px 0px #00000080;
+        align-items: center;
+        justify-content: center;
+        background-position: center;
+        margin: 2rem;
+        min-height: 90vh;
+    }
+
+    .conteudo_esqueceu {
+        float: left;
+        font-size: .7em;
+    }
+
+    .container_login, .container_cadastro {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .input-container input[type="password"], .input-container input[type="email"], .input-container input[type="text"] {
+        font-size: 1em;
+        width: 100%;
+        border: none;
+        border-bottom: 0.1em solid black;
+        background-color: transparent;
+        outline: none;
+    }
+
+    .input-container .label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: black;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        font-size: 0.8em;
+    }
+
+    .input-container .underline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--athena-col-link);
+        transform: scaleX(0);
+        transition: all 0.3s ease;
+    }
+}

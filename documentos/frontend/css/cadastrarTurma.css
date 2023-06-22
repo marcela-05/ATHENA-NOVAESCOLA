@@ -1,0 +1,230 @@
+.titulo {
+  background: var(--athena-bg-turmas);
+  color: white;
+  font-size: 1.5em;
+  padding: 85px 3.5em;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.form_turma{
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.conteudo_input, .form_materia{
+  width: 90%;
+}
+
+.container_login_form, .container_cadastro_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_input {
+  position: relative;
+  margin: 20px 0 40px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  color: var(--preto);
+}
+
+.form_input input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px var(--preto) solid;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  font-size: 18px;
+  color: var(--preto);
+}
+
+.form_input input:focus,
+.form_input input:valid {
+  outline: 0;
+  border-bottom-color: var(--athena-bg-turmas);
+}
+
+.form_input label {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  pointer-events: none;
+}
+
+.form_input label span {
+  opacity: 50%;
+  display: inline-block;
+  font-size: 16px;
+  min-width: 5px;
+  color: var(--preto);
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form_input input:focus+label span,
+.form_input input:valid+label span {
+  color: var(--athena-bg-turmas);
+  transform: translateY(-30px);
+  opacity: 100%;
+}
+
+.titulo_selecao_da_materia{
+  color: var(--preto);
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.8em;
+}
+
+.selecao_de_materia {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 14px;
+  color: #555;
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  color: black;
+}
+
+.selecao_de_materia:focus {
+  outline: none;
+  border: 1px solid var(--athena-bg-turmas);
+  box-shadow: 0 0 5px var(--athena-bg-turmas);
+  color: var(--athena-bg-turmas);
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  margin-right: 5px;
+  align-items: center;
+}
+
+.checkbox:checked {
+  background-color: var(--athena-bg-turmas);
+  border-color: var(--athena-bg-turmas);
+}
+
+.label {
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+
+.vincular_alunos {
+  color: var(--preto);
+  font-size: 24px;
+  text-align: center;
+}
+
+.buscar_por_nome {
+  background-color: var(--cinza);
+  color: white;
+  border: none;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 90vw;
+  outline: none;
+}
+
+.filtrar_serie {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 1em;
+  margin-left: 1em;
+  margin-top: .5em;
+}
+
+.botao_primario {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
+
+.aluno {
+  width: 90%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--athena-bg-cinza-3);
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.aluno_perfil {
+  display: flex;
+  align-items: center;
+}
+
+.aluno_imagem {
+  width: 31px;
+  margin-right: 1em;
+}
+
+.aluno_checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  margin-right: 5px;
+  align-items: center;
+}
+
+.aluno_checkbox:checked {
+  background-color: var(--cinza);
+  border-color: var(--athena-bg-turmas);
+}
+
+.aluno_link {
+  color: var(--athena-col-link);
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
+}
+
+.aluno_link:hover {
+  color: var(--athena-col-link-hover);
+}
+
+.ultimo_elemento {
+  margin-bottom: 2em;
+}
+
+@media screen and (min-width: 768px) {
+  .form_turma {
+    width: 70%;
+    display: flex;
+    margin: auto;
+  }
+}

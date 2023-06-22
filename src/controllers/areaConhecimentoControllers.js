@@ -7,7 +7,7 @@ exports.listaAreasConhecimento = function(application, req, res) {
     areaConhecimento.getAreaConhecimento((result) => {
       if(result.length == 0){
         // retorna mensagem de erro em formato html
-        res.render('html/erro', {codigoStatus: 204, tituloMensagem: 'Nenhuma área do conhecimento/assunto encontrada', mensagem: 'Se achar que isso é um erro, entre em contato.'});
+        res.redirect('/areaConhecimento/cadastrar')
       } else{
         // esse controlador chama o modelo de listagem de disciplinas
         areaConhecimento.getNomeDisciplina((disciplinas) => {

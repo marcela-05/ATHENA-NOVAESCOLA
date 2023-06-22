@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <%- include('partials/head') %>
+    <title>Athena ◆ Alunos</title>
+    <link rel="stylesheet" href="../css/listarAlunos.css">
+</head>
+<body>
+    <%- include('partials/cabecalho') %>
+
+    <main>
+        
+        <h1 class="seus_alunos">Seus Alunos</h1> 
+        <%- include('partials/libras') %>
+        <section class="alunos">
+            <div class="barra_pesquisa">
+                <input type="text" placeholder="Buscar por nome">
+                <button class= "botao_pesquisa "><img class= "icone_pesquisar" src="../assets/icone_pesquisar.png" alt= "ícone pesquisar"></button>
+            </div>
+            <br>
+            <ul class="lista_alunos">
+                <% for(let aluno of alunos) { %>
+                <li class="aluno"><img class="aluno_imagem" src="../assets/icone_aluno_perfil.png" alt="Ícone de aluno"><%= aluno.nome %></li>
+                <% } %>
+            </ul>
+            <button class="botao_primario" onclick="window.location.href='/alunos/cadastrar'">Inserir aluno</button>
+        </section>
+    </main>
+</body> 
+</html> 
