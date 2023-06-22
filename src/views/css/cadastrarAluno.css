@@ -1,5 +1,5 @@
 .novo_aluno {
-    background: var(--cinza);
+    background: #000;
     color: white;
     font-size: 1.5em;
     padding: 85px 3.5em;
@@ -55,6 +55,7 @@
 .form_assunto {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -63,7 +64,7 @@
     margin: 20px 0 40px;
     margin-left: auto;
     margin-right: auto;
-    width: 281px;
+    width: 90%;
 }
 
 .form_input input {
@@ -173,7 +174,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 10px;
-    max-width: 130px;
+    max-width: 200px;
     margin-bottom: 1em;
 }
 
@@ -224,11 +225,17 @@
 
 /* Estilos para dispositivos maiores, como tablet e notebook */
 @media screen and (min-width: 768px) {
-    .form_input{
-        width: 700px;
+    .form_assunto{
+        display: flex;
+        width: 70%;
+        margin: auto;
+    }
+
+    .form_série, .form_tags_comportamentais {
+        width: 90%;
     }
 
     .selecao_de_serie, .selecao_de_tags_comportamentais{
-        width: 700px;
+        width: 100%;
     }
 }

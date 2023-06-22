@@ -294,7 +294,7 @@ a {
 }
 
 .nav_desktop_botao {
-  color: var(--cinza);
+  color: var(--cabecalho);
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -359,14 +359,13 @@ a {
     
     /* O controle deslizante */
     .controle-deslizante {
-        --background: #28096b;
         position: absolute;
         cursor: pointer;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: var(--background);
+        background-color: var(--athena-col-nova1);
         transition: .5s;
         border-radius: 30px;
     }
@@ -380,12 +379,12 @@ a {
         left: 10%;
         bottom: 15%;
         box-shadow: inset 8px -4px 0px 0px #fff000;
-        background: var(--background);
+        background: var(--athena-col-nova1);
         transition: .5s;
     }
     
     input:checked + .controle-deslizante {
-        background-color: #522ba7;
+        background-color: var(--athena-col-nova2);
     }
     
     input:checked + .controle-deslizante::before {

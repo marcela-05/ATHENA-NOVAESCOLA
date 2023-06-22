@@ -97,18 +97,28 @@
     justify-content: space-around;
     align-items: center;
     padding: 10px;
-    max-width: 130px;
+    max-width: 200px;
     margin-bottom: 1em;
-    color: var(--preto);
+    color: #fff;
 }
 
 /* Estilos para dispositivos maiores, como tablet e notebook */
 @media screen and (min-width: 768px) {
-    .selecao_de_materia{
-        width: 700px;
+    .form_assunto {
+      width: 70%;
+      display: flex;
+      margin: auto;
     }
 
-    .form_input{
-        width: 700px;
+    .form_input {
+      width: 100%;
     }
-}
+
+    .form_disciplina {
+        width: 100%;
+    }
+
+    .selecao_de_materia {
+        width: 100%;
+    }
+  }
