@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('partials/head') %>
+    <title>Athena ◆ Cadastrar Avaliação</title>
+    <link rel="stylesheet" href="../css/cadastrarAvaliacao.css">
+    <script src="../js/check.js"></script>
+    <script src="../js/formValidacao.js"></script>
+</head>
+<body>
+    <%- include('partials/cabecalho') %>
+    <main>
+    <h1 class="cadastrar_avaliacao_titulo">Cadastrar Avaliação</h1> 
+    <%- include('partials/libras') %>
+    <form class="form_avaliacao" action="" method="POST" enctype="application/x-www-form-urlencoded">
+        <fieldset class="form_input">
+            <input type="text" id="nome-turma" name="nomeAvaliacao" required="">
+            <label for="nome-turma">
+                <span style="transition-delay:0ms">T</span><span style="transition-delay:50ms">í</span><span
+                    style="transition-delay:100ms">t</span><span style="transition-delay:150ms">u</span><span
+                    style="transition-delay:100ms">l</span><span style="transition-delay:150ms">o</span><span
+                    style="transition-delay:200ms">&nbsp;</span><span style="transition-delay:250ms">d</span><span
+                    style="transition-delay:300ms">a</span><span style="transition-delay:350ms">&nbsp;</span><span
+                    style="transition-delay:400ms">A</span><span style="transition-delay:450ms">v</span><span
+                    style="transition-delay:500ms">a</span><span style="transition-delay:550ms">l</span><span
+                    style="transition-delay:600ms">i</span><span style="transition-delay:600ms">a</span><span
+                    style="transition-delay:600ms">ç</span><span style="transition-delay:600ms">ã</span><span
+                    style="transition-delay:600ms;">o</span>
+            </label>
+        </fieldset>
+        <fieldset class="form_materia">
+            <label for="materia" class="titulo_selecao_da_materia">Disciplina</label>
+            <select id="materia" class="selecao_de_materia" name="disciplinaAvaliacao" required>
+                <option value="" selected disabled hidden>Selecione</option>
+                <% for (let disciplina of disciplinas) { %>
+                    <option value=<%= disciplina.id_disciplina %>><%= disciplina.nome %></option>
+                <% } %>
+            </select>
+        </fieldset>
+        <fieldset class="form_materia">
+            <label for="serie" class="titulo_selecao_da_materia">Série</label>
+            <select id="serie" class="selecao_de_materia" name="serieAvaliacao" required>
+                <option value="" selected disabled hidden>Selecione</option>
+                <option value="6">6º ano</option>
+                <option value="7">7º ano</option>
+                <option value="8">8º ano</option>
+                <option value="9">9º ano</option>
+            </select>
+        </fieldset>
+    
+        <div class="assuntos_abordados">
+            <div class="titulo">
+                <h2 class="assuntos_titulo">Assuntos Abordados</h2>
+                <hr class="divisor">
+            </div>
+            <div class="assuntos_lista">
+                <% for(let area of areas){ %>
+                <div class="assuntos_lista_checkbox">
+                    <input class="assuntos_checkbox" type="checkbox" id="assunto <%= area.id_area %>" value="<%= area.id_area %>">
+                    <label id="label-<%= area.id_area %>" class="assuntos_label" for="assunto <%= area.id_area %>"><%= area.nome_area %></label>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <fieldset class="form_input">
+            <input title="Quantidade total de questões da prova" type="number" id="quant-questoes" name="quantQuestoes" placeholder="  " required="" min="1" max="20" pattern="^(1?[0-9]|20)$" onchange="confereQuestoes()">
+            <label for="quant-questoes">
+                <span style="transition-delay:0ms">Q</span><span style="transition-delay:50ms">u</span><span
+                    style="transition-delay:100ms">a</span><span style="transition-delay:150ms">n</span><span
+                    style="transition-delay:100ms">t</span><span style="transition-delay:150ms">i</span><span
+                    style="transition-delay:100ms">d</span><span style="transition-delay:150ms">a</span><span
+                    style="transition-delay:100ms">d</span><span style="transition-delay:150ms">e</span><span
+                    style="transition-delay:200ms">&nbsp;</span><span style="transition-delay:250ms">d</span><span
+                    style="transition-delay:300ms">e</span><span style="transition-delay:350ms">&nbsp;</span><span
+                    style="transition-delay:400ms">Q</span><span style="transition-delay:450ms">u</span><span
+                    style="transition-delay:500ms">e</span><span style="transition-delay:550ms">s</span><span
+                    style="transition-delay:600ms">t</span><span style="transition-delay:600ms">õ</span><span
+                    style="transition-delay:600ms">e</span><span style="transition-delay:600ms">s</span>
+            </label>
+        </fieldset>
+
+        <h2 class="questoes_por_assunto_titulo">Questões por Assunto</h2>
+
+        <div class="questoes_por_assunto" id="teste"></div> 
+
+        <button type="submit" class="botao_primario botao_cadastrar">Cadastrar</button>
+    </form>
+    </main>
+</body>
+</html>

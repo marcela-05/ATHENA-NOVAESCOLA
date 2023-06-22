@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/perfil.css">
+    <script src="../js/formValidacao.js"></script>
+</head>
+
+<body>
+    <main class="conteudo_perfil">
+        <figure>
+            <img class="conteudo_perfil_logo" src="../assets/athena_logo.png" alt="Logo da Athena">
+        </figure>
+
+        <article>
+            <h1 class="conteudo_titulo_perfil">Dados do Perfil</h1>
+        </article>
+
+        <form id="formPerfil" method="post" action="/professor/disciplina" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+        <section class="conteudo_ajuste">
+            <%- include('partials/libras') %>
+            <!-- Início - seleção de foto -->
+            <fieldset class="conteudo_sua_foto">
+                <h2>Selecione uma foto</h2>
+                <img class="conteudo_sua_foto_imagem" src="../uploads/perfil-0.jfif">
+
+                <button type="button" class="conteudo_sua_foto_botao">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"
+                        class="svg-icon">
+                        <g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd"
+                            clip-rule="evenodd">
+                            <path
+                                d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z">
+                            </path>
+                            <path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path>
+                        </g>
+                    </svg>
+                    <label for="file-upload" class="conteudo_sua_foto_botao_label">Fazer Upload</label>
+                    <input type="file" id="file-upload" style="overflow: hidden; display: none;" name="fotoPerfil">
+                </button>
+            </fieldset>
+            <!-- Fim - seleção de foto -->
+
+            <!--Início - dados academicos-->
+            <fieldset class="conteudo_dados_academicos">
+                <h2>Dados Acadêmicos</h2>
+                <h3 class="conteudo_dados_academicos_subTitulo">Matéria | Área de atuação</h3>
+                <hr>
+                <div class="conteudo_dados_academicos_materia_checks">
+                    <div class="conteudo_dados_academicos_materia_checks_checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox" class="checkbox__acionar hidden" name="checkboxDisciplina" value="Matemática">
+                            <span class="checkbox__simbolo">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 28 28" height="28px"
+                                    width="28px" class="icon-checkbox" aria-hidden="true">
+                                    <path d="M4 14l8 7L24 7"></path>
+                                </svg>
+                            </span>
+                            <p class="checkbox__textwrapper">Matemática</p>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" class="checkbox__acionar hidden" name="checkboxDisciplina" value="Português">
+                            <span class="checkbox__simbolo">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 28 28" height="28px"
+                                    width="28px" class="icon-checkbox" aria-hidden="true">
+                                    <path d="M4 14l8 7L24 7"></path>
+                                </svg>
+                            </span>
+                            <p class="checkbox__textwrapper">Português</p>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" class="checkbox__acionar hidden" name="checkboxDisciplina" value="História">
+                            <span class="checkbox__simbolo">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 28 28" height="28px"
+                                    width="28px" class="icon-checkbox" aria-hidden="true">
+                                    <path d="M4 14l8 7L24 7"></path>
+                                </svg>
+                            </span>
+                            <p class="checkbox__textwrapper">História</p>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" class="checkbox__acionar hidden" name="checkboxDisciplina" value="Geografia">
+                            <span class="checkbox__simbolo">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 28 28" height="28px"
+                                    width="28px" class="icon-checkbox" aria-hidden="true">
+                                    <path d="M4 14l8 7L24 7"></path>
+                                </svg>
+                            </span>
+                            <p class="checkbox__textwrapper">Geografia</p>
+                        </label>
+                    </div>
+                    <div class="conteudo_dados_academicos_materia_checks_checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox" class="checkbox__acionar hidden" name="checkboxDisciplina" value="Artes">
+                            <span class="checkbox__simbolo">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 28 28" height="28px"
+                                    width="28px" class="icon-checkbox" aria-hidden="true">
+                                    <path d="M4 14l8 7L24 7"></path>
+                                </svg>
+                            </span>
+                            <p class="checkbox__textwrapper">Artes</p>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" class="checkbox__acionar hidden" name="checkboxDisciplina" value="Ciências">
+                            <span class="checkbox__simbolo">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 28 28" height="28px"
+                                    width="28px" class="icon-checkbox" aria-hidden="true">
+                                    <path d="M4 14l8 7L24 7"></path>
+                                </svg>
+                            </span>
+                            <p class="checkbox__textwrapper">Ciências</p>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" class="checkbox__acionar hidden" name="checkboxDisciplina" value="Inglês">
+                            <span class="checkbox__simbolo">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 28 28" height="28px"
+                                    width="28px" class="icon-checkbox" aria-hidden="true">
+                                    <path d="M4 14l8 7L24 7"></path>
+                                </svg>
+                            </span>
+                            <p class="checkbox__textwrapper">Inglês</p>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" class="checkbox__acionar hidden" name="checkboxDisciplina" value="Educação Física">
+                            <span class="checkbox__simbolo">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 28 28" height="28px"
+                                    width="28px" class="icon-checkbox" aria-hidden="true">
+                                    <path d="M4 14l8 7L24 7"></path>
+                                </svg>
+                            </span>
+                            <p class="checkbox__textwrapper">Educação Física</p>
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+            <!--Fim - dados academicos-->
+            
+        </section>
+        
+
+        <button type="submit" class="botao_primario">Finalizar Cadastro</button>
+        </form>
+        
+
+        <article class="imagens">
+            <figure>
+                <img class="conteudo_novaEscola" src="../assets/nova_escola_logo.png" alt="Logo da Nova Escola">
+            </figure>
+            
+            <figure>
+                <img class="conteudo_inteli" src="../assets/inteli_logo.png" alt="Logo do Inteli">
+            </figure>
+        </article>
+    </main>
+</body>
+
+</html>

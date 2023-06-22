@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus dados</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/meusDados.css">
+</head>
+<body>
+    <h1 class="dados_titulo">Meus Dados</h1>
+    <%- include('partials/libras') %>
+    <img class="dados_imagem" src="../assets/julia_perfil.png" alt="Foto de perfil">
+    <a class="dados_editar_foto" href="#">Editar foto</a>
+
+    <div class="formulario">
+        <fieldset class="conteudo_input">
+            <div class="input-container">
+                <input type="email" id="input-email" name="emailProfessor" placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="email inválido" required="">
+                <label for="input-email" class="label">Nome</label>
+                <div class="underline"></div>
+            </div>
+        </fieldset>
+        <fieldset class="conteudo_input">
+            <div class="input-container">
+                <input type="email" id="input-email" name="emailProfessor" placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="email inválido" required="">
+                <label for="input-email" class="label">Email</label>
+                <div class="underline"></div>
+            </div>
+        </fieldset>
+    </div>
+
+    <button class="botao_primario trocar_senha">Trocar senha</button>
+    <button class="botao_primario editar_dados">Editar Dados Acadêmicos</button>
+
+    <div class="botoes">
+        <button class="botao_primario botao_cinza">Sair</button>
+        <button class="botao_primario botao_cinza">Deletar Conta</button>
+    </div>
+</body>
+</html>

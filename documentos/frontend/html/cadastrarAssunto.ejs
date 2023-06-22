@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('partials/head') %>
+    <title>Athena ◆ Cadastrar Assunto de Avaliação ◆ Cadastrar Área de Conhecimento</title>
+    <link rel="stylesheet" href="../css/assunto.css">
+</head>
+
+<body>
+    <%- include('partials/cabecalho') %>
+    <main>
+        <h1 class="tituloAssunto">Cadastrar Assunto</h1>
+        <%- include('partials/libras') %>
+        <form class="form_assunto" action="" method="post" enctype="application/x-www-form-urlencoded">
+            <fieldset class="form_input">
+                <input type="text" id="titulo-assunto" name="nomeArea" required="">
+                <label for="titulo-assunto">
+                    <span style="transition-delay:0ms">T</span><span style="transition-delay:50ms">í</span><span
+                        style="transition-delay:100ms">t</span><span style="transition-delay:150ms">u</span><span
+                        style="transition-delay:200ms">l</span><span style="transition-delay:250ms">o</span><span
+                        style="transition-delay:300ms">&nbsp;</span><span style="transition-delay:350ms">d</span><span
+                        style="transition-delay:400ms">o</span><span style="transition-delay:450ms">&nbsp;</span><span
+                        style="transition-delay:500ms">A</span><span style="transition-delay:550ms">s</span><span
+                        style="transition-delay:600ms">s</span><span style="transition-delay:650ms">u</span><span
+                        style="transition-delay:700ms">n</span><span style="transition-delay:750ms">t</span><span
+                        style="transition-delay:800ms">o</span>
+                </label>
+            </fieldset>
+
+            <fieldset class="form_disciplina">
+                <h4 class="titulo_selecao_de_materia">Selecione a matéria</h4>
+                <select class="selecao_de_materia" name="disciplina">
+                    <% for (let disciplina of disciplinas) { %>
+                        <option value=<%= disciplina.id_disciplina %>><%= disciplina.nome %></option>
+                    <% } %>
+                </select>
+            </fieldset>
+            <% if (disciplinas.length >= 1) { %>
+                <button class="botao_primario" type="submit">Cadastrar</button>
+            <% } else { %>
+                <button class="botao_primario" type="button" disabled>Cadastrar</button>
+            <% } %>
+        </form>
+        
+    </main>
+</body>
+
+</html>

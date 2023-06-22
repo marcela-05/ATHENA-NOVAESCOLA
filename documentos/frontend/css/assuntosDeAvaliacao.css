@@ -1,0 +1,99 @@
+.assuntoAvaliacao {
+    background: var(--athena-bg-nova1);
+    color: white;
+    font-size: 1.5em;
+    padding: 85px 3.5em;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.botao_primario {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    max-width: 200px;
+    margin-bottom: 1em;
+    color: white;
+}
+
+.assuntos {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.assuntos_de_avaliacao {
+    display: flex;
+    border: 1px solid var(--preto);
+    border-radius: 15px;
+    width: 320px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.assuntos_de_avaliacao_imagem {
+    width: 125px;
+    height: auto;
+    padding: .5em .2em .5em .2em;
+}
+
+.assuntos_de_avaliacao_texto {
+    margin-left: 10px;
+    width: 200px;
+    color: var(--preto);
+}
+
+.assuntos_de_avaliacao_texto h3 {
+    color: var(--preto);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    -webkit-line-clamp: 1;
+}
+
+.assuntos_de_avaliacao_visualizar {
+    font-size: 15px;
+    margin-bottom: -1em;
+    color: var(--preto);
+}
+
+.assuntos_de_avaliacao_lixeira {
+    content: var(--imagem-lixeira);
+    max-width: 1.5em;
+    max-height: 2em;
+    margin-bottom: 100px;
+}
+
+.assuntos_de_avaliacao_lixeira:hover {
+    content: var(--imagem-lixeira-aberta);
+    max-height: 1.9em;
+}
+
+
+/* Estilos para dispositivos maiores, como tablet e notebook */
+@media screen and (min-width: 768px) {
+    .assuntos {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 80%;
+        justify-content: space-between;
+        margin: 0 auto;
+    }
+
+    .assuntos_de_avaliacao {
+        margin-bottom: 1em;
+    }
+  
+    .assuntoAvaliacao {
+        margin-bottom: 1em;
+    }
+}

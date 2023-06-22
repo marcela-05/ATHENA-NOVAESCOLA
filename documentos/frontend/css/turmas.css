@@ -1,0 +1,235 @@
+.suas_turmas {
+  background: var(--athena-bg-turmas);
+  color: white;
+  font-size: 1.5em;
+  padding: 85px 3.5em;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.filtro {
+  width: 75%;
+  border-radius: 10px;
+  background-color: var(--cor-do-filtro);
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+
+.filtro_botao {
+    display: none;
+}
+
+.filtro_botao:checked ~ .filtro_lista {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+}
+
+.filtro_header {
+  cursor: pointer;
+  display: flex;
+  color: var(--branco);
+  display: flex;
+  justify-content: space-between;
+}
+
+.filtro_imagem {
+    width: 16px;
+}
+
+.filtro_lista {
+  display: none;
+  padding: 10px;
+}
+
+.filtro_lista_checkbox {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin-top: 1em;
+}
+
+.filtro {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  outline: auto;
+  outline-color: var(--branco-verdadeiro);
+  cursor: pointer;
+  background-color: transparent;
+  margin-right: 5px;
+  align-items: center;
+}
+
+.checkbox:checked {
+  background-color: var(--athena-bg-turmas);
+  border-color: var(--athena-bg-turmas);
+}
+
+.label {
+  cursor: pointer;
+  color: var(--branco-verdadeiro);
+  text-align: center;
+}
+
+.turmas {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  color: #E9E9E9;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card_turma{
+  border-radius: 8px;
+  box-sizing: border-box;
+  border: 1px solid #a6a9ad;
+  position: relative;
+  transition: .3s ease;
+  background-color: #fff;
+  margin-bottom: 2em;
+}
+
+.card_turma_tag {
+  color: #282828;
+  background: #fff;
+  border-radius: 12px;
+  font-size: 14px;
+  padding: 5px 10px;
+  line-height: 16px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 2;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card_turma_img{
+  border-radius: 8px 8px 0 0;
+  height: 150px;
+  position: relative;
+}
+
+.card_turma_bg{
+  background-color: rgba(0,0,0,.2);
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
+.card_img{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
+.card_turma_info{
+  padding: 20px;
+  color: #000;
+}
+
+.card_txt{
+  font-size: 14px;
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 42px;
+  max-width: 100%;
+  -webkit-line-clamp: 2;
+  margin-bottom: -1.5em;
+}
+
+.grafico {
+  background-color: var(--athena-bg-cinza-4);
+  border: 2px;
+  width: 246px;
+  height: 147px;
+  border-radius: 15px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3em;
+}
+
+.botao_primario {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  max-width: 130px;
+  margin-bottom: 1em;
+  color: white;
+}
+
+.cadastrar_nova_turma {
+    background: var(--athena-bg-link);
+    outline: none;
+    border: none;
+    color: white;
+    width: 200px;
+    border: 1px solid var(--preto);
+    border-radius: 8px;
+    height: 43px;
+    margin-top: 1.3rem;
+    transition: all ease .4s;
+    box-shadow: 0px 2px 4px var(--box-shadow);
+}
+
+.cadastrar_nova_turma:hover {
+  background: var(--athena-bg-turmas);
+  color: #fff;
+}
+
+.botao_cadastrar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+@media screen and (min-width: 1024px) {
+  .filtro{
+    width: 60%;
+  }
+  .turmas_cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+    flex-wrap: wrap;
+  }
+
+  .card_turma{
+    margin: 1em;
+    width: 45%;
+  }
+}

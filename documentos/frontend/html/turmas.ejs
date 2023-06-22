@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('partials/head') %>
+    <title>Athena ◆ Suas Turmas</title>
+    <link rel="stylesheet" href="../css/turmas.css">
+</head>
+<body>
+    <%- include('partials/cabecalho') %>
+    <main>
+        <h1 class="suas_turmas">Suas Turmas</h1> 
+        <%- include('partials/libras') %>
+        <div class="filtro">
+            <input class="filtro_botao" type="checkbox" id="filtro">
+            <label for="filtro" class="filtro_header">Filtrar por matéria</label>
+            <div class="filtro_lista">
+                <% for (let profDisciplina of profDisciplinas) { %>
+                <div class="filtro_lista_checkbox">
+                    <input class="checkbox" type="checkbox" id="<%= profDisciplina.nome %>">
+                    <label class="label" for="<%= profDisciplina.nome%>"><%= profDisciplina.nome %></label>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+        <section class="turmas">
+            <div class="turmas_cards">
+                <% for (let i = 0; i < turmas.length; i++) { %>
+                <article class="card_turma">
+                    <p class="card_turma_tag"><a href="/turmas/editar?idTurma=<%= turmas[i].id_turma %>">Editar</a></p>
+                    <a href="/turmas?idTurma=<%= turmas[i].id_turma %>">
+                        <figure class="card_turma_img">
+                            <div class="card_turma_bg"></div>
+                            <img src="https://nova-escola-producao.s3.amazonaws.com/YVwdYKeDYC8fSVGKX9fs8mzac8aRM67TaX5aqdj8bM4p4jd4Zd82KtnJ2saD/professora-sala-aula.jpg" alt="" class="card_img">
+                        </figure>
+                        <div class="card_turma_info">
+                            <p>[<%= disciplinas[i].nome %>] <%= turmas[i].nome %></p>
+                            <p class="card_txt">Média Geral: XX</p>
+                            <p class="card_txt">Defasagem Média: XX</p>
+                        </div>
+                    </a>
+                </article>
+                <% } %>
+            </div>
+        </section>
+
+        <!-- <p class="grafico">Gráfico da Média</p>
+        <button class="botao_primario">Detalhar</button>
+        <p class="grafico">Gráfico da Defasagem</p>
+        <button class="botao_primario">Detalhar</button> -->
+        
+        <div class="botao_cadastrar">
+            <button onclick="window.location.href='/turmas/cadastrar'" class="cadastrar_nova_turma">Cadastrar nova turma</button>
+        </div>
+    </main>
+</body>
+</html>
