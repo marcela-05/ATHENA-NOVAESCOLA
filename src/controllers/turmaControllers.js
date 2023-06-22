@@ -18,7 +18,7 @@ exports.listaTurmas = function(application, req, res) {
               if(req.query.tipoConsulta == 'json'){
                 res.json({turma: result[0], disciplina: disciplina[0], alunos: alunos});
               } else {
-                res.render('html/turma', {turma: result[0], disciplina: disciplina[0], alunos: alunos});
+                res.render('html/turma', {turma: result[0], disciplina: disciplina[0], alunos: alunos, urlFoto: req.session.urlFoto});
               }
             }, req.query.idTurma);
           }, req.query.idTurma);
@@ -41,7 +41,7 @@ exports.listaTurmas = function(application, req, res) {
             if(req.query.tipoConsulta == 'json'){
               res.json({turmas: result, disciplinas: disciplinas});
             } else {
-              res.render('html/turmas', {turmas: result, disciplinas: disciplinas, profDisciplinas: req.session.profDisciplinas});
+              res.render('html/turmas', {turmas: result, disciplinas: disciplinas, profDisciplinas: req.session.profDisciplinas, urlFoto: req.session.urlFoto});
             }
           }, '', req.session.idProfessor);
         }
@@ -65,9 +65,9 @@ module.exports.cadastra = function(application, req, res) {
       alunos.getAlunos((alunos) => {
         // verifica se o resultado da consulta é vazio. Se for, redireciona para a página de turmas
         if(result.length == 0){
-          res.render('html/cadastrarTurma', {disciplinas: '', alunos: alunos});
+          res.render('html/cadastrarTurma', {disciplinas: '', alunos: alunos, urlFoto: req.session.urlFoto});
         } else{
-          res.render('html/cadastrarTurma', {disciplinas: result, alunos: alunos});
+          res.render('html/cadastrarTurma', {disciplinas: result, alunos: alunos, urlFoto: req.session.urlFoto});
         }
       }, req.session.idProfessor)
 
@@ -152,7 +152,7 @@ module.exports.atualiza = function(application, req, res) {
                 turma[0].idDisciplina = disciplina[0].id_disciplina
 
                 // renderiza a página de edição de turma, passando as disciplinas, os alunos e a turma que será editada
-                res.render('html/editarTurma', {disciplinas: result, alunos: alunos, turma: turma[0]});
+                res.render('html/editarTurma', {disciplinas: result, alunos: alunos, turma: turma[0], urlFoto: req.session.urlFoto});
               }, req.query.idTurma)
             }, req.query.idTurma)
             

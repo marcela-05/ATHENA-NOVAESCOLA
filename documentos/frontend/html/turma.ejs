@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html lang="pt-br"> 
+<head> 
+    <%- include('partials/head') %>
+    <title>Athena ◆ Turma - Detalhe</title>
+    <link rel="stylesheet" href="../css/turma.css"> 
+    <script src="../js/planosDeAula.js" defer></script>
+</head> 
+<body>
+    <%- include('partials/cabecalho') %>
+
+    <main>
+        <h1 class="materia">[<%= disciplina.nome.toUpperCase() %>] <%= turma.nome %></h1>
+        <%- include('partials/libras') %>
+        <input type="hidden" id="idDisciplina" value="<%= disciplina.id_disciplina %>">
+        <p class="media">Média Geral: XX</p> 
+        <p class="defasagem">Defasagem Média: XX</p> 
+
+        <h2 class="titulo">Sobre a Turma</h2>
+        <p class="grafico">Gráfico da Média</p>
+        <button class="botao_primario">Detalhar</button>
+        <p class="grafico">Gráfico da Defasagem</p>
+        <button class="botao_primario">Detalhar</button>
+        <h2 class="titulo">Alunos</h2>
+        <ul class="lista_alunos">
+            <% for (let aluno of alunos) { %>
+            <li class="aluno"><img class="aluno_imagem" src="/assets/icone_aluno_perfil.png" alt="Ícone de aluno"><%= aluno.nome_aluno %></li>
+            <% } %>
+        </ul>
+        <h2 class="titulo" id="titulo">Planos de Aula Recomendados</h2>
+
+        <div class="planos" id="planos"></div>
+
+        <input type="hidden" id="serie" value="<%= turma.serie %>º ano">
+    </main>
+
+    <button class="botao_primario" onclick="window.location.href='/turmas/editar?idTurma=<%= turma.id_turma %>'">Editar</button>
+</body> 
+</html> 

@@ -12,6 +12,7 @@
 
     <main>
         <h1 class="materia">[<%= disciplina.nome.toUpperCase() %>] <%= turma.nome %></h1>
+        <%- include('partials/libras') %>
         <input type="hidden" id="idDisciplina" value="<%= disciplina.id_disciplina %>">
         <p class="media">Média Geral: XX</p> 
         <p class="defasagem">Defasagem Média: XX</p> 
