@@ -68,7 +68,6 @@
     --imagem-seta: url('../assets/seta_baixo_branca.png');
     --imagem-lixeira: url('../assets/lixeiraBranca.png');
     --imagem-lixeira-aberta: url('../assets/lixeiraBrancaAberta.png');
-    --cinza: var(--athena-col-terciaria);
     --cabecalho: var(--athena-col-nova1);
 }
 
