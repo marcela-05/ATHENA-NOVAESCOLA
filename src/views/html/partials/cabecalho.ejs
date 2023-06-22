@@ -16,10 +16,7 @@
                 <ul class="nav_lista_turmas">
                     <hr>
                     <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_cadastrar_nova_turma.png"
-                            alt="Ícone de cadastro de turma"><a href="/turmas/cadastrar">Cadastrar Nova Turma</a></li>
-                    <hr class="quebra_linha">
-                    <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_plano_de_aula.png"
-                            alt="Ícone do plano de aula"><a href="#">Planos de Aulas</a></li>
+                            alt="Ícone de cadastro de turma"><a href="/turmas/cadastrar">Cadastrar Turma</a></li>
                     <hr class="quebra_linha">
                     <li class="elemento"><img class="nav_lista_icone" src="../assets/icone_ver_todas_turmas.png"
                             alt="Ícone para ver todas as turmas"><a href="/turmas">Ver Todas</a></li>
@@ -72,7 +69,11 @@
         </ul>
 
         <figure><a href="/home"><img class="logo" src="../assets/logo athena 2.png" alt="Logo da Athena"></a></figure>
-        <figure><img class="perfil" src="../assets/julia_perfil.png" alt="Foto de Perfil"></figure>
+        <% if(urlFoto) { %>
+            <figure><img class="perfil" src="<%= urlFoto %>" alt="Foto de Perfil"></figure>
+        <% } else {%>
+            <figure><img class="perfil" src="../uploads/perfil-0.jfif" alt="Foto de Perfil"></figure>
+        <% } %>
     </nav>
     <!-- fim - cabeçalho mobile -->
 
@@ -87,8 +88,7 @@
             <li class="nav_desktop_dropdown">
                 <button class="nav_desktop_botao">Turmas</button>
                 <div class="nav_desktop_conteudo_dropdown">
-                    <a class="link_desktop" href="/turmas/cadastrar">Cadastrar Nova Turma</a>
-                    <a class="link_desktop" href="#">Planos de Aulas</a>
+                    <a class="link_desktop" href="/turmas/cadastrar">Cadastrar Turma</a>
                     <a class="link_desktop" href="/turmas">Ver Todas</a>
                 </div>
             </li>
@@ -107,14 +107,19 @@
                     <a class="link_desktop" href="/alunos/verTodos">Ver Todos</a>
                 </div>
             </li>
-       </ul>
+        </ul>
 
-       <div style="display: inline-flex; align-items: center; margin-right: 1em;">
-            <figure><img class="perfil_desktop" src="../assets/julia_perfil.png" alt="Foto de Perfil"></figure>
-            <label class="caixa-selecao">
-                <input type="checkbox" id="checkbox_dark_mode">
-                <span class="controle-deslizante"></span>
-            </label>
+        <div style="display: inline-flex; align-items: center; margin-right: 1em;">
+        <% if(urlFoto) { %>
+            <figure><img class="perfil" src="<%= urlFoto %>" alt="Foto de Perfil"></figure>
+        <% } else {%>
+            <figure><img class="perfil" src="../uploads/perfil-0.jfif" alt="Foto de Perfil"></figure>
+        <% } %>
+
+        <label class="caixa-selecao">
+            <input type="checkbox" id="checkbox_dark_mode">
+            <span class="controle-deslizante"></span>
+        </label>
         </div>
     </nav> 
     <!-- fim - cabeçalho desktop -->

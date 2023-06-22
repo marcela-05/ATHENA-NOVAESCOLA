@@ -10,8 +10,9 @@
 
 .filtro {
   width: 92vw;
-  background-color: var(--cinza);
+  background-color: var(--preto);;
   padding: 10px;
+  border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1em;
@@ -31,7 +32,7 @@
   cursor: pointer;
   display: flex;
   gap: 30vw;
-  color: white;
+  color: var(--branco);
 }
 
 .filtro_imagem {
@@ -182,18 +183,19 @@
 
 @media screen and (min-width: 1024px) {
   .filtro{
-    width: 90%;
+    width: 60%;
   }
+
   .avaliacoes_cards{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 95%;
+    width: 70%;
     flex-wrap: wrap;
   }
 
   .card_avaliacao{
     margin: 1em;
-    width: 30%;
+    width: 40%;
   }
 }

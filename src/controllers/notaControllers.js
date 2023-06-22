@@ -62,7 +62,7 @@ exports.cadastra = function(application, req, res) {
             aluno.getAlunos((alunos) => {
                 blocos.getBlocos((blocos) => {
                     // renderiza a página de inserção de resultados, passando os alunos e blocos de questões como parâmetro
-                    res.render('html/inserirResultados', {alunos: alunos, blocos: blocos})
+                    res.render('html/inserirResultados', {alunos: alunos, blocos: blocos, urlFoto: req.session.urlFoto})
                 }, req.query.idAvaliacao)
             }, req.session.idProfessor)
         }

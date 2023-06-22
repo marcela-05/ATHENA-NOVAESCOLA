@@ -1,5 +1,9 @@
+.alunos{
+  width: 70%;
+  margin: auto;
+}
 .seus_alunos {
-    background: var(--cinza);
+    background: #000;
     color: white;
     font-size: 1.5em;
     padding: 85px 3.5em;
@@ -37,7 +41,7 @@
 
 .aluno {
   background: var(--athena-bg-alunos);
-  width: 96%;
+  width: 100%;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -56,8 +60,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 1em;
-  margin-left: 8px;
+  margin-top: 1em;
 }
 
 input[type="text"] {
@@ -77,35 +80,10 @@ input[type="text"] {
   border-radius: 4px;
   cursor: pointer;
   margin-left: 1em;
-  margin-right: 1em;
-  width: 20px;
+  width: 18px;
 }
 
 
 .icone_pesquisar {
-  width: 20px;
-}
-
-@media (max-width: 768px) {
-  .barra_pesquisa {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    padding: 1em;
-    margin-left: 8px;
-  }
-
-  .botao_pesquisa {
-    margin-left: 1em;
-    margin-top: auto;
-    margin-right: 1em;
-  }
-
-  input[type="text"] {
-    width: 100%;
-    margin-right: 0;
-    margin-top: 8px;
-  }
-
+  width: 18px;
 }

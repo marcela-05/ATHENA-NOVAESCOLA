@@ -1,6 +1,25 @@
 const bodyParser = require('body-parser');
-const e = require('express');
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
+const multer = require('multer');
+
+// Configuração de armazenamento de arquivos com multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+      cb(null, 'src/views/uploads/')
+  },
+  filename: function (req, file, cb) {
+      // Extração da extensão do arquivo original:
+      const extensaoArquivo = file.originalname.split('.')[1];
+
+      // Cria um código randômico que será o nome do arquivo
+      const novoNomeArquivo = file.originalname.split('.')[0] + '-' + req.session.idProfessor;
+
+      // Indica o novo nome do arquivo:
+      cb(null, `${novoNomeArquivo}.${extensaoArquivo}`)
+  }
+});
+
+const upload = multer({ storage });
 
 
 // Essa função é responável por ler a rota inserida e, a partir dela, direcionar para um controlador
@@ -124,7 +143,8 @@ module.exports = function(application){
     });
 
     // retorna controlador para vincular professor com disciplina
-    application.post('/professor/disciplina', urlencodedParser, function(req, res){
+    application.post('/professor/disciplina', upload.single('fotoPerfil'), function(req, res){
+      req.session.urlFoto = '/uploads/' + req.file.filename
       application.src.controllers.professorControllers.vinculaDisciplina(
         application, req, res
       );
@@ -489,7 +509,7 @@ module.exports = function(application){
     // renderiza página principal
     application.get('/home', (req, res) => {
       if (req.session.autorizado) {
-        res.render('html/index', {nome: `${req.session.nomeProfessor}`});
+        res.render('html/index', {nome: `${req.session.nomeProfessor}`, urlFoto: req.session.urlFoto});
       } else {
         res.redirect('/')
       }
@@ -593,5 +613,12 @@ module.exports = function(application){
           application, req, res
         );
       }
+    });
+
+    // logout
+    application.get('/logout', function(req, res){
+      req.session.destroy(function(err){
+        res.redirect('/');
+      });
     });
   }

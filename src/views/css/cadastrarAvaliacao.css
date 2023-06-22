@@ -177,6 +177,8 @@ input[type="number"]:not(:placeholder-shown)~label span {
   height: 16px;
   border-radius: 3px;
   outline: auto;
+  outline-style: hidden;
+  outline-color: var(--preto);
   cursor: pointer;
   background-color: white;
   margin-right: 5px;
@@ -246,7 +248,8 @@ input[type="number"]:not(:placeholder-shown)~label span {
 }
 
 .assunto_input::placeholder {
-  color: var(--titulo-do-input);
+  color: white;
+  opacity: 80%;
 }
 
 
@@ -262,6 +265,19 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-content: center;
   margin-right: auto;
   margin-left: auto;
+  max-width: 200px;
   margin-bottom: 3em;
   color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+    .form_avaliacao {
+      width: 70%;
+      display: flex;
+      margin: auto;
+    }
+
+    .divisor{
+      width: 100%;
+    }
 }

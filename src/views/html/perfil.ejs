@@ -20,7 +20,7 @@
             <h1 class="conteudo_titulo_perfil">Dados do Perfil</h1>
         </article>
 
-        <form method="post" action="/professor/disciplina" enctype="application/x-www-form-urlencoded">
+        <form method="post" action="/professor/disciplina" enctype="multipart/form-data">
         <section class="conteudo_ajuste">
 
             <!-- Início - seleção de foto -->
@@ -40,7 +40,7 @@
                         </g>
                     </svg>
                     <label for="file-upload" class="conteudo_sua_foto_botao_label">Fazer Upload</label>
-                    <input type="file" id="file-upload" style="display: none;">
+                    <input type="file" id="file-upload" style="display: none;" name="fotoPerfil">
                 </button>
             </fieldset>
             <!-- Fim - seleção de foto -->
