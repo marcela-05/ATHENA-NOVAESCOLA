@@ -63,7 +63,11 @@
 .assuntos_de_avaliacao_visualizar {
     font-size: 15px;
     margin-bottom: -1em;
-    color: var(--preto);
+    color: rgb(75, 75, 253);
+}
+
+.assuntos_de_avaliacao_visualizar:hover {
+    color: rgb(110, 110, 255);
 }
 
 .assuntos_de_avaliacao_lixeira {
