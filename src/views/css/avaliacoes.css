@@ -10,7 +10,7 @@
 
 .filtro {
   width: 92vw;
-  background-color: var(--preto);;
+  background-color: var(--cor-do-filtro);
   padding: 10px;
   border-radius: 10px;
   margin-left: auto;
@@ -41,7 +41,6 @@
 
 .filtro_lista {
   display: none;
-  background-color: var(--cinza);
   padding: 10px;
 }
 
@@ -65,21 +64,22 @@
   width: 16px;
   height: 16px;
   border-radius: 3px;
-  outline: none;
+  outline: auto;
+  outline-color: var(--branco-verdadeiro);
   cursor: pointer;
-  background-color: white;
+  background-color: transparent;
   margin-right: 5px;
   align-items: center;
 }
 
 .checkbox:checked {
-  background-color: var(--athena-bg-turmas);
-  border-color: var(--athena-bg-turmas);
+  background-color: var(--athena-bg-avaliacao);
+  border-color: var(--athena-bg-avaliacao);
 }
 
 .label {
   cursor: pointer;
-  color: white;
+  color: var(--branco-verdadeiro);
   text-align: center;
 }
 
