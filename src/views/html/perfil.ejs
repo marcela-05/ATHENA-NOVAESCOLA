@@ -8,6 +8,7 @@
     <title>Perfil</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/perfil.css">
+    <script src="../js/formValidacao.js"></script>
 </head>
 
 <body>
@@ -20,13 +21,13 @@
             <h1 class="conteudo_titulo_perfil">Dados do Perfil</h1>
         </article>
 
-        <form method="post" action="/professor/disciplina" enctype="multipart/form-data">
+        <form id="formPerfil" method="post" action="/professor/disciplina" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
         <section class="conteudo_ajuste">
             <%- include('partials/libras') %>
             <!-- Início - seleção de foto -->
             <fieldset class="conteudo_sua_foto">
                 <h2>Selecione uma foto</h2>
-                <img class="conteudo_sua_foto_imagem" src="../assets/persona.jpg">
+                <img class="conteudo_sua_foto_imagem" src="../uploads/perfil-0.jfif">
 
                 <button type="button" class="conteudo_sua_foto_botao">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"
@@ -40,7 +41,7 @@
                         </g>
                     </svg>
                     <label for="file-upload" class="conteudo_sua_foto_botao_label">Fazer Upload</label>
-                    <input type="file" id="file-upload" style="display: none;" name="fotoPerfil">
+                    <input type="file" id="file-upload" style="overflow: hidden; display: none;" name="fotoPerfil">
                 </button>
             </fieldset>
             <!-- Fim - seleção de foto -->

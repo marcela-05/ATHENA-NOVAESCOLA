@@ -38,3 +38,41 @@ function confereQuestoes(){
         total.setCustomValidity('');
     }
 }
+
+// função que valida se o arquivo foi selecionado
+function validaImagem() {
+    var fileInput = document.getElementById('file-upload');
+    var file = fileInput.files[0];
+    
+    if (!file) {
+      alert("Selecione uma imagem para o seu perfil")
+      return false
+    }
+    return true
+}
+
+// função que valida se o checkbox foi selecionado
+function checkedDisciplina() {
+    var checkboxes = document.querySelectorAll('input[name="checkboxDisciplina"]');
+    
+    // verifica se há algum checkbox selecionado
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            return true;
+        }
+    }
+
+    alert("Selecione pelo menos uma disciplina");
+    return false;
+  }
+  
+function handleSubmit(event) {
+    event.preventDefault(); // Evita o envio padrão do formulário
+
+    // Verifica se nenhum alert foi exibido nas funções anteriores
+    if (validaImagem() == true && checkedDisciplina() == true) {
+        // Nenhum alert foi exibido, então você pode enviar o formulário
+        document.getElementById("formPerfil").action = "/professor/disciplina";
+        document.getElementById("formPerfil").submit();
+    }
+  }
