@@ -1,7 +1,7 @@
 # Inteli - Instituto de Tecnologia e Liderança 
 
 <p align="center">
-<a href= "https://www.inteli.edu.br/"><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0"></a>
+<a href= "https://www.inteli.edu.br/"><img src="https://s3.amazonaws.com/gupy5/production/companies/26702/career/63484/images/2022-04-28_16-56_logo.png" alt="Inteli - Instituto de Tecnologia e Liderança" width="200px"></a>
 </p>
 
 # Athena
@@ -42,6 +42,10 @@ Este projeto nasceu de uma colaboração entre o Inteli e a organização Nova E
 A *Athena* é uma aplicação web que fornece o gerenciamento prático, acessível e dinâmico das turmas, das avaliações e dos alunos do professor utilizador. Nela, o usuário pode identificar quais as principais dores de cada turma e aluno, a partir da submissão de dados das avaliações.
 
 Através desses dados, a aplicação fornece gráficos intuitivos para o acompanhamento da aprendizagem dos seus alunos, além de recomendar conteúdos pedagógicos (planos de aulas criados pela Nova Escola) para o professor, de acordo com as dificuldades identificadas.
+
+Para ver mais, veja nossos vídeos de apresentação:
+
+[vídeos](./imagens/gravacao/)
 
 ## 📁 Estrutura de pastas
 
