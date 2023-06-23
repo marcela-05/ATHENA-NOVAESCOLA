@@ -31,9 +31,11 @@
 
 ## 📝 Descrição
 
-<sub>Página principal da aplicação web *Athena* na versão mobile:</sub>
+<div align="center">
+  <sub>Página principal na versão mobile</sub>
 
-![Página Principal versão Mobile](./imagens/homepageMobile.png)
+  <img src="./imagens/homepageMobile.png">
+</div>
 
 Este projeto nasceu de uma colaboração entre o Inteli e a organização Nova Escola, cujo principal objetivo é a construção de um sistema que apoie professores da rede pública no diagnóstico da aprendizagem dos seus estudantes e que recomende conteúdos pedagógicos após a avaliação. Nesse viés, a equipe Prometheus, a partir dessa meta, construiu a *Athena*. 
 
