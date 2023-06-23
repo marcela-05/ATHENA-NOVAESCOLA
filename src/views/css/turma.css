@@ -158,8 +158,8 @@
 .grafico {
     background-color: var(--athena-bg-cinza-4);
     border: 2px;
-    width: 246px;
-    height: 147px;
+    width: 10em;
+    height: 5em;
     border-radius: 15px;
     text-align: center;
     align-items: center;

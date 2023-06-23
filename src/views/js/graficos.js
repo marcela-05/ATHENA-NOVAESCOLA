@@ -243,6 +243,7 @@ $(document).ready(() => {
     function arrumaGraficoGeral() {
         if ($('#grafico_avaliacao')) {
             $('#grafico_avaliacao').remove()
+            $('#defasagem_avaliacao').remove()
         }
         grafico_avaliacao()
     }
@@ -250,6 +251,7 @@ $(document).ready(() => {
     function arrumaGraficoArea() {
         if ($('#grafico_area')) {
             $('#grafico_area').remove()
+            $('#defasagem_area').remove()
         }
         grafico_area()
     }
@@ -291,6 +293,7 @@ $(document).ready(() => {
                 }
             }
         });
+        $('#grafico_avaliacao').after(`<h3 class="grafico" id="defasagem_avaliacao">Defasagem = ${calculoDaDefasagem(QuantidadeDeAcertos)}</h3>`)
     }
 
     function grafico_media() {
@@ -325,6 +328,7 @@ $(document).ready(() => {
                 }
             }
         });
+        $('#grafico_media').after(`<h3 class="grafico">Defasagem = ${calculoDaDefasagem(notas)}</h3>`)
     }
 
     function grafico_area() {
@@ -363,6 +367,8 @@ $(document).ready(() => {
                 }
             }
         });
+
+        $('#grafico_area').after(`<h3 class="grafico" id="defasagem_area">Defasagem = ${calculoDaDefasagem(QuantidadeDeAcertos)}</h3>`)
     }
 
 
@@ -394,6 +400,15 @@ $(document).ready(() => {
             acharAcertosEmCadaArea()
         });
         $('#clickAoIniciarArea').trigger('click')
+    }
+
+    function calculoDaDefasagem(notas = []) {
+        let parteDeCimaDaFuncao = notas.length * 10
+        let parteDeBaixoDaFuncao = 0
+        notas.map((a,b) => {
+            parteDeBaixoDaFuncao += Math.sqrt(notas[b])
+        })
+        return (parteDeCimaDaFuncao/parteDeBaixoDaFuncao).toFixed(2)
     }
 
 
