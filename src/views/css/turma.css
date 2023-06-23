@@ -22,7 +22,7 @@
     font-size: 20px;
     padding: 62px 104px;
     text-align: center;
-} 
+}
 
 .titulo {
     font-size: 24px;
@@ -36,11 +36,130 @@
     color: var(--preto);
 }
 
+.containerAvaliacao {
+    display: flex;
+}
+
+.containerAvaliacao input[type="radio"] {
+    display: none;
+}
+
+.containerAvaliacao input[type="radio"]:checked+label {
+    color: #185ee0;
+}
+
+.containerAreaAvaliacao {
+    display: flex;
+}
+
+.containerAreaAvaliacao input[type="radio"] {
+    display: none;
+}
+
+.containerAreaAvaliacao input[type="radio"]:checked+label {
+    color: #185ee0;
+}
+
+.containerArea {
+    display: flex;
+}
+
+.containerArea input[type="radio"] {
+    display: none;
+}
+
+.containerArea input[type="radio"]:checked+label {
+    color: #185ee0;
+}
+
+.tabsAvaliacao {
+    display: flex;
+    position: relative;
+    background-color: var(--preto);
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+    padding: 0.75rem;
+    border-radius: 20px;
+    width: 90%;
+    height: 3.5em;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+    overflow: hidden;
+    overflow-x: overlay;
+    overflow-x: scroll;
+    margin-bottom: 1em;
+}
+
+.tabsAreaAvaliacao {
+    display: flex;
+    position: relative;
+    background-color: var(--preto);
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+    padding: 0.75rem;
+    border-radius: 20px;
+    width: 90%;
+    height: 3.5em;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+    overflow: hidden;
+    overflow-x: overlay;
+    overflow-x: scroll;
+    margin-bottom: 1em;
+}
+
+.tabsArea {
+    display: flex;
+    position: relative;
+    background-color: var(--preto);
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+    padding: 0.75rem;
+    border-radius: 20px;
+    width: 90%;
+    height: 3.5em;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+    overflow: hidden;
+    overflow-x: overlay;
+    overflow-x: scroll;
+    margin-bottom: 1em;
+}
+
+.tabsAvaliacao * {
+    z-index: 2;
+}
+
+.tabsAreaAvaliacao * {
+    z-index: 2;
+}
+
+.tabsArea * {
+    z-index: 2;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 50%;
+    font-size: .8rem;
+    color: var(--branco);
+    font-weight: 500;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: color 0.15s ease-in;
+    padding-right: 2em;
+    line-height: 1em;
+    word-wrap: break-word;
+}
+
 .grafico {
     background-color: var(--athena-bg-cinza-4);
     border: 2px;
-    width: 246px;
-    height: 147px;
+    width: 10em;
+    height: 5em;
     border-radius: 15px;
     text-align: center;
     align-items: center;
@@ -48,6 +167,21 @@
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+.div_titulo_grafico {
+    display: flex;
+}
+
+.titulo_grafico {
+    color: var(--preto);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hrDosGraficos {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .botao_primario {
@@ -59,6 +193,7 @@
     padding: 10px;
     max-width: 130px;
     margin-bottom: 1em;
+    color: white;
 }
 
 .lista_alunos {
@@ -104,9 +239,9 @@
     align-items: center;
     margin: 1em;
     width: 250px;
-  }
+}
 
-.card_plano{
+.card_plano {
     border-radius: 8px;
     box-sizing: border-box;
     border: 1px solid #a6a9ad;
@@ -134,14 +269,14 @@
     text-overflow: ellipsis;
 }
 
-.card_plano_img{
+.card_plano_img {
     border-radius: 8px 8px 0 0;
     height: 150px;
     position: relative;
 }
 
-.card_plano_bg{
-    background-color: rgba(0,0,0,.2);
+.card_plano_bg {
+    background-color: rgba(0, 0, 0, .2);
     position: absolute;
     top: 0;
     height: 100%;
@@ -149,19 +284,19 @@
     border-radius: 8px 8px 0 0;
 }
 
-.card_img{
+.card_img {
     object-fit: cover;
     height: 100%;
     width: 100%;
     border-radius: 8px 8px 0 0;
 }
 
-.card_plano_info{
+.card_plano_info {
     padding: 20px;
     color: #000;
 }
 
-.card_txt{
+.card_txt {
     font-size: 16px;
     margin-bottom: 10px;
     display: block;
@@ -185,11 +320,11 @@
         margin-top: 1em;
         margin-bottom: 1em;
     }
-    
-    .grafico{
+
+    .grafico {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        
+
     }
 }
