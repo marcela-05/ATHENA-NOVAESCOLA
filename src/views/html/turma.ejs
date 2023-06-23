@@ -4,7 +4,7 @@
     <%- include('partials/head') %>
     <title>Athena ◆ Turma - Detalhe</title>
     <link rel="stylesheet" href="../css/turma.css"> 
-    <script src="../js/planosDeAula.js" defer></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head> 
 <body>
@@ -21,15 +21,15 @@
         <div>
             <p class="grafico" id="geral">Gráfico Geral</p>
         </div>
-        <button class="botao_primario">Detalhar</button>
+        <hr class="hrDosGraficos" id="hrGraficoGeral">
         <div>
             <p class="grafico" id="media">Gráfico da Média</p>
         </div>
-        <button class="botao_primario">Detalhar</button>
+        <hr class="hrDosGraficos" id="hrGraficoMedia">
         <div>
             <p class="grafico" id="defasagem">Gráfico da Defasagem</p>
         </div>
-        <button class="botao_primario">Detalhar</button>
+        <hr class="hrDosGraficos" id="hrGraficoDefasagem">
         <h2 class="titulo">Alunos</h2>
         <ul class="lista_alunos">
             <% for (let aluno of alunos) { %>

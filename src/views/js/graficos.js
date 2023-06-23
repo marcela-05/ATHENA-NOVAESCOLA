@@ -4,8 +4,10 @@ $(document).ready(() => {
     let notasPorAvaliacao = {}
     let nomeDasAvaliacoes
     let notaMedia = {}
+    let acertosPorAvaliacao = {}
+    let avaliacaoAtual = ''
     $.ajax({
-        url: `/notas/turma?idTurma=${url.searchParams.get("idTurma")}`,
+        url: `/notas/turma?idTurma=${url.searchParams.get("idTurma")}&idDisciplina=${$('#idDisciplina').val()}`,
         type: 'GET',
         dataType: 'text',
         async: true,
@@ -13,18 +15,19 @@ $(document).ready(() => {
             if (data === '{"message":"nenhuma nota encontrada"}') {
 
             } else {
+                console.log(data.length)
                 dataArray = JSON.parse(data);
+                console.log(dataArray)
                 ordemAlfabetica()
                 agruparPorAvaliacao()
                 acharNotaMedia()
                 console.log(notaMedia)
-                console.log(dataArray)
 
 
                 $('#geral').before('<canvas id="grafico_geral"></canvas>')
                 $('#geral').remove()
-                graficoGeral()
                 tabsDasAvaliacoes()
+
 
                 $('#media').before('<canvas id="grafico_media"></canvas>')
                 $('#media').remove()
@@ -88,10 +91,36 @@ $(document).ready(() => {
         })
     }
 
+    function acharAcertosEmCadaAvaliacao() {
+        acertosPorAvaliacao = {}
+        dataArray.map((a, b) => {
+            let aluno_nome = dataArray[b].aluno
+            if (!acertosPorAvaliacao[aluno_nome]) {
+                let dadosAluno = dataArray.filter(a => a.aluno === aluno_nome)
+                let dadosAlunoNaAvaliacao = dadosAluno.filter(a => a.avaliacao === avaliacaoAtual)
+                let acertosDoAluno = 0
+                let numeroDeQuestoes = 0
+                dadosAlunoNaAvaliacao.map((c, d) => {
+                    acertosDoAluno += dadosAlunoNaAvaliacao[d].acertos
+                    numeroDeQuestoes += dadosAlunoNaAvaliacao[d].total_questoes
+                })
+                let objetoDePush = {
+                    aluno: `${aluno_nome}`,
+                    acertos: `${acertosDoAluno}`,
+                    total_questoes: `${numeroDeQuestoes}`
+                }
+                acertosPorAvaliacao[aluno_nome] = []
+                acertosPorAvaliacao[aluno_nome].push(objetoDePush)
+            }
+        })
+        console.log(acertosPorAvaliacao)
+        arrumaGraficoGeral()
+    }
+
 
     function tabsDasAvaliacoes() {
         let HTMLDasTabs = ``
-        if (nomeDasAvaliacoes.length !== 1) {
+        if (nomeDasAvaliacoes.length > 1) {
             nomeDasAvaliacoes.map((a, b) => {
                 if (b !== 0) {
                     HTMLDasTabs += `
@@ -101,39 +130,56 @@ $(document).ready(() => {
             })
         }
         $('#grafico_geral').before(`
-        <div class="container id="filtro">
+        <div class="container id="divDoGraficoGeral">
 	        <div class="tabs">
-		        <input type="radio" id="radio-1" name="tabs" checked="">
-		        <label class="tab" for="radio-1">${nomeDasAvaliacoes[0]}</label>
+		        <input type="radio" id="radio-1" name="tabs" >
+		        <label class="tab" id="clickAoIniciar" for="radio-1">${nomeDasAvaliacoes[0]}</label>
                 ${HTMLDasTabs}
 	        </div>
         </div>`)
-        arrumaCSS()
+        verificarAvaliacao()
     }
 
-    function arrumaCSS() {
-        nomeDasAvaliacoes.map((a, b) => {
-            $(`#radio-${b + 1}`)
-        })
+    function arrumaGraficoGeral() {
+        if ($('#grafico_geral')) {
+            $('#grafico_geral').remove()     
+        }
+        graficoGeral()
     }
 
     function graficoGeral() {
-        const ctx = $(`#grafico_geral`);
+        $('#hrGraficoGeral').before('<canvas id="grafico_geral"></canvas>')
+        let nomes = []
+        let QuantidadeDeAcertos = []
+        let maiorNumeroDeQuestoes = 0
+        let chaves = Object.keys(acertosPorAvaliacao)
+        console.log(acertosPorAvaliacao[chaves[0]][0].aluno)
+        chaves.map((a,b) => {
+            nomes.push(acertosPorAvaliacao[chaves[b]][0].aluno)
+            QuantidadeDeAcertos.push(acertosPorAvaliacao[chaves[b]][0].acertos)
+            if(acertosPorAvaliacao[chaves[b]][0].total_questoes > maiorNumeroDeQuestoes) {
+                maiorNumeroDeQuestoes = parseInt(acertosPorAvaliacao[chaves[b]][0].total_questoes)
+            }
+
+        })
+        console.log(maiorNumeroDeQuestoes)
+        let ctx = $(`#grafico_geral`);
 
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: [dataArray[0].aluno],
+                labels: nomes,
                 datasets: [{
-                    label: '# of Votes',
-                    data: [dataArray[0].nota],
+                    label: 'N° de Acertos',
+                    data: QuantidadeDeAcertos,
                     borderWidth: 1
                 }]
             },
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        max: parseInt(maiorNumeroDeQuestoes.toFixed(0))
                     }
                 }
             }
@@ -198,13 +244,16 @@ $(document).ready(() => {
     }
 
 
-    //Arrumando tab
-    $('input[name="tabs"]').change(function () {
-        console.log('oi')
-        var radioId = $(this).attr('id');
-        console.log(radioId)
-        arrumaCSS(radioId)
-    });
+    function verificarAvaliacao() {
+        $('.container').on('click', '.tab', function () {
+            avaliacaoAtual = $(this).text();
+            console.log(avaliacaoAtual)
+            acharAcertosEmCadaAvaliacao()
+        });
+        $('#clickAoIniciar').trigger('click')
+    }
+
+
 
     function titulos() {
         $('.container').before('<div class="div_titulo_grafico"><h3 class="titulo_grafico">Gráfico Geral</h3></div>')
