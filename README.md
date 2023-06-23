@@ -32,9 +32,9 @@
 ## 📝 Descrição
 
 <div align="center">
-  <sub>Página principal na versão mobile</sub>
+  <sub>Página principal na versão mobile</sub><br>
 
-  <img src="./imagens/homepageMobile.png">
+  <img src="./imagens/homepageMobile.png" width="200px">
 </div>
 
 Este projeto nasceu de uma colaboração entre o Inteli e a organização Nova Escola, cujo principal objetivo é a construção de um sistema que apoie professores da rede pública no diagnóstico da aprendizagem dos seus estudantes e que recomende conteúdos pedagógicos após a avaliação. Nesse viés, a equipe Prometheus, a partir dessa meta, construiu a *Athena*. 
