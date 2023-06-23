@@ -1,12 +1,12 @@
 # Inteli - Instituto de Tecnologia e Liderança 
 
 <p align="center">
-<a href= "https://www.inteli.edu.br/"><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0"></a>
+<a href= "https://www.inteli.edu.br/"><img src="https://s3.amazonaws.com/gupy5/production/companies/26702/career/63484/images/2022-04-28_16-56_logo.png" alt="Inteli - Instituto de Tecnologia e Liderança" width="200px"></a>
 </p>
 
-# Nome do projeto
+# Athena
 
-## Nome do grupo
+## Equipe Prometheus
 
 ## Integrantes: 
 <div align="center">
@@ -15,7 +15,6 @@
       <td align="center"><a href="https://www.linkedin.com/in/victor-marques-profile/"><img src="./imagens/equipe/victor.jpg" alt="" width="100px;"/><br><sub><b>Victor M.</b></sub></a> <br></td>
       <td align="center"><a href="https://www.linkedin.com/in/davi-ferreira-arantes/"><img src="./imagens/equipe/davi.jpg" alt="" width="100px;"><br><sub><b>Davi A.</b></sub></a></td>
       <td align="center"><a href="https://www.linkedin.com/in/marcela-issa-838674268/"><img src="./imagens/equipe/marcela.jpg" alt="" width="100px;"  height="150px"><br><sub><b>Marcela I.</b></sub></a></td>
-      <td align="center"><a href="https://www.linkedin.com/in/raissa-moraes-a89179264/"><img src="./imagens/equipe/raissa.jpg" alt="" width="100px;"><br><sub><b>Raissa C.</b></sub></a></td>
     </tr>
   </table>
 </div>
@@ -23,6 +22,7 @@
 <div align="center">
   <table>
     <tr>
+      <td align="center"><a href="https://www.linkedin.com/in/raissa-moraes-a89179264/"><img src="./imagens/equipe/raissa.jpg" alt="" width="100px;"><br><sub><b>Raissa C.</b></sub></a></td>
       <td align="center"><a href="https://www.linkedin.com/in/pedro-auler-a3b23021a/"><img src="./imagens/equipe/pedro.jpg" alt="" width="100px;"/><br><sub><b>Pedro A.</b></sub></a> <br></td>
       <td align="center"><a href="https://www.linkedin.com/in/marcelomiguelassis/"><img src="./imagens/equipe/marcelo.jpg" alt="" width="100px;"><br><sub><b>Marcelo A.</b></sub></a></td>
     </tr>
@@ -31,13 +31,29 @@
 
 ## 📝 Descrição
 
-Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solução proposta).
+<div align="center">
+  <sub>Página principal na versão mobile</sub><br>
+
+  <img src="./imagens/homepageMobile.png" width="200px">
+</div>
+
+Este projeto nasceu de uma colaboração entre o Inteli e a organização Nova Escola, cujo principal objetivo é a construção de um sistema que apoie professores da rede pública no diagnóstico da aprendizagem dos seus estudantes e que recomende conteúdos pedagógicos após a avaliação. Nesse viés, a equipe Prometheus, a partir dessa meta, construiu a *Athena*. 
+
+A *Athena* é uma aplicação web que fornece o gerenciamento prático, acessível e dinâmico das turmas, das avaliações e dos alunos do professor utilizador. Nela, o usuário pode identificar quais as principais dores de cada turma e aluno, a partir da submissão de dados das avaliações.
+
+Através desses dados, a aplicação fornece gráficos intuitivos para o acompanhamento da aprendizagem dos seus alunos, além de recomendar conteúdos pedagógicos (planos de aulas criados pela Nova Escola) para o professor, de acordo com as dificuldades identificadas.
+
+Para ver mais, veja nossos vídeos de apresentação:
+
+[vídeos](./imagens/gravacao/)
 
 ## 📁 Estrutura de pastas
 
 
 |--> documentos<br>
   &emsp;| --> outros <br>
+  &emsp;| --> frontend <br>
+  &emsp;| --> backend <br>
   &emsp;| T06_G4_V0.3.0_Web_application_document.pdf<br>
   &emsp;| T06_G4_V0.3.0_Web_application_document.docx<br>
 |--> imagens<br>
@@ -82,8 +98,20 @@ npm start
 
 ## 🗃 Histórico de lançamentos
 
+* **1.0.0** - 23/06/2023
+    * Integração com o sistema do Google para login e cadastro de novos professores na aplicação;
+    * Criação dos gráficos de média e de avaliação na página das turmas;
+    * Sistema para upload e carregamento dinâmico da foto de perfil do professor.
+* 0.9.0 - 21/06/2023
+    * Padronização da estilização do css;
+    * Melhoria do *dark mode* para desktops.
+* 0.8.0 - 16/06/2023
+    * Sistema de recomendação de planos de aulas;
+    * Responsividade de todas as páginas para desktop;
+    * Adição de novas validações de acesso.
 * 0.7.0 - 09/06/2023
-    * Integração de todas as páginas da versão 0.6.0 com os respectivos controladores e modelos do back-end.
+    * Integração de todas as páginas da versão 0.6.0 com os respectivos controladores e modelos do back-end;
+    * Implementação do DAO - Data Access Object.
 * 0.6.0 - 04/06/2023
     * Adição das telas de cadastrar, editar e listar turmas;
     * Adição das telas de cadastrar, editar e listar assuntos de avaliação;
@@ -122,3 +150,5 @@ npm start
 Aqui estão as referências usadas no projeto:
 
 1. <https://creativecommons.org/share-your-work/>
+2. <https://developer.mozilla.org/en-US/docs/Glossary/MVC>
+3. <https://www.oracle.com/java/technologies/data-access-object.html>
