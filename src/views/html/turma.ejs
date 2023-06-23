@@ -5,6 +5,7 @@
     <title>Athena ◆ Turma - Detalhe</title>
     <link rel="stylesheet" href="../css/turma.css"> 
     <script src="../js/planosDeAula.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head> 
 <body>
     <%- include('partials/cabecalho') %>
@@ -16,11 +17,17 @@
         <p class="media">Média Geral: XX</p> 
         <p class="defasagem">Defasagem Média: XX</p> 
 
-        <h2 class="titulo">Sobre a Turma</h2>
-        <p class="grafico">Gráfico da Média</p>
-        <button class="botao_primario">Detalhar</button>
-        <p class="grafico">Gráfico da Defasagem</p>
-        <button class="botao_primario">Detalhar</button>
+        <h2 class="titulo" id="sobreATurma">Sobre a Turma</h2>
+
+        <p class="grafico" id="media">Gráfico da Média</p>       
+        <hr class="hrDosGraficos" id="hrGraficoMedia">
+        
+        <p class="grafico" id="avaliacao">Gráfico Por Avaliacao</p> 
+        <hr class="hrDosGraficos" id="hrGraficoAvaliacao">
+        
+        <p class="grafico" id="area">Gráfico da Área Por Avaliação</p>
+        <hr class="hrDosGraficos" id="hrGraficoArea">
+
         <h2 class="titulo">Alunos</h2>
         <ul class="lista_alunos">
             <% for (let aluno of alunos) { %>
@@ -35,5 +42,7 @@
     </main>
 
     <button class="botao_primario" onclick="window.location.href='/turmas/editar?idTurma=<%= turma.id_turma %>'">Editar</button>
+
+    <script src="../js/graficos.js"></script>
 </body> 
 </html> 
