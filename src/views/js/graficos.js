@@ -5,7 +5,11 @@ $(document).ready(() => {
     let nomeDasAvaliacoes
     let notaMedia = {}
     let acertosPorAvaliacao = {}
+    let areasPorAvaliacao = {}
+    let acertosPorArea = {}
     let avaliacaoAtual = ''
+    let areaAvaliacaoAtual = ''
+    let areaAtual = ''
     $.ajax({
         url: `/notas/turma?idTurma=${url.searchParams.get("idTurma")}&idDisciplina=${$('#idDisciplina').val()}`,
         type: 'GET',
@@ -23,19 +27,17 @@ $(document).ready(() => {
                 acharNotaMedia()
                 console.log(notaMedia)
 
-
-                $('#geral').before('<canvas id="grafico_geral"></canvas>')
-                $('#geral').remove()
-                tabsDasAvaliacoes()
-
-
-                $('#media').before('<canvas id="grafico_media"></canvas>')
+                $('#hrGraficoMedia').before('<canvas id="grafico_media"></canvas>')
                 $('#media').remove()
                 grafico_media()
 
-                $('#defasagem').before('<canvas id="grafico_defasagem"></canvas>')
-                $('#defasagem').remove()
-                grafico_defasagem()
+                $('#hrGraficoAvaliacao').before('<canvas id="grafico_avaliacao"></canvas>')
+                $('#avaliacao').remove()
+                tabsDasAvaliacoes()
+
+                $('#hrGraficoArea').before('<canvas id="grafico_area"></canvas>')
+                $('#area').remove()
+                tabsDasAreasAvaliacoes()
 
                 titulos()
             }
@@ -117,53 +119,158 @@ $(document).ready(() => {
         arrumaGraficoGeral()
     }
 
+    function acharAreasDeCadaAvaliacao() {
+        areasPorAvaliacao = {}
+        let dadosAvaliacao = dataArray.filter(a => a.avaliacao === areaAvaliacaoAtual)
+        dadosAvaliacao.map((a, b) => {
+            let area_nome = dadosAvaliacao[b].area
+            if (!areasPorAvaliacao[area_nome]) {
+                areasPorAvaliacao[area_nome] = []
+            }
+        })
+        areasPorAvaliacao = Object.keys(areasPorAvaliacao)
+        console.log(areasPorAvaliacao)
+        tabsDasAreas()
+    }
+
+    function acharAcertosEmCadaArea() {
+        acertosPorArea = {}
+        let dadosArea = dataArray.filter(a => a.area === areaAtual)
+        console.log(dadosArea)
+        dadosArea.map((a, b) => {
+            let aluno_nome = dadosArea[b].aluno
+            if (!acertosPorArea[aluno_nome]) {
+                let dadosAluno = dadosArea.filter(a => a.aluno === aluno_nome)
+                console.log(dadosAluno[0])
+                let objetoDePush = {
+                    aluno: `${aluno_nome}`,
+                    acertos: `${dadosAluno[0].acertos}`,
+                    total_questoes: `${dadosAluno[0].total_questoes}`
+                }
+                acertosPorArea[aluno_nome] = []
+                acertosPorArea[aluno_nome].push(objetoDePush)
+            }
+        })
+        console.log(acertosPorArea)
+        arrumaGraficoArea()
+    }
+
 
     function tabsDasAvaliacoes() {
         let HTMLDasTabs = ``
         if (nomeDasAvaliacoes.length > 1) {
             nomeDasAvaliacoes.map((a, b) => {
                 if (b !== 0) {
-                    HTMLDasTabs += `
-                    <input type="radio" id="radio-${b + 1}" name="tabs">
-                    <label class="tab" for="radio-${b + 1}">${nomeDasAvaliacoes[b]}</label>`
+                    if (nomeDasAvaliacoes[b] != nomeDasAvaliacoes[nomeDasAvaliacoes.length - 1]) {
+                        HTMLDasTabs += `
+                        <input type="radio" id="radioAvaliacoes-${b + 1}" name="tabsAvaliacao">
+                        <label class="tab" for="radioAvaliacoes-${b + 1}">${nomeDasAvaliacoes[b]}</label>`
+                    } else {
+                        HTMLDasTabs += `
+                        <input type="radio" id="radioAvaliacoes-${b + 1}" name="tabsAvaliacao">
+                        <label class="tab" style="padding-right: 0.2em" for="radioAvaliacoes-${b + 1}">${nomeDasAvaliacoes[b]}</label>`
+                    }
                 }
             })
         }
-        $('#grafico_geral').before(`
-        <div class="container id="divDoGraficoGeral">
-	        <div class="tabs">
-		        <input type="radio" id="radio-1" name="tabs" >
-		        <label class="tab" id="clickAoIniciar" for="radio-1">${nomeDasAvaliacoes[0]}</label>
+        $('#hrGraficoMedia').after(`
+        <div class="containerAvaliacao id="divDoGraficoGeral">
+	        <div class="tabsAvaliacao">
+		        <input type="radio" id="radioAvaliacoes-1" name="tabsAvaliacao" >
+		        <label class="tab" id="clickAoIniciarAvaliacao" for="radioAvaliacoes-1">${nomeDasAvaliacoes[0]}</label>
                 ${HTMLDasTabs}
 	        </div>
         </div>`)
         verificarAvaliacao()
     }
 
-    function arrumaGraficoGeral() {
-        if ($('#grafico_geral')) {
-            $('#grafico_geral').remove()     
+    function tabsDasAreasAvaliacoes() {
+        let HTMLDasTabs = ``
+        if (nomeDasAvaliacoes.length > 1) {
+            nomeDasAvaliacoes.map((a, b) => {
+                if (b !== 0) {
+                    if (nomeDasAvaliacoes[b] != nomeDasAvaliacoes[nomeDasAvaliacoes.length - 1]) {
+                        HTMLDasTabs += `
+                        <input type="radio" id="radioAreaAvaliacoes-${b + 1}" name="tabsAreaAvaliacao">
+                        <label class="tab" for="radioAreaAvaliacoes-${b + 1}">${nomeDasAvaliacoes[b]}</label>`
+                    } else {
+                        HTMLDasTabs += `
+                        <input type="radio" id="radioAreaAvaliacoes-${b + 1}" name="tabsAreaAvaliacao">
+                        <label class="tab" style="padding-right: 0.2em" for="radioAreaAvaliacoes-${b + 1}">${nomeDasAvaliacoes[b]}</label>`
+                    }
+                }
+            })
         }
-        graficoGeral()
+        $('#hrGraficoAvaliacao').after(`
+        <div class="containerAreaAvaliacao id="divDoGraficoGeral">
+	        <div class="tabsAreaAvaliacao">
+		        <input type="radio" id="radioAreaAvaliacoes-1" name="tabsAreaAvaliacao" >
+		        <label class="tab" id="clickAoIniciarAreaAvaliacao" for="radioAreaAvaliacoes-1">${nomeDasAvaliacoes[0]}</label>
+                ${HTMLDasTabs}
+	        </div>
+        </div>`)
+        verificarAreaAvaliacao()
     }
 
-    function graficoGeral() {
-        $('#hrGraficoGeral').before('<canvas id="grafico_geral"></canvas>')
+    function tabsDasAreas() {
+        let HTMLDasTabs = ``
+        if (areasPorAvaliacao.length > 1) {
+            areasPorAvaliacao.map((a, b) => {
+                if (b !== 0) {
+                    if (areasPorAvaliacao[b] != areasPorAvaliacao[areasPorAvaliacao.length - 1]) {
+                        HTMLDasTabs += `
+                        <input type="radio" id="radioArea-${b + 1}" name="tabsArea">
+                        <label class="tab" for="radioArea-${b + 1}">${areasPorAvaliacao[b]}</label>`
+                    } else {
+                        HTMLDasTabs += `
+                        <input type="radio" id="radioArea-${b + 1}" name="tabsArea">
+                        <label class="tab" style="padding-right: 0.2em" for="radioArea-${b + 1}">${areasPorAvaliacao[b]}</label>`
+                    }
+                }
+            })
+        }
+        $('.containerAreaAvaliacao').after(`
+        <div class="containerArea id="divDoGraficoGeral">
+	        <div class="tabsArea">
+		        <input type="radio" id="radioArea-1" name="tabsArea" >
+		        <label class="tab" id="clickAoIniciarArea" for="radioArea-1">${areasPorAvaliacao[0]}</label>
+                ${HTMLDasTabs}
+	        </div>
+        </div>`)
+        verificarArea()
+    }
+
+    function arrumaGraficoGeral() {
+        if ($('#grafico_avaliacao')) {
+            $('#grafico_avaliacao').remove()
+        }
+        grafico_avaliacao()
+    }
+
+    function arrumaGraficoArea() {
+        if ($('#grafico_area')) {
+            $('#grafico_area').remove()
+        }
+        grafico_area()
+    }
+
+    function grafico_avaliacao() {
+        $('#hrGraficoAvaliacao').before('<canvas id="grafico_avaliacao"></canvas>')
         let nomes = []
         let QuantidadeDeAcertos = []
         let maiorNumeroDeQuestoes = 0
         let chaves = Object.keys(acertosPorAvaliacao)
         console.log(acertosPorAvaliacao[chaves[0]][0].aluno)
-        chaves.map((a,b) => {
+        chaves.map((a, b) => {
             nomes.push(acertosPorAvaliacao[chaves[b]][0].aluno)
             QuantidadeDeAcertos.push(acertosPorAvaliacao[chaves[b]][0].acertos)
-            if(acertosPorAvaliacao[chaves[b]][0].total_questoes > maiorNumeroDeQuestoes) {
+            if (acertosPorAvaliacao[chaves[b]][0].total_questoes > maiorNumeroDeQuestoes) {
                 maiorNumeroDeQuestoes = parseInt(acertosPorAvaliacao[chaves[b]][0].total_questoes)
             }
 
         })
         console.log(maiorNumeroDeQuestoes)
-        let ctx = $(`#grafico_geral`);
+        let ctx = $(`#grafico_avaliacao`);
 
         new Chart(ctx, {
             type: 'bar',
@@ -220,23 +327,38 @@ $(document).ready(() => {
         });
     }
 
-    function grafico_defasagem() {
-        const ctx = $(`#grafico_defasagem`);
+    function grafico_area() {
+        $('#hrGraficoArea').before('<canvas id="grafico_area"></canvas>')
+        let nomes = []
+        let QuantidadeDeAcertos = []
+        let NumeroDeQuestoes = 0
+        let chaves = Object.keys(acertosPorArea)
+        console.log(acertosPorArea[chaves[0]][0].aluno)
+        chaves.map((a, b) => {
+            nomes.push(acertosPorArea[chaves[b]][0].aluno)
+            QuantidadeDeAcertos.push(acertosPorArea[chaves[b]][0].acertos)
+            if (acertosPorArea[chaves[b]][0].total_questoes > NumeroDeQuestoes) {
+                NumeroDeQuestoes = parseInt(acertosPorArea[chaves[b]][0].total_questoes)
+            }
+
+        })
+        const ctx = $(`#grafico_area`);
 
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: nomes,
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: 'N° de Acertos',
+                    data: QuantidadeDeAcertos,
                     borderWidth: 1
                 }]
             },
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        max: parseInt(NumeroDeQuestoes.toFixed(0))
                     }
                 }
             }
@@ -245,19 +367,39 @@ $(document).ready(() => {
 
 
     function verificarAvaliacao() {
-        $('.container').on('click', '.tab', function () {
+        $('.containerAvaliacao').on('click', '.tab', function () {
             avaliacaoAtual = $(this).text();
             console.log(avaliacaoAtual)
             acharAcertosEmCadaAvaliacao()
         });
-        $('#clickAoIniciar').trigger('click')
+        $('#clickAoIniciarAvaliacao').trigger('click')
+    }
+
+    function verificarAreaAvaliacao() {
+        $('.containerAreaAvaliacao').on('click', '.tab', function () {
+            if($('.containerArea')){
+                $('.containerArea').remove()
+            }
+            areaAvaliacaoAtual = $(this).text();
+            console.log(areaAvaliacaoAtual)
+            acharAreasDeCadaAvaliacao()
+        });
+        $('#clickAoIniciarAreaAvaliacao').trigger('click')
+    }
+
+    function verificarArea() {
+        $('.containerArea').on('click', '.tab', function () {
+            areaAtual = $(this).text();
+            console.log(areaAtual)
+            acharAcertosEmCadaArea()
+        });
+        $('#clickAoIniciarArea').trigger('click')
     }
 
 
-
     function titulos() {
-        $('.container').before('<div class="div_titulo_grafico"><h3 class="titulo_grafico">Gráfico Geral</h3></div>')
+        $('#hrGraficoMedia').after('<div class="div_titulo_grafico"><h3 class="titulo_grafico">Gráfico Por Avaliação</h3></div>')
         $('#grafico_media').before('<div class="div_titulo_grafico"><h3 class="titulo_grafico">Gráfico da Média</h3></div>')
-        $('#grafico_defasagem').before('<div class="div_titulo_grafico"><h3 class="titulo_grafico">Gráfico da Defasagem</h3></div>')
+        $('#hrGraficoAvaliacao').after('<div class="div_titulo_grafico"><h3 class="titulo_grafico">Gráfico da Área por Avaliação</h3></div>')
     }
 })
