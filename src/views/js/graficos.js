@@ -16,9 +16,7 @@ $(document).ready(() => {
         dataType: 'text',
         async: true,
         success: (data) => {
-            if (data === '{"message":"nenhuma nota encontrada"}') {
-
-            } else {
+            if (data.length > 2) {
                 console.log(data.length)
                 dataArray = JSON.parse(data);
                 console.log(dataArray)
